@@ -1,0 +1,189 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    /* `clip` rather than `hidden`: it contains stray glows without
+       creating a scroll container, which would break every `sticky`
+       element on the page. */
+    overflow-x: clip;
+  }
+
+  body {
+    @apply bg-ground text-ink font-sans antialiased;
+    /* The page background is a single dark ground with two very soft
+       light sources, so sections can sit on it without hard seams. */
+    background-image:
+      radial-gradient(
+        900px 620px at 78% -6%,
+        rgba(59, 130, 246, 0.11),
+        transparent 62%
+      ),
+      radial-gradient(
+        740px 540px at 4% 22%,
+        rgba(94, 163, 240, 0.06),
+        transparent 60%
+      );
+    background-attachment: fixed;
+    overflow-x: clip;
+  }
+
+  /* The nav is fixed, so anchored sections must stop clear of it rather
+     than sliding their own headings underneath. */
+  section[id],
+  [id="top"] {
+    scroll-margin-top: 76px;
+  }
+
+  ::selection {
+    background: rgba(59, 130, 246, 0.32);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid theme("colors.accent-2");
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  /* Thin, dark scrollbar so the page keeps its own colour on desktop. */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: theme("colors.edge-2") transparent;
+  }
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  *::-webkit-scrollbar-thumb {
+    background: theme("colors.edge-2");
+    border-radius: 99px;
+    border: 3px solid transparent;
+    background-clip: content-box;
+  }
+}
+
+@layer components {
+  .shell {
+    @apply mx-auto w-full max-w-shell px-5 sm:px-8;
+  }
+
+  .eyebrow {
+    @apply font-mono text-[11px] uppercase tracking-[0.18em] text-ink-3;
+  }
+
+  /* Section headings: tight, large, balanced — the HydraDB register. */
+  .h-section {
+    @apply text-[clamp(28px,4.4vw,50px)] font-extrabold leading-[1.06] tracking-[-0.035em];
+    text-wrap: balance;
+  }
+
+  .card {
+    @apply rounded-2xl border border-edge bg-panel/80 backdrop-blur-sm;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-edge
+           bg-panel-2/70 px-3 py-1 font-mono text-[10.5px] uppercase
+           tracking-[0.12em] text-ink-2;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-3
+           text-[14.5px] font-semibold transition-all duration-200
+           active:translate-y-px;
+  }
+
+  .btn-primary {
+    @apply btn bg-accent text-white hover:bg-accent-2
+           shadow-[0_0_0_1px_rgba(94,163,240,0.35),0_10px_34px_-10px_rgba(59,130,246,0.75)]
+           hover:shadow-[0_0_0_1px_rgba(94,163,240,0.5),0_14px_44px_-8px_rgba(59,130,246,0.9)];
+  }
+
+  .btn-ghost {
+    @apply btn border border-edge-2 bg-panel-2/60 text-ink
+           hover:border-accent/60 hover:bg-panel-2;
+  }
+
+  /* Hairline rule that fades at both ends. */
+  .rule {
+    @apply h-px w-full border-0;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      theme("colors.edge-2"),
+      transparent
+    );
+  }
+}
+
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 34px rgba(94, 163, 240, 0.4);
+  }
+
+  /* Masks the top/bottom of tall scrolling media so it dissolves into
+     the page rather than ending on a hard edge. */
+  .mask-fade-y {
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent,
+      #000 6%,
+      #000 94%,
+      transparent
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      transparent,
+      #000 6%,
+      #000 94%,
+      transparent
+    );
+  }
+
+  .mask-fade-x {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 8%,
+      #000 92%,
+      transparent
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 8%,
+      #000 92%,
+      transparent
+    );
+  }
+
+  .grid-lines {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Everything animated on this site is decorative. If the visitor asked the
+   OS for less motion, hold every element at its final resting state. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
