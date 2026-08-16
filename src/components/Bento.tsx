@@ -45,12 +45,6 @@ function BentoCard({ span, title, body, image, children, delay = 0 }: CardProps)
                            group-hover:scale-[1.03]"
               />
             </div>
-            {/* fade the screenshot into the card floor */}
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-x-6 bottom-0 h-16
-                         bg-gradient-to-t from-panel to-transparent"
-            />
           </div>
         )}
       </div>
@@ -75,13 +69,8 @@ export function Bento() {
     <section id="features" className="relative py-24 sm:py-32">
       <div className="shell">
         <SectionHeading
-          eyebrow="// and the rest of it //"
-          title={
-            <>
-              Everything else the day needs,{" "}
-              <span className="text-accent-2">already in the box</span>
-            </>
-          }
+          eyebrow="and the rest of it"
+          title="Everything else the day needs, already in the box"
           lede="No tiers that hide the useful half, no add-on that turns out to cost more than the software. What follows is simply part of it."
         />
 

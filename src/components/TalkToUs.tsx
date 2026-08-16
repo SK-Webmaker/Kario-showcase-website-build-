@@ -34,17 +34,11 @@ export function TalkToUs() {
       id="contact"
       className="relative overflow-hidden border-t border-edge py-24 sm:py-32"
     >
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 h-[520px]
-                   bg-[radial-gradient(60%_100%_at_50%_0%,rgba(59,130,246,0.16),transparent_70%)]"
-      />
-
       <div className="shell relative">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
           {/* the panel */}
           <Reveal>
-            <div className="rounded-2xl border border-accent/30 bg-panel/80 p-7 backdrop-blur sm:p-9">
+            <div className="rounded-2xl border border-edge-2 bg-panel p-7 sm:p-9">
               <p className="eyebrow">What it costs</p>
               <h2 className="mt-4 text-[clamp(26px,3.6vw,38px)] font-extrabold leading-[1.08] tracking-[-0.03em]">
                 Quoted per salon, because every salon is a different size.

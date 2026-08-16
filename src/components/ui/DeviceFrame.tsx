@@ -5,8 +5,6 @@ type BrowserProps = {
   /** Shown in the address pill, e.g. "luxehairstudio.kairo.app". */
   url?: string;
   className?: string;
-  /** Adds the blue bloom behind the window. */
-  glow?: boolean;
 };
 
 /**
@@ -18,22 +16,12 @@ export function BrowserFrame({
   children,
   url = "app.kairo.app",
   className = "",
-  glow = true,
 }: BrowserProps) {
   return (
     <div className={`relative ${className}`}>
-      {glow && (
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 -top-6 bottom-0
-                     rounded-[40px] bg-accent/20 blur-[70px] sm:-inset-x-10 sm:top-[-1.5rem]"
-        />
-      )}
-
       <div
         className="relative overflow-hidden rounded-xl border border-edge-2
-                   bg-panel shadow-[0_40px_90px_-30px_rgba(0,0,0,0.9)]
-                   sm:rounded-2xl"
+                   bg-panel sm:rounded-2xl"
       >
         {/* title bar */}
         <div
@@ -75,24 +63,15 @@ export function BrowserFrame({
 type PhoneProps = {
   children: ReactNode;
   className?: string;
-  glow?: boolean;
 };
 
 /** Phone chrome for the three handset frames. */
-export function PhoneFrame({ children, className = "", glow = false }: PhoneProps) {
+export function PhoneFrame({ children, className = "" }: PhoneProps) {
   return (
     <div className={`relative ${className}`}>
-      {glow && (
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 rounded-[40px]
-                     bg-accent/25 blur-[60px]"
-        />
-      )}
       <div
         className="relative overflow-hidden rounded-[30px] border-[5px]
-                   border-[#1a2231] bg-[#1a2231]
-                   shadow-[0_30px_70px_-25px_rgba(0,0,0,0.95)]"
+                   border-[#1a2231] bg-[#1a2231]"
       >
         {/* notch */}
         <div

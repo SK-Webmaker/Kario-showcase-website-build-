@@ -14,20 +14,8 @@
 
   body {
     @apply bg-ground text-ink font-sans antialiased;
-    /* The page background is a single dark ground with two very soft
-       light sources, so sections can sit on it without hard seams. */
-    background-image:
-      radial-gradient(
-        900px 620px at 78% -6%,
-        rgba(59, 130, 246, 0.11),
-        transparent 62%
-      ),
-      radial-gradient(
-        740px 540px at 4% 22%,
-        rgba(94, 163, 240, 0.06),
-        transparent 60%
-      );
-    background-attachment: fixed;
+    /* Flat ground, no ambient glow. Separation between sections comes
+       from hairline rules and panel tone, the way it would in print. */
     overflow-x: clip;
   }
 
@@ -98,9 +86,7 @@
   }
 
   .btn-primary {
-    @apply btn bg-accent text-white hover:bg-accent-2
-           shadow-[0_0_0_1px_rgba(94,163,240,0.35),0_10px_34px_-10px_rgba(59,130,246,0.75)]
-           hover:shadow-[0_0_0_1px_rgba(94,163,240,0.5),0_14px_44px_-8px_rgba(59,130,246,0.9)];
+    @apply btn bg-accent text-white hover:bg-accent-2;
   }
 
   .btn-ghost {
@@ -121,29 +107,8 @@
 }
 
 @layer utilities {
-  .text-glow {
-    text-shadow: 0 0 34px rgba(94, 163, 240, 0.4);
-  }
-
-  /* Masks the top/bottom of tall scrolling media so it dissolves into
-     the page rather than ending on a hard edge. */
-  .mask-fade-y {
-    -webkit-mask-image: linear-gradient(
-      to bottom,
-      transparent,
-      #000 6%,
-      #000 94%,
-      transparent
-    );
-    mask-image: linear-gradient(
-      to bottom,
-      transparent,
-      #000 6%,
-      #000 94%,
-      transparent
-    );
-  }
-
+  /* Used only on the marquee, so the strip ends by running out rather
+     than being chopped mid-word. */
   .mask-fade-x {
     -webkit-mask-image: linear-gradient(
       to right,

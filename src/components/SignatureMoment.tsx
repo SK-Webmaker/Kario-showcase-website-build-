@@ -262,22 +262,11 @@ export function SignatureMoment() {
       id="signature"
       className="relative overflow-hidden border-y border-edge bg-panel/30 py-24 sm:py-32"
     >
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute left-1/2 top-0 h-[420px] w-[820px]
-                   -translate-x-1/2 rounded-full bg-accent/10 blur-[120px]"
-      />
-
       <div className="shell relative">
         <SectionHeading
           align="center"
-          eyebrow="// the moment that matters //"
-          title={
-            <>
-              Plans change. That's when most booking systems{" "}
-              <span className="text-accent-2">lose you the customer</span>.
-            </>
-          }
+          eyebrow="the moment that matters"
+          title="Plans change. That's when most booking systems lose you the customer."
           lede="Every booking and every move stops to ask one question — who to tell, and how. Only the channels that client can actually receive are offered. Try it."
         />
 

@@ -26,13 +26,8 @@ export function Contrast() {
     <section id="why" className="relative py-24 sm:py-32">
       <div className="shell">
         <SectionHeading
-          eyebrow="// the problem //"
-          title={
-            <>
-              A salon doesn't lose money on the haircut. It loses it{" "}
-              <span className="text-accent-2">between</span> the haircuts.
-            </>
-          }
+          eyebrow="the problem"
+          title="A salon doesn't lose money on the haircut. It loses it between the haircuts."
           lede="The empty chair nobody filled, the client who drifted off, the no-show nobody reminded, the change nobody passed on. Most of it is admin nobody had time for."
         />
 
@@ -67,13 +62,12 @@ export function Contrast() {
 
           <Reveal delay={100}>
             <div
-              className="relative h-full overflow-hidden rounded-2xl border border-accent/30
-                         bg-gradient-to-b from-accent/[0.09] to-transparent p-6 sm:p-8"
+              className="relative h-full overflow-hidden rounded-2xl border border-edge-2
+                         bg-panel p-6 sm:p-8"
             >
-              <div
+              <span
                 aria-hidden="true"
-                className="pointer-events-none absolute -right-16 -top-16 h-56 w-56
-                           rounded-full bg-accent/20 blur-[70px]"
+                className="absolute inset-x-0 top-0 h-px bg-accent"
               />
               <div className="relative flex items-center gap-2.5">
                 <span className="h-2 w-2 rounded-full bg-money" />

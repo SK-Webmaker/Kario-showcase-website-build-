@@ -44,13 +44,8 @@ export function BuiltDifferently() {
 
       <div className="shell relative">
         <SectionHeading
-          eyebrow="// under the bonnet //"
-          title={
-            <>
-              Built differently, on purpose —{" "}
-              <span className="text-accent-2">and it shows up in your week</span>
-            </>
-          }
+          eyebrow="under the bonnet"
+          title="Built differently, on purpose — and it shows up in your week"
           lede="You will never think about any of this. It is here because it is the reason the software stays fast, stays up, and doesn't quietly lose your Tuesday."
         />
 
@@ -78,7 +73,7 @@ export function BuiltDifferently() {
           {/* the readout */}
           <Reveal delay={120}>
             <div className="lg:sticky lg:top-28">
-              <div className="overflow-hidden rounded-2xl border border-edge-2 bg-ground/90 shadow-[0_30px_70px_-30px_rgba(0,0,0,0.9)]">
+              <div className="overflow-hidden rounded-2xl border border-edge-2 bg-ground">
                 <div className="flex items-center gap-2.5 border-b border-edge bg-panel-2/80 px-4 py-3">
                   <span className="h-2 w-2 rounded-full bg-money" />
                   <p className="font-mono text-[10.5px] uppercase tracking-[0.14em] text-ink-2">

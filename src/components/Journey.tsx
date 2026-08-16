@@ -18,7 +18,7 @@ function StepShot({ step, eager }: { step: Step; eager?: boolean }) {
   );
 
   return step.device === "phone" ? (
-    <PhoneFrame className="mx-auto w-[54%] max-w-[260px]" glow>
+    <PhoneFrame className="mx-auto w-[54%] max-w-[260px]">
       {img}
     </PhoneFrame>
   ) : (
@@ -85,9 +85,8 @@ export function Journey() {
             </Reveal>
             <Reveal delay={60}>
               <h2 className="h-section">
-                A Thursday at{" "}
-                <span className="text-accent-2">Luxe Hair Studio</span>, from
-                the first coffee to the last invoice
+                A Thursday at Luxe Hair Studio, from the first coffee to the
+                last invoice
               </h2>
             </Reveal>
             <Reveal delay={120}>

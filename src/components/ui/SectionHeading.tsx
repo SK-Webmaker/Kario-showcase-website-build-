@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import { Reveal } from "./Reveal";
 
 type Props = {
-  /** Small mono label above the heading, e.g. "// the day book //". */
+  /** Small mono label above the heading, e.g. "the day book". */
   eyebrow?: string;
   title: ReactNode;
   lede?: ReactNode;
@@ -25,7 +25,15 @@ export function SectionHeading({
     >
       {eyebrow && (
         <Reveal>
-          <p className="eyebrow mb-4">{eyebrow}</p>
+          {/* Short rule then label — a print device, not a decoration. */}
+          <p
+            className={`eyebrow mb-5 flex items-center gap-3 ${
+              centered ? "justify-center" : ""
+            }`}
+          >
+            <span aria-hidden="true" className="h-px w-6 bg-edge-2" />
+            {eyebrow}
+          </p>
         </Reveal>
       )}
       <Reveal delay={60}>

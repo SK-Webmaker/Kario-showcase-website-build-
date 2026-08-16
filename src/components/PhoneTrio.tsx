@@ -27,22 +27,11 @@ const PHONES = [
 export function PhoneTrio() {
   return (
     <section className="relative overflow-hidden py-24 sm:py-28">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute left-1/2 top-1/3 h-[380px] w-[900px]
-                   -translate-x-1/2 rounded-full bg-accent/[0.09] blur-[130px]"
-      />
-
       <div className="shell relative">
         <SectionHeading
           align="center"
-          eyebrow="// in the hand //"
-          title={
-            <>
-              Phone-first, not{" "}
-              <span className="text-accent-2">phone-tolerant</span>
-            </>
-          }
+          eyebrow="in the hand"
+          title="Phone-first, not phone-tolerant"
           lede="You run the salon from an apron pocket, so every screen was built for a thumb first and a desktop second. It installs to the home screen straight from the browser — no app store, no download, no update to remember."
         />
 
@@ -50,7 +39,7 @@ export function PhoneTrio() {
           {PHONES.map((p, i) => (
             <Reveal key={p.file} delay={i * 110} className={`flex-1 ${p.lift}`}>
               <figure className="mx-auto max-w-[230px]">
-                <PhoneFrame glow={i === 1}>
+                <PhoneFrame>
                   <img
                     src={shot(p.file)}
                     alt={p.alt}

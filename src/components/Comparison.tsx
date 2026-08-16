@@ -51,13 +51,8 @@ export function Comparison() {
     <section id="compare" className="relative py-24 sm:py-32">
       <div className="shell">
         <SectionHeading
-          eyebrow="// why this one //"
-          title={
-            <>
-              What you actually get,{" "}
-              <span className="text-accent-2">next to what you're used to</span>
-            </>
-          }
+          eyebrow="why this one"
+          title="What you actually get, next to what you're used to"
         />
 
         <Reveal>
