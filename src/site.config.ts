@@ -37,4 +37,17 @@ export const mailtoHref =
   `?subject=${encodeURIComponent(site.emailSubject)}` +
   `&body=${encodeURIComponent(site.emailBody)}`;
 
-export const shot = (file: string) => `/screenshots/${file}`;
+/**
+ * Path to a product screenshot.
+ *
+ * Normally this is just the file in /public/screenshots. The single-file
+ * preview build (scripts/build-singlefile.mjs) injects `__SHOTS`, a map of
+ * filename to data URI, so the whole site can be served as one HTML file
+ * with no external requests. When that map isn't present — which is every
+ * normal build, including Lovable's — this falls straight through to the
+ * real path.
+ */
+export const shot = (file: string): string => {
+  const inlined = (globalThis as { __SHOTS?: Record<string, string> }).__SHOTS;
+  return inlined?.[file] ?? `/screenshots/${file}`;
+};
