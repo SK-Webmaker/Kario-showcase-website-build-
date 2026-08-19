@@ -58,7 +58,7 @@ The site is one continuous scroll, ordered as a journey:
 | # | Section | File | What it does |
 |---|---------|------|--------------|
 | 1 | Hero | `components/Hero.tsx` | The mark draws itself, then unfolds into a salon's day and resolves into the dashboard |
-| 2 | **The case** | `components/WhyNotThem.tsx` | **The sell** — three pinned beats on marketplaces, salon-specific software and your own booking page, plus a live commission calculator |
+| 2 | **The case** | `components/WhyNotThem.tsx` | **The sell** — three pinned beats on marketplaces, salon-specific software and your own booking page, plus the payback calculator |
 | 3 | Proof wall | `components/ProofWall.tsx` | Rolling-digit counters, then a marquee of what one login replaces |
 | 4 | The problem | `components/Contrast.tsx` | Without / with, side by side |
 | 5 | **The journey** | `components/Journey.tsx` | A pinned stage that swaps screenshots across eight numbered steps as you scroll |
@@ -76,11 +76,40 @@ Deliberately: the claims about Fresha, Square and others are about
 your own link; a general-purpose tool is structurally different from one
 built for chairs. Those are verifiable and don't go stale.
 
-No specific price or commission rate is ever asserted, because terms
-differ by plan and country and change over time. The calculator in
-`components/CommissionCalculator.tsx` takes the visitor's *own* rate off
-their *own* statement, which is both honest and considerably more
-persuasive than a number they'd have to take on trust.
+No specific price or commission rate is ever asserted for anyone else,
+because terms differ by plan and country and change over time.
+
+An earlier version of this page had a commission calculator, and it was
+wrong: marketplace commission generally applies only to clients the
+platform itself introduced, and that calculator quietly treated "new to
+you" as "sourced by the platform". That overstates the saving, and a
+salon owner who spots it has a reason to distrust the rest of the page.
+It was replaced by `components/PaybackCalculator.tsx`.
+
+### Pricing, and what the payback calculator asserts
+
+Kairo's price is stated plainly across the site: **a one-off $400 setup,
+and nothing per month** — no subscription, no per-booking fee, no
+commission. Those two numbers are the *only* figures the page asserts.
+
+The calculator divides the setup cost by the visitor's own average ticket
+("$400 ÷ $85 = 5 visits"), and charts their own current monthly fee out
+over three years beside Kairo's flat one-off. Two optional scenarios —
+one saved no-show a week, one win-back a month — are toggles the visitor
+switches on themselves and are priced at their own ticket. Turn both off
+and the visits figure still stands on pure arithmetic.
+
+To change the price, edit `SETUP` at the top of
+`components/PaybackCalculator.tsx`, then the copy in `TalkToUs.tsx`,
+`ProofWall.tsx` and `Comparison.tsx`.
+
+### Chart colours
+
+The three-year cost bars use `#3b82f6` (Kairo) and `#c2664a` (the other
+platform). That pair was validated rather than eyeballed — chroma,
+colour-blind separation and contrast all pass against both the light and
+dark surfaces, worst case ΔE 25.8 under protanopia. Every bar is also
+directly labelled, so identity never rests on colour alone.
 
 ### The scroll engine
 

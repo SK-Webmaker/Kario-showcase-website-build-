@@ -1,7 +1,7 @@
 import { BrowserFrame, PhoneFrame } from "./ui/DeviceFrame";
 import { Reveal, RiseLines } from "./ui/Reveal";
 import { MarketplaceVsDirect } from "./diagrams/MarketplaceVsDirect";
-import { CommissionCalculator, CalculatorNote } from "./CommissionCalculator";
+import { PaybackCalculator, PaybackNote } from "./PaybackCalculator";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { shot } from "@/site.config";
@@ -35,7 +35,7 @@ const BEATS: Beat[] = [
     points: [
       "Your own branded link",
       "No competitors on your page",
-      "No commission on any booking",
+      "No commission, and no monthly fee",
       "The client list stays yours",
     ],
   },
@@ -292,25 +292,26 @@ export function WhyNotThem() {
           <Reveal>
             <div className="mb-8 flex items-center gap-4 border-b border-line pb-3">
               <span className="chrome text-ink">[04]</span>
-              <span className="chrome">What a percentage really costs</span>
+              <span className="chrome">What it costs, and how fast it clears</span>
             </div>
           </Reveal>
           <RiseLines
-            lines={["A cut of every", "new client adds", "up faster than", "you think."]}
+            lines={["$400 to set up.", "Then nothing,", "every month after."]}
             className="display-lg"
           />
           <Reveal delay={160}>
             <p className="lede mt-6">
-              Move the sliders to your own salon. The rate is yours to set —
-              take it off your last statement.
+              No subscription, no per-booking fee, no commission. One setup cost
+              that a salon or barbershop clears in a handful of visits — move the
+              sliders to your own numbers and see how few.
             </p>
           </Reveal>
         </div>
 
         <Reveal delay={80}>
-          <CommissionCalculator />
+          <PaybackCalculator />
         </Reveal>
-        <CalculatorNote />
+        <PaybackNote />
       </div>
     </section>
   );

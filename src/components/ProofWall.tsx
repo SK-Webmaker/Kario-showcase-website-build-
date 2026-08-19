@@ -8,7 +8,7 @@ import { Reveal } from "./ui/Reveal";
 const STATS = [
   { v: "0", u: "", k: "Dependencies", n: "No frameworks, no packages, no build step" },
   { v: "1", u: "", k: "Login", n: "Diary, payments and messages in one place" },
-  { v: "0", u: "%", k: "Commission", n: "No cut of anything you charge" },
+  { v: "0", u: "", k: "Per month", n: "No subscription — a one-off $400 to set up" },
   { v: "15", u: "s", k: "To undo", n: "The client's message held back two minutes" },
 ];
 

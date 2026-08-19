@@ -30,16 +30,17 @@ export function TalkToUs() {
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-20">
           <div>
             <RiseLines
-              lines={["Quoted per salon.", "Every salon is", "a different size."]}
+              lines={["$400 once.", "Then nothing,", "every month."]}
               className="display-lg"
             />
 
             <Reveal delay={180}>
               <p className="lede mt-7">
                 Kairo is sold white-label — one instance per business, set up for
-                how you actually work. No per-booking fee and no cut of what you
-                charge, so the number doesn't move when you have a good month.
-                Tell us the shape of the business and we'll tell you the price.
+                how you actually work. A one-off {"\u0024"}400 to get you running, and
+                then no subscription, no per-booking fee and no commission. The
+                cost doesn't move when you have a good month, and it doesn't
+                come back next month either.
               </p>
             </Reveal>
 

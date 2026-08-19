@@ -10,7 +10,7 @@ const ROWS = [
   ["Who your client list belongs to", "Yours. Your own file, on your own link.", "Often held in a shared platform account."],
   ["When a booking moves", "Asks: email, text, both or nothing — then does exactly that.", "Frequently silent, or a fresh confirmation that reads like a duplicate."],
   ["Undoing a cancellation", "15 seconds to undo, message held two minutes.", "Rarely offered — by the time you notice, it has gone."],
-  ["What it costs per booking", "Nothing. No cut of what you charge.", "Commonly a per-booking fee, a commission, or both."],
+  ["What it costs to run", "$400 once, then nothing monthly. No cut of what you charge.", "Usually a monthly subscription, and often a per-booking fee on top."],
   ["Where customers find you", "Your own branded link, your name at the top.", "Often a marketplace listing your competitors too."],
   ["On a phone", "The same full workspace, installs to the home screen.", "Usually a cut-down companion app."],
   ["Built for", "Hair, barbering, beauty — written in a salon.", "Every kind of business, from one codebase."],
