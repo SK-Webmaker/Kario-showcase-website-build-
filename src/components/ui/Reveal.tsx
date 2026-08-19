@@ -3,21 +3,14 @@ import { useInView } from "@/hooks/useInView";
 
 type Props = {
   children: ReactNode;
-  /** Milliseconds to hold before this element starts its reveal. */
   delay?: number;
-  /** Distance travelled on the way in. */
   y?: number;
   className?: string;
 };
 
-/**
- * Fades and lifts its children the first time they scroll into view.
- * Under `prefers-reduced-motion` the CSS in index.css collapses the
- * transition to nothing, so the content simply appears.
- */
-export function Reveal({ children, delay = 0, y = 18, className = "" }: Props) {
+/** Fade-and-lift on first entry, on the site's signature curve. */
+export function Reveal({ children, delay = 0, y = 22, className = "" }: Props) {
   const { ref, inView } = useInView<HTMLDivElement>();
-
   return (
     <div
       ref={ref}
@@ -25,11 +18,47 @@ export function Reveal({ children, delay = 0, y = 18, className = "" }: Props) {
       style={{
         opacity: inView ? 1 : 0,
         transform: inView ? "translateY(0)" : `translateY(${y}px)`,
-        transition: `opacity 700ms cubic-bezier(0.22,1,0.36,1) ${delay}ms,
-                     transform 700ms cubic-bezier(0.22,1,0.36,1) ${delay}ms`,
+        transition: `opacity 900ms cubic-bezier(.66,0,.01,1) ${delay}ms,
+                     transform 900ms cubic-bezier(.66,0,.01,1) ${delay}ms`,
       }}
     >
       {children}
+    </div>
+  );
+}
+
+/**
+ * Display type that rises from behind a clipping edge, one line at a
+ * time. This is the move that makes big headlines feel authored — the
+ * words arrive rather than fade.
+ */
+export function RiseLines({
+  lines,
+  className = "",
+  delay = 0,
+}: {
+  lines: string[];
+  className?: string;
+  delay?: number;
+}) {
+  const { ref, inView } = useInView<HTMLDivElement>({ threshold: 0.25 });
+  return (
+    <div ref={ref} className={className}>
+      {lines.map((line, i) => (
+        <span key={i} className="clip-line">
+          <span
+            className="block"
+            style={{
+              transform: inView ? "translateY(0)" : "translateY(105%)",
+              opacity: inView ? 1 : 0,
+              transition: `transform 1000ms cubic-bezier(.66,0,.01,1) ${delay + i * 90}ms,
+                           opacity 700ms cubic-bezier(.66,0,.01,1) ${delay + i * 90}ms`,
+            }}
+          >
+            {line}
+          </span>
+        </span>
+      ))}
     </div>
   );
 }

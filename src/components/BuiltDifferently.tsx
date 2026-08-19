@@ -20,98 +20,63 @@ const PILLARS = [
   {
     n: "04",
     title: "Honest about its own state",
-    body: "It notices a misconfigured time zone, a database sitting on a disk that will be wiped, and a default password still in use — and it says so, out loud, instead of waiting for the day it matters.",
+    body: "It notices a misconfigured time zone, a database on a disk that will be wiped, and a default password still in use — and says so, out loud, instead of waiting for the day it matters.",
   },
 ];
 
-/** The self-check readout — the fourth pillar, made visible. */
 const CHECKS = [
-  { label: "Time zone", value: "Australia/Melbourne", state: "ok" },
-  { label: "Database", value: "Persistent volume · backed up 04:00", state: "ok" },
-  { label: "Session cookies", value: "Signed · HttpOnly · SameSite", state: "ok" },
-  { label: "Admin password", value: "Changed from default", state: "ok" },
-  { label: "Outbound email", value: "Verified sender · SPF + DKIM", state: "ok" },
-  { label: "Dependencies", value: "0 installed", state: "note" },
-] as const;
+  ["Time zone", "Australia/Melbourne"],
+  ["Database", "Persistent · backed up 04:00"],
+  ["Session cookies", "Signed · HttpOnly · SameSite"],
+  ["Admin password", "Changed from default"],
+  ["Outbound email", "Verified · SPF + DKIM"],
+  ["Dependencies", "0 installed"],
+];
 
 export function BuiltDifferently() {
   return (
-    <section
-      id="built"
-      className="relative overflow-hidden border-y border-edge bg-panel/30 py-24 sm:py-32"
-    >
-      <div aria-hidden="true" className="absolute inset-0 grid-lines opacity-60" />
-
-      <div className="shell relative">
+    <section id="built" className="border-t border-line bg-raised py-20 sm:py-28">
+      <div className="shell">
         <SectionHeading
-          eyebrow="under the bonnet"
-          title="Built differently, on purpose — and it shows up in your week"
+          index="08"
+          eyebrow="Under the bonnet"
+          lines={["Built differently,", "on purpose."]}
           lede="You will never think about any of this. It is here because it is the reason the software stays fast, stays up, and doesn't quietly lose your Tuesday."
+          className="max-w-3xl"
         />
 
-        <div className="mt-14 grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-12">
-          <div className="space-y-3">
+        <div className="mt-16 grid gap-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-16">
+          <div>
             {PILLARS.map((p, i) => (
               <Reveal key={p.n} delay={i * 70}>
-                <div className="rounded-2xl border border-edge bg-panel/70 p-6">
-                  <div className="flex items-baseline gap-4">
-                    <span className="font-mono text-[12px] font-bold tracking-[0.1em] text-accent-2">
-                      {p.n}
-                    </span>
-                    <h3 className="text-[17px] font-bold tracking-[-0.015em] text-ink">
-                      {p.title}
-                    </h3>
+                <div className="grid grid-cols-[auto_minmax(0,1fr)] gap-6 border-t border-line py-7 last:border-b">
+                  <span className="chrome pt-1">[{p.n}]</span>
+                  <div>
+                    <h3 className="text-[17px] font-bold tracking-[-0.01em]">{p.title}</h3>
+                    <p className="mt-2.5 text-[14px] leading-relaxed text-ink-2">{p.body}</p>
                   </div>
-                  <p className="mt-3 pl-[calc(1.5rem+12px)] text-[14.5px] leading-relaxed text-ink-2">
-                    {p.body}
-                  </p>
                 </div>
               </Reveal>
             ))}
           </div>
 
-          {/* the readout */}
           <Reveal delay={120}>
-            <div className="lg:sticky lg:top-28">
-              <div className="overflow-hidden rounded-2xl border border-edge-2 bg-ground">
-                <div className="flex items-center gap-2.5 border-b border-edge bg-panel-2/80 px-4 py-3">
-                  <span className="h-2 w-2 rounded-full bg-money" />
-                  <p className="font-mono text-[10.5px] uppercase tracking-[0.14em] text-ink-2">
-                    System self-check
-                  </p>
-                  <span className="ml-auto font-mono text-[10.5px] text-ink-3">
-                    Thu 11:40
-                  </span>
+            <div className="lg:sticky lg:top-24">
+              <div className="border border-line-2 bg-ground">
+                <div className="flex items-center gap-2.5 border-b border-line px-4 py-3">
+                  <span className="h-1.5 w-1.5 bg-acid" aria-hidden="true" />
+                  <p className="chrome">System self-check</p>
+                  <span className="chrome ml-auto tabular">Thu 11:40</span>
                 </div>
-
-                <div className="divide-y divide-edge">
-                  {CHECKS.map((c) => (
-                    <div key={c.label} className="flex items-center gap-3 px-4 py-3">
-                      <svg
-                        viewBox="0 0 24 24"
-                        className={`h-4 w-4 shrink-0 ${
-                          c.state === "ok" ? "text-money" : "text-accent-2"
-                        }`}
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2.6"
-                        aria-hidden="true"
-                      >
-                        <circle cx="12" cy="12" r="9" />
-                        <path d="m8.5 12 2.5 2.5 4.5-5" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                      <span className="w-[38%] shrink-0 font-mono text-[11.5px] text-ink-3">
-                        {c.label}
-                      </span>
-                      <span className="min-w-0 flex-1 truncate text-[13px] text-ink">
-                        {c.value}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="border-t border-edge bg-panel-2/50 px-4 py-3.5">
-                  <p className="text-[12.5px] leading-relaxed text-ink-3">
+                {CHECKS.map(([k, v]) => (
+                  <div key={k} className="flex items-center gap-3 border-b border-line px-4 py-3 last:border-0">
+                    <span className="chrome w-[40%] shrink-0 normal-case tracking-normal">{k}</span>
+                    <span className="min-w-0 flex-1 truncate font-mono text-[11.5px] text-ink">{v}</span>
+                    <span className="text-[11px] text-acid-deep" aria-hidden="true">OK</span>
+                  </div>
+                ))}
+                <div className="px-4 py-4">
+                  <p className="text-[12px] leading-relaxed text-ink-3">
                     When one of these is wrong, Kairo says so on the dashboard —
                     in plain English, on the day it becomes true, not in a log
                     file nobody opens.

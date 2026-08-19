@@ -1,69 +1,63 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: ["class", '[data-theme="dark"]'],
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       colors: {
-        // Sampled from the Kairo product UI so the site and the software
-        // read as one system.
-        ground: "#05070c",
-        panel: "#0b1017",
-        "panel-2": "#111823",
-        edge: "#1b2433",
-        "edge-2": "#263245",
-        ink: "#e9edf4",
-        "ink-2": "#98a5b9",
-        "ink-3": "#616f87",
-        accent: "#3b82f6",
-        "accent-2": "#5ea3f0",
-        money: "#34d399",
-        amber: "#f5b455",
+        // Surfaces and ink are driven by CSS custom properties so the
+        // whole site flips theme by swapping four values, not by having
+        // every component know about light and dark.
+        ground: "rgb(var(--ground) / <alpha-value>)",
+        raised: "rgb(var(--raised) / <alpha-value>)",
+        sunk: "rgb(var(--sunk) / <alpha-value>)",
+
+        // Text hierarchy is one ink at four opacities — the thing that
+        // makes this family of sites feel like a system rather than a
+        // pile of greys.
+        ink: "rgb(var(--ink) / <alpha-value>)",
+        "ink-2": "rgb(var(--ink) / 0.62)",
+        "ink-3": "rgb(var(--ink) / 0.34)",
+        "ink-4": "rgb(var(--ink) / 0.16)",
+        line: "rgb(var(--ink) / 0.14)",
+        "line-2": "rgb(var(--ink) / 0.26)",
+
+        // The single accent. Used sparingly: calls to action, live
+        // markers, selection.
+        acid: "#c0fe04",
+        "acid-deep": "#a8e000",
+
+        // Carried over from the product UI, for status only.
+        money: "#129a63",
+        alert: "#c2740a",
       },
       fontFamily: {
-        sans: [
-          "Inter",
-          "system-ui",
-          "-apple-system",
-          "Segoe UI",
-          "Roboto",
-          "sans-serif",
-        ],
-        mono: [
-          "ui-monospace",
-          "SFMono-Regular",
-          "SF Mono",
-          "Menlo",
-          "Consolas",
-          "monospace",
-        ],
+        sans: ['"Inter Tight"', "Inter", "system-ui", "-apple-system", "sans-serif"],
+        mono: ['"JetBrains Mono"', "ui-monospace", "SFMono-Regular", "Menlo", "monospace"],
       },
-      maxWidth: {
-        shell: "1200px",
+      transitionTimingFunction: {
+        // The signature curve: slow to leave, very fast through the
+        // middle, long settle.
+        "66": "cubic-bezier(.66,0,.01,1)",
+        "out-soft": "cubic-bezier(0,0,.2,1)",
       },
+      transitionDuration: { "660": "660ms", "1200": "1200ms" },
+      maxWidth: { shell: "1560px" },
       keyframes: {
-        "fade-up": {
-          from: { opacity: "0", transform: "translateY(14px)" },
+        "rise-in": {
+          from: { opacity: "0", transform: "translateY(110%)" },
           to: { opacity: "1", transform: "translateY(0)" },
         },
         marquee: {
           from: { transform: "translateX(0)" },
           to: { transform: "translateX(-50%)" },
         },
-        "pulse-ring": {
-          "0%": { transform: "scale(0.9)", opacity: "0.7" },
-          "70%": { transform: "scale(1.7)", opacity: "0" },
-          "100%": { transform: "scale(1.7)", opacity: "0" },
-        },
-        "cursor-blink": {
-          "0%, 49%": { opacity: "1" },
-          "50%, 100%": { opacity: "0" },
-        },
+        blink: { "0%,55%": { opacity: "1" }, "56%,100%": { opacity: "0.15" } },
       },
       animation: {
-        "fade-up": "fade-up 0.6s cubic-bezier(0.22,1,0.36,1) both",
-        marquee: "marquee 38s linear infinite",
-        "pulse-ring": "pulse-ring 2.4s ease-out infinite",
-        "cursor-blink": "cursor-blink 1.1s step-end infinite",
+        "rise-in": "rise-in 900ms cubic-bezier(.66,0,.01,1) both",
+        marquee: "marquee 42s linear infinite",
+        blink: "blink 1.6s step-end infinite",
       },
     },
   },

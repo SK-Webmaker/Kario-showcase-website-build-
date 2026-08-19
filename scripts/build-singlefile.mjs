@@ -53,15 +53,25 @@ for (const file of readdirSync(shotsDir).sort()) {
   shots[file] = `data:${mime};base64,${buf.toString("base64")}`;
 }
 
-// --- the font, if it has been fetched alongside ---------------------------
-// Optional: drop an inter-latin.woff2 next to this script to embed it.
-// Without it the page falls back to the system UI font, which still reads
-// correctly — it just isn't Inter.
+// --- the fonts -----------------------------------------------------
+// Inter Tight for display, JetBrains Mono for the instrument chrome.
+// Both are dropped next to this script as latin-subset woff2 files.
+const FONTS = [
+  { file: "intertight-latin.woff2", family: "Inter Tight", weight: "400 900" },
+  { file: "jetbrains-latin.woff2", family: "JetBrains Mono", weight: "400 700" },
+];
+
 let fontFace = "";
-const fontPath = join(root, "scripts", "inter-latin.woff2");
-if (existsSync(fontPath)) {
-  const b64 = readFileSync(fontPath).toString("base64");
-  fontFace = `@font-face{font-family:'Inter';font-style:normal;font-weight:400 800;font-display:swap;src:url(data:font/woff2;base64,${b64}) format('woff2');}`;
+let fontsEmbedded = 0;
+for (const f of FONTS) {
+  const path = join(root, "scripts", f.file);
+  if (!existsSync(path)) continue;
+  const b64 = readFileSync(path).toString("base64");
+  fontFace +=
+    `@font-face{font-family:'${f.family}';font-style:normal;` +
+    `font-weight:${f.weight};font-display:swap;` +
+    `src:url(data:font/woff2;base64,${b64}) format('woff2');}`;
+  fontsEmbedded += 1;
 }
 
 // Guard against a literal </script> inside the bundle closing our tag early.
@@ -81,6 +91,6 @@ writeFileSync(target, html, "utf8");
 const mb = (n) => (n / 1024 / 1024).toFixed(2) + " MB";
 console.log(`css        ${css.length.toLocaleString()} bytes`);
 console.log(`js         ${js.length.toLocaleString()} bytes`);
-console.log(`font       ${fontFace ? "embedded" : "not embedded (system fallback)"}`);
+console.log(`fonts      ${fontsEmbedded} of ${FONTS.length} embedded`);
 console.log(`shots      ${Object.keys(shots).length} files, ${mb(shotBytes)} raw`);
 console.log(`\n→ ${target}  (${mb(html.length)})`);

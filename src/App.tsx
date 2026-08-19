@@ -1,5 +1,7 @@
 import { Nav } from "./components/Nav";
+import { Blueprint, StatusBar } from "./components/Chrome";
 import { Hero } from "./components/Hero";
+import { WhyNotThem } from "./components/WhyNotThem";
 import { ProofWall } from "./components/ProofWall";
 import { Contrast } from "./components/Contrast";
 import { Journey } from "./components/Journey";
@@ -10,46 +12,41 @@ import { BuiltDifferently } from "./components/BuiltDifferently";
 import { Comparison } from "./components/Comparison";
 import { TalkToUs } from "./components/TalkToUs";
 import { Footer } from "./components/Footer";
+import { useLenis } from "./hooks/useLenis";
 
 export default function App() {
+  useLenis();
+
   return (
     <>
       <a
-        href="#journey"
+        href="#why"
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4
-                   focus:z-[60] focus:rounded-full focus:bg-accent focus:px-4
-                   focus:py-2 focus:text-white"
+                   focus:z-[60] focus:bg-acid focus:px-4 focus:py-2 focus:text-[#0f1111]"
       >
-        Skip to the walkthrough
+        Skip to the case for Kairo
       </a>
 
+      <Blueprint />
       <Nav />
 
-      <main>
-        {/* the hook */}
+      <main className="relative z-10">
         <Hero />
+        {/* The sell, straight after the hook. */}
+        <WhyNotThem />
         <ProofWall />
-
-        {/* why it matters */}
         <Contrast />
-
-        {/* the journey — a salon's day in eight steps */}
         <Journey />
-
-        {/* the feature no competitor screenshots */}
         <SignatureMoment />
-
-        {/* everything else */}
         <Bento />
         <PhoneTrio />
-
-        {/* proof and decision */}
         <BuiltDifferently />
         <Comparison />
         <TalkToUs />
       </main>
 
       <Footer />
+      <StatusBar />
     </>
   );
 }

@@ -19,19 +19,19 @@ const CHOICES: {
 /** A rendered email, the way the client receives it. */
 function EmailPreview() {
   return (
-    <div className="overflow-hidden rounded-xl border border-edge bg-panel-2">
-      <div className="border-b border-edge px-4 py-2.5">
-        <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-ink-3">
+    <div className="overflow-hidden border border-line bg-raised">
+      <div className="border-b border-line px-4 py-2.5">
+        <p className="chrome">
           Email · to chantelle.d@example.com
         </p>
       </div>
       <div className="space-y-3 px-4 py-4">
-        <p className="text-[14px] font-bold text-ink">
+        <p className="text-[14px] font-bold">
           Your appointment has moved
         </p>
         <p className="text-[13.5px] leading-relaxed text-ink-2">
           Hi Chantelle — your{" "}
-          <span className="text-ink line-through decoration-amber/70">
+          <span className="text-ink line-through decoration-alert/70">
             Thursday 20 Aug, 1:00 PM
           </span>{" "}
           appointment at Luxe Hair Studio has been moved to{" "}
@@ -40,7 +40,7 @@ function EmailPreview() {
         <p className="text-[13.5px] leading-relaxed text-ink-2">
           Braids — Full Head with Sha · 4 hours
         </p>
-        <div className="rounded-lg border border-edge bg-ground/60 px-3 py-2">
+        <div className="border border-line bg-ground px-3 py-2">
           <p className="text-[12px] text-ink-3">
             Can't make the new time? Cancel here — the slot reopens straight away.
           </p>
@@ -53,17 +53,17 @@ function EmailPreview() {
 /** The same change as an SMS. */
 function TextPreview() {
   return (
-    <div className="overflow-hidden rounded-xl border border-edge bg-panel-2">
-      <div className="border-b border-edge px-4 py-2.5">
-        <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-ink-3">
+    <div className="overflow-hidden border border-line bg-raised">
+      <div className="border-b border-line px-4 py-2.5">
+        <p className="chrome">
           SMS · to (555) 377-8810
         </p>
       </div>
       <div className="px-4 py-4">
-        <div className="max-w-[85%] rounded-2xl rounded-tl-md bg-accent/20 px-3.5 py-2.5">
+        <div className="max-w-[85%] border border-line bg-ground px-3.5 py-2.5">
           <p className="text-[13.5px] leading-relaxed text-ink">
             Luxe Hair Studio: your appt has <b>moved</b> from Thu 20 Aug{" "}
-            <span className="line-through decoration-amber/70">1:00 PM</span> to{" "}
+            <span className="line-through decoration-alert/70">1:00 PM</span> to{" "}
             <b className="text-money">1:30 PM</b>. Braids — Full Head with Sha.
             Reply or call (03) 9041 8820 if that doesn't suit.
           </p>
@@ -75,8 +75,8 @@ function TextPreview() {
 
 function NothingPreview() {
   return (
-    <div className="rounded-xl border border-dashed border-edge-2 bg-panel-2/50 px-4 py-8 text-center">
-      <p className="text-[14px] font-semibold text-ink">Nothing was sent.</p>
+    <div className="border border-dashed border-line-2 bg-raised px-4 py-8 text-center">
+      <p className="text-[14px] font-semibold">Nothing was sent.</p>
       <p className="mx-auto mt-2 max-w-[38ch] text-[13.5px] leading-relaxed text-ink-2">
         The booking moves and the calendar records that no message went out —
         so when you look at it tomorrow you'll know Chantelle still needs
@@ -135,16 +135,16 @@ function UndoDemo() {
   const cancelled = phase === "counting" || phase === "sent";
 
   return (
-    <div className="card p-5 sm:p-6">
-      <p className="eyebrow mb-4">Undo a cancellation</p>
+    <div className="border border-line bg-raised p-5 sm:p-6">
+      <p className="chrome mb-4">Undo a cancellation</p>
 
       {/* the booking row */}
       <div
-        className="flex items-center gap-3 rounded-xl border border-edge bg-panel-2/70 px-4 py-3
+        className="flex items-center gap-3 border border-line bg-raised/70 px-4 py-3
                    transition-opacity duration-300"
         style={{ opacity: cancelled ? 0.45 : 1 }}
       >
-        <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-amber/20 font-mono text-[11px] font-bold text-amber">
+        <span className="grid h-8 w-8 shrink-0 place-items-center bg-alert/20 font-mono text-[11px] font-bold text-alert">
           CD
         </span>
         <div className="min-w-0 flex-1">
@@ -160,10 +160,10 @@ function UndoDemo() {
           </p>
         </div>
         <span
-          className="shrink-0 rounded-full border px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.1em]"
+          className="shrink-0 border px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.1em]"
           style={{
-            borderColor: cancelled ? "#f5b45540" : "#34d39940",
-            color: cancelled ? "#f5b455" : "#34d399",
+            borderColor: cancelled ? "rgba(194,116,10,.4)" : "rgba(18,154,99,.4)",
+            color: cancelled ? "#c2740a" : "#129a63",
           }}
         >
           {cancelled ? "Cancelled" : "Confirmed"}
@@ -173,22 +173,22 @@ function UndoDemo() {
       {/* the confirmation strip */}
       <div className="mt-4 min-h-[92px]">
         {phase === "idle" && (
-          <button onClick={start} className="btn-ghost w-full">
+          <button onClick={start} className="btn-line w-full">
             Cancel this booking
           </button>
         )}
 
         {phase === "counting" && (
-          <div className="flex items-center gap-4 rounded-xl border border-edge-2 bg-ground/80 px-4 py-3">
+          <div className="flex items-center gap-4 border border-line-2 bg-ground px-4 py-3">
             <div className="relative h-9 w-9 shrink-0">
               <svg viewBox="0 0 36 36" className="h-9 w-9 -rotate-90">
-                <circle cx="18" cy="18" r="15" fill="none" stroke="#1b2433" strokeWidth="3" />
+                <circle cx="18" cy="18" r="15" fill="none" stroke="rgb(var(--ink) / 0.18)" strokeWidth="3" />
                 <circle
                   cx="18"
                   cy="18"
                   r="15"
                   fill="none"
-                  stroke="#5ea3f0"
+                  stroke="#a8e000"
                   strokeWidth="3"
                   strokeLinecap="round"
                   strokeDasharray={2 * Math.PI * 15}
@@ -210,8 +210,8 @@ function UndoDemo() {
             </div>
             <button
               onClick={undo}
-              className="shrink-0 rounded-full bg-accent px-4 py-2 text-[13px] font-semibold text-white
-                         transition-colors hover:bg-accent-2"
+              className="shrink-0 bg-acid px-4 py-2 font-mono text-[11px] uppercase tracking-[0.12em] text-[#0f1111]
+                         transition-colors hover:bg-acid-deep"
             >
               Undo
             </button>
@@ -219,7 +219,7 @@ function UndoDemo() {
         )}
 
         {phase === "restored" && (
-          <div className="rounded-xl border border-money/30 bg-money/[0.07] px-4 py-3">
+          <div className="border border-money/40 bg-money/[0.08] px-4 py-3">
             <p className="text-[13.5px] font-semibold text-money">
               Put back exactly as it was.
             </p>
@@ -235,8 +235,8 @@ function UndoDemo() {
         )}
 
         {phase === "sent" && (
-          <div className="rounded-xl border border-amber/30 bg-amber/[0.07] px-4 py-3">
-            <p className="text-[13.5px] font-semibold text-amber">
+          <div className="border border-alert/40 bg-alert/[0.08] px-4 py-3">
+            <p className="text-[13.5px] font-semibold text-alert">
               Too late — the message went out.
             </p>
             <p className="mt-1 text-[12.5px] leading-relaxed text-ink-2">
@@ -260,20 +260,21 @@ export function SignatureMoment() {
   return (
     <section
       id="signature"
-      className="relative overflow-hidden border-y border-edge bg-panel/30 py-24 sm:py-32"
+      className="relative overflow-hidden border-t border-line py-20 sm:py-28"
     >
       <div className="shell relative">
         <SectionHeading
-          align="center"
-          eyebrow="the moment that matters"
-          title="Plans change. That's when most booking systems lose you the customer."
+          index="06"
+          eyebrow="The moment that matters"
+          lines={["Plans change.", "That's when most", "booking systems lose", "you the customer."]}
           lede="Every booking and every move stops to ask one question — who to tell, and how. Only the channels that client can actually receive are offered. Try it."
+          className="max-w-4xl"
         />
 
         <div className="mt-14 grid items-start gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:gap-8">
           {/* the prompt */}
           <Reveal>
-            <div className="card p-5 sm:p-6">
+            <div className="border border-line bg-raised p-5 sm:p-6">
               <p className="text-[15px] font-bold text-ink">Moving this appointment</p>
               <p className="mt-2 text-[13.5px] leading-relaxed text-ink-2">
                 <b className="text-ink">Chantelle Dube</b> moves from{" "}
@@ -290,21 +291,21 @@ export function SignatureMoment() {
                       role="radio"
                       aria-checked={on}
                       onClick={() => setChoice(c.id)}
-                      className="flex w-full items-center gap-3 rounded-xl border px-4 py-3 text-left
+                      className="flex w-full items-center gap-3 border px-4 py-3 text-left
                                  transition-all duration-200"
                       style={{
-                        borderColor: on ? "#3b82f6" : "#1b2433",
-                        background: on ? "rgba(59,130,246,0.10)" : "rgba(17,24,35,0.5)",
+                        borderColor: on ? "#a8e000" : "rgb(var(--ink) / 0.14)",
+                        background: on ? "rgba(192,254,4,0.14)" : "transparent",
                       }}
                     >
                       <span
-                        className="grid h-[18px] w-[18px] shrink-0 place-items-center rounded-full border-2 transition-colors"
-                        style={{ borderColor: on ? "#5ea3f0" : "#39455a" }}
+                        className="grid h-[18px] w-[18px] shrink-0 place-items-center border-2 transition-colors"
+                        style={{ borderColor: on ? "#a8e000" : "rgb(var(--ink) / 0.3)" }}
                       >
-                        {on && <span className="h-2 w-2 rounded-full bg-accent-2" />}
+                        {on && <span className="h-2 w-2 bg-acid-deep" />}
                       </span>
                       <span className="min-w-0">
-                        <span className="block text-[14px] font-semibold text-ink">
+                        <span className="block text-[14px] font-semibold">
                           {c.label}
                         </span>
                         <span className="block truncate text-[12.5px] text-ink-3">
@@ -331,7 +332,7 @@ export function SignatureMoment() {
           {/* what the client gets */}
           <Reveal delay={90}>
             <div className="lg:sticky lg:top-24">
-              <p className="eyebrow mb-3">What Chantelle receives</p>
+              <p className="chrome mb-3">What Chantelle receives</p>
               <div
                 key={choice}
                 className="space-y-3"
@@ -349,7 +350,7 @@ export function SignatureMoment() {
               <p className="mt-4 flex items-start gap-2 text-[12.5px] leading-relaxed text-ink-3">
                 <svg
                   viewBox="0 0 24 24"
-                  className="mt-0.5 h-3.5 w-3.5 shrink-0 text-accent-2"
+                  className="mt-0.5 h-3.5 w-3.5 shrink-0 text-ink"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2.4"

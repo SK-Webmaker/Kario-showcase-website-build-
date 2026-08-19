@@ -1,52 +1,33 @@
 import type { ReactNode } from "react";
-import { Reveal } from "./Reveal";
+import { Reveal, RiseLines } from "./Reveal";
 
 type Props = {
-  /** Small mono label above the heading, e.g. "the day book". */
+  /** Two-digit index, e.g. "02" — only when the section really is a step. */
+  index?: string;
   eyebrow?: string;
-  title: ReactNode;
+  /** Each string is its own rising line. */
+  lines: string[];
   lede?: ReactNode;
-  align?: "left" | "center";
   className?: string;
 };
 
-export function SectionHeading({
-  eyebrow,
-  title,
-  lede,
-  align = "left",
-  className = "",
-}: Props) {
-  const centered = align === "center";
-
+export function SectionHeading({ index, eyebrow, lines, lede, className = "" }: Props) {
   return (
-    <div
-      className={`${centered ? "mx-auto text-center" : ""} max-w-3xl ${className}`}
-    >
-      {eyebrow && (
+    <div className={className}>
+      {(index || eyebrow) && (
         <Reveal>
-          {/* Short rule then label — a print device, not a decoration. */}
-          <p
-            className={`eyebrow mb-5 flex items-center gap-3 ${
-              centered ? "justify-center" : ""
-            }`}
-          >
-            <span aria-hidden="true" className="h-px w-6 bg-edge-2" />
-            {eyebrow}
-          </p>
+          <div className="mb-8 flex items-center gap-4 border-b border-line pb-3">
+            {index && <span className="chrome text-ink">[{index}]</span>}
+            {eyebrow && <span className="chrome">{eyebrow}</span>}
+          </div>
         </Reveal>
       )}
-      <Reveal delay={60}>
-        <h2 className="h-section">{title}</h2>
-      </Reveal>
+
+      <RiseLines lines={lines} className="display-lg" />
+
       {lede && (
-        <Reveal delay={120}>
-          <p
-            className={`mt-5 text-[16.5px] leading-relaxed text-ink-2 sm:text-[18px]
-                        ${centered ? "mx-auto" : ""} max-w-2xl`}
-          >
-            {lede}
-          </p>
+        <Reveal delay={160}>
+          <p className="lede mt-7">{lede}</p>
         </Reveal>
       )}
     </div>

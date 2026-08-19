@@ -5,46 +5,35 @@ import { shot } from "@/site.config";
 
 type CardProps = {
   span: string;
+  n: string;
   title: string;
   body: string;
-  /** Optional screenshot, cropped to the top of the frame. */
   image?: { file: string; alt: string };
   children?: ReactNode;
   delay?: number;
 };
 
-function BentoCard({ span, title, body, image, children, delay = 0 }: CardProps) {
+function Card({ span, n, title, body, image, children, delay = 0 }: CardProps) {
   return (
     <Reveal delay={delay} className={span}>
-      <div
-        className="group relative flex h-full flex-col overflow-hidden rounded-2xl
-                   border border-edge bg-panel/70 transition-colors duration-300
-                   hover:border-edge-2"
-      >
+      <div className="group flex h-full flex-col border border-line bg-raised">
         <div className="p-6">
-          <h3 className="text-[16.5px] font-bold tracking-[-0.015em] text-ink">
-            {title}
-          </h3>
-          <p className="mt-2.5 text-[14px] leading-relaxed text-ink-2">{body}</p>
+          <p className="chrome mb-4">[{n}]</p>
+          <h3 className="text-[17px] font-bold leading-tight tracking-[-0.01em]">{title}</h3>
+          <p className="mt-2.5 text-[13.5px] leading-relaxed text-ink-2">{body}</p>
         </div>
 
         {children && <div className="px-6 pb-6">{children}</div>}
 
         {image && (
-          <div className="relative mt-auto px-6 pb-0">
-            <div
-              className="overflow-hidden rounded-t-xl border-x border-t border-edge-2
-                         bg-ground"
-            >
-              <img
-                src={shot(image.file)}
-                alt={image.alt}
-                loading="lazy"
-                decoding="async"
-                className="block w-full origin-top transition-transform duration-500
-                           group-hover:scale-[1.03]"
-              />
-            </div>
+          <div className="mt-auto border-t border-line bg-[#05070c]">
+            <img
+              src={shot(image.file)}
+              alt={image.alt}
+              loading="lazy"
+              decoding="async"
+              className="block w-full origin-top transition-transform duration-1200 ease-66 group-hover:scale-[1.02]"
+            />
           </div>
         )}
       </div>
@@ -52,104 +41,86 @@ function BentoCard({ span, title, body, image, children, delay = 0 }: CardProps)
   );
 }
 
-/** Small stat row used inside the text-only cards. */
-function MiniStat({ value, label }: { value: string; label: string }) {
+function Stat({ v, l }: { v: string; l: string }) {
   return (
-    <div className="rounded-xl border border-edge bg-panel-2/60 px-3.5 py-3">
-      <p className="text-[19px] font-extrabold leading-none tracking-tight text-ink tabular">
-        {value}
-      </p>
-      <p className="mt-1.5 text-[11.5px] leading-tight text-ink-3">{label}</p>
+    <div className="border border-line bg-ground px-3.5 py-3">
+      <p className="tabular text-[19px] font-extrabold leading-none tracking-tight">{v}</p>
+      <p className="mt-1.5 text-[11px] leading-tight text-ink-3">{l}</p>
     </div>
   );
 }
 
 export function Bento() {
   return (
-    <section id="features" className="relative py-24 sm:py-32">
+    <section id="features" className="border-t border-line py-20 sm:py-28">
       <div className="shell">
         <SectionHeading
-          eyebrow="and the rest of it"
-          title="Everything else the day needs, already in the box"
-          lede="No tiers that hide the useful half, no add-on that turns out to cost more than the software. What follows is simply part of it."
+          index="06"
+          eyebrow="And the rest of it"
+          lines={["Everything else", "the day needs,", "already in the box."]}
+          lede="No tier that hides the useful half, no add-on that costs more than the software. What follows is simply part of it."
+          className="max-w-3xl"
         />
 
-        <div className="mt-14 grid gap-4 sm:gap-5 lg:grid-cols-6">
-          <BentoCard
+        <div className="mt-16 grid gap-4 lg:grid-cols-6">
+          <Card
             span="lg:col-span-4"
+            n="01"
             title="Know which hours are worth protecting"
             body="Appointments by hour of day, revenue per day, and the services actually carrying the business. The quiet Tuesday afternoon shows up as a shape, not a hunch."
-            image={{
-              file: "03-dashboard-charts.jpg",
-              alt: "Charts showing bookings by hour of day, revenue per day and top-selling services.",
-            }}
+            image={{ file: "03-dashboard-charts.jpg", alt: "Charts of bookings by hour, revenue per day and top services." }}
           />
-
-          <BentoCard
+          <Card
             span="lg:col-span-2"
+            n="02"
             title="The clients who quietly drifted"
             body="Two or more past visits, nothing in eight weeks, nothing booked. Kairo builds the list; you send the message."
             delay={80}
           >
             <div className="grid grid-cols-2 gap-2.5">
-              <MiniStat value="2+" label="Past visits" />
-              <MiniStat value="8 wks" label="Since last seen" />
-              <MiniStat value="0" label="Booked ahead" />
-              <MiniStat value="1 tap" label="To reach them" />
+              <Stat v="2+" l="Past visits" />
+              <Stat v="8 wks" l="Since last seen" />
+              <Stat v="0" l="Booked ahead" />
+              <Stat v="1 tap" l="To reach them" />
             </div>
-          </BentoCard>
-
-          <BentoCard
+          </Card>
+          <Card
             span="lg:col-span-2"
+            n="03"
             title="A menu that prices like a salon does"
-            body="Fixed, “from” for anything that varies with hair length, and free for consultations. Categories, durations and prices that the booking page reads straight off."
-            image={{
-              file: "10-services.jpg",
-              alt: "The service menu with categories, durations and fixed, from and free price types.",
-            }}
+            body="Fixed, “from” for anything that varies with hair length, and free for consultations — read straight off by the booking page."
+            image={{ file: "10-services.jpg", alt: "The service menu with fixed, from and free price types." }}
             delay={40}
           />
-
-          <BentoCard
+          <Card
             span="lg:col-span-2"
+            n="04"
             title="Retail that pays for its shelf"
             body="Cost against retail margin, stock counted down as it sells, and a warning while there's still time to reorder."
-            image={{
-              file: "13-products.jpg",
-              alt: "Retail product list showing stock levels, cost versus retail margin and low-stock warnings.",
-            }}
+            image={{ file: "13-products.jpg", alt: "Retail stock with margins and low-stock warnings." }}
             delay={80}
           />
-
-          <BentoCard
+          <Card
             span="lg:col-span-2"
+            n="05"
             title="Reviews you didn't have to ask for"
-            body="A request goes out after the visit, on its own. The reviews land on your own page, and you can reply to them."
-            image={{
-              file: "15-reviews.jpg",
-              alt: "Collected reviews with ratings and the salon's replies.",
-            }}
+            body="A request goes out after the visit, on its own. Reviews land on your own page, and you can reply."
+            image={{ file: "15-reviews.jpg", alt: "Collected reviews with replies." }}
             delay={120}
           />
-
-          <BentoCard
+          <Card
             span="lg:col-span-3"
+            n="06"
             title="Set the hours once and stop thinking about them"
-            body="Opening hours per day — including days that run only every 2nd, 3rd or 4th week. How far ahead customers may book. The notice period after which the online cancel link stops working and they're asked to call instead."
-            image={{
-              file: "16-settings-hours.jpg",
-              alt: "Opening hours settings with per-day hours, booking window and cancellation notice.",
-            }}
+            body="Opening hours per day, including days that run only every 2nd, 3rd or 4th week. How far ahead customers may book. The notice after which the cancel link stops working."
+            image={{ file: "16-settings-hours.jpg", alt: "Opening hours, booking window and cancellation notice." }}
           />
-
-          <BentoCard
+          <Card
             span="lg:col-span-3"
+            n="07"
             title="Your team, their colours, their hours"
-            body="Each person gets a colour that runs through the whole calendar, a title, and their own working hours — so the book never offers a customer a slot with someone who isn't in that day."
-            image={{
-              file: "18-team.jpg",
-              alt: "The team list with each member's colour, title and working hours.",
-            }}
+            body="Each person gets a colour that runs through the calendar, a title, and their own working hours — so the page never offers a slot with someone who isn't in."
+            image={{ file: "18-team.jpg", alt: "The team with colours, titles and working hours." }}
             delay={80}
           />
         </div>

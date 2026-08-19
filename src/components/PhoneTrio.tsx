@@ -4,52 +4,32 @@ import { SectionHeading } from "./ui/SectionHeading";
 import { shot } from "@/site.config";
 
 const PHONES = [
-  {
-    file: "23-phone-dashboard.jpg",
-    alt: "The Kairo dashboard on a phone, showing the day's figures and who is in the chair.",
-    caption: "The day, in your pocket",
-    lift: "translate-y-6",
-  },
-  {
-    file: "24-phone-calendar.jpg",
-    alt: "The day calendar on a phone, with appointments stacked by time.",
-    caption: "The book, on the floor",
-    lift: "",
-  },
-  {
-    file: "25-phone-booking.jpg",
-    alt: "The public booking page on a phone, where most customers book.",
-    caption: "Where customers actually book",
-    lift: "translate-y-6",
-  },
+  { file: "23-phone-dashboard.jpg", alt: "The Kairo dashboard on a phone.", cap: "The day, in your pocket" },
+  { file: "24-phone-calendar.jpg", alt: "The day calendar on a phone.", cap: "The book, on the floor" },
+  { file: "25-phone-booking.jpg", alt: "The booking page on a phone.", cap: "Where customers book" },
 ];
 
 export function PhoneTrio() {
   return (
-    <section className="relative overflow-hidden py-24 sm:py-28">
-      <div className="shell relative">
+    <section className="border-t border-line py-20 sm:py-28">
+      <div className="shell">
         <SectionHeading
-          align="center"
-          eyebrow="in the hand"
-          title="Phone-first, not phone-tolerant"
-          lede="You run the salon from an apron pocket, so every screen was built for a thumb first and a desktop second. It installs to the home screen straight from the browser — no app store, no download, no update to remember."
+          index="07"
+          eyebrow="In the hand"
+          lines={["Phone-first,", "not phone-tolerant."]}
+          lede="You run the salon from an apron pocket, so every screen was built for a thumb first and a desktop second. It installs to the home screen straight from the browser — no app store, no download, nothing to update."
+          className="max-w-3xl"
         />
 
-        <div className="mt-16 flex items-start justify-center gap-3 sm:gap-6 lg:gap-10">
+        <div className="mt-16 grid gap-8 sm:grid-cols-3 sm:gap-6 lg:gap-12">
           {PHONES.map((p, i) => (
-            <Reveal key={p.file} delay={i * 110} className={`flex-1 ${p.lift}`}>
-              <figure className="mx-auto max-w-[230px]">
-                <PhoneFrame>
-                  <img
-                    src={shot(p.file)}
-                    alt={p.alt}
-                    loading="lazy"
-                    decoding="async"
-                    className="block w-full"
-                  />
+            <Reveal key={p.file} delay={i * 110}>
+              <figure>
+                <PhoneFrame className="mx-auto max-w-[220px]">
+                  <img src={shot(p.file)} alt={p.alt} loading="lazy" decoding="async" className="block w-full" />
                 </PhoneFrame>
-                <figcaption className="mt-4 text-center text-[12.5px] leading-snug text-ink-3">
-                  {p.caption}
+                <figcaption className="chrome mt-5 text-center">
+                  [{String(i + 1).padStart(2, "0")}] {p.cap}
                 </figcaption>
               </figure>
             </Reveal>

@@ -27,22 +27,56 @@ follow. Nothing else is required to go live.
 
 ---
 
+## The design language
+
+The site is built on a blueprint-and-monospace system, inspired by
+haoqi.design's approach rather than copied from it — its assets, copy and
+identity are its own; what's shared is the vocabulary:
+
+- **Warm paper ground** `#FBFAF4` with a cool near-black dark mode
+  `#0F1111`, toggled from the nav and remembered.
+- **One ink at four opacities** (1 / .62 / .34 / .16) rather than four
+  greys — the thing that makes the type hierarchy read as a system.
+- **Acid lime `#C0FE04`** as the single accent, used only for calls to
+  action, live markers and selection. Change it in `tailwind.config.js`.
+- **Inter Tight** for huge all-caps display type, **JetBrains Mono** for
+  every piece of interface furniture — nav, labels, row numbers, readouts.
+- **`cubic-bezier(.66,0,.01,1)`** at 660ms/1200ms as the signature curve.
+- A fixed **blueprint grid with crosshairs**, and a live status bar with
+  the clock and cursor coordinates.
+- **Lenis** smooth scroll — the one added dependency, and the reason the
+  pinned sections glide rather than step.
+
 ## How the page is built
 
 The site is one continuous scroll, ordered as a journey:
 
 | # | Section | File | What it does |
 |---|---------|------|--------------|
-| 1 | Hero | `components/Hero.tsx` | Pinned headline over a live ticker of salon moments; the dashboard stands up out of perspective as you scroll |
-| 2 | Proof wall | `components/ProofWall.tsx` | Rolling-digit counters, then a marquee of what one login replaces |
-| 3 | The problem | `components/Contrast.tsx` | Without / with, side by side |
-| 4 | **The journey** | `components/Journey.tsx` | **The centrepiece** — a pinned stage that swaps screenshots across eight numbered steps as you scroll |
-| 5 | When plans change | `components/SignatureMoment.tsx` | Interactive: pick a notify channel and see the real message; a working 15-second undo |
-| 6 | Everything else | `components/Bento.tsx` | Bento grid of the remaining features |
-| 7 | In the hand | `components/PhoneTrio.tsx` | Three phone frames |
-| 8 | Under the bonnet | `components/BuiltDifferently.tsx` | The technical case, with a system self-check panel |
-| 9 | Compare | `components/Comparison.tsx` | Kairo next to the usual setup |
-| 10 | What it costs | `components/TalkToUs.tsx` | Quoted-per-salon panel and how onboarding runs |
+| 1 | Hero | `components/Hero.tsx` | The mark draws itself, then unfolds into a salon's day and resolves into the dashboard |
+| 2 | **The case** | `components/WhyNotThem.tsx` | **The sell** — three pinned beats on marketplaces, salon-specific software and your own booking page, plus a live commission calculator |
+| 3 | Proof wall | `components/ProofWall.tsx` | Rolling-digit counters, then a marquee of what one login replaces |
+| 4 | The problem | `components/Contrast.tsx` | Without / with, side by side |
+| 5 | **The journey** | `components/Journey.tsx` | A pinned stage that swaps screenshots across eight numbered steps as you scroll |
+| 6 | When plans change | `components/SignatureMoment.tsx` | Interactive: pick a notify channel and see the real message; a working 15-second undo |
+| 7 | Everything else | `components/Bento.tsx` | Bento grid of the remaining features |
+| 8 | In the hand | `components/PhoneTrio.tsx` | Three phone frames |
+| 9 | Under the bonnet | `components/BuiltDifferently.tsx` | The technical case, with a system self-check panel |
+| 10 | Compare | `components/Comparison.tsx` | Kairo next to the usual setup |
+| 11 | What it costs | `components/TalkToUs.tsx` | Quoted-per-salon panel and how onboarding runs |
+
+### How competitors are handled
+
+Deliberately: the claims about Fresha, Square and others are about
+**business models** — a marketplace listing is structurally different from
+your own link; a general-purpose tool is structurally different from one
+built for chairs. Those are verifiable and don't go stale.
+
+No specific price or commission rate is ever asserted, because terms
+differ by plan and country and change over time. The calculator in
+`components/CommissionCalculator.tsx` takes the visitor's *own* rate off
+their *own* statement, which is both honest and considerably more
+persuasive than a number they'd have to take on trust.
 
 ### The scroll engine
 
@@ -55,6 +89,9 @@ There is no animation library. Three hooks do all of it:
   single number. Scroll reads are batched into `requestAnimationFrame`, so a
   fast flick costs one measurement per frame rather than one per event.
 - **`hooks/useInView.ts`** — IntersectionObserver, for one-shot reveals.
+- **`hooks/useLenis.ts`** — smooth scroll. Because every pinned section is
+  a function of scroll position, smoothing the input smooths all of them
+  at once.
 - **`hooks/useReducedMotion.ts`** — if the visitor asked their OS for less
   motion, components render their finished state immediately. Content is never
   withheld, only the movement.
@@ -95,7 +132,7 @@ built to pass that check:
 - Tailwind CSS 3 with a standard `tailwind.config.js`
 - `src/main.tsx` entry, `index.html` at the root
 - The `@/` path alias configured in both `vite.config.ts` and `tsconfig.json`
-- No exotic dependencies — React and React DOM are the only runtime ones
+- Only React, React DOM and Lenis at runtime
 
 ### Path B — if import isn't offered on your plan
 
