@@ -72,7 +72,7 @@ export function Nav() {
             Theme[{theme === "dark" ? "D" : "L"}]
           </button>
 
-          <a href={mailtoHref} className="btn-acid hidden !px-4 !py-2 sm:inline-flex">
+          <a href={mailtoHref} className="btn-brand hidden !px-4 !py-2 sm:inline-flex">
             Talk to us
           </a>
 
@@ -90,7 +90,7 @@ export function Nav() {
       {/* reading progress */}
       <div
         aria-hidden="true"
-        className="h-px w-full origin-left bg-acid"
+        className="h-px w-full origin-left bg-brand"
         style={{ transform: `scaleX(${progress})` }}
       />
 
@@ -108,7 +108,7 @@ export function Nav() {
                 {l.label}
               </a>
             ))}
-            <a href={mailtoHref} onClick={() => setOpen(false)} className="btn-acid mt-4">
+            <a href={mailtoHref} onClick={() => setOpen(false)} className="btn-brand mt-4">
               Talk to us
             </a>
           </nav>

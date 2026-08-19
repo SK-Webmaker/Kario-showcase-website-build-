@@ -26,7 +26,7 @@ export function useTheme() {
       document.documentElement.dataset.theme = next;
       localStorage.setItem(KEY, next);
       const meta = document.querySelector('meta[name="theme-color"]');
-      if (meta) meta.setAttribute("content", next === "dark" ? "#0f1111" : "#fbfaf4");
+      if (meta) meta.setAttribute("content", next === "dark" ? "#0a0e17" : "#f7f8fb");
       return next;
     });
   }, []);

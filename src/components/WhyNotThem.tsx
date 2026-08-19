@@ -86,7 +86,7 @@ function BeatCopy({ beat }: { beat: Beat }) {
       <ul className="mt-7 grid gap-x-6 gap-y-2 sm:grid-cols-2">
         {beat.points.map((p) => (
           <li key={p} className="flex items-start gap-2.5 text-[13px] leading-snug text-ink-2">
-            <span className="mt-[7px] h-1 w-1 shrink-0 bg-acid" />
+            <span className="mt-[7px] h-1 w-1 shrink-0 bg-brand" />
             {p}
           </li>
         ))}
@@ -163,7 +163,7 @@ export function WhyNotThem() {
 
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.75fr)] lg:gap-16">
           <RiseLines
-            lines={["You are not", "a search result", "on someone else's", "platform."]}
+            lines={["You are not", "a search result", "on someone", "else's platform."]}
             className="display-xl"
           />
           <Reveal delay={200}>
@@ -197,14 +197,14 @@ export function WhyNotThem() {
                 <span aria-hidden="true" className="absolute left-0 top-1 h-[calc(100%-8px)] w-px bg-line" />
                 <span
                   aria-hidden="true"
-                  className="absolute left-0 top-1 w-px bg-acid transition-[height] duration-200"
+                  className="absolute left-0 top-1 w-px bg-brand transition-[height] duration-200"
                   style={{ height: `${progress * 100}%` }}
                 />
                 {BEATS.map((b, i) => (
                   <div key={b.n} className="relative pl-5">
                     <span
                       className="absolute left-0 top-1.5 h-1.5 w-1.5 -translate-x-[3px] transition-colors duration-660 ease-66"
-                      style={{ background: i <= active ? "#c0fe04" : "rgb(var(--ink) / 0.3)" }}
+                      style={{ background: i <= active ? "#3b82f6" : "rgb(var(--ink) / 0.3)" }}
                     />
                     <span
                       className="chrome block whitespace-nowrap transition-colors duration-660 ease-66"

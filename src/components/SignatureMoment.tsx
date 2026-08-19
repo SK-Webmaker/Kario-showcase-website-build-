@@ -162,8 +162,8 @@ function UndoDemo() {
         <span
           className="shrink-0 border px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.1em]"
           style={{
-            borderColor: cancelled ? "rgba(194,116,10,.4)" : "rgba(18,154,99,.4)",
-            color: cancelled ? "#c2740a" : "#129a63",
+            borderColor: cancelled ? "rgba(185,118,13,.45)" : "rgba(15,157,99,.45)",
+            color: cancelled ? "#b9760d" : "#0f9d63",
           }}
         >
           {cancelled ? "Cancelled" : "Confirmed"}
@@ -188,7 +188,7 @@ function UndoDemo() {
                   cy="18"
                   r="15"
                   fill="none"
-                  stroke="#a8e000"
+                  stroke="#3b82f6"
                   strokeWidth="3"
                   strokeLinecap="round"
                   strokeDasharray={2 * Math.PI * 15}
@@ -210,8 +210,8 @@ function UndoDemo() {
             </div>
             <button
               onClick={undo}
-              className="shrink-0 bg-acid px-4 py-2 font-mono text-[11px] uppercase tracking-[0.12em] text-[#0f1111]
-                         transition-colors hover:bg-acid-deep"
+              className="shrink-0 bg-brand px-4 py-2 font-mono text-[11px] uppercase tracking-[0.12em] text-white
+                         transition-colors hover:bg-brand-deep"
             >
               Undo
             </button>
@@ -294,15 +294,15 @@ export function SignatureMoment() {
                       className="flex w-full items-center gap-3 border px-4 py-3 text-left
                                  transition-all duration-200"
                       style={{
-                        borderColor: on ? "#a8e000" : "rgb(var(--ink) / 0.14)",
-                        background: on ? "rgba(192,254,4,0.14)" : "transparent",
+                        borderColor: on ? "#3b82f6" : "rgb(var(--ink) / 0.14)",
+                        background: on ? "rgba(59,130,246,0.12)" : "transparent",
                       }}
                     >
                       <span
                         className="grid h-[18px] w-[18px] shrink-0 place-items-center border-2 transition-colors"
-                        style={{ borderColor: on ? "#a8e000" : "rgb(var(--ink) / 0.3)" }}
+                        style={{ borderColor: on ? "#3b82f6" : "rgb(var(--ink) / 0.3)" }}
                       >
-                        {on && <span className="h-2 w-2 bg-acid-deep" />}
+                        {on && <span className="h-2 w-2 bg-brand-deep" />}
                       </span>
                       <span className="min-w-0">
                         <span className="block text-[14px] font-semibold">

@@ -47,13 +47,13 @@ function Field({ label, hint, value, min, max, step, onChange, format }: FieldPr
         value={value}
         onChange={(e) => onChange(Number(e.target.value))}
         className="mt-4 h-1 w-full cursor-pointer appearance-none rounded-full bg-line-2
-                   accent-acid
+                   accent-brand
                    [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4
                    [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full
-                   [&::-webkit-slider-thumb]:bg-acid [&::-webkit-slider-thumb]:border
+                   [&::-webkit-slider-thumb]:bg-brand [&::-webkit-slider-thumb]:border
                    [&::-webkit-slider-thumb]:border-ink
                    [&::-moz-range-thumb]:h-4 [&::-moz-range-thumb]:w-4
-                   [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-acid
+                   [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-brand
                    [&::-moz-range-thumb]:border [&::-moz-range-thumb]:border-ink"
       />
       <p className="mt-2 text-[12px] leading-relaxed text-ink-3">{hint}</p>
@@ -152,14 +152,14 @@ export function CommissionCalculator() {
         </div>
 
         <div className="mt-10">
-          <div className="border border-ink bg-acid p-5">
-            <p className="font-mono text-[10.5px] uppercase tracking-[0.14em] text-[#0f1111]/70">
+          <div className="border border-ink bg-brand p-5">
+            <p className="font-mono text-[10.5px] uppercase tracking-[0.14em] text-white/70">
               On Kairo
             </p>
-            <p className="mt-2 text-[19px] font-extrabold leading-tight text-[#0f1111]">
+            <p className="mt-2 text-[19px] font-extrabold leading-tight text-white">
               {money(0)} of that.
             </p>
-            <p className="mt-2 text-[13px] leading-relaxed text-[#0f1111]/80">
+            <p className="mt-2 text-[13px] leading-relaxed text-white/80">
               One flat price, quoted for your salon. It doesn't move when you
               have a good month, and it doesn't care where the client came from.
             </p>

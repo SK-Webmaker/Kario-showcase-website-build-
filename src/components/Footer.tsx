@@ -31,7 +31,7 @@ export function Footer() {
           className="display-lg max-w-4xl"
         />
 
-        <a href={mailtoHref} className="btn-acid mt-10">
+        <a href={mailtoHref} className="btn-brand mt-10">
           {site.contactEmail}
         </a>
 

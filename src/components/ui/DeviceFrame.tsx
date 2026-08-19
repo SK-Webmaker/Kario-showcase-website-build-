@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
 /**
  * Device chrome, drawn as an instrument rather than a glossy mock: square
@@ -36,12 +36,14 @@ export function BrowserFrame({
 export function PhoneFrame({
   children,
   className = "",
+  style,
 }: {
   children: ReactNode;
   className?: string;
+  style?: CSSProperties;
 }) {
   return (
-    <div className={`relative ${className}`}>
+    <div className={`relative ${className}`} style={style}>
       <div className="overflow-hidden rounded-[22px] border-[4px] border-ink/80 bg-ink/80">
         <div className="overflow-hidden rounded-[18px] bg-[#05070c]">{children}</div>
       </div>

@@ -48,7 +48,7 @@ function StepCopy({ step }: { step: Step }) {
       <ul className="mt-7 grid gap-x-6 gap-y-2 sm:grid-cols-2">
         {step.chips.map((c) => (
           <li key={c} className="flex items-start gap-2.5 text-[13px] leading-snug text-ink-2">
-            <span aria-hidden="true" className="mt-[7px] h-1 w-1 shrink-0 bg-acid" />
+            <span aria-hidden="true" className="mt-[7px] h-1 w-1 shrink-0 bg-brand" />
             {c}
           </li>
         ))}
@@ -156,7 +156,7 @@ export function Journey() {
                 />
                 <div
                   aria-hidden="true"
-                  className="absolute left-0 top-1 w-px bg-acid transition-[height] duration-200"
+                  className="absolute left-0 top-1 w-px bg-brand transition-[height] duration-200"
                   style={{ height: `${progress * 100}%` }}
                 />
                 {STEPS.map((s, i) => {
@@ -167,7 +167,7 @@ export function Journey() {
                       <span
                         aria-hidden="true"
                         className="absolute left-0 top-1.5 h-1.5 w-1.5 -translate-x-[3px] transition-colors duration-660 ease-66"
-                        style={{ background: on || done ? "#c0fe04" : "rgb(var(--ink) / 0.3)" }}
+                        style={{ background: on || done ? "#3b82f6" : "rgb(var(--ink) / 0.3)" }}
                       />
                       <span
                         className="chrome block whitespace-nowrap transition-colors duration-660 ease-66"

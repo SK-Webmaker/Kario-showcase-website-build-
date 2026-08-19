@@ -33,12 +33,16 @@ The site is built on a blueprint-and-monospace system, inspired by
 haoqi.design's approach rather than copied from it — its assets, copy and
 identity are its own; what's shared is the vocabulary:
 
-- **Warm paper ground** `#FBFAF4` with a cool near-black dark mode
-  `#0F1111`, toggled from the nav and remembered.
+- **Kairo's own blue** as the single accent: `#3b82f6` (the product's
+  primary button) with `#5ea3f0` (the logo mark) as the lift. Sampled
+  straight out of the screenshots, so site and software match.
+- **Cool paper ground** `#F7F8FB`, and a dark mode that *is* the
+  product's surface — `#0A0E17` ground on `#0E1420` panels. Toggled from
+  the nav and remembered.
 - **One ink at four opacities** (1 / .62 / .34 / .16) rather than four
-  greys — the thing that makes the type hierarchy read as a system.
-- **Acid lime `#C0FE04`** as the single accent, used only for calls to
-  action, live markers and selection. Change it in `tailwind.config.js`.
+  greys — the thing that makes the type hierarchy read as a system. The
+  ink is biased toward the blue rather than a plain grey, so neutrals and
+  accent read as one family.
 - **Inter Tight** for huge all-caps display type, **JetBrains Mono** for
   every piece of interface furniture — nav, labels, row numbers, readouts.
 - **`cubic-bezier(.66,0,.01,1)`** at 660ms/1200ms as the signature curve.

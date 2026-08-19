@@ -11,20 +11,23 @@
 /* works — one ink at four opacities rather than four greys.           */
 /* ------------------------------------------------------------------ */
 @layer base {
+  /* Neutrals are biased toward the brand blue rather than being plain
+     greys, so paper and accent read as one family. The dark theme is
+     literally the product's own surface colours. */
   :root {
-    --ground: 251 250 244;
-    --raised: 239 237 231;
-    --sunk: 232 229 221;
-    --ink: 54 54 48;
-    --selection: #c0fe04;
+    --ground: 247 248 251;
+    --raised: 237 240 245;
+    --sunk: 227 231 238;
+    --ink: 22 32 47;
+    --selection: #3b82f6;
     color-scheme: light;
   }
 
   :root[data-theme="dark"] {
-    --ground: 15 17 17;
-    --raised: 25 27 27;
-    --sunk: 9 10 10;
-    --ink: 230 232 232;
+    --ground: 10 14 23;
+    --raised: 14 20 32;
+    --sunk: 7 10 17;
+    --ink: 233 237 244;
     color-scheme: dark;
   }
 
@@ -42,7 +45,7 @@
 
   ::selection {
     background: var(--selection);
-    color: #0f1111;
+    color: #fff;
   }
 
   :focus-visible {
@@ -91,15 +94,15 @@
   }
 
   .display-xl {
-    @apply display text-[clamp(38px,8.2vw,132px)];
+    @apply display text-[clamp(32px,4.8vw,68px)];
   }
 
   .display-lg {
-    @apply display text-[clamp(30px,5.4vw,78px)];
+    @apply display text-[clamp(27px,4vw,58px)];
   }
 
   .display-md {
-    @apply display text-[clamp(24px,3.4vw,46px)];
+    @apply display text-[clamp(23px,2.8vw,40px)];
   }
 
   .lede {
@@ -112,8 +115,8 @@
            ease-66 px-5 py-3.5;
   }
 
-  .btn-acid {
-    @apply btn border-transparent bg-acid text-[#0f1111] hover:bg-acid-deep;
+  .btn-brand {
+    @apply btn border-transparent bg-brand text-white hover:bg-brand-deep;
   }
 
   .btn-line {
@@ -171,6 +174,19 @@
 
   .blend-diff {
     mix-blend-mode: difference;
+  }
+}
+
+/* On a short screen the hero's resting copy would eat the whole
+   viewport and leave the dashboard sliced by the fold. Shed the
+   supporting line and tighten the headline instead — the frame is
+   measured from what's left, so it re-fits by itself. */
+@media (max-height: 720px) {
+  .hero-lede {
+    display: none;
+  }
+  .hero-title {
+    font-size: clamp(24px, 4vw, 40px);
   }
 }
 

@@ -22,7 +22,7 @@ export default function App() {
       <a
         href="#why"
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4
-                   focus:z-[60] focus:bg-acid focus:px-4 focus:py-2 focus:text-[#0f1111]"
+                   focus:z-[60] focus:bg-brand focus:px-4 focus:py-2 focus:text-white"
       >
         Skip to the case for Kairo
       </a>

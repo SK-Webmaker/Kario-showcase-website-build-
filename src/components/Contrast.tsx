@@ -35,7 +35,7 @@ function Column({
       <div className="mb-8 flex items-center gap-3 border-b border-line pb-3">
         <span
           aria-hidden="true"
-          className={`h-1.5 w-1.5 ${tone === "on" ? "bg-acid" : "bg-ink-4"}`}
+          className={`h-1.5 w-1.5 ${tone === "on" ? "bg-brand" : "bg-ink-4"}`}
         />
         <span className="chrome">{label}</span>
       </div>

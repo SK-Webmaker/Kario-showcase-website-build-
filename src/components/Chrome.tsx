@@ -103,7 +103,7 @@ export function StatusBar() {
           {pad(pos.x)} X {pad(pos.y)} Y
         </span>
         <span className="chrome tabular flex items-center gap-2">
-          <span className="h-1.5 w-1.5 rounded-full bg-acid animate-blink" />
+          <span className="h-1.5 w-1.5 rounded-full bg-brand animate-blink" />
           {time}
         </span>
       </div>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { BrowserFrame, PhoneFrame } from "./ui/DeviceFrame";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
@@ -23,9 +23,9 @@ type Stroke = {
 };
 
 const STROKES: Stroke[] = [
-  { logo: { cx: 440, cy: 310, angle: 90, len: 180 }, block: { cx: 480, cy: 250, angle: 0, len: 420 }, color: "#c0fe04" },
-  { logo: { cx: 500, cy: 265, angle: 136.8, len: 131.6 }, block: { cx: 420, cy: 316, angle: 0, len: 300 }, color: "#129a63" },
-  { logo: { cx: 500, cy: 355, angle: 43.2, len: 131.6 }, block: { cx: 530, cy: 382, angle: 0, len: 520 }, color: "#c2740a" },
+  { logo: { cx: 440, cy: 310, angle: 90, len: 180 }, block: { cx: 480, cy: 250, angle: 0, len: 420 }, color: "#3b82f6" },
+  { logo: { cx: 500, cy: 265, angle: 136.8, len: 131.6 }, block: { cx: 420, cy: 316, angle: 0, len: 300 }, color: "#0f9d63" },
+  { logo: { cx: 500, cy: 355, angle: 43.2, len: 131.6 }, block: { cx: 530, cy: 382, angle: 0, len: 520 }, color: "#b9760d" },
 ];
 
 const FILL_BLOCKS = [
@@ -82,6 +82,43 @@ export function Hero() {
   const isBooking = tRot > 0.6;
   const stage = 1 - tHandoff;
   const inkDim = "rgb(var(--ink) / 0.28)";
+
+  /* The dashboard has to finish inside the pinned viewport, or the
+     opening beat ends on a screenshot sliced off by the fold. Rather
+     than guessing a size, measure what the headline and buttons
+     actually took and give the frame the rest — width is derived from
+     the height so the aspect ratio is never distorted. */
+  const copyRef = useRef<HTMLDivElement | null>(null);
+  const [frameWidth, setFrameWidth] = useState(896);
+
+  useLayoutEffect(() => {
+    const measure = () => {
+      const copyH = copyRef.current?.offsetHeight ?? 0;
+      const padTop = window.innerWidth >= 640 ? 96 : 80;
+      const gap = 40;
+      const breathe = 28;
+      const isNarrow = window.innerWidth <= 700;
+      // The phone frame has no title bar; the browser frame does.
+      const chromeBar = isNarrow ? 0 : 34;
+      const available = window.innerHeight - padTop - copyH - gap - breathe - chromeBar;
+      // width ÷ height of the frame that's actually on screen
+      const aspect = isNarrow ? 780 / 1688 : 1600 / 1000;
+      const byHeight = available * aspect;
+      const cap = isNarrow ? 240 : 896;
+      const floor = isNarrow ? 150 : 300;
+      // Below the floor there is no room for a legible frame. Showing a
+      // sliced one looks like a bug, so show none.
+      setFrameWidth(byHeight < floor ? 0 : Math.min(cap, byHeight));
+    };
+    measure();
+    window.addEventListener("resize", measure);
+    const ro = new ResizeObserver(measure);
+    if (copyRef.current) ro.observe(copyRef.current);
+    return () => {
+      window.removeEventListener("resize", measure);
+      ro.disconnect();
+    };
+  }, [narrow]);
 
   return (
     <section ref={ref} id="top" className="relative h-[260vh]">
@@ -234,32 +271,39 @@ export function Hero() {
         <div className="absolute inset-0 flex flex-col justify-start pt-20 sm:pt-24">
           <div className="shell">
             <div
+              ref={copyRef}
               style={{
                 opacity: tCopy,
                 transform: `translateY(${lerp(28, 0, tCopy)}px)`,
                 pointerEvents: tCopy > 0.5 ? "auto" : "none",
               }}
             >
-              <h1 className="mx-auto max-w-[16ch] text-center display-xl">
+              <h1 className="hero-title mx-auto max-w-[18ch] text-center display text-[clamp(30px,5vw,68px)]">
                 The diary that answers the phone
               </h1>
-              <p className="mx-auto mt-6 max-w-[54ch] text-center text-[14.5px] leading-[1.55] text-ink-2 sm:text-[16px]">
+              <p className="hero-lede mx-auto mt-6 max-w-[54ch] text-center text-[14.5px] leading-[1.55] text-ink-2 sm:text-[16px]">
                 Bookings, the calendar, the client book, payments, stock and
                 every message that goes to a customer. One system, one login, no
                 commission.
               </p>
               <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-                <a href={mailtoHref} className="btn-acid">Talk to us</a>
+                <a href={mailtoHref} className="btn-brand">Talk to us</a>
                 <a href="#why" className="btn-line">Why not Fresha or Square</a>
               </div>
             </div>
 
             <div
-              className="mx-auto mt-10 max-w-4xl"
-              style={{ opacity: tHandoff, transform: `translateY(${lerp(60, 0, tHandoff)}px)` }}
+              className="mx-auto mt-10"
+              hidden={frameWidth === 0}
+              style={{
+                width: narrow ? undefined : frameWidth,
+                maxWidth: "100%",
+                opacity: tHandoff,
+                transform: `translateY(${lerp(60, 0, tHandoff)}px)`,
+              }}
             >
               {narrow ? (
-                <PhoneFrame className="mx-auto w-[62%] max-w-[240px]">
+                <PhoneFrame className="mx-auto" style={{ width: frameWidth }}>
                   <img src={shot("23-phone-dashboard.jpg")} alt="The Kairo dashboard on a phone." loading="eager" fetchPriority="high" className="block w-full" />
                 </PhoneFrame>
               ) : (

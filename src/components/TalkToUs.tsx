@@ -30,7 +30,7 @@ export function TalkToUs() {
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-20">
           <div>
             <RiseLines
-              lines={["Quoted per salon,", "because every salon", "is a different size."]}
+              lines={["Quoted per salon.", "Every salon is", "a different size."]}
               className="display-lg"
             />
 
@@ -45,7 +45,7 @@ export function TalkToUs() {
 
             <Reveal delay={240}>
               <div className="mt-9 flex flex-wrap items-center gap-3">
-                <a href={mailtoHref} className="btn-acid">
+                <a href={mailtoHref} className="btn-brand">
                   Talk to us
                 </a>
                 <a href="#journey" className="btn-line">
@@ -66,7 +66,7 @@ export function TalkToUs() {
                       key={t}
                       className="flex gap-2.5 border-b border-line py-3 text-[13.5px] leading-snug text-ink-2"
                     >
-                      <span aria-hidden="true" className="mt-[7px] h-1 w-1 shrink-0 bg-acid" />
+                      <span aria-hidden="true" className="mt-[7px] h-1 w-1 shrink-0 bg-brand" />
                       {t}
                     </li>
                   ))}

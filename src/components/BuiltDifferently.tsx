@@ -64,7 +64,7 @@ export function BuiltDifferently() {
             <div className="lg:sticky lg:top-24">
               <div className="border border-line-2 bg-ground">
                 <div className="flex items-center gap-2.5 border-b border-line px-4 py-3">
-                  <span className="h-1.5 w-1.5 bg-acid" aria-hidden="true" />
+                  <span className="h-1.5 w-1.5 bg-brand" aria-hidden="true" />
                   <p className="chrome">System self-check</p>
                   <span className="chrome ml-auto tabular">Thu 11:40</span>
                 </div>
@@ -72,7 +72,7 @@ export function BuiltDifferently() {
                   <div key={k} className="flex items-center gap-3 border-b border-line px-4 py-3 last:border-0">
                     <span className="chrome w-[40%] shrink-0 normal-case tracking-normal">{k}</span>
                     <span className="min-w-0 flex-1 truncate font-mono text-[11.5px] text-ink">{v}</span>
-                    <span className="text-[11px] text-acid-deep" aria-hidden="true">OK</span>
+                    <span className="text-[11px] text-brand-deep" aria-hidden="true">OK</span>
                   </div>
                 ))}
                 <div className="px-4 py-4">

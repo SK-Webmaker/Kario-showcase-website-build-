@@ -58,13 +58,13 @@ export function MarketplaceVsDirect({ t }: { t: number }) {
               width="436"
               height="22"
               rx="1"
-              className={r.you ? "fill-acid" : "fill-ink/[0.06]"}
+              className={r.you ? "fill-brand" : "fill-ink/[0.06]"}
             />
             <text
               x="22"
               y={r.y + 4}
               fontSize="10.5"
-              className={r.you ? "fill-[#0f1111] font-mono" : "fill-ink-2 font-mono"}
+              className={r.you ? "fill-white font-mono" : "fill-ink-2 font-mono"}
             >
               {r.name}
             </text>
@@ -112,8 +112,8 @@ export function MarketplaceVsDirect({ t }: { t: number }) {
         opacity={clamp((t - 0.5) * 3)}
       />
 
-      <rect x="158" y="368" width="290" height="36" rx="2" className="fill-acid" opacity={draw} />
-      <text x="172" y="391" fontSize="11.5" className="fill-[#0f1111] font-mono" opacity={draw}>
+      <rect x="158" y="368" width="290" height="36" rx="2" className="fill-brand" opacity={draw} />
+      <text x="172" y="391" fontSize="11.5" className="fill-white font-mono" opacity={draw}>
         luxehairstudio.com/book
       </text>
 

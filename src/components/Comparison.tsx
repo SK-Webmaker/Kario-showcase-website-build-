@@ -46,7 +46,7 @@ export function Comparison() {
                   <span className="text-[14px] font-semibold leading-snug">{q}</span>
                 </div>
                 <p className="flex gap-2.5 text-[14px] leading-relaxed text-ink">
-                  <span aria-hidden="true" className="mt-[7px] h-1 w-1 shrink-0 bg-acid" />
+                  <span aria-hidden="true" className="mt-[7px] h-1 w-1 shrink-0 bg-brand" />
                   {k}
                 </p>
                 <p className="flex gap-2.5 text-[14px] leading-relaxed text-ink-3">

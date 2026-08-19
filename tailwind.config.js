@@ -22,14 +22,16 @@ export default {
         line: "rgb(var(--ink) / 0.14)",
         "line-2": "rgb(var(--ink) / 0.26)",
 
-        // The single accent. Used sparingly: calls to action, live
-        // markers, selection.
-        acid: "#c0fe04",
-        "acid-deep": "#a8e000",
+        // Kairo's own blue, sampled from the product: #3b82f6 is the
+        // primary button, #5ea3f0 the logo mark. The site and the
+        // software now use the same accent.
+        brand: "#3b82f6",
+        "brand-lift": "#5ea3f0",
+        "brand-deep": "#2f6fd8",
 
-        // Carried over from the product UI, for status only.
-        money: "#129a63",
-        alert: "#c2740a",
+        // Also the product's, for status only.
+        money: "#0f9d63",
+        alert: "#b9760d",
       },
       fontFamily: {
         sans: ['"Inter Tight"', "Inter", "system-ui", "-apple-system", "sans-serif"],
