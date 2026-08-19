@@ -61,7 +61,7 @@ export function BuiltDifferently() {
           </div>
 
           <Reveal delay={120}>
-            <div className="lg:sticky lg:top-24">
+            <div>
               <div className="border border-line-2 bg-ground">
                 <div className="flex items-center gap-2.5 border-b border-line px-4 py-3">
                   <span className="h-1.5 w-1.5 bg-brand" aria-hidden="true" />

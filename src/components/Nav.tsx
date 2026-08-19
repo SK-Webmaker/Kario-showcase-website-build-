@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { usePageProgress } from "@/hooks/useScrollProgress";
+import { useProgressBar } from "@/hooks/useScrollProgress";
 import { useTheme } from "@/hooks/useTheme";
 import { mailtoHref, site } from "@/site.config";
 
@@ -28,7 +28,7 @@ function Mark({ className = "" }: { className?: string }) {
 }
 
 export function Nav() {
-  const progress = usePageProgress();
+  const barRef = useProgressBar<HTMLDivElement>();
   const { theme, toggle } = useTheme();
   const [open, setOpen] = useState(false);
 
@@ -89,9 +89,10 @@ export function Nav() {
 
       {/* reading progress */}
       <div
+        ref={barRef}
         aria-hidden="true"
-        className="h-px w-full origin-left bg-brand"
-        style={{ transform: `scaleX(${progress})` }}
+        className="h-px w-full origin-left bg-brand will-change-transform"
+        style={{ transform: "scaleX(0)" }}
       />
 
       {open && (

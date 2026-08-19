@@ -63,7 +63,42 @@ export function useScrollProgress<T extends HTMLElement = HTMLDivElement>() {
   return { ref, progress };
 }
 
-/** Overall page scroll, 0–1. Feeds the reading-progress bar in the nav. */
+/**
+ * Drives the nav's reading-progress bar by writing straight to the
+ * element. The bar is one transform; making React re-render the whole nav
+ * sixty times a second to set it was pure waste.
+ */
+export function useProgressBar<T extends HTMLElement = HTMLDivElement>() {
+  const ref = useRef<T | null>(null);
+
+  useEffect(() => {
+    let frame: number | null = null;
+    const write = () => {
+      frame = null;
+      const el = ref.current;
+      if (!el) return;
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const p = max <= 0 ? 0 : Math.min(1, Math.max(0, window.scrollY / max));
+      el.style.transform = `scaleX(${p.toFixed(4)})`;
+    };
+    const onScroll = () => {
+      if (frame !== null) return;
+      frame = requestAnimationFrame(write);
+    };
+    write();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (frame !== null) cancelAnimationFrame(frame);
+    };
+  }, []);
+
+  return ref;
+}
+
+/** Overall page scroll, 0–1. Kept for anything that needs the value in React. */
 export function usePageProgress(): number {
   const [progress, setProgress] = useState(0);
   const frame = useRef<number | null>(null);

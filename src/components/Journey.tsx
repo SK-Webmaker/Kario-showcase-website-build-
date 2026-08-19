@@ -65,6 +65,10 @@ export function Journey() {
   // gets to hold the stage until the section releases.
   const raw = progress * STEPS.length;
   const active = Math.min(STEPS.length - 1, Math.max(0, Math.floor(raw)));
+  // The rail fills to the current step rather than tracking the scroll
+  // exactly, so it moves in eight eased jumps instead of re-rendering
+  // this component on every frame.
+  const railFill = ((active + 1) / STEPS.length) * 100;
 
   return (
     <section id="journey" className="relative">
@@ -156,8 +160,8 @@ export function Journey() {
                 />
                 <div
                   aria-hidden="true"
-                  className="absolute left-0 top-1 w-px bg-brand transition-[height] duration-200"
-                  style={{ height: `${progress * 100}%` }}
+                  className="absolute left-0 top-1 w-px bg-brand transition-[height] duration-660 ease-66"
+                  style={{ height: `${railFill}%` }}
                 />
                 {STEPS.map((s, i) => {
                   const on = i === active;

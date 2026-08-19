@@ -12,6 +12,7 @@ import { BuiltDifferently } from "./components/BuiltDifferently";
 import { Comparison } from "./components/Comparison";
 import { TalkToUs } from "./components/TalkToUs";
 import { Footer } from "./components/Footer";
+import { ScrollStage } from "./components/ui/ScrollStage";
 import { useLenis } from "./hooks/useLenis";
 
 export default function App() {
@@ -31,21 +32,48 @@ export default function App() {
       <Nav />
 
       <main className="relative z-10">
+        {/* The three pinned sections are deliberately NOT staged: a
+            transform on their wrapper would kill the `sticky` that makes
+            the pin work, and the pin is already their transition. */}
         <Hero />
-        {/* The sell, straight after the hook. */}
         <WhyNotThem />
-        <ProofWall />
-        <Contrast />
+
+        {/* Everything else rises in and recedes out as it passes. The
+            fixed blueprint grid behind shows through at the seams while
+            a panel is scaled back, which is the point of the effect. */}
+        <ScrollStage className="bg-ground">
+          <ProofWall />
+        </ScrollStage>
+        <ScrollStage className="bg-ground">
+          <Contrast />
+        </ScrollStage>
+
         <Journey />
-        <SignatureMoment />
-        <Bento />
-        <PhoneTrio />
-        <BuiltDifferently />
-        <Comparison />
-        <TalkToUs />
+
+        <ScrollStage className="bg-ground">
+          <SignatureMoment />
+        </ScrollStage>
+        <ScrollStage className="bg-ground">
+          <Bento />
+        </ScrollStage>
+        <ScrollStage className="bg-ground">
+          <PhoneTrio />
+        </ScrollStage>
+        <ScrollStage className="bg-ground">
+          <BuiltDifferently />
+        </ScrollStage>
+        <ScrollStage className="bg-ground">
+          <Comparison />
+        </ScrollStage>
+        <ScrollStage className="bg-ground">
+          <TalkToUs />
+        </ScrollStage>
       </main>
 
-      <Footer />
+      <ScrollStage className="bg-ground">
+        <Footer />
+      </ScrollStage>
+
       <StatusBar />
     </>
   );

@@ -331,7 +331,7 @@ export function SignatureMoment() {
 
           {/* what the client gets */}
           <Reveal delay={90}>
-            <div className="lg:sticky lg:top-24">
+            <div>
               <p className="chrome mb-3">What Chantelle receives</p>
               <div
                 key={choice}
