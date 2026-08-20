@@ -32,7 +32,7 @@ function Card({ span, n, title, body, image, children, delay = 0 }: CardProps) {
               alt={image.alt}
               loading="lazy"
               decoding="async"
-              className="block w-full origin-top transition-transform duration-1200 ease-66 group-hover:scale-[1.02]"
+              className="block w-full origin-top transition-transform duration-[1200ms] ease-66 group-hover:scale-[1.02]"
             />
           </div>
         )}

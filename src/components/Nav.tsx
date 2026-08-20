@@ -54,7 +54,7 @@ export function Nav() {
             <a
               key={l.href}
               href={l.href}
-              className="chrome transition-colors duration-660 ease-66 hover:text-ink"
+              className="chrome transition-colors duration-[660ms] ease-66 hover:text-ink"
             >
               {l.label}
             </a>
@@ -66,7 +66,7 @@ export function Nav() {
               bracket shows the current state, not a decoration. */}
           <button
             onClick={toggle}
-            className="chrome transition-colors duration-660 ease-66 hover:text-ink"
+            className="chrome transition-colors duration-[660ms] ease-66 hover:text-ink"
             aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
           >
             Theme[{theme === "dark" ? "D" : "L"}]

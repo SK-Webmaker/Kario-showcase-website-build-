@@ -160,7 +160,7 @@ export function Journey() {
                 />
                 <div
                   aria-hidden="true"
-                  className="absolute left-0 top-1 w-px bg-brand transition-[height] duration-660 ease-66"
+                  className="absolute left-0 top-1 w-px bg-brand transition-[height] duration-[660ms] ease-66"
                   style={{ height: `${railFill}%` }}
                 />
                 {STEPS.map((s, i) => {
@@ -170,11 +170,11 @@ export function Journey() {
                     <div key={s.n} className="relative pl-5">
                       <span
                         aria-hidden="true"
-                        className="absolute left-0 top-1.5 h-1.5 w-1.5 -translate-x-[3px] transition-colors duration-660 ease-66"
+                        className="absolute left-0 top-1.5 h-1.5 w-1.5 -translate-x-[3px] transition-colors duration-[660ms] ease-66"
                         style={{ background: on || done ? "#3b82f6" : "rgb(var(--ink) / 0.3)" }}
                       />
                       <span
-                        className="chrome block whitespace-nowrap transition-colors duration-660 ease-66"
+                        className="chrome block whitespace-nowrap transition-colors duration-[660ms] ease-66"
                         style={{ color: on ? "rgb(var(--ink))" : undefined }}
                       >
                         {s.n} {s.rail}

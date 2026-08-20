@@ -91,16 +91,16 @@ function Toggle({
       aria-checked={on}
       onClick={onToggle}
       className="flex w-full items-start gap-3 border border-line px-4 py-3 text-left
-                 transition-colors duration-660 ease-66 hover:border-line-2"
+                 transition-colors duration-[660ms] ease-66 hover:border-line-2"
       style={{ background: on ? "rgb(59 130 246 / 0.08)" : "transparent" }}
     >
       <span
         aria-hidden="true"
-        className="mt-0.5 flex h-4 w-7 shrink-0 items-center rounded-full p-0.5 transition-colors duration-660 ease-66"
+        className="mt-0.5 flex h-4 w-7 shrink-0 items-center rounded-full p-0.5 transition-colors duration-[660ms] ease-66"
         style={{ background: on ? KAIRO : "rgb(var(--ink) / 0.22)" }}
       >
         <span
-          className="h-3 w-3 rounded-full bg-white transition-transform duration-660 ease-66"
+          className="h-3 w-3 rounded-full bg-white transition-transform duration-[660ms] ease-66"
           style={{ transform: on ? "translateX(12px)" : "translateX(0)" }}
         />
       </span>

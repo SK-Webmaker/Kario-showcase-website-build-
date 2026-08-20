@@ -203,11 +203,11 @@ export function WhyNotThem() {
                 {BEATS.map((b, i) => (
                   <div key={b.n} className="relative pl-5">
                     <span
-                      className="absolute left-0 top-1.5 h-1.5 w-1.5 -translate-x-[3px] transition-colors duration-660 ease-66"
+                      className="absolute left-0 top-1.5 h-1.5 w-1.5 -translate-x-[3px] transition-colors duration-[660ms] ease-66"
                       style={{ background: i <= active ? "#3b82f6" : "rgb(var(--ink) / 0.3)" }}
                     />
                     <span
-                      className="chrome block whitespace-nowrap transition-colors duration-660 ease-66"
+                      className="chrome block whitespace-nowrap transition-colors duration-[660ms] ease-66"
                       style={{ color: i === active ? "rgb(var(--ink))" : undefined }}
                     >
                       {b.n} {b.rail}

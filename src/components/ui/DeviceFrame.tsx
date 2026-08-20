@@ -12,8 +12,8 @@ export function BrowserFrame({
   className = "",
 }: {
   children: ReactNode;
-  url?: string;
-  className?: string;
+  url?: string | undefined;
+  className?: string | undefined;
 }) {
   return (
     <div className={`relative border border-line-2 bg-raised ${className}`}>
@@ -39,8 +39,8 @@ export function PhoneFrame({
   style,
 }: {
   children: ReactNode;
-  className?: string;
-  style?: CSSProperties;
+  className?: string | undefined;
+  style?: CSSProperties | undefined;
 }) {
   return (
     <div className={`relative ${className}`} style={style}>

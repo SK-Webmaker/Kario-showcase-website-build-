@@ -54,7 +54,7 @@ export function Footer() {
                     <a
                       href={href}
                       className="block border-b border-line py-2.5 text-[13.5px] text-ink-2
-                                 transition-colors duration-660 ease-66 hover:text-ink"
+                                 transition-colors duration-[660ms] ease-66 hover:text-ink"
                     >
                       {label}
                     </a>

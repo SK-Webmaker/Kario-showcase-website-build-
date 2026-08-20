@@ -140,7 +140,7 @@ export function Hero() {
               <text
                 key={t}
                 x={narrow ? 245 : 238}
-                y={ROW_Y[i] + (narrow ? 8 : 4)}
+                y={(ROW_Y[i] ?? 0) + (narrow ? 8 : 4)}
                 textAnchor="end"
                 fill="currentColor"
                 className="fill-ink-3"

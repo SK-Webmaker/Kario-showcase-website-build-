@@ -111,7 +111,7 @@
 
   .btn {
     @apply inline-flex items-center justify-center gap-2 border font-mono
-           text-[11px] uppercase tracking-[0.12em] transition-all duration-660
+           text-[11px] uppercase tracking-[0.12em] transition-all duration-[660ms]
            ease-66 px-5 py-3.5;
   }
 

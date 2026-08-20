@@ -44,10 +44,19 @@ export function Blueprint() {
   );
 }
 
-/** Local clock, updating every second. */
+/**
+ * Local clock, updating every second.
+ *
+ * Starts as null rather than `new Date()` on purpose: this page is
+ * server-rendered, and a clock seeded during render disagrees with the
+ * clock at hydration a moment later, which React reports as a mismatch
+ * and repairs by throwing the tree away. Rendering a placeholder until
+ * after mount keeps the server and the first client render identical.
+ */
 function useClock() {
-  const [now, setNow] = useState(() => new Date());
+  const [now, setNow] = useState<Date | null>(null);
   useEffect(() => {
+    setNow(new Date());
     const id = setInterval(() => setNow(new Date()), 1000);
     return () => clearInterval(id);
   }, []);
@@ -82,12 +91,14 @@ export function StatusBar() {
   const now = useClock();
   const pos = usePointer();
 
-  const time = now.toLocaleTimeString("en-AU", {
-    hour: "2-digit",
-    minute: "2-digit",
-    second: "2-digit",
-    hour12: false,
-  });
+  const time = now
+    ? now.toLocaleTimeString("en-AU", {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: false,
+      })
+    : "--:--:--";
 
   return (
     <div
