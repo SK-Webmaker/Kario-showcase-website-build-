@@ -221,3 +221,137 @@ Target $1,800–$2,500/month for 4–8 videos plus photo enhancement.
 | WEAK | $350, or use as a free sample to build your reel |
 
 Cost per video is roughly $2 in Higgsfield credits plus your time.
+
+---
+
+# Tab 2 — Real estate agents (15 leads)
+
+New tab in the workbook: **`Real estate agents`**. 15 Melbourne sales agents, every one
+with a live premium listing that has **no video**, verified on the agency's own site or
+realestate.com.au (not just Domain — see the warning below).
+
+## Sales, not rentals — and why
+
+You asked which to go after. **Sales, decisively.** Rentals is a dead end for this
+service:
+
+- A rental property leases in days off four phone photos. There is no marketing budget
+  per property — the property manager earns ~7% of rent and eats any advertising cost
+  themselves. Nobody is buying a $600 video.
+- A sales campaign has a real, funded marketing budget. Which brings us to the reason
+  this works in Australia specifically:
+
+**Vendor Paid Advertising (VPA).** In Australia the *seller* pays for the marketing
+campaign, not the agent. Typical VPA budget on a $2M Melbourne home is
+**$3,000–$5,500**, agreed upfront and itemised. So you are never asking an agent to
+spend their own money — you're giving them a line item to add to a budget the vendor
+has already agreed to fund. That's a fundamentally easier sale than the US model in
+the video you watched, where the agent pays out of pocket.
+
+Second reason sales wins: commission on a $2M sale is roughly $40–50k. An agent will
+happily spend $700 of someone else's money to protect that.
+
+## Read this before you pitch — video is not a gap here
+
+I need to correct the assumption the whole plan rests on. In Melbourne prestige real
+estate, **video is close to standard**. Market rate for a cinematic listing video is
+**$800–$2,500**. Most agents already have a videographer.
+
+So "you don't have a video" is *not* the pitch for most of the market. What I did
+instead was find the agents who genuinely don't have one on their current campaign,
+which turned out to be a specific and findable segment.
+
+**A trap worth knowing about:** Domain's listing page shows a video only if the agent
+paid for Domain's video slot. Jellis Craig, Abercrombys and Shelter all host video on
+their *own* sites and skip Domain's — so filtering on Domain alone gives you false
+positives. I verified every lead below against the agency site or realestate.com.au.
+Four listings that looked like gaps on Domain already had video and were cut.
+
+## The finding that matters: Marshall White
+
+**13 of the 15 leads are Marshall White.** That is not laziness in the sampling — it's
+the actual pattern. Marshall White is one of Melbourne's biggest prestige agencies, and
+they run **Gallery + Floorplan only** on listing after listing, right up to $4.4M. Every
+single Marshall White listing I checked (10 of 10) had no video.
+
+That makes them the single highest-value target in Melbourne for this service. If you
+land one agent there and do a good job, the internal referral surface is enormous.
+
+The other two: Hodges Brighton and Jellis Craig Brighton.
+
+## Call these first
+
+Four agents appear twice in the set — a portfolio conversation, not a one-off:
+
+- **Kate Strickland** (0400 125 946) — 126 Cochrane St Brighton *and* 28 Sunlight Cres
+  Brighton East. Top of the list.
+- **Joanna Nairn** (0419 994 664) — 45 Northcote Rd Armadale *and* 17 Wilks Ave Malvern
+  (the $4.0–4.4M one).
+- **Scarlett Hang** (0405 054 888) — 7 Relowe Cres Balwyn *and* 43 Yeneda St Balwyn North.
+- **Jess Cleland** (0411 691 973) — 394 Tooronga Rd Hawthorn East *and* 8 Kingsley St
+  Camberwell.
+
+Also worth knowing: **James Tostevin** (0417 003 333, on 43 Yeneda St) is one of
+Melbourne's highest-volume prestige agents. If you only make one call, his listing
+volume makes him the biggest prize on the sheet.
+
+## What made the cut
+
+Every lead has all of:
+
+1. **No video** — verified on the agency site or realestate.com.au, not Domain.
+2. **A live premium listing** — $1.6M to $4.4M, so the VPA budget is real.
+3. **A direct mobile published** — no switchboards, no gatekeepers.
+4. **Campaign runway** — the deadline is far enough out that a video can still change
+   the result. An auction 8 days away has no room left; 3 weeks is ideal.
+
+Ranked by: runway remaining, VPA budget (price), whether the agent has more than one
+listing, property size, and how thin the current campaign looks (photo count).
+
+**One caveat on the auction times.** The agency sites render times in a different
+timezone and my scrape picked them up literally, so a few show impossible values like
+"11:30 PM Friday". The **dates** are right; confirm the time on the listing before you
+reference it.
+
+## The pitch — displacement, not gap-filling
+
+Since most agents already have a videographer, price and speed are your wedge, not
+novelty:
+
+> They're paying $800–$2,500 per listing video. You do it for $500–700, in 24–48 hours
+> instead of a week, and you deliver a vertical Reels cut as well as the landscape one.
+
+That last point is the genuine gap. Almost every agency video is a 2-minute landscape
+walkthrough built for a listing page. Almost none of them get a 9:16 cut for Instagram
+and TikTok, which is where the buyers under 45 actually are.
+
+### Phone script
+
+> Hi [Name], I saw [address] is on with an auction on [date]. Quick one — I noticed the
+> campaign has photos and a floorplan but no video. I make cinematic listing videos,
+> 24 to 48 hour turnaround, and I do a vertical cut for Reels as well as the standard
+> one. It sits inside the VPA at around $600 so it's not coming out of your pocket.
+> Happy to do [address] first so you can see the quality before you commit to anything.
+> Worth a look?
+
+### Why each part of that works
+
+- **Naming the address first** proves you looked at their listing, not a scraped list.
+- **"Photos and a floorplan but no video"** is specific and verifiably true — it lands
+  as observation, not a pitch.
+- **"Sits inside the VPA"** is the key line. It reframes your fee from *their* cost to
+  a vendor-funded line item.
+- **"Do this one first"** removes all risk and gets you the sample you need for the
+  next fifteen calls.
+
+### Pricing
+
+| | |
+|---|---|
+| Single video inside VPA | $600–$700 |
+| Video + vertical Reels cut | $850 |
+| Per-agent retainer, 4+ listings/month | $2,000–$2,800/month |
+
+An agent listing 4 properties a month currently spends $3,200–$10,000 on video. Halving
+that while adding social cuts is an easy yes — and the retainer is where this becomes a
+business rather than a series of one-off jobs.
