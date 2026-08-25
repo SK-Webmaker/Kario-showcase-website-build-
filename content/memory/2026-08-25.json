@@ -1,0 +1,37 @@
+{
+  "week_of": "2026-08-25",
+  "captured_at": "2026-08-25",
+  "source": "none",
+  "_status": "BASELINE — spine built, no run has happened yet. Every figure below is unmeasured because this system has no Instagram access and the operator has supplied no figures. Nothing here is an estimate.",
+  "account": {
+    "handle": null,
+    "account_type": null,
+    "followers": null,
+    "follower_change_7d": null,
+    "reach_7d": null,
+    "profile_visits_7d": null,
+    "link_clicks_7d": null,
+    "avg_engagement_rate": null
+  },
+  "format_split": {
+    "video": { "avg_engagement_rate": null, "posts": null },
+    "image": { "avg_engagement_rate": null, "posts": null },
+    "carousel": { "avg_engagement_rate": null, "posts": null }
+  },
+  "authored_last_week": [],
+  "prediction_scored": {
+    "predicted": null,
+    "held": "unmeasured",
+    "why": "No prior run to score. The first scoreable prediction can only be written after the first /start produces one."
+  },
+  "operator_said": [],
+  "experiment": {
+    "testing": null,
+    "result": null
+  },
+  "next_prediction": {
+    "targets": {},
+    "one_thing_to_change": null,
+    "sets_up": "The first /start run, once the operator has answered the open questions in CLAUDE.md."
+  }
+}

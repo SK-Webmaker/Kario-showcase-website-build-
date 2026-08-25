@@ -142,6 +142,36 @@ consistent across the whole page.
 
 ---
 
+## The marketing system (Gloss)
+
+This repo also carries the weekly Instagram system for Kairo. It lives
+alongside the site because the site is where the true facts are — the price,
+the voice and 25 real product screenshots.
+
+| Path | What it is |
+|---|---|
+| `CLAUDE.md` | Working memory: the business, the voice, the invariants, what has been tried |
+| `config/brand.json` | Single source of truth for prices, voice rules, hashtags, palette |
+| `tools/critic.mjs` | The linter every caption passes before anyone sees it |
+| `content/context/notes.md` | What the operator says — read at the start of every run |
+| `content/memory/` | One dated snapshot of the account's numbers per week |
+| `content/packs/` | The finished weeks |
+| `.claude/commands/` | `/start`, `/send`, `/ads` |
+
+```bash
+npm run critic content/packs/2026-08-25/pack.json   # lint a week
+npm run critic:test                                 # the Critic's own tests
+```
+
+Neither needs `npm install` — the Critic has no dependencies.
+
+**Prices are read from `config/brand.json`, never from memory.** The `$400`
+in that file cites the line of product code it came from
+(`components/PaybackCalculator.tsx` → `SETUP`), so if the price changes in one
+place the other is a one-line fix rather than a hunt.
+
+---
+
 ## Connecting this to Lovable
 
 Lovable's UI moves around, so treat the button names below as approximate and

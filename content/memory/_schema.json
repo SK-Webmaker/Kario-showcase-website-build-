@@ -1,0 +1,48 @@
+{
+  "_comment": "Shape of a weekly snapshot. Copy this, date it, fill what is real, leave the rest null.",
+  "week_of": "YYYY-MM-DD (Monday, Australia/Melbourne)",
+  "captured_at": "ISO 8601",
+  "source": "instagram_api | operator_screenshots | manual_count | none",
+  "account": {
+    "handle": null,
+    "account_type": null,
+    "followers": null,
+    "follower_change_7d": null,
+    "reach_7d": null,
+    "profile_visits_7d": null,
+    "link_clicks_7d": null,
+    "avg_engagement_rate": null,
+    "_note": "null = unmeasured, never zero."
+  },
+  "format_split": {
+    "_comment": "The number that decides what gets built. Average engagement rate per media type, with the post count it is averaged over — an average over 3 posts is not the same claim as one over 22.",
+    "video": { "avg_engagement_rate": null, "posts": null },
+    "image": { "avg_engagement_rate": null, "posts": null },
+    "carousel": { "avg_engagement_rate": null, "posts": null }
+  },
+  "authored_last_week": [
+    {
+      "post_id": "matches the id in the pack",
+      "status": "published | not_published",
+      "not_published_reason": "the operator's own words, or null",
+      "published_at": null,
+      "engagement": { "likes": null, "comments": null, "saves": null, "shares": null, "reach": null },
+      "lift_vs_account_average": null
+    }
+  ],
+  "prediction_scored": {
+    "predicted": "what last week's projection said, verbatim",
+    "held": "yes | no | unmeasured",
+    "why": ""
+  },
+  "operator_said": [],
+  "experiment": {
+    "testing": "the one variable changed this week",
+    "result": "unmeasured until next week scores it"
+  },
+  "next_prediction": {
+    "targets": {},
+    "one_thing_to_change": "",
+    "sets_up": ""
+  }
+}
