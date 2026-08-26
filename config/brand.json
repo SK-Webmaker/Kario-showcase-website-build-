@@ -1,6 +1,5 @@
 {
   "_README": "SINGLE SOURCE OF TRUTH. Never quote a price from memory or from chat — read it from here. Every field carries a `_source` or is marked UNCONFIRMED. Do not delete an UNCONFIRMED marker without a real answer from the operator.",
-
   "business": {
     "trading_name": "Kairo",
     "what_they_sell": "A white-label booking, payments and customer-messaging system for salons — one instance per business, on the salon's own link.",
@@ -9,23 +8,27 @@
     "hemisphere": "southern",
     "currency": "AUD",
     "base": "Melbourne, Australia",
-    "website_url": "UNCONFIRMED — operator left this blank in the brief. The showcase site in this repo is not yet deployed to a known URL.",
+    "website_url": "NOT LAUNCHED — operator, 2026-08-26: \"i havent fully polished up the website yet\". The showcase site in this repo is not deployed. Until it is, no caption sends anyone to a URL; every call to action is a DM. Re-ask before the site goes live, because a published price on a live page is the strongest asset this business has and captions should point at it the day it exists.",
     "contact_email": "UNCONFIRMED — src/site.config.ts still carries the placeholder hello@kairo.app and the site README flags it as the one thing to change before launch.",
     "audience": {
-      "status": "WORKING HYPOTHESIS — not confirmed by the operator",
-      "hypothesis": "Owner-operators of small Melbourne salons, roughly 1–10 chairs, who currently run on a paper diary plus a spreadsheet, or on a marketplace/subscription platform they resent paying. The buyer is the person who both cuts hair and does the admin at 9pm.",
-      "_source": "Inferred from src/components/Contrast.tsx, WhyNotThem.tsx and journey.ts. Must be replaced with the operator's answer."
+      "status": "CONFIRMED by the operator, 2026-08-26",
+      "who": "Melbourne salon owners in Kairo's warm network — salons connected to the one already running it: referrals, people who have seen it working, people one conversation removed from a customer.",
+      "what_this_changes": [
+        "Captions can lean on proof and word of mouth. The Melbourne salon running Kairo in production is the strongest thing available, and this audience is close enough to it to check.",
+        "Less explaining what Kairo is, more showing what it does on a Thursday. A warm audience does not need the category defined.",
+        "Local specificity is an asset, not a limitation. Melbourne references land.",
+        "Reach is small by definition. Judge posts on saves, shares and DMs — not on follower growth, which will look flat and mean nothing."
+      ],
+      "_source": "Operator answer, 2026-08-26. Replaced the hypothesis inferred from the product site."
     }
   },
-
   "channels": {
     "instagram": {
-      "handle": "UNCONFIRMED — no handle supplied",
-      "account_type": "UNCONFIRMED — business vs creator decides which music library is licensed. Business accounts get royalty-free only; trending chart audio will mute the post.",
-      "api_access": "NONE — this system has no Instagram API credentials. Every account number is therefore `unmeasured` until the operator supplies figures or access."
+      "handle": "STILL UNCONFIRMED — blocks reading the account at all, even with a token.",
+      "account_type": "CREATOR — confirmed by the operator, 2026-08-26. Creator accounts reach the trending chart audio library, not just royalty-free. This is the opposite of the constraint assumed when the spine was built, and it removes the main reason to avoid current audio on a Reel. VERIFY IN-APP before the first Reel that the specific track appears in this account's audio library — availability varies by account and territory, and a muted post is not recoverable.",
+      "api_access": "AGREED, NOT YET GRANTED — operator said 2026-08-26 to set up read access. Nothing has arrived: this environment holds no Meta credentials and no handle. Until a token exists and has been used to read the account once, every figure stays `unmeasured`. Do not report an intention to grant access as access."
     }
   },
-
   "prices": [
     {
       "id": "setup",
@@ -49,9 +52,11 @@
       "_source": "src/components/TalkToUs.tsx — 'no subscription, no per-booking fee and no commission'. Read 2026-08-25."
     }
   ],
-
   "price_rules": {
-    "only_assertable_figures": [400, 0],
+    "only_assertable_figures": [
+      400,
+      0
+    ],
     "note": "These are the ONLY money figures the business asserts anywhere — the showcase site is explicit about that. Any other dollar amount in a caption is either the reader's own number (never asserted) or an invention. The Critic fails anything else.",
     "never_assert": [
       "any competitor's price, plan tier or commission rate",
@@ -59,7 +64,6 @@
       "any engagement or view count that has not been read from a live source"
     ]
   },
-
   "voice": {
     "principles": [
       "Speech, not copy. Contractions, first person, addressed to one reader.",
@@ -74,24 +78,75 @@
       "enforce": true,
       "_why": "The operator's exact verdict on week-one drafts was 'the tone felt off'. The absence of contractions was the whole of it.",
       "expansions_to_reject": [
-        "that is", "it is", "you are", "we are", "they are", "there is", "here is",
-        "what is", "who is", "I am", "let us",
-        "do not", "does not", "did not", "will not", "would not", "should not",
-        "could not", "is not", "are not", "was not", "were not",
-        "has not", "have not", "had not",
-        "you have", "we have", "you will", "we will"
+        "that is",
+        "it is",
+        "you are",
+        "we are",
+        "they are",
+        "there is",
+        "here is",
+        "what is",
+        "who is",
+        "I am",
+        "let us",
+        "do not",
+        "does not",
+        "did not",
+        "will not",
+        "would not",
+        "should not",
+        "could not",
+        "is not",
+        "are not",
+        "was not",
+        "were not",
+        "has not",
+        "have not",
+        "had not",
+        "you have",
+        "we have",
+        "you will",
+        "we will"
       ],
       "_exempt": "'cannot' is deliberately left off this list — the product copy uses it well ('it cannot be double-booked') and contracting it weakens the line."
     },
     "banned_words": [
-      "seamless", "seamlessly", "revolutionise", "revolutionize", "revolutionary",
-      "game-changer", "game changer", "unlock", "leverage", "supercharge",
-      "effortless", "effortlessly", "elevate", "empower", "cutting-edge",
-      "world-class", "best-in-class", "one-stop shop", "solution provider",
-      "dive in", "level up", "hustle", "grind", "boss babe",
-      "in today's fast-paced world", "look no further", "we are excited to announce",
-      "delve", "tapestry", "testament", "elevate your business",
-      "guarantee", "guaranteed", "instantly", "10x", "skyrocket"
+      "seamless",
+      "seamlessly",
+      "revolutionise",
+      "revolutionize",
+      "revolutionary",
+      "game-changer",
+      "game changer",
+      "unlock",
+      "leverage",
+      "supercharge",
+      "effortless",
+      "effortlessly",
+      "elevate",
+      "empower",
+      "cutting-edge",
+      "world-class",
+      "best-in-class",
+      "one-stop shop",
+      "solution provider",
+      "dive in",
+      "level up",
+      "hustle",
+      "grind",
+      "boss babe",
+      "in today's fast-paced world",
+      "look no further",
+      "we are excited to announce",
+      "delve",
+      "tapestry",
+      "testament",
+      "elevate your business",
+      "guarantee",
+      "guaranteed",
+      "instantly",
+      "10x",
+      "skyrocket"
     ],
     "_banned_words_note": "MATCH ON WORD BOUNDARIES ONLY. Substring matching flags every caption containing 'water' because 'ate' would be on a list like this. tools/critic.mjs builds \\b-anchored regexes; do not change that.",
     "banned_punctuation": {
@@ -100,26 +155,32 @@
     },
     "emoji_max": 2
   },
-
   "hashtags": {
     "min": 5,
     "max": 12,
     "_why_band": "Not a growth theory — a consistency rule so the format stays comparable week to week while the account has no measured baseline to optimise against. Revisit once content/memory/ has three weeks of real numbers.",
     "core": [
-      "#salonowner", "#salonsoftware", "#salonlife", "#hairstylist",
-      "#barbershop", "#melbournesalon", "#salonbusiness", "#bookingsystem",
-      "#salonmanagement", "#melbournehair", "#smallbusinessaustralia", "#nailtech"
+      "#salonowner",
+      "#salonsoftware",
+      "#salonlife",
+      "#hairstylist",
+      "#barbershop",
+      "#melbournesalon",
+      "#salonbusiness",
+      "#bookingsystem",
+      "#salonmanagement",
+      "#melbournehair",
+      "#smallbusinessaustralia",
+      "#nailtech"
     ],
     "_core_note": "UNVERIFIED as performing tags. They are plausible and on-topic, not researched. /start step 5 must check real reach before these are treated as a considered choice."
   },
-
   "offers": {
     "max_per_week": 1,
     "_why": "Invariant 6. A feed that reads as an ad channel gets muted, and a discount teaches the audience to wait for the next one.",
     "active_promotions": [],
     "_active_promotions_schema": "Only the operator can add one. Each entry: {\"what\": \"\", \"requested_by\": \"\", \"requested_on\": \"YYYY-MM-DD\", \"runs_until\": \"YYYY-MM-DD\"}. Gloss never adds, extends or repeats an entry on its own."
   },
-
   "asset_provenance": {
     "allowed": [
       "product_screenshot",
@@ -128,11 +189,12 @@
       "typographic_card",
       "diagram"
     ],
-    "banned": ["ai_photo"],
+    "banned": [
+      "ai_photo"
+    ],
     "_why": "Invariant 2. AI photographs of the product misrepresent work the business did not do, and Meta auto-labels detected AI imagery. Note this bans AI photographs, not photographs.",
     "_available_now": "25 genuine product screenshots in public/screenshots/ — real UI of the real system, showing a demo salon ('Luxe Hair Studio') with invented clients. These are the strongest owned visual asset and are not AI imagery."
   },
-
   "palette": {
     "brand": "#3b82f6",
     "brand_lift": "#5ea3f0",
@@ -141,20 +203,39 @@
     "panel_dark": "#0E1420",
     "chart_other": "#c2664a",
     "_source": "README.md 'The design language' + tailwind.config.js. Sampled from the product screenshots so site and software match.",
-    "ink_opacities": [1, 0.62, 0.34, 0.16],
+    "ink_opacities": [
+      1,
+      0.62,
+      0.34,
+      0.16
+    ],
     "fonts": {
       "display": "Inter Tight",
       "mono": "JetBrains Mono"
     }
   },
-
   "seasons_southern": {
-    "summer": [12, 1, 2],
-    "autumn": [3, 4, 5],
-    "winter": [6, 7, 8],
-    "spring": [9, 10, 11]
+    "summer": [
+      12,
+      1,
+      2
+    ],
+    "autumn": [
+      3,
+      4,
+      5
+    ],
+    "winter": [
+      6,
+      7,
+      8
+    ],
+    "spring": [
+      9,
+      10,
+      11
+    ]
   },
-
   "caption_limits": {
     "max_chars": 2200,
     "first_line_max_chars": 125,

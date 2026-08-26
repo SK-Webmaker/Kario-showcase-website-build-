@@ -15,7 +15,21 @@ marketplace, not a directory.
 - **Based:** Melbourne, Australia. `Australia/Melbourne`, **southern
   hemisphere**. August is **winter**. Spring starts 1 September.
 - **Sold to:** salon owners — hair, barbering, nails, lashes, beauty clinics.
-- **Channel:** Instagram only.
+- **Who is actually being sold to right now:** Melbourne salons in Kairo's
+  **warm network** — referrals and people who have seen it working, one
+  conversation removed from a customer. *(Operator, 2026-08-26.)* That changes
+  the work: lean on proof rather than explanation, keep the Melbourne
+  specifics, and judge posts on **saves, shares and DMs**, never on follower
+  growth, which at this size will look flat and mean nothing.
+- **Channel:** Instagram only. **Creator account**, so the trending chart audio
+  library is available — check in-app that a track shows for this account
+  before filming to it, because a muted post cannot be un-muted.
+- **Nowhere to send anyone yet.** The website is not launched *(operator,
+  2026-08-26: "i havent fully polished up the website yet")* and
+  `src/site.config.ts` still carries the `hello@kairo.app` placeholder. Every
+  call to action is **a DM** until that changes. Re-ask the week it goes live —
+  a public page that publishes the price is the strongest thing this business
+  could point at.
 - **In production:** Kairo has run a Melbourne salon's bookings, payments and
   customer emails since day one. That is a real proof point and it is the
   strongest thing on the site — but it is one salon, so it is "a salon", never
@@ -67,10 +81,15 @@ uses it well ("it cannot be double-booked") and contracting it weakens the line.
 
 **Unmeasured. All of them.**
 
-This system has no Instagram credentials and the operator has supplied no
-figures. `content/memory/2026-08-25.json` is a baseline of nulls, on purpose.
-Until that changes, every report says **unmeasured**, never `0`, and no run
-produces a percentage about this account.
+The operator agreed on 2026-08-26 to grant read access rather than paste
+screenshots. **That is an intention, not a capability** — no handle, no token,
+no credential store in this environment, and nothing has read the account once.
+`content/memory/2026-08-25.json` is a baseline of nulls, on purpose. Until a
+token has actually returned a figure, every report says **unmeasured**, never
+`0`, and no run produces a percentage about this account.
+
+Do not report agreed access as access. That is the same error as reporting an
+API's success response as a delivered email.
 
 **A distinction that must not blur:** the operator's brief cites video at 8.11%
 across 22 posts against images at 1.11% across 3. That is from the operator's
@@ -115,6 +134,10 @@ Each of these has cost somebody something.
 9. **Never assert a market statistic or an engagement figure that was not read
    from a live source.** Percentages in captions must be declared in the post's
    `verified_figures` with a link that resolves, or they get cut.
+10. **Never point a caption at a destination that does not exist.** No live
+   URL and no real inbox means the call to action is a DM, and saying otherwise
+   sends an interested salon owner into a dead end — the most expensive kind of
+   mistake, because it only happens to the people who were convinced.
 
 ---
 
@@ -150,29 +173,25 @@ Each of these has cost somebody something.
 
 ---
 
-## Open questions — blocking a real `/start`
+## Open questions
 
-These are asked once, in one tappable set, and the answers land in
-`content/context/notes.md` and `config/brand.json`.
+Four were answered on 2026-08-26 and are recorded above and in
+`content/context/notes.md`. Four are still open, and the first one blocks
+everything.
 
-1. **Instagram handle**, and **Business or Creator account**? The account type
-   decides the music library. Business accounts get royalty-free audio only, and
-   trending chart music will get the post muted — that is worth knowing before
-   the first Reel, not after.
-2. **How does Gloss see the numbers** — read access, or the operator pastes
-   Insights screenshots each week? Without one of these, every run reports
-   unmeasured and nothing compounds.
-3. **Who actually buys?** The audience in `brand.json` is a hypothesis inferred
-   from the product site. Specifically: are these salons Kairo already knows
-   (the Melbourne salon's network), or cold?
-4. **Does the $400 include GST?**
-5. **Live website URL and the real contact email.** `src/site.config.ts` still
-   carries the placeholder `hello@kairo.app`, and the site README flags it as
-   the one thing to change before launch. Until it is real, no caption can send
-   anyone anywhere.
-6. **Where does `/send` deliver?** An email address for whoever posts, and a
-   verified sending domain. Handover is the failure mode that killed week one
-   elsewhere; a pack nobody opens has not been produced.
+1. **The Instagram handle.** Still unknown. Without it there is no account to
+   read, with or without a token. This is the single hardest blocker.
+2. **The read-access credential.** Agreed, not delivered. Needs the handle, a
+   Meta app with Instagram Insights permissions on the linked Professional
+   account, and somewhere for the token to live that is not this repo.
+3. **Does the $400 include GST?** Nothing in the repo says, and a caption that
+   implies either answer without knowing is a number invented.
+4. **Where does `/send` deliver?** An address for whoever posts, and a verified
+   sending domain. A pack nobody opens has not been produced.
+
+**Answered — do not re-ask:** account type (Creator), audience (Melbourne warm
+network), how numbers arrive (read access, pending), and where captions point
+(nowhere yet — DM).
 
 ---
 

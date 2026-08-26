@@ -9,6 +9,41 @@ nothing. Delete nothing; old blocks are the record of what was tried.
 
 ---
 
+## 2026-08-26 — Operator, first question set
+
+Four of the six open questions answered.
+
+**Numbers — read access.** The operator chose to grant Gloss read access to
+the account rather than pasting Insights screenshots each week. Nothing has
+arrived yet, so this is an intention, not a capability: no handle, no token,
+no credential store in this environment. Every figure stays `unmeasured` until
+a token has actually read the account once.
+
+**Account type — Creator.** This is the opposite of what the spine assumed.
+A Creator account reaches the trending chart audio library, so the main reason
+to avoid current audio on a Reel is gone. Still worth checking in-app that a
+specific track shows for this account before filming to it — a muted post
+cannot be un-muted.
+
+**Audience — Melbourne salons, warm network.** Salons connected to the one
+already running Kairo: referrals, people who have seen it working, people one
+conversation removed from a customer. This is the most decision-shaping answer
+of the four. It means captions lean on proof rather than explanation, and it
+means follower count is the wrong scoreboard — saves, shares and DMs are the
+ones that matter at this size.
+
+**Destination — nothing live.** Operator's words: *"i havent fully polished up
+the website yet"*. So there is no URL a caption can point at, and the contact
+email in `src/site.config.ts` is still the `hello@kairo.app` placeholder. Every
+call to action is a DM until that changes. Worth re-asking the week the site
+goes up, because a live page that publishes the price is the single strongest
+thing this business could point at.
+
+**Still open:** the Instagram handle, whether the $400 includes GST, and where
+`/send` delivers.
+
+---
+
 ## 2026-08-25 — Gloss, setting up
 
 No operator notes yet. This file was created as part of the spine and has
