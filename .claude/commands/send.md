@@ -1,47 +1,57 @@
 ---
-description: Email the finished week to whoever posts it — images embedded above their own captions.
+description: Hand the finished week over — every image rendered in the conversation, every caption in a block sized to copy on a phone.
 ---
 
-Handover is a failure mode, and it is invisible. A week of finished work that
-sits in a folder nobody opens has not been produced. This command exists
-because "the files were in the repo" is not delivery.
+Handover is a failure mode, and it is invisible. Week one elsewhere produced
+three finished posts and none went up — not because they were bad, but because
+the files sat in a folder and the person never saw them.
 
-## What to send
+The operator reads the pack **here, in the conversation** (their choice,
+2026-08-26 — see `config/brand.json` → `handover`). That has the same failure
+shape as the folder: a pack that scrolls away is a pack that was never
+delivered. So this command does two things at once, and neither substitutes
+for the other.
 
-The current pack in `content/packs/<monday>/`. If a pack was not built this
-week, stop and say so — do not send a stale one.
+## Before anything
 
-**Refuse to send a pack that has not passed the Critic.** Run it first:
+Run the Critic. **Refuse to hand over a pack that has not passed.**
 
     npm run critic content/packs/<monday>/pack.json
 
-## Shape of the email
+If no pack was built this week, stop and say so. Never hand over a stale one.
 
-Built for a phone, read between customers.
+## 1 — Write the durable copy
 
-- One line at the top: what is in here, and anything that needs a decision.
-- Then, per post, in posting order:
-  1. **The image, embedded and visible** — not an attachment, not a link.
-  2. The planned day and format.
-  3. **The caption in its own block**, sized to be selected and copied on a
-     phone in one gesture. Hashtags included, in the block, exactly as they
-     should be pasted. Nothing above or below the block that would get caught
-     in the selection.
+`content/packs/<monday>/HANDOVER.md`, in posting order. For each post: the
+image path, the planned day and format, then the caption in a fenced block
+with nothing else inside the fence — no notes, no headings, nothing that would
+get caught in a copy gesture. This is what survives the scroll and what next
+week's run reads to check what was authored.
+
+## 2 — Deliver it in the conversation
+
+- **Send every image with `SendUserFile` so it renders**, not as a path the
+  operator has to go and open. An image described but not shown has not been
+  handed over. Send them in posting order, one call, `display: "render"`.
+- Then, per post, in the same order: the day, the format, and the caption in
+  its own fenced block — sized to select and copy on a phone in one gesture.
+  Hashtags inside the block, exactly as they should be pasted.
 - Then the projection, in three lines at most.
-- Then the one question set, if `/start` has not already had its answers.
+- Then anything that needs a decision, as a question — not buried in prose.
 
-No preamble, no explanation of the strategy. The operator is standing up.
+No preamble and no explanation of the strategy. The operator is standing up,
+between clients, and everything above the first image costs them.
 
-## Sending
+## Look at the images first
 
-Use the Resend tools. The recipient address and the verified sending domain are
-**open questions in `CLAUDE.md`** — if they are not answered yet, stop and ask
-rather than guessing an address.
+Open every rendered asset and actually look at it before sending. Dead space,
+bad wrapping, numerals that misread at thumbnail size, text clipped by the
+safe area. An image nobody has looked at is not finished, and sending it is
+how a bad crop reaches a client's feed.
 
-**Confirm the email actually landed.** A success response from the API is not
-confirmation of delivery. Check the message's delivery status, and report what
-was actually observed — not what was returned at send time.
+## Say what actually happened
 
-If sending is not possible, say so plainly and write the pack's `HANDOVER.md`
-so it can be forwarded by hand. Then say, in the same breath, that the handover
-has not happened yet.
+If an image failed to render, or a caption is still failing the Critic, say so
+in the same breath rather than handing over a pack with a hole in it. "Six of
+seven are ready and the seventh is blocked on X" is a handover. Silence about
+the seventh is not.

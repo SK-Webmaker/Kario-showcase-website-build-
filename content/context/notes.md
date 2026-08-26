@@ -9,6 +9,24 @@ nothing. Delete nothing; old blocks are the record of what was tried.
 
 ---
 
+## 2026-08-26 — Operator, second question set
+
+**GST — the $400 includes it.** So "$400 once" is complete as written, on the
+site and in any caption. No qualifier needed, nothing to fix. Worth knowing
+this closed cleanly: it was one of the two questions where guessing either way
+would have put an invented number in front of a buyer.
+
+**Handover — in the conversation, no email.** The operator reads the pack here
+rather than in an inbox, so `/send` was rewritten: images rendered inline so
+they are actually seen, captions in copyable blocks, and `HANDOVER.md` still
+written to the pack. The durable copy stays, because "I'll read it here" has
+the same failure shape as a folder nobody opens — a pack that scrolls away was
+never delivered.
+
+Resend is not set up and does not need to be.
+
+---
+
 ## 2026-08-26 — Operator, first question set
 
 Four of the six open questions answered.

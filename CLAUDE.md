@@ -55,7 +55,11 @@ showcase site is deliberate about that. Any other dollar figure in a caption is
 either the reader's own number or an invention; the Critic fails it.
 
 `_source` on each price points at the line of product code it came from.
-**Unresolved:** whether $400 includes GST. Nothing in the repo says.
+
+**The $400 includes GST** *(operator, 2026-08-26)*. So "$400 once" is complete
+and accurate exactly as the site already writes it — no qualifier is needed in
+a caption, and nothing on the site needs fixing. If Kairo's GST position ever
+changes, this line and `PaybackCalculator.tsx` both need revisiting.
 
 ---
 
@@ -175,23 +179,20 @@ Each of these has cost somebody something.
 
 ## Open questions
 
-Four were answered on 2026-08-26 and are recorded above and in
-`content/context/notes.md`. Four are still open, and the first one blocks
-everything.
+Six were asked on 2026-08-26. Four are answered and recorded above; two remain,
+and the first blocks everything.
 
 1. **The Instagram handle.** Still unknown. Without it there is no account to
-   read, with or without a token. This is the single hardest blocker.
+   read, with or without a token. This is the single hardest blocker, and it is
+   the reason every number in `content/memory/` is still null.
 2. **The read-access credential.** Agreed, not delivered. Needs the handle, a
    Meta app with Instagram Insights permissions on the linked Professional
    account, and somewhere for the token to live that is not this repo.
-3. **Does the $400 include GST?** Nothing in the repo says, and a caption that
-   implies either answer without knowing is a number invented.
-4. **Where does `/send` deliver?** An address for whoever posts, and a verified
-   sending domain. A pack nobody opens has not been produced.
 
 **Answered — do not re-ask:** account type (Creator), audience (Melbourne warm
-network), how numbers arrive (read access, pending), and where captions point
-(nowhere yet — DM).
+network), how numbers arrive (read access, pending), where captions point
+(nowhere yet — DM), GST (included in the $400), and handover (in the
+conversation, not by email).
 
 ---
 
@@ -207,6 +208,12 @@ network), how numbers arrive (read access, pending), and where captions point
 | `content/memory/*.json` | one dated snapshot per week |
 | `content/packs/<date>/` | the finished week — captions, images, handover |
 | `.claude/commands/` | `/start`, `/send`, `/ads` |
+
+**Handover is in the conversation, not by email** *(operator, 2026-08-26)*.
+`/send` renders every image inline with `SendUserFile` and puts each caption in
+its own copyable block, and it still writes `HANDOVER.md` to the pack — because
+a pack that scrolls away has the same failure shape as a pack in a folder
+nobody opens.
 
 **Run the Critic's tests after touching `brand.json`.** The voice rules are
 regex inputs; a stray entry can silently start flagging good copy, and a linter

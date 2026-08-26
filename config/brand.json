@@ -39,7 +39,7 @@
       "unit": "one-off",
       "copy_form": "$400 once",
       "_source": "src/components/PaybackCalculator.tsx const SETUP = 400; corroborated in TalkToUs.tsx, ProofWall.tsx, Comparison.tsx. Read 2026-08-25.",
-      "gst_status": "UNCONFIRMED — nothing in the repo says whether $400 includes GST. Ask before writing a caption that implies either."
+      "gst_status": "GST-INCLUSIVE — confirmed by the operator, 2026-08-26. $400 is what the salon pays, all in. So \"$400 once\" is complete and accurate as written, and needs no qualifier in a caption or on the site. If Kairo's GST position ever changes, this line and src/components/PaybackCalculator.tsx both need revisiting."
     },
     {
       "id": "monthly",
@@ -240,5 +240,11 @@
     "max_chars": 2200,
     "first_line_max_chars": 125,
     "_why_first_line": "Instagram truncates the caption in-feed. Anything past the fold is read only by people already convinced."
+  },
+  "handover": {
+    "method": "in_conversation",
+    "_source": "Operator, 2026-08-26 — chose to read the pack in the conversation rather than have it emailed.",
+    "_why_it_still_needs_care": "Handover is the invisible failure mode: week one elsewhere produced three finished posts and none went up, because the files sat in a folder nobody opened. 'I'll read it here' has the same failure shape — a pack that scrolls away is a pack that was never delivered. So /send renders every image inline in the conversation, puts each caption in its own copyable block, and writes HANDOVER.md to the pack as the durable copy that survives the scroll.",
+    "email": "NOT SET UP — no recipient, no verified sending domain. Revisit only if the operator asks for email."
   }
 }
