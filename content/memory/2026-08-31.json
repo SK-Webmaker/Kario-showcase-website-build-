@@ -1,0 +1,85 @@
+{
+  "week_of": "2026-08-31",
+  "captured_at": "2026-08-28",
+  "source": "none",
+  "_status": "First produced pack. Account numbers still unmeasured — read access was agreed on 2026-08-26 but no handle and no credential have arrived, so nothing has read the account. Every null below means unmeasured, not zero.",
+
+  "account": {
+    "handle": null,
+    "account_type": "creator",
+    "followers": null,
+    "follower_change_7d": null,
+    "reach_7d": null,
+    "profile_visits_7d": null,
+    "link_clicks_7d": null,
+    "avg_engagement_rate": null
+  },
+
+  "format_split": {
+    "_comment": "Kairo's own split is unmeasured. The operator's prior-account figures (video 8.11% over 22 posts, image 1.11% over 3) are a strong prior and the reason a video guide is in the pack — they are NOT Kairo numbers and must never be reported as such.",
+    "video": { "avg_engagement_rate": null, "posts": null },
+    "image": { "avg_engagement_rate": null, "posts": null },
+    "carousel": { "avg_engagement_rate": null, "posts": null }
+  },
+
+  "authored_last_week": [],
+  "_authored_last_week_note": "Nothing was authored before this week, so there is nothing to attribute. Next run matches the three posts below against what is actually live and reports published / not published separately.",
+
+  "authored_this_week": [
+    { "post_id": "p1-intro", "planned_date": "2026-08-31", "format": "carousel", "slides": 6, "status": "handed_over" },
+    { "post_id": "p2-why", "planned_date": "2026-09-02", "format": "carousel", "slides": 7, "status": "handed_over" },
+    { "post_id": "p3-catch", "planned_date": "2026-09-04", "format": "carousel", "slides": 6, "status": "handed_over" }
+  ],
+
+  "prediction_scored": {
+    "predicted": null,
+    "held": "unmeasured",
+    "why": "No prior prediction existed. The baseline snapshot of 2026-08-25 was written the same week the spine was built."
+  },
+
+  "operator_said": [
+    "Wanted three posts: an introduction/infrastructure post, a why-choose-Kairo post, and a third of Gloss's choosing.",
+    "Wanted the software itself shown, not described, and the design taken from the showcase site.",
+    "Goal: warm the account up and open the door to a first sale through social.",
+    "(2026-08-26) The website is not polished or launched, so there is nowhere to send anyone."
+  ],
+
+  "research_findings": [
+    {
+      "finding": "Square publishes its Australian salon pricing openly, in named tiers, per month per location.",
+      "source": "https://squareup.com/au/en/solutions/beauty",
+      "checked": "2026-08-28",
+      "consequence": "Killed the planned 'nobody publishes a price, so publishing one is the differentiator' angle before it reached a caption. Replaced with the shape-of-the-price argument (recurring vs one-off), which is a business-model claim and does not go stale. No competitor figure appears anywhere in the pack."
+    },
+    {
+      "finding": "No verifiable, linkable individual post or video in this niche could be found.",
+      "source": null,
+      "checked": "2026-08-28",
+      "consequence": "Step 5's 'point at one specific working video' was NOT delivered. Search returned SEO listicles whose engagement statistics do not resolve to a primary source; none were used. A zero-cost video guide was written anyway, but it is not modelled on a verified example and the pack says so."
+    },
+    {
+      "finding": "Two demo-data errors in public/screenshots/, which are also live on the showcase site: 11-pos.jpg shows GST at 8.5% (Australian GST is 10%), and 07-notify-prompt.jpg shows a US-format phone number.",
+      "source": "public/screenshots/11-pos.jpg, 07-notify-prompt.jpg",
+      "checked": "2026-08-28",
+      "consequence": "The POS frame is cropped above the tax row so the pack never shows 8.5%. The notify modal is used as-is because doctoring a product screenshot would be worse than the blemish. Both flagged to the operator as source fixes."
+    }
+  ],
+
+  "experiment": {
+    "testing": "Three carousels in one voice, run in a deliberate order: what it is, why pick it, where's the catch. The one variable that changes between post two and post three is whether naming the product's limits out loud converts better than only naming its strengths.",
+    "result": "unmeasured until next week scores it"
+  },
+
+  "next_prediction": {
+    "_honesty": "These are targets, not forecasts. With no baseline and no account access, a numeric prediction would be invented. What follows is what would count as the format working, written down now so next week can score it rather than moving on.",
+    "targets": {
+      "saves": "Saves are the metric that matters here, not likes. Post 3 (the price and its limits) should be the most-saved of the three — it is the one a salon owner sends to a business partner.",
+      "dms": "At least one inbound DM using the word DIARY. On a warm-network account this is the only conversion signal that exists while there is no website.",
+      "followers": "No target. At this size follower growth will look flat and mean nothing, and chasing it would change the work for the worse.",
+      "profile_visits": "Expected to be the clearest evidence the infrastructure post did its job, if it can be read next week."
+    },
+    "one_thing_to_change": "Nothing yet — there is no data to change anything against, and inventing a reason to change would break the loop before it starts. The single change that matters is upstream: get the handle and the read credential in, so next week scores these three instead of guessing.",
+    "sets_up": "If carousels land, post 4 is a variant of whichever of the three performed best. If they do not, the next test is the zero-cost notify-prompt screen recording in research.md — which also tests the operator's own prior that video far outruns stills, on Kairo's account rather than someone else's.",
+    "explicit_risk": "All three posts point at a DM because there is no live site. If the DM CTA produces nothing, the honest reading is ambiguous — it could be the creative, or it could be that a warm audience will not open a DM as a first step. That ambiguity is the cost of having nowhere to send anyone, and it is another reason the site launch matters."
+  }
+}

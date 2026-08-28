@@ -9,6 +9,47 @@ nothing. Delete nothing; old blocks are the record of what was tried.
 
 ---
 
+## 2026-08-28 — First /start run
+
+Operator asked for three posts: an introduction/infrastructure post, a
+why-choose-Kairo post, and a third of my choosing. Wanted the software shown
+rather than described, design taken from the showcase site, and a clearly
+detailed call to action. Stated goal: warm the account up and open the door to
+a first sale.
+
+Produced three carousels, nineteen slides, all captions passing the Critic
+clean. Post three is mine: **"$400 once? Where's the catch?"** — it answers the
+objection that actually stops a sale, and slide four names what Kairo *won't*
+do. Honesty about limits is the highest-trust move available to an account with
+no reviews and no followers yet.
+
+**The research finding that changed the work.** The plan was to lean on
+"publishing a price is a differentiator because nobody in this category does."
+Checked it: Square publishes its Australian salon pricing openly, in named
+tiers. The thesis is false here, and a caption built on it would have been
+checkable-wrong in thirty seconds. Reframed to the *shape* of the price —
+recurring versus one-off — which is a business-model claim and stays true when
+anyone's rate moves. No competitor figure appears anywhere in the pack.
+
+**What I could not do.** Step 5 asks for one specific, currently-working video
+to point at and rebuild. I did not find one — search returned listicles, not
+posts, and no view count that resolves to a primary source. Wrote a zero-cost
+video guide anyway (a 20-second screen recording of the notify prompt) but said
+plainly that it is not modelled on a verified example.
+
+**Two demo-data errors found in the screenshots**, both also live on the
+showcase site: `11-pos.jpg` shows GST at 8.5% (Australia is 10%), and
+`07-notify-prompt.jpg` shows a US-format phone number while the booking page
+frame correctly shows a Camberwell address. The POS frame is cropped above the
+tax row so the pack never shows it. The notify modal is used as-is — doctoring
+a product screenshot would be worse than the blemish.
+
+**Assumption to check:** captions and slides speak as "I", not "we" — *I set it
+up with you*. Right for one person selling to their own network; wrong if
+someone else does onboarding.
+
+---
+
 ## 2026-08-26 — Operator, second question set
 
 **GST — the $400 includes it.** So "$400 once" is complete as written, on the

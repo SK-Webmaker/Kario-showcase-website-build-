@@ -1,0 +1,42 @@
+{
+  "week_of": "2026-08-31",
+  "_note": "First pack Gloss has produced. No account access, so nothing here is targeted at a measured baseline — see content/memory/2026-08-31.json.",
+  "posts": [
+    {
+      "id": "p1-intro",
+      "planned_date": "2026-08-31",
+      "format": "carousel",
+      "slides": 6,
+      "asset_provenance": "product_screenshot",
+      "assets": ["images/p1-01-cover.png", "images/p1-02-replaces.png", "images/p1-03-morning.png", "images/p1-04-diary.png", "images/p1-05-shopfront.png", "images/p1-06-cta.png"],
+      "is_offer": false,
+      "testing": "Whether an infrastructure post that shows real product UI earns saves on an account with no history. This is the control for everything after it.",
+      "verified_figures": [],
+      "caption": "Twelve booked, four done, two hours still free — and I didn't open a spreadsheet to know any of it.\n\nThat's Kairo. It's the software a salon runs its whole day on: the diary, the payments, and every message that goes out to a client. One login, on your own booking link.\n\nIt was written in a salon, which is why it handles a four-hour full head of braids, a price that moves with hair length, and a client who books a cut and a colour as one visit.\n\nSwipe and you'll see the actual screens. The morning view that answers the day before you've asked it. The day book that cannot be double-booked. Your own booking page, with your name at the top instead of a marketplace's.\n\n$400 once. Then nothing, every month. No subscription, no per-booking fee, no commission.\n\nIf you run a salon in Melbourne and you want a proper look, DM me the word DIARY and I'll send you a walkthrough.\n\n#salonowner #salonsoftware #melbournesalon #hairstylist #melbournehair #bookingsystem #salonbusiness #barbershop"
+    },
+    {
+      "id": "p2-why",
+      "planned_date": "2026-09-02",
+      "format": "carousel",
+      "slides": 7,
+      "asset_provenance": "product_screenshot",
+      "assets": ["images/p2-01-cover.png", "images/p2-02-notify.png", "images/p2-03-directory.png", "images/p2-04-doublebook.png", "images/p2-05-onelogin.png", "images/p2-06-priceshape.png", "images/p2-07-cta.png"],
+      "is_offer": false,
+      "testing": "Whether leading with one specific differentiator (the notify prompt) beats leading with a feature list. Same format as post one, different opening move.",
+      "verified_figures": [],
+      "caption": "You moved a booking to make room for someone else. Did anyone actually tell her?\n\nThat's the part I care most about, and it's the part most systems skip. Move an appointment in Kairo and it stops to ask one question: email her, text her, both, or nothing. Only the channels she can actually receive, each showing the real address or number. Then fifteen seconds to undo it.\n\nNo silent changes, and no working out a week later whether anybody was told.\n\nThe rest of why a salon picks it:\n\nYour booking page sits on your own link with your name at the top. There's no directory, so there are no other salons on your page waiting to take the booking instead.\n\nAvailability comes from real bookings, blocked time and each person's hours, then gets re-checked at the moment of confirming — so two people tapping at once still cannot double-book you.\n\nAnd the money stops being a monthly thing. $400 once, GST included, then nothing every month. No per-booking fee and no cut of what you charge.\n\nDM me the word DIARY and tell me what you're running on now. I'll show you the same day in Kairo.\n\n#salonowner #salonsoftware #melbournehair #hairstylist #barbershop #salonmanagement #melbournesalon #smallbusinessaustralia #nailtech"
+    },
+    {
+      "id": "p3-catch",
+      "planned_date": "2026-09-04",
+      "format": "carousel",
+      "slides": 6,
+      "asset_provenance": "product_screenshot",
+      "assets": ["images/p3-01-cover.png", "images/p3-02-noteatch.png", "images/p3-03-included.png", "images/p3-04-wontdo.png", "images/p3-05-proof.png", "images/p3-06-cta.png"],
+      "is_offer": false,
+      "testing": "Whether naming the product's limits out loud converts better than only naming its strengths. The one variable changed against post two is honesty about what it won't do.",
+      "verified_figures": [],
+      "caption": "\"$400 once? Where's the catch?\"\n\nFair question, and I'd rather answer it now than after you've paid.\n\nThere isn't one, but the number is that shape for a reason. Kairo is white-label — you get your own instance, on your own link. There's no directory to be listed in, so there's no cut to take for sending you a client. There's no shared platform metering seats, so there's no per-person tier. The work is the setup: your hours, your team, your menu, your client list imported. That happens once, so it's charged once.\n\nWhat it won't do, since you'll find out anyway:\n\nIt won't bring you new clients. There's no marketplace, so nobody's browsing it. Your link is yours to share — on your bio, your window, your card.\n\nIt isn't self-serve. I set it up with you. That's about ten minutes on the phone, then the work happens on my side.\n\nIt isn't free. $400, GST included, and there isn't a second one.\n\nIt's also not a demo. A Melbourne salon has run its bookings, payments and customer emails on Kairo since day one, and every screen in these posts is that same system with invented clients in it.\n\nAsk me the awkward version of the question. DM me the word DIARY.\n\n#salonowner #salonsoftware #melbournesalon #salonbusiness #hairstylist #melbournehair #barbershop #bookingsystem"
+    }
+  ]
+}
