@@ -33,7 +33,7 @@ export const W = 1080;
 export const H = 1350;
 
 // --- fonts, embedded so a render never depends on the network -------------
-function fontFace() {
+export function fontFace() {
   const faces = [
     { file: "intertight-latin.woff2", family: "Inter Tight", weight: "400 900" },
     { file: "jetbrains-latin.woff2", family: "JetBrains Mono", weight: "400 700" },
@@ -48,7 +48,7 @@ function fontFace() {
 }
 
 // --- the design system, lifted from src/index.css + tailwind.config.js ----
-const CSS = `
+export const CSS = `
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --ground:#0A0E17; --raised:#0E1420; --sunk:#070A11;
@@ -139,7 +139,7 @@ body{
   background:rgba(10,14,23,.9);border:1px solid rgba(94,163,240,.45);padding:8px 12px}
 `;
 
-function markSvg(size = 34) {
+export function markSvg(size = 34) {
   return `<svg viewBox="0 0 64 64" width="${size}" height="${size}" aria-hidden="true">
     <path d="M20 14v36" stroke="#5ea3f0" stroke-width="8" stroke-linecap="round"/>
     <path d="M44 14 24 32l20 18" stroke="#3b82f6" stroke-width="8" stroke-linecap="round"
@@ -205,4 +205,9 @@ async function main() {
   console.log(`\n  ${n} slide(s) → ${outDir}\n`);
 }
 
-main().catch((e) => { console.error(e); process.exit(1); });
+// Only run when invoked directly. Without this guard, importing this module
+// for its CSS and helpers — which the reel specs do — silently runs the slide
+// renderer with no slides and fails somewhere confusing.
+const invokedDirectly =
+  process.argv[1] && resolve(process.argv[1]) === resolve(fileURLToPath(import.meta.url));
+if (invokedDirectly) main().catch((e) => { console.error(e); process.exit(1); });

@@ -127,6 +127,14 @@ shouldFlag("unauthorised discount language",
   `20% off this week only.\n${TAGS}`, "UNAUTHORISED-DISCOUNT");
 shouldNotFlag("scarcity is not a discount",
   `Two Thursday slots left this week, and that's it.\n${TAGS}`, "UNAUTHORISED-DISCOUNT");
+// Regression: "point of sale" is a feature name. It tripped the discount rule
+// on a good caption, 2026-09-07.
+shouldNotFlag("'point of sale' is a feature, not a discount",
+  `Point of sale, pay-links, and a receipt that sends itself.\n${TAGS}`, "UNAUTHORISED-DISCOUNT");
+shouldFlag("a real sale is still caught",
+  `Half price sale on all colour this week.\n${TAGS}`, "UNAUTHORISED-DISCOUNT");
+shouldFlag("'on sale' is still caught",
+  `Everything's on sale until Friday.\n${TAGS}`, "UNAUTHORISED-DISCOUNT");
 
 // --- provenance & pack rules ------------------------------------------------
 console.log("\n pack");

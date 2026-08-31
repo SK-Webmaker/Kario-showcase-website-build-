@@ -83,7 +83,11 @@ const DISCOUNT_MARKERS = [
   /\d+\s*%\s*off\b/i,
   /(?<![A-Za-z0-9])discount(?:ed|s)?(?![A-Za-z0-9])/i,
   /(?<![A-Za-z0-9])half\s+price(?![A-Za-z0-9])/i,
-  /(?<![A-Za-z0-9])sale(?![A-Za-z0-9])/i,
+  // "sale" but not "point of sale", which is a feature of the product and
+  // appeared in a perfectly good caption on 2026-08-31. Narrowing the match is
+  // not loosening the rule: a discount "sale" still fails, and a linter that
+  // flags correct copy is one that gets switched off inside a fortnight.
+  /(?<!point of )(?<![A-Za-z0-9])sale(?![A-Za-z0-9])/i,
   /(?<![A-Za-z0-9])limited\s+time(?![A-Za-z0-9])/i,
   /(?<![A-Za-z0-9])special\s+offer(?![A-Za-z0-9])/i,
   /\bwas\s+\$\s?\d/i,

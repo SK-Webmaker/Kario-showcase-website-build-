@@ -1,0 +1,91 @@
+{
+  "week_of": "2026-09-07",
+  "captured_at": "2026-09-01",
+  "source": "none",
+  "_status": "Second produced pack. Account still unread — no handle, no credential. Additionally, two of last week's three posts were not yet due when this ran, so there is nothing to attribute even in principle. null means unmeasured, never zero.",
+
+  "account": {
+    "handle": null, "account_type": "creator",
+    "followers": null, "follower_change_7d": null, "reach_7d": null,
+    "profile_visits_7d": null, "link_clicks_7d": null, "avg_engagement_rate": null
+  },
+
+  "format_split": {
+    "_comment": "Still unmeasured for Kairo. The operator's prior-account figures (video 8.11% over 22 posts, image 1.11% over 3) remain a prior from a DIFFERENT account and must never be reported as Kairo's. This week's pack is designed to start measuring Kairo's own split.",
+    "video": { "avg_engagement_rate": null, "posts": null },
+    "image": { "avg_engagement_rate": null, "posts": null },
+    "carousel": { "avg_engagement_rate": null, "posts": null }
+  },
+
+  "authored_last_week": [
+    { "post_id": "p1-intro", "planned_date": "2026-08-31", "status": "unknown", "not_published_reason": null,
+      "_note": "Due the day this run happened. Whether it went up is unknown — no account access, and the operator has not said. Not published and published are different states; this is a third, which is 'not yet observed'." },
+    { "post_id": "p2-why", "planned_date": "2026-09-02", "status": "not_yet_due", "not_published_reason": null },
+    { "post_id": "p3-catch", "planned_date": "2026-09-04", "status": "not_yet_due", "not_published_reason": null }
+  ],
+
+  "authored_this_week": [
+    { "post_id": "r1-features", "planned_date": "2026-09-07", "format": "reel", "duration_s": 25.6, "status": "handed_over" },
+    { "post_id": "r2-timing", "planned_date": "2026-09-09", "format": "reel", "duration_s": 16.4, "status": "handed_over" },
+    { "post_id": "s3-payback", "planned_date": "2026-09-10", "format": "image", "status": "handed_over" },
+    { "post_id": "p4-cost", "planned_date": "2026-09-11", "format": "carousel", "slides": 6, "status": "handed_over" }
+  ],
+
+  "prediction_scored": {
+    "predicted": "Post 3 most-saved of the three; at least one DM containing DIARY; no follower target.",
+    "held": "unmeasured",
+    "why": "Cannot be scored, and not only because the account is unread: two of the three posts had not reached their planned date when this run happened. Scoring it now would be inventing a result. It carries forward to the run after the posts have actually had a week to breathe."
+  },
+
+  "operator_said": [
+    "Wanted 3-4 posts built for urgency and hype, in whichever format gets the most views and attention.",
+    "Wanted one post showing what the system's key features look like, mixing desktop and phone.",
+    "Wanted the design pushed harder — 'go crazy', 'do not be boring'.",
+    "Asked for an analysis of how the past posts have done."
+  ],
+
+  "conflicts_flagged": [
+    {
+      "conflict": "The operator asked for 'urgency and hype'. CLAUDE.md's voice rules say the opposite — understated, because hype reads as doubt on an offer this unusual — and invariant 6 forbids manufactured scarcity.",
+      "resolved": "Built urgency from two honest sources: the reader's own calendar (count back three months from your busiest week) and the ongoing cost of the current setup (four things that go wrong every week). Refused to fabricate spot counts, countdowns or deadlines, and Reel 2's caption says out loud that there is no countdown. If a real capacity limit exists, the operator can supply the number and it can be used."
+    },
+    {
+      "conflict": "The operator asked for an analysis of how the past posts have done.",
+      "resolved": "Cannot be done and was reported as such rather than fabricated. No account access, and two of the three posts were not yet due."
+    }
+  ],
+
+  "research_findings": [
+    {
+      "finding": "Instagram's chart-music licensing covers personal and creator use, not commercial use. A Creator account changes what the picker offers, not what a business is licensed to use.",
+      "source": "Multiple agreeing secondary sources; NOT verified against Meta's own documentation, whose help centre renders client-side and returned nothing when fetched.",
+      "checked": "2026-09-01",
+      "consequence": "Directly corrects guidance this system wrote into CLAUDE.md on 2026-08-26. That note has been withdrawn and replaced with the conservative reading. Both Reels ship silent, with the message on screen."
+    },
+    {
+      "finding": "Web search does not usefully index individual Instagram posts. Step 5's 'point at one specific working video' has now failed twice for this reason.",
+      "source": "Four query shapes across 2026-08-28 and 2026-09-01, all returning SEO listicles and vendor pages.",
+      "checked": "2026-09-01",
+      "consequence": "Recorded in CLAUDE.md so future runs stop spending searches on it. The fix is the operator sending links to Reels they have seen work; it is now a question in the handover."
+    }
+  ],
+
+  "experiment": {
+    "testing": "FORMAT. This is the one variable changed against last week. Last week was three carousels; this week is two Reels, one single image and one carousel. Reels are served to non-followers and carousels mostly are not, so if reach is the goal this is the arm that should show it.",
+    "controls": "Voice, offer, price, call to action and visual system are all held constant from last week, so any difference is attributable to format rather than to the writing.",
+    "result": "unmeasured until the account can be read"
+  },
+
+  "next_prediction": {
+    "_honesty": "Still targets rather than forecasts. There is no baseline, so a numeric prediction would be invented. Written down now so the next run can score it.",
+    "targets": {
+      "reach": "The two Reels should out-reach all four of last week's carousels combined. If they do not, the prior that video far outruns stills does not transfer to this account, and that is worth knowing more than any single post is.",
+      "saves": "The payback card should be the most-saved item, because it is the only one built to be screenshotted and forwarded rather than watched.",
+      "dms": "At least one inbound DM containing the word DIARY, across seven posts now live. If seven posts produce none, the CTA is the problem, not the creative.",
+      "followers": "No target. Still the wrong scoreboard at this size."
+    },
+    "one_thing_to_change": "Format, and only format. Everything else is deliberately held constant so the comparison means something.",
+    "sets_up": "If Reels win, next week is Reels with a variant of whichever message landed. If the single card wins on saves, the account is a reference-material account rather than a reach account, and the strategy should follow that instead.",
+    "explicit_risk": "Seven posts will now be live with no way to read any of their numbers. Every week that passes without the handle and credential turns finished work into unrun experiments, and the format test this pack is built around cannot be scored at all."
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "week_of": "2026-09-07",
+  "_note": "Format is the one variable this week. Last week was three carousels; this week is two Reels, one single and one carousel, so the next run can see which one this account actually responds to. Account numbers still unmeasured.",
+  "posts": [
+    {
+      "id": "r1-features",
+      "planned_date": "2026-09-07",
+      "format": "reel",
+      "asset_provenance": "product_screenshot",
+      "assets": ["video/reel-features.mp4"],
+      "duration_s": 25.6,
+      "is_offer": false,
+      "testing": "Whether a Reel outreaches a carousel on this account. Reels are served to non-followers; carousels mostly are not. This is the reach arm of the format test.",
+      "verified_figures": [],
+      "caption": "Everything a salon does in a day, in one app. Here's the whole thing in twenty-five seconds.\n\nThe morning view that answers the day before you've asked it. The diary that cannot be double-booked. The prompt that stops and asks who to tell when you move a booking. Every past visit and every invoice, plus the note you typed in June. Point of sale, pay-links, and a receipt that sends itself. Confirmations and reminders going out on their own, every one logged. Your own booking page with your name at the top. And the same workspace on your phone, installed from the browser with no app store.\n\nThat's the product. One login, on your own link.\n\n$400 once, GST included. Then nothing, every month. No subscription, no per-booking fee, no commission.\n\nIf you run a salon in Melbourne, DM me the word DIARY and I'll walk you through it on your own numbers.\n\n#salonowner #salonsoftware #melbournesalon #hairstylist #melbournehair #bookingsystem #salonbusiness #barbershop #salonmanagement"
+    },
+    {
+      "id": "r2-timing",
+      "planned_date": "2026-09-09",
+      "format": "reel",
+      "asset_provenance": "typographic_card",
+      "assets": ["video/reel-timing.mp4"],
+      "duration_s": 16.4,
+      "is_offer": false,
+      "testing": "Whether urgency built on the reader's own calendar outperforms urgency built on the product. Nothing here manufactures a deadline, and the caption says so out loud, which is itself the test.",
+      "verified_figures": [],
+      "caption": "There's a right month to change your booking system, and it isn't the busy one.\n\nNobody wants to be learning where the buttons are in the middle of their hardest week. So here's the honest test: think of your busiest stretch of the year, then count back three months. That's your window. If it lands on about now, this is worth a conversation. If it doesn't, tell me and I'll say so.\n\nI'm not going to invent a deadline for you. There's no countdown here and no last-minute rush. The reason to move in a quiet stretch is just that it costs you nothing then, and it costs you a lot in the weeks you cannot afford to be distracted.\n\nSetup is ten minutes on the phone. After that your hours, your team, your menu and your client list get moved across on my side, and you open it on the floor when you're ready.\n\n$400 once, GST included. Then nothing, every month.\n\nDM me the word DIARY and tell me when your busy stretch starts.\n\n#salonowner #salonsoftware #melbournehair #melbournesalon #hairstylist #barbershop #salonbusiness #smallbusinessaustralia"
+    },
+    {
+      "id": "s3-payback",
+      "planned_date": "2026-09-10",
+      "format": "image",
+      "asset_provenance": "typographic_card",
+      "assets": ["images/p3-payback.png"],
+      "is_offer": false,
+      "testing": "One card, built to be screenshotted and forwarded. Light theme against a dark grid, and the arithmetic deliberately left unfinished so the reader does it on their own number.",
+      "verified_figures": [],
+      "caption": "$400 once, divided by whatever your average ticket is.\n\nThat's the whole calculation. Do it on your own number rather than mine — I don't know what you charge, and any figure I put in that box would be invented.\n\nThere isn't a monthly one to add underneath it. No per-booking fee, no commission, no cut of what you take on a good week. The cost doesn't move when you're busy, and it doesn't come back next month.\n\nWork it out on your own ticket and you'll know more about whether this is worth doing than any pitch I could write.\n\n$400, GST included, once. Then nothing.\n\nDM me the word DIARY if the number came out lower than you expected.\n\n#salonowner #salonsoftware #melbournesalon #salonbusiness #hairstylist #bookingsystem #melbournehair #barbershop"
+    },
+    {
+      "id": "p4-cost",
+      "planned_date": "2026-09-11",
+      "format": "carousel",
+      "slides": 6,
+      "asset_provenance": "product_screenshot",
+      "assets": ["images/p4-01-cover.png", "images/p4-02-doublebooked.png", "images/p4-03-noshow.png", "images/p4-04-moved.png", "images/p4-05-drifted.png", "images/p4-06-cta.png"],
+      "is_offer": false,
+      "testing": "The carousel control against last week's three, so the format comparison has a like-for-like arm rather than only Reels.",
+      "verified_figures": [],
+      "caption": "Four things that'll go wrong in your diary this week. None of them dramatic — that's exactly why they keep happening.\n\nSomeone gets booked over. Two names, one chair, one o'clock, and one of them finds out when she walks in.\n\nSomeone doesn't turn up, and nobody reminded her.\n\nYou move a booking to make room and forget to say, so she arrives at one for an appointment that's now at half past.\n\nAnd a regular who used to come in every few weeks hasn't been for eight, and nobody noticed, because there's nowhere that would have told you.\n\nKairo answers all four. The diary cannot be double-booked. Reminders send themselves and every one gets logged. Move a booking and it stops to ask who to tell. And it builds the list of regulars who've quietly drifted, so you can send the message yourself.\n\n$400 once, GST included. Then nothing, every month.\n\nTell me what this week actually looked like and I'll show you the same week in Kairo. DM me the word DIARY.\n\n#salonowner #salonsoftware #melbournesalon #hairstylist #melbournehair #salonmanagement #barbershop #bookingsystem #salonbusiness"
+    }
+  ]
+}

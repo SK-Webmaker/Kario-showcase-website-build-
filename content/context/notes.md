@@ -9,6 +9,54 @@ nothing. Delete nothing; old blocks are the record of what was tried.
 
 ---
 
+## 2026-09-01 — Second /start run
+
+Operator asked for 3-4 posts built for **urgency and hype**, in whichever format
+gets the most views, one of them showing the system's key features on desktop
+and phone, design pushed harder. Also asked for an analysis of how the past
+posts have done.
+
+**Two conflicts, both flagged at the top of the handover.**
+
+*Hype vs the voice.* The voice rules say understated, because hype reads as
+doubt on an offer this unusual, and invariant 6 forbids manufactured scarcity.
+Built urgency from two honest sources instead: the reader's own calendar (count
+back three months from your busiest week) and the running cost of the current
+setup. Refused to invent spot counts, countdowns or deadlines — Reel 2's caption
+says out loud that there is no countdown, which on a warm account does more work
+than a fake one would. **If a real capacity limit exists, ask for the number.**
+
+*Analysis of past posts.* Not possible, and reported as such. No account access,
+and two of the three posts from last week had not reached their planned date.
+Also unknown whether post 1 went up at all — asked directly, because "not
+posted" and "posted and flopped" are different results.
+
+**Delivered:** two real MP4 Reels (1080x1920, h264, 25.6s and 16.4s), one
+light-theme single card, one six-slide carousel. Built `tools/render-reel.mjs` —
+frame-stepped animation encoded with a static ffmpeg, so a Reel is finished work
+rather than a shot list. Format is the one variable changed this week;
+everything else is held constant so the comparison means something.
+
+**Corrected my own advice from last week.** CLAUDE.md said a Creator account
+means trending chart audio is fine. It is not: Instagram's label deals cover
+personal and creator use, not commercial use, and Kairo is a business. Could not
+verify against Meta's own docs (help centre renders client-side), so it is
+recorded as the conservative reading. **Both Reels ship silent**, message on
+screen, works muted.
+
+**Narrowed a Critic rule, and wrote it down.** `\bsale\b` flagged "point of
+sale" in a good caption. The marker now excludes that phrase only; a discount
+"sale", "on sale" and "half price sale" all still fail, with regression tests
+for each. 41 tests passing. Narrowing a rule to be more precise is not the same
+as switching a check off, but it is still a decision, so it is in CLAUDE.md.
+
+**Structural finding:** step 5's "point at a specific working video" has failed
+twice because web search does not index individual Instagram posts. Recorded in
+CLAUDE.md. **Ask the operator to send links to Reels they have seen work** —
+they scroll Instagram, Gloss cannot.
+
+---
+
 ## 2026-08-28 — First /start run
 
 Operator asked for three posts: an introduction/infrastructure post, a

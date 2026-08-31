@@ -21,9 +21,9 @@ marketplace, not a directory.
   the work: lean on proof rather than explanation, keep the Melbourne
   specifics, and judge posts on **saves, shares and DMs**, never on follower
   growth, which at this size will look flat and mean nothing.
-- **Channel:** Instagram only. **Creator account**, so the trending chart audio
-  library is available — check in-app that a track shows for this account
-  before filming to it, because a muted post cannot be un-muted.
+- **Channel:** Instagram only. **Creator account.** The trending chart library
+  *appears* in the picker for Creator accounts — but see the audio note below
+  before using it. A muted or struck post cannot be un-muted.
 - **Nowhere to send anyone yet.** The website is not launched *(operator,
   2026-08-26: "i havent fully polished up the website yet")* and
   `src/site.config.ts` still carries the `hello@kairo.app` placeholder. Every
@@ -60,6 +60,28 @@ either the reader's own number or an invention; the Critic fails it.
 and accurate exactly as the site already writes it — no qualifier is needed in
 a caption, and nothing on the site needs fixing. If Kairo's GST position ever
 changes, this line and `PaybackCalculator.tsx` both need revisiting.
+
+---
+
+## Audio on Reels — corrected 2026-09-07
+
+The earlier note here said a Creator account means the trending chart library is
+available, so use it. **That was the wrong advice, and it is withdrawn.**
+
+Multiple independent secondary sources agree that Instagram's deals with labels
+cover *personal and creator* use, not commercial use, and that business accounts
+get the smaller commercially-cleared Meta Sound Collection instead. Kairo is a
+business promoting software. Switching account type changes which tracks the
+picker *offers*; it does not grant a commercial licence for them.
+
+**I could not verify this against Meta's own documentation** — the Instagram
+help centre renders client-side and did not return content. So this is not
+certain, and it is written here as the conservative reading rather than a fact.
+
+**What to actually do:** use the commercially-cleared sound collection in the
+app, or post silent with on-screen text. The downside is asymmetric — a slightly
+less fashionable track costs a little reach, and a muted or struck post costs
+the whole thing. Revisit if the operator gets a straight answer from Meta.
 
 ---
 
@@ -172,8 +194,19 @@ Each of these has cost somebody something.
   Replaced by a payback calculator that only divides Kairo's own $400 by the
   visitor's own average ticket. *(Pre-Gloss; carried forward because the lesson
   is the same one invariant 8 protects.)*
-- **Nothing rejected by Gloss yet.** No run has happened. Every format below is
-  untested against this account.
+- **Nothing rejected by Gloss on performance yet.** Two packs authored, none
+  scored, because the account is still unread. No format has earned or lost its
+  place.
+
+### Rule changes, and why
+
+- **2026-09-07 — the Critic's discount rule was narrowed, not loosened.**
+  `\bsale\b` flagged "point of sale", which is a feature of the product, in an
+  otherwise clean caption. The marker now excludes that one phrase and nothing
+  else: a discount "sale", "on sale" and "half price sale" all still fail, with
+  regression tests for each. This is the distinction that matters — a rule
+  becomes *more* precise, and the decision gets written down here. Switching the
+  check off, or dropping "sale" from the list, would have been the other thing.
 
 ---
 
@@ -203,7 +236,7 @@ conversation, not by email).
 | `CLAUDE.md` | this file — working memory |
 | `config/brand.json` | prices, voice rules, hashtags, palette, provenance rules |
 | `tools/critic.mjs` | the linter every caption passes; `npm run critic <file>` |
-| `tools/critic.test.mjs` | its tests; `npm run critic:test` — 38 cases |
+| `tools/critic.test.mjs` | its tests; `npm run critic:test` — 41 cases |
 | `content/context/notes.md` | what the operator says; read first, every run |
 | `content/memory/*.json` | one dated snapshot per week |
 | `content/packs/<date>/` | the finished week — captions, images, handover |
@@ -214,6 +247,15 @@ conversation, not by email).
 its own copyable block, and it still writes `HANDOVER.md` to the pack — because
 a pack that scrolls away has the same failure shape as a pack in a folder
 nobody opens.
+
+**Do not spend searches trying to find a specific Instagram Reel to copy.**
+Step 5 of `/start` asks for one, and it has failed twice (2026-08-28,
+2026-09-07) for a structural reason: web search does not usefully index
+individual Instagram posts. Four query shapes returned only SEO listicles and
+vendor pages. The way out is the operator sending two or three links to Reels
+they have actually seen work — they scroll Instagram, Gloss cannot. Until then,
+verify platform mechanics from primary sources instead, and say the video
+example is missing rather than dressing a listicle up as one.
 
 **Run the Critic's tests after touching `brand.json`.** The voice rules are
 regex inputs; a stray entry can silently start flagging good copy, and a linter

@@ -12,12 +12,19 @@ import { execSync } from "node:child_process";
 
 const dir = resolve(process.argv[2]);
 const cols = Number(process.argv[3] ?? 5);
+// Cell height follows the source aspect: 4:5 slides and 9:16 reel frames both
+// have to tile without being squashed into the wrong shape.
+const cellH = Number(process.argv[4] ?? 375);
 const { chromium } = createRequire(join(execSync("npm root -g").toString().trim(), "x.js"))("playwright");
 
-const files = readdirSync(dir).filter((f) => f.endsWith(".png") && f !== "_contact-sheet.png").sort();
+const files = readdirSync(dir)
+  .filter((f) => /\.(png|jpe?g)$/i.test(f) && !f.startsWith("_contact-sheet"))
+  .sort();
+if (!files.length) { console.error(`contact-sheet: no images in ${dir}`); process.exit(2); }
 const cells = files.map((f) => {
   const b64 = readFileSync(join(dir, f)).toString("base64");
-  return `<figure><img src="data:image/png;base64,${b64}"><figcaption>${f.replace(".png", "")}</figcaption></figure>`;
+  const mime = /\.png$/i.test(f) ? "image/png" : "image/jpeg";
+  return `<figure><img src="data:${mime};base64,${b64}"><figcaption>${f.replace(/\.(png|jpe?g)$/i, "")}</figcaption></figure>`;
 }).join("");
 
 const W = cols * 300 + (cols + 1) * 16;
@@ -25,7 +32,7 @@ const html = `<!doctype html><meta charset="utf-8"><style>
   body{margin:0;background:#20242c;padding:16px;font:11px ui-monospace,monospace;color:#cfd6e2}
   .g{display:grid;grid-template-columns:repeat(${cols},300px);gap:16px}
   figure{margin:0}
-  img{width:300px;height:375px;display:block;border:1px solid #3a4150}
+  img{width:300px;height:${cellH}px;display:block;object-fit:contain;background:#0A0E17;border:1px solid #3a4150}
   figcaption{padding:5px 2px 0;color:#8b93a3}
 </style><div class="g">${cells}</div>`;
 
