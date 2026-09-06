@@ -62,7 +62,7 @@ async function main() {
     await pg.evaluate((t) => window.setFrame(t), i / fps);
     await stage.screenshot({
       path: join(frameDir, `f${String(i).padStart(5, "0")}.jpg`),
-      type: "jpeg", quality: 90,
+      type: "jpeg", quality: 96,
     });
     if (i % 90 === 0) process.stdout.write(`\r    frame ${i}/${total}`);
   }
@@ -74,7 +74,10 @@ async function main() {
     "-y", "-loglevel", "error",
     "-framerate", String(fps),
     "-i", join(frameDir, "f%05d.jpg"),
-    "-c:v", "libx264", "-preset", "slow", "-crf", "19",
+    // A light unsharp only recovers the edge h264 takes off; it invents
+    // nothing. Kept mild because product UI shows ringing before photos do.
+    "-vf", "unsharp=5:5:0.5:5:5:0.0",
+    "-c:v", "libx264", "-preset", "slow", "-crf", "17",
     "-pix_fmt", "yuv420p",
     // Instagram re-encodes; an even-dimension, faststart file survives it best.
     "-movflags", "+faststart",

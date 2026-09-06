@@ -63,6 +63,28 @@ changes, this line and `PaybackCalculator.tsx` both need revisiting.
 
 ---
 
+## Resolution — corrected 2026-09-06
+
+The operator said the software screenshots looked low resolution. They were
+right, and it was measurable: **every product frame had shipped between 1.5x and
+2.7x upsampled.**
+
+Source frames in `public/screenshots/` are **1240x775 JPEGs** — a hard ceiling.
+Two things were spending it: cards rendered at `deviceScaleFactor: 2` (a 1080
+canvas exported at 2160px, when Instagram serves at 1080 — doubling the stretch
+for nothing), and crops cut tight then displayed wide.
+
+**The rule: show more of the screen slightly smaller, rather than less of it
+blown up.** Everything now renders at native delivery size, and every crop goes
+through `tools/media.mjs`, which declares its display width and prints the
+magnification. Anything over 1.35x gets flagged. This week's frames run
+0.97x-1.30x.
+
+**The real ceiling lift is an operator task:** re-export the screenshots at 2x
+device pixel ratio (2480x1550). It is in the open questions.
+
+---
+
 ## Audio on Reels — corrected 2026-09-07
 
 The earlier note here said a Creator account means the trending chart library is
@@ -215,6 +237,10 @@ Each of these has cost somebody something.
 Six were asked on 2026-08-26. Four are answered and recorded above; two remain,
 and the first blocks everything.
 
+0. **Higher-resolution product screenshots.** Re-export `public/screenshots/`
+   at 2x device pixel ratio. The current 1240x775 frames are the ceiling on how
+   sharp any post can look, and every design decision is currently working
+   around them.
 1. **The Instagram handle.** Still unknown. Without it there is no account to
    read, with or without a token. This is the single hardest blocker, and it is
    the reason every number in `content/memory/` is still null.
@@ -240,6 +266,12 @@ conversation, not by email).
 | `content/context/notes.md` | what the operator says; read first, every run |
 | `content/memory/*.json` | one dated snapshot per week |
 | `content/packs/<date>/` | the finished week — captions, images, handover |
+| `tools/media.mjs` | product-frame crops + the magnification auditor |
+| `tools/render-cards.mjs` | HTML → 1080x1350 PNG slides |
+| `tools/render-reel.mjs` | HTML → 1080x1920 h264 MP4 |
+| `tools/reel-lib.mjs` | easing, cinematic transitions, reel chrome |
+| `tools/contact-sheet.mjs` | tiles a week into one image for review |
+| `AGENTS.md` | the full capability handbook — how the work is actually done |
 | `.claude/commands/` | `/start`, `/send`, `/ads` |
 
 **Handover is in the conversation, not by email** *(operator, 2026-08-26)*.

@@ -9,6 +9,48 @@ nothing. Delete nothing; old blocks are the record of what was tried.
 
 ---
 
+## 2026-09-06 — Third /start run
+
+**Operator says every post handed over so far has gone up.** That is the first
+attribution information this system has had, and it matters: seven posts are
+live, so the experiments ran. What did not arrive is any number. Still no
+handle, still no credential.
+
+**The operator asked for a review of views, engagement and follows. It could not
+be done, and that was said at the top rather than dressed up.** There is no
+access; fabricating an analysis would poison every decision built on it.
+
+**They were right about the screenshots.** Reported that the software looked low
+resolution. Measured it: every product frame had shipped 1.5x to 2.7x upsampled.
+Two causes — cards rendering at deviceScaleFactor 2 (2160px export when
+Instagram serves 1080, doubling the stretch for nothing) and crops cut tight
+then displayed wide. Both fixed. `tools/media.mjs` now audits every crop and
+flags anything over 1.35x; this week runs 0.97x-1.30x. **The real ceiling is the
+1240x775 source frames — ask for a 2x re-export.**
+
+**Wanted: more reels, cinematic, aesthetic transitions, hooking.** Built
+`tools/reel-lib.mjs` — a real cubic-bezier solver on the site's own curve
+(.66,0,.01,1), plus dolly push-in, rack focus, whip pan with motion blur,
+parallax depth, light sweep, letterbox bars and kinetic type stagger. Three
+reels this week rather than two.
+
+**Format experiment is properly paired now.** Two subjects, each as a Reel and
+as a still: breadth (Reel B vs the seven-slide carousel) and the notify moment
+(Reel A vs the single card). Last week mixed formats *and* messages, so nothing
+could be attributed. This can be.
+
+**Caught the GST 8.5% frame twice more.** A widened POS crop silently
+re-exposed the tax row in both the carousel and Reel B. Both now stop at
+`ch: 232`. This is the third time; it is now written into `AGENTS.md` as a
+standing hazard with the exact crop box.
+
+**Wrote `AGENTS.md`** — the capability handbook the operator asked for, so
+Codex can run this work. Everything: tools, crop boxes, the magnification rule,
+the design tokens, the invariants, reel craft, and a corrections log of what
+this system has got wrong and fixed.
+
+---
+
 ## 2026-09-01 — Second /start run
 
 Operator asked for 3-4 posts built for **urgency and hype**, in whichever format

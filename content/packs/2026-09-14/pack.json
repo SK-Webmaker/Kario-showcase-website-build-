@@ -1,0 +1,66 @@
+{
+  "week_of": "2026-09-14",
+  "_note": "Paired design: two subjects, each run as a Reel AND as a still. Breadth = Reel B vs Carousel c1. The notify moment = Reel A vs Single s2. That isolates format from message, which last week's mix could not.",
+  "_schedule_note": "The 2026-09-07 pack occupies 7-11 September. If those went out early, this pack can start on the 7th instead — nothing in these captions is tied to a date.",
+  "posts": [
+    {
+      "id": "r-b-thursday",
+      "planned_date": "2026-09-14",
+      "format": "reel",
+      "asset_provenance": "product_screenshot",
+      "assets": ["video/reel-b-thursday.mp4"],
+      "duration_s": 23.2,
+      "is_offer": false,
+      "testing": "Breadth as a Reel. Paired with the Tuesday carousel, which carries the same message as stills — the difference between them is format and nothing else.",
+      "verified_figures": [],
+      "caption": "7:04am. Nobody's in yet, and the day is already answered.\n\nThis is one Thursday in a salon that runs on Kairo, start to finish.\n\nTwelve booked, four done, two hours still free — and who's in the chair right now. A column per person in the diary, so it cannot be double-booked. Somebody moves an appointment at 11:40 and it stops to ask who to tell. A walk-in pays at 1:15 without a second app. She books herself in at 6:40, after you've locked up. And at 9:15 you check the whole thing from the couch, on your phone.\n\nOne login. That's the day.\n\n$400 once, GST included. Then nothing, every month. No subscription, no per-booking fee, no commission.\n\nDM me the word DIARY and I'll walk you through your own Thursday.\n\n#salonowner #salonsoftware #melbournesalon #hairstylist #melbournehair #bookingsystem #salonbusiness #barbershop #salonmanagement"
+    },
+    {
+      "id": "c1-six-screens",
+      "planned_date": "2026-09-15",
+      "format": "carousel",
+      "slides": 7,
+      "asset_provenance": "product_screenshot",
+      "assets": ["images/c1-01-cover.png", "images/c1-02-the-morning.png", "images/c1-03-the-diary.png", "images/c1-04-the-client-book.png", "images/c1-05-getting-paid.png", "images/c1-06-the-messages.png", "images/c1-07-cta.png"],
+      "is_offer": false,
+      "testing": "The still arm of the breadth pair. Same six screens as Monday's Reel, same claims, no motion.",
+      "verified_figures": [],
+      "caption": "Six screens. One login. No tabs.\n\nThis is the actual software, not a mock-up. Swipe through the six screens a salon actually lives in.\n\nThe morning view that answers the day before you've asked it. The diary with a column per person, which cannot be double-booked. A client record holding every visit, every invoice and the note you typed in June. Point of sale that goes chair to bank without a second app. A message log where confirmations and reminders send themselves and nothing fails silently. And the same full workspace on your phone, installed from the browser with no app store.\n\nThat's the whole thing. There's no tier hiding the useful half, and no add-on that costs more than the software.\n\n$400 once, GST included. Then nothing, every month.\n\nTell me which of these six you'd use first. DM me the word DIARY.\n\n#salonowner #salonsoftware #melbournesalon #salonmanagement #hairstylist #melbournehair #barbershop #bookingsystem"
+    },
+    {
+      "id": "r-a-notify",
+      "planned_date": "2026-09-16",
+      "format": "reel",
+      "asset_provenance": "product_screenshot",
+      "assets": ["video/reel-a-notify.mp4"],
+      "duration_s": 19.4,
+      "is_offer": false,
+      "testing": "Depth on one feature as a Reel, with the problem on screen inside one second and no build-up. Paired with Thursday's single card, which makes the same point as a screenshot.",
+      "verified_figures": [],
+      "caption": "She's turning up at one. You moved it to half past, three hours ago.\n\nEvery other diary just… moves it. No prompt, no record, and nothing that tells you a week later whether anybody was actually told.\n\nKairo stops and asks one question: email her, text her, both, or nothing. Only the channels she can actually receive, each showing the real address or number. Then fifteen seconds to undo it, with the message held back two minutes so undo actually undoes.\n\nIt's a small thing, and it costs you an empty chair and an awkward conversation every time it goes wrong.\n\n$400 once, GST included. Then nothing, every month.\n\nDM me the word DIARY.\n\n#salonowner #salonsoftware #melbournehair #hairstylist #melbournesalon #barbershop #salonbusiness #bookingsystem"
+    },
+    {
+      "id": "s2-moves-it",
+      "planned_date": "2026-09-17",
+      "format": "image",
+      "asset_provenance": "product_screenshot",
+      "assets": ["images/s2-moves-it.png"],
+      "is_offer": false,
+      "testing": "The still arm of the notify pair, and the only light-theme post of the week. Built to be screenshotted and forwarded rather than watched.",
+      "verified_figures": [],
+      "caption": "Every other diary just… moves it.\n\nThat's the whole difference, and it's the one I'd want you to screenshot.\n\nMove an appointment in Kairo and it stops to ask: email her, text her, both, or nothing. Only the channels she can actually receive, each showing the real address or number. Then fifteen seconds to undo.\n\nNo silent changes. No working out later whether anyone was told. No client standing at the door at one o'clock for something that's now at half past.\n\n$400 once, GST included. Then nothing, every month.\n\nDM me the word DIARY.\n\n#salonowner #salonsoftware #melbournesalon #hairstylist #bookingsystem #melbournehair #salonbusiness #barbershop"
+    },
+    {
+      "id": "r-c-why",
+      "planned_date": "2026-09-18",
+      "format": "reel",
+      "asset_provenance": "product_screenshot",
+      "assets": ["video/reel-c-why.mp4"],
+      "duration_s": 18.6,
+      "is_offer": false,
+      "testing": "The closer. A direct-question hook and four objections answered at speed, to see whether an objection reel produces DMs where a feature reel produces views.",
+      "verified_figures": [],
+      "caption": "So why haven't you got it yet?\n\nFour reasons people give me, and what I say back.\n\nToo expensive. It's $400, once, GST included. No subscription, no per-booking fee, no cut of what you charge on a good week.\n\nToo much hassle. Ten minutes on the phone, then your hours, your team, your menu and your client list get moved across on my side. You open it on the floor when you're ready.\n\nNever heard of it. Fair. A Melbourne salon has run its bookings, payments and customer emails on it since day one, and every screen in these posts is that same system.\n\nAlready got something. Then you already know what it costs you every month. This one costs nothing every month, because there isn't a monthly one.\n\nNo trial that expires. No catch. DM me the word DIARY and ask me the awkward version of the question.\n\n#salonowner #salonsoftware #melbournesalon #melbournehair #hairstylist #barbershop #salonbusiness #bookingsystem #salonmanagement"
+    }
+  ]
+}

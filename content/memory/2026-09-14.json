@@ -1,0 +1,102 @@
+{
+  "week_of": "2026-09-14",
+  "captured_at": "2026-09-06",
+  "source": "operator_statement_only",
+  "_status": "Third produced pack. The operator states all previously handed-over posts have been published. That is real information and it changes the attribution status below from unknown to published. It does NOT provide any numbers: there is still no handle and no credential, so views, engagement and follower counts remain unmeasured. Operator statement is not measurement.",
+
+  "account": {
+    "handle": null, "account_type": "creator",
+    "followers": null, "follower_change_7d": null, "reach_7d": null,
+    "profile_visits_7d": null, "link_clicks_7d": null, "avg_engagement_rate": null,
+    "_note": "The operator asked for a review of views, engagement and follows. It could not be done — see conflicts_flagged."
+  },
+
+  "format_split": {
+    "_comment": "Kairo's own split is STILL unmeasured after seven published posts. The operator's prior-account figures (video 8.11% over 22 posts, image 1.11% over 3) remain a prior from a different account.",
+    "video": { "avg_engagement_rate": null, "posts": null },
+    "image": { "avg_engagement_rate": null, "posts": null },
+    "carousel": { "avg_engagement_rate": null, "posts": null }
+  },
+
+  "authored_previously": [
+    { "post_id": "p1-intro", "pack": "2026-08-31", "format": "carousel", "status": "published", "engagement": null },
+    { "post_id": "p2-why", "pack": "2026-08-31", "format": "carousel", "status": "published", "engagement": null },
+    { "post_id": "p3-catch", "pack": "2026-08-31", "format": "carousel", "status": "published", "engagement": null },
+    { "post_id": "r1-features", "pack": "2026-09-07", "format": "reel", "status": "published_per_operator", "engagement": null },
+    { "post_id": "r2-timing", "pack": "2026-09-07", "format": "reel", "status": "published_per_operator", "engagement": null },
+    { "post_id": "s3-payback", "pack": "2026-09-07", "format": "image", "status": "published_per_operator", "engagement": null },
+    { "post_id": "p4-cost", "pack": "2026-09-07", "format": "carousel", "status": "published_per_operator", "engagement": null }
+  ],
+  "_attribution_note": "The 2026-09-07 pack was scheduled for 7-11 September and this run happened on the 6th. The operator says everything is posted, so those four appear to have gone out early. Recorded as published_per_operator rather than published, because the distinction between what was said and what was read is the whole point of invariant 7.",
+
+  "authored_this_week": [
+    { "post_id": "r-b-thursday", "planned_date": "2026-09-14", "format": "reel", "duration_s": 23.2, "status": "handed_over" },
+    { "post_id": "c1-six-screens", "planned_date": "2026-09-15", "format": "carousel", "slides": 7, "status": "handed_over" },
+    { "post_id": "r-a-notify", "planned_date": "2026-09-16", "format": "reel", "duration_s": 19.4, "status": "handed_over" },
+    { "post_id": "s2-moves-it", "planned_date": "2026-09-17", "format": "image", "status": "handed_over" },
+    { "post_id": "r-c-why", "planned_date": "2026-09-18", "format": "reel", "duration_s": 18.6, "status": "handed_over" }
+  ],
+
+  "prediction_scored": {
+    "predicted": "Two Reels to out-reach four carousels; the payback card most-saved; at least one DM containing DIARY.",
+    "held": "unmeasured",
+    "why": "Cannot be scored. Seven posts are now live and not one number has been read. This is the second consecutive week a prediction has gone unscored, and the cause is the same both times. The loop is producing but not compounding."
+  },
+
+  "operator_said": [
+    "All the posts have been posted.",
+    "Asked for a review of views, engagement and follows.",
+    "The software screenshots looked low resolution in the posts and need improving.",
+    "Likes the posts made so far; wants at least 2-3 of that kind again.",
+    "Wants more Reels, and is most excited about them. Liked the first two. Wants very aesthetic, engaging, hooking transitions and a cinematic feel, well made and edited.",
+    "Wants reels to give valuable insight into the booking system and lead viewers to ask why they haven't got Kairo yet.",
+    "Asked for an MD file that gives Codex the same or better ability to do this work."
+  ],
+
+  "conflicts_flagged": [
+    {
+      "conflict": "The operator asked for a review of views, engagement and follows on the published posts.",
+      "resolved": "Impossible and reported as such at the top of the handover. There is no Instagram access — no handle, no credential — so no figure exists to review. Fabricating an analysis would be the single most damaging thing this system could do, because every future decision would be built on it. Asked instead for either the credential or a screenshot of Insights."
+    }
+  ],
+
+  "research_findings": [
+    {
+      "finding": "The screenshots really were soft, and it was measurable: every product frame shipped between 1.5x and 2.7x upsampled.",
+      "source": "Direct measurement of shipped crops against the 1240x775 source frames.",
+      "checked": "2026-09-06",
+      "consequence": "Two causes. Cards rendered at deviceScaleFactor 2, exporting a 1080 canvas at 2160px when Instagram serves at 1080 — doubling the stretch for nothing. And crops cut tight then displayed wide. Fixed both: everything now renders at native delivery size, and tools/media.mjs audits every crop's magnification and flags anything over 1.35x. This week's frames are 0.97x-1.30x."
+    },
+    {
+      "finding": "Reel craft: the decision to keep watching happens in about a second; a slow build-up is the most common way to lose it; curiosity-gap and pattern-interrupt openings outperform bold claims; one idea per reel beats a tour.",
+      "source": "Aggregated secondary sources, 2026-09-06. The technique is well established and consistent across sources; the engagement percentages quoted alongside it do not resolve to primary sources.",
+      "checked": "2026-09-06",
+      "consequence": "Technique applied to all three reels — problem on screen inside one second, no title cards. None of the percentages are quoted anywhere in the pack."
+    },
+    {
+      "finding": "Cinematic vocabulary that works on static UI: dolly push-in, parallax, rack focus, whip pan with motion blur, light sweep, letterbox, kinetic type stagger.",
+      "source": "Craft references, 2026-09-06.",
+      "checked": "2026-09-06",
+      "consequence": "Built into tools/reel-lib.mjs as transition kinds, driven by a real cubic-bezier solver on the site's own curve so the video moves like the website."
+    }
+  ],
+
+  "experiment": {
+    "testing": "FORMAT, isolated properly this time. Two subjects, each produced as a Reel AND as a still: breadth (Reel B vs the seven-slide carousel) and the notify moment (Reel A vs the single card). Same claims, same voice, same price, same call to action within each pair.",
+    "why_this_is_better": "Last week mixed formats but also mixed messages, so a difference could not be attributed. A paired design can be.",
+    "result": "unmeasured until the account can be read"
+  },
+
+  "next_prediction": {
+    "_honesty": "Targets, not forecasts. Still no baseline.",
+    "targets": {
+      "reach": "Within each pair, the Reel should out-reach the still. If it does not, the video prior does not transfer to this account and the strategy should stop assuming it does.",
+      "saves": "The light single card should out-save its Reel, because it is the only artefact built to be screenshotted rather than watched.",
+      "dms": "At least one DM containing DIARY across twelve live posts. If twelve posts produce none, the CTA is the problem and it should change before the creative does.",
+      "followers": "No target."
+    },
+    "one_thing_to_change": "Nothing in the creative. The change that matters is upstream and has been the same for three weeks: the handle and the credential.",
+    "sets_up": "A real format answer, the first one this account would have. If the pairs come back measured, next week runs a variant of the winning format and retires the loser out loud.",
+    "explicit_risk": "Twelve posts will be live with nothing read. Three weeks of predictions are now unscored. At some point 'produced but never measured' stops being a data problem and becomes a reason to change how the work is prioritised."
+  }
+}

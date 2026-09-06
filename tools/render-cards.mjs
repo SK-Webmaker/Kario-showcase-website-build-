@@ -183,9 +183,13 @@ async function main() {
 
   const fonts = fontFace();
   const browser = await chromium.launch({ args: ["--font-render-hinting=none"] });
+  // deviceScaleFactor 1, on purpose. Instagram serves feed images at 1080px
+  // wide, so exporting at 2160 bought nothing and doubled how far every 1240px
+  // product screenshot had to be stretched. Rendering at native delivery size
+  // is the single biggest thing that made the software look sharp again.
   const ctx = await browser.newContext({
     viewport: { width: W, height: H },
-    deviceScaleFactor: 2,
+    deviceScaleFactor: 1,
   });
   const pg = await ctx.newPage();
 
