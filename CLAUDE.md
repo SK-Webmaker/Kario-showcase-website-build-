@@ -222,6 +222,15 @@ Each of these has cost somebody something.
 
 ### Rule changes, and why
 
+- **2026-09-06 — two more narrowings, and one extension.** (a) A dollar figure
+  that is not Kairo's own price now passes *only* if the post declares it in
+  `verified_figures` with a source — same terms as a percentage. That let a
+  cited industry figure through without weakening "never quote a price from
+  memory": an undeclared or unsourced amount still fails, with tests for both.
+  (b) The contraction rule no longer fires when the phrase is sentence-final,
+  because "A number only you have." cannot become "you've" and "of course it
+  is." cannot become "it's" — an auxiliary is never sentence-final. Auxiliary
+  uses are still caught. 48 tests.
 - **2026-09-07 — the Critic's discount rule was narrowed, not loosened.**
   `\bsale\b` flagged "point of sale", which is a feature of the product, in an
   otherwise clean caption. The marker now excludes that one phrase and nothing
@@ -229,6 +238,29 @@ Each of these has cost somebody something.
   regression tests for each. This is the distinction that matters — a rule
   becomes *more* precise, and the decision gets written down here. Switching the
   check off, or dropping "sale" from the list, would have been the other thing.
+
+---
+
+## Market statistics — what is and is not available
+
+Asked on 2026-09-06 for facts on what Melbourne salons lose to poor booking
+systems. **That figure does not exist in citable form.** Every salon no-show
+number findable online comes from a company selling booking software — they
+disagree with each other (5-15%, 14%, 15%, 23%), none is Melbourne-specific,
+and none traces to a primary source. Kairo is itself a booking vendor, so
+repeating another vendor's self-serving number is the fastest way to lose a
+reader who checks.
+
+**What is verified and usable** (read off the page, not a search summary):
+IBISWorld puts Australian Hairdressing & Beauty Services at **$12.5bn in 2026**,
+**down 0.9%** that year, having grown at a **1.8% CAGR since 2021**.
+<https://www.ibisworld.com/australia/market-size/hairdressing-and-beauty-services/677/>
+National, not Melbourne — say "Australia".
+
+**The move that replaces a fabricated statistic:** give the reader the
+arithmetic and let them fill in their own numbers, and say out loud why you are
+not quoting one. On an account selling booking software, refusing to cite a
+booking-vendor statistic is itself the credibility play.
 
 ---
 
@@ -262,7 +294,7 @@ conversation, not by email).
 | `CLAUDE.md` | this file — working memory |
 | `config/brand.json` | prices, voice rules, hashtags, palette, provenance rules |
 | `tools/critic.mjs` | the linter every caption passes; `npm run critic <file>` |
-| `tools/critic.test.mjs` | its tests; `npm run critic:test` — 41 cases |
+| `tools/critic.test.mjs` | its tests; `npm run critic:test` — 48 cases |
 | `content/context/notes.md` | what the operator says; read first, every run |
 | `content/memory/*.json` | one dated snapshot per week |
 | `content/packs/<date>/` | the finished week — captions, images, handover |

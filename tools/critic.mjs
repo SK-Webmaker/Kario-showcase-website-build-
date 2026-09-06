@@ -209,11 +209,18 @@ function lintCaption(caption, post, brand, findings) {
   if (voice.contractions?.enforce) {
     for (const phrase of voice.contractions.expansions_to_reject ?? []) {
       const re = phraseRe(phrase);
-      const m = re.exec(caption);
-      if (m) {
+      let m;
+      while ((m = re.exec(caption))) {
+        // A contraction is only available when the phrase is doing auxiliary
+        // work, and an auxiliary is never sentence-final. "A number only you
+        // have." cannot become "you've", and "of course it is." cannot become
+        // "it's". Skip those rather than demand an ungrammatical rewrite.
+        const after = caption.slice(m.index + m[0].length);
+        if (/^\s*(?:[.!?…,;:)"'\u2019\u201d]|$)/.test(after)) continue;
         add("error", "NO-CONTRACTION",
           `"${m[0]}" is written, not spoken. Contract it. (This is the exact thing that made week one's tone feel off.)`,
           m.index);
+        break;
       }
     }
   }
@@ -238,8 +245,18 @@ function lintCaption(caption, post, brand, findings) {
     const value = Number(m[1].replace(/,/g, ""));
     const price = known.get(value);
     if (!price) {
+      // A dollar figure that is not Kairo's own price can still be legitimate —
+      // a sourced third-party fact, say an industry market size. It passes only
+      // on the same terms as a percentage: declared in this post's
+      // verified_figures with a source. Everything else is still refused, so
+      // "never quote a price from memory" holds exactly as before.
+      const declaredMoney = (post.verified_figures ?? []).some((f) => {
+        const v = String(f.value).trim().replace(/^\$/, "").replace(/,/g, "");
+        return f.source && (v === m[1].replace(/,/g, "") || String(f.value).trim() === m[0].trim());
+      });
+      if (declaredMoney) continue;
       add("error", "PRICE-UNKNOWN",
-        `$${m[1]} is not a price in config/brand.json. The only figures this business asserts are ${[...known.keys()].map((v) => "$" + v).join(" and ")}. Never quote a price from memory.`,
+        `$${m[1]} is not a price in config/brand.json and is not declared in this post's verified_figures with a source. Kairo's own figures are ${[...known.keys()].map((v) => "$" + v).join(" and ")}. Never quote a figure from memory.`,
         m.index);
       continue;
     }

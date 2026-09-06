@@ -1,87 +1,72 @@
 # Handover — week of 14 September 2026
 
-**Five posts: three Reels, one seven-slide carousel, one single card.** All
-captions passed the Critic clean.
+**Seven days. Three Reels, two carousels, two single cards.** All captions passed
+the Critic clean (48 tests).
 
 ---
 
-## First, the thing you asked for that I could not do
+## The thing you asked for that does not exist
 
-**You asked me to look over the views, engagement and follows. I can't. There is
-still no Instagram access — no handle, no credential — so there is no number for
-me to look at.**
+You asked for facts on **what Melbourne salons and barbers lose on average to
+poor booking systems.** I went looking properly. **That number does not exist in
+any citable form, and I'm not going to make one up.**
 
-I'm not going to estimate it. An invented baseline would quietly poison every
-decision after it, and the whole point of the memory files is that next week can
-score this week honestly.
+Here's exactly what's out there. Every salon no-show figure I could find comes
+from a company selling booking software — Etisia, Boulevard, Bookeo, Bella
+Booking, Lutily. They don't agree with each other: 5–15%, 14%, 15%, 23%. None is
+Melbourne-specific. None traces back to a primary source.
 
-**Two ways to unblock it, either is fine:**
-- Send the handle and set up read access, or
-- Open Insights, screenshot the last 7 posts, and paste them in. I'll do the
-  analysis off screenshots — it works, it's just manual.
+**And Kairo sells booking software.** So if I put "salons lose 15% to no-shows"
+on a slide, I'd be quoting a rival vendor's marketing number to sell my own
+product. The first salon owner who googles it finds the same mess I did, and
+everything else on the page becomes suspect.
 
-What your message *did* give me is genuinely useful: **all seven posts went up.**
-That converts them from "unknown" to "published" in the record. The experiments
-ran. Only the measurement is missing.
+**What I did instead — and I think it's a better post than the one you asked
+for:**
 
----
+1. **One figure I actually verified**, read off the page rather than a search
+   summary. IBISWorld: Australian hairdressing and beauty is **$12.5bn in 2026**,
+   **down 0.9%** this year, **1.8% average growth since 2021**. Cited on the
+   slide itself. It's national, not Melbourne — the copy says Australia.
+   It also carries a real strategic point: in a market that isn't growing, you
+   don't win by adding clients, you win by not leaking the ones you have. That's
+   precisely what a booking system touches.
+2. **Arithmetic the reader finishes themselves.** Empty chairs last week × your
+   average ticket × 50 weeks. Their number, not mine.
+3. **A caption that says out loud why there's no percentage**, and names Kairo's
+   own conflict of interest while doing it.
 
-## You were right about the screenshots, and here is the number
-
-They really were soft. I measured it: **every product frame shipped between 1.5×
-and 2.7× upsampled.** Two causes, both mine:
-
-1. **Cards rendered at 2× (2160px) when Instagram serves at 1080.** The extra
-   pixels bought nothing and doubled how far each screenshot had to stretch.
-2. **Crops cut tight, then displayed wide.** A 432px modal shown across 952px is
-   a 2.2× blow-up. No encoder rescues that.
-
-**Fixed both.** Everything now renders at native delivery size, and every crop
-goes through an auditor that prints its magnification and flags anything over
-1.35×. This week's frames run **0.97× to 1.30×** — here's the actual output:
-
-```
-[warn] 1.30x   432px ->  560px  notify modal (the one frame worth stretching)
-[warn] 1.04x   900px ->  936px  client profile
-[ok  ] 0.99x   958px ->  952px  dashboard / pos / messages
-[ok  ] 0.97x   960px ->  936px  calendar
-[ok  ] 0.98x   460px ->  452px  phone
-```
-
-The design rule that came out of it: **show more of the screen slightly smaller,
-rather than less of it blown up.**
-
-**The ceiling is yours to lift.** The source files in `public/screenshots/` are
-1240×775. That is the hard limit on how sharp any post can ever look.
-**Re-export them at 2× (2480×1550) and every future post gets sharper for free.**
-It's the single highest-value thing you could send me.
+That last move is the most interesting thing in this pack. On an account selling
+booking software, **refusing to cite a booking-software statistic is itself the
+credibility play** — and it's the only thing in three weeks that tests
+transparency as the persuasive mechanism. It's flagged as this week's second
+experiment.
 
 ---
 
-## The Reels
+## The Reels — 9:16 and cinematic
 
-You said these are what you're most excited about, so they got the most work.
+**Safe area, corrected.** Instagram covers the top ~110px (Reels label), the
+bottom ~380px (caption, handle, audio) and a ~180px action rail down the right.
+Content now sits between **14% and 57% of frame height**, with body copy capped
+at 26 characters wide so nothing slides under the buttons. The empty lower third
+isn't dead space — it's where Instagram puts your caption.
 
-I built a proper motion engine for them (`tools/reel-lib.mjs`) rather than
-tweening opacity. It uses a real cubic-bezier solver running **the website's own
-easing curve** — `cubic-bezier(.66,0,.01,1)`, slow to leave, fast through the
-middle, long settle — so the video moves like the site moves. On top of that:
+**Cinematic layers added since the last version:**
 
-- **Dolly push-in** — the frame arrives from below and settles, with motion blur
-  that clears as it lands
-- **Rack focus** — scenes open out of focus and pull sharp
-- **Whip pan** — hard horizontal cuts, heavily blurred, for the objection reel
-- **Parallax** — the blueprint grid drifts slower than the content
-- **Light sweep** — a specular pass across each product frame
-- **Letterbox bars** that open at the top of the film and close at the end
-- **Kinetic type** — lines arrive in sequence, not as a block
-- **Vignette** — the cheapest thing that reads as filmed rather than exported
+- **Film grain** — a real noise tile, re-offset every frame from a fixed
+  sequence. It's the cheapest thing that stops a rendered frame looking rendered.
+- **Colour grade** — soft-light pass, cool lift in the highlights, weight in the
+  shadows.
+- **Light leak** — a blue flare that blooms across every cut and is gone before
+  it registers.
+- **Longer, more languid arrivals** — the ease-in went from 0.52s to 0.62s, so
+  scenes settle rather than snap.
+- Plus what was already there: dolly push-in with motion blur that clears on
+  landing, rack focus, whip pans, parallax, specular sweep, letterbox, vignette.
 
-Hook discipline, from this week's research: **the problem is on screen inside one
-second.** No title cards, no "here are three things", no build-up. That was the
-single most consistent finding — and I'm using the technique, not the
-engagement percentages that circulate with it, because those don't resolve to a
-primary source.
+All of it runs off a single `setFrame(t)` function, so the render is
+deterministic — the same spec always produces the identical video.
 
 ---
 
@@ -181,7 +166,7 @@ DM me the word DIARY.
 
 ---
 
-## Post 4 — SINGLE IMAGE — "Every other diary just… moves it"
+## Post 4 — SINGLE — "Every other diary just… moves it"
 
 **Thursday 17 September** · IMAGE · `s2-moves-it`
 
@@ -243,71 +228,112 @@ No trial that expires. No catch. DM me the word DIARY and ask me the awkward ver
 
 ---
 
-## The experiment, properly paired this time
+## Post 6 — CAROUSEL — "$12.5 billion. And it got smaller."
 
-Last week I mixed formats *and* messages, so a difference between them couldn't
-be attributed to either. This week is paired:
+**Saturday 19 September** · CAROUSEL · 5 slides · `e1-flat-market`
 
-| Subject | As a Reel | As a still |
+Files:
+
+- `images/e1-01-cover.png`
+- `images/e1-02-numbers.png`
+- `images/e1-03-means.png`
+- `images/e1-04-leaks.png`
+- `images/e1-05-cta.png`
+
+Figures used, and where they come from:
+
+- **$12.5** — https://www.ibisworld.com/australia/market-size/hairdressing-and-beauty-services/677/
+- **0.9%** — https://www.ibisworld.com/australia/market-size/hairdressing-and-beauty-services/677/
+- **1.8%** — https://www.ibisworld.com/australia/market-size/hairdressing-and-beauty-services/677/
+
+Caption — copy everything inside the block:
+
+```
+The Australian hairdressing and beauty industry is worth $12.5bn this year. It shrank 0.9% to get there.
+
+That's the whole reason I'd think about a booking system differently.
+
+In a market that's growing you can afford to leak clients out the back, because new ones keep arriving. In one that isn't, the salon that wins is the one that stops losing the people it already has.
+
+And a chair that sits empty on a Thursday is money that cannot be sold again later. That isn't a statistic, it's just how time works.
+
+Four ways they leak out. She books and forgets, and nothing reminds her. You move her appointment and don't say, so she turns up at the old time. She tries to book at 9pm, the phone rings out, and she books somewhere that was open. Or she just stops coming, and nothing anywhere tells you it happened.
+
+All four are booking problems, and all four have the same fix.
+
+$400 once, GST included. Then nothing, every month.
+
+DM me the word DIARY.
+
+Source: IBISWorld, Hairdressing & Beauty Services in Australia, 2026.
+
+#salonowner #salonsoftware #melbournesalon #hairstylist #melbournehair #barbershop #salonbusiness #bookingsystem
+```
+
+*Testing:* Whether an industry-fact post earns saves that a product post does not. It is the only post in three weeks carrying a third-party figure, and the only one citing a source on the slide itself.
+
+---
+
+## Post 7 — SINGLE — "What did the empty chairs cost you?"
+
+**Sunday 20 September** · IMAGE · `e2-your-number`
+
+Files:
+
+- `images/e2-your-number.png`
+
+Caption — copy everything inside the block:
+
+```
+What did the empty chairs cost you last week?
+
+Not a number I can tell you. A number only you have.
+
+Chairs that sat empty last week — no-shows, late cancels, gaps nobody filled. Times your average ticket. Times fifty weeks, because it happens every week rather than once.
+
+That's the figure. Work it out on the back of a docket and it'll be more use to you than anything I could write.
+
+I'm not going to quote you a no-show percentage, and here's why. Every one I can find comes from a company selling booking software, they don't agree with each other, and not one of them is about Melbourne. Kairo is booking software too, so treat any number I quote you with exactly that much suspicion.
+
+Your own number is the only one worth having. If it came out bigger than you expected, that's the conversation.
+
+$400 once, GST included. Then nothing, every month.
+
+DM me the word DIARY.
+
+#salonowner #salonsoftware #melbournesalon #hairstylist #barbershop #melbournehair #salonbusiness #bookingsystem
+```
+
+*Testing:* Refusing to quote a statistic, out loud, as the persuasive move. Tests whether transparency about the absence of a number converts better than a number would have.
+
+---
+
+## The week, at a glance
+
+| Day | Format | Subject |
 |---|---|---|
-| Breadth — the whole system | Mon: "One Thursday" | Tue: "Six screens" carousel |
-| Depth — the notify moment | Wed: "She's turning up at one" | Thu: the light single card |
+| Mon 14 | Reel · 23.2s | One Thursday, start to finish |
+| Tue 15 | Carousel · 7 | Six screens, one login |
+| Wed 16 | Reel · 19.4s | The notify moment |
+| Thu 17 | Single · light | The notify moment, screenshot-able |
+| Fri 18 | Reel · 18.6s | Four objections, answered |
+| Sat 19 | Carousel · 5 | The flat market, and where clients leak |
+| Sun 20 | Single · light | Work out your own number |
 
-Same claims, same voice, same price, same CTA inside each pair. **The only
-difference is format.** If you get me numbers, that comparison gives you the
-first real answer this account has ever had about what it should be making.
+**Two experiments running.** Format is paired on the weekdays — same subject as
+a Reel and as a still, everything else held constant, so a difference is
+attributable to format rather than message. And the weekend pair tests whether
+transparency about a missing statistic beats a borrowed one.
 
 ## The projection
 
-- **Inside each pair, the Reel should out-reach the still.** If it doesn't, the
-  video assumption doesn't transfer to this account and we stop leaning on it.
-- **The light single card should out-save its Reel** — it's the only thing built
-  to be screenshotted rather than watched.
-- **At least one DM with DIARY** across twelve live posts. If twelve produce
-  none, the CTA is the problem and it changes before the creative does.
-- **One thing to change: nothing in the creative.** Same as last week and the
-  week before — the change that matters is upstream.
-
-## Scheduling note
-
-The previous pack was dated 7–11 September. You've said everything is posted, so
-this one starts Monday 14th. **Nothing in these captions is tied to a date** — if
-you want to run them sooner, just move them forward.
-
----
-
-## Also delivered: `AGENTS.md`
-
-The handbook you asked for, so Codex can run this. It's at the repo root and
-covers everything: the business facts and where they're sourced from, the eleven
-invariants, the voice rules, every tool and how to drive it, the **verified crop
-box for every screenshot**, the magnification rule and why it exists, the design
-tokens, the reel motion vocabulary, the weekly loop, what's been tried and
-failed, and a corrections log of what this system got wrong and fixed.
-
-Two sections worth pointing Codex at specifically:
-
-- **§5.4 The magnification rule** — the resolution lesson, with the numbers.
-- **§9 Corrections** — the three things this system asserted and later had to
-  withdraw. That section is the difference between an agent that compounds and
-  one that repeats.
-
-I've written it to be *better* than what you gave me at the start, because it
-carries five weeks of specific, expensive lessons that a generic brief can't.
-
----
-
-## Standing hazards, now written into AGENTS.md
-
-**`11-pos.jpg` shows "GST (8.5%)".** Australian GST is 10%. I've now caught a
-crop drifting onto that row **three times** — the last two were widened crops
-that silently re-exposed it. The exact safe crop box is documented. It's still
-worth fixing in the demo data, since it's live on the showcase site too.
-
-**`07-notify-prompt.jpg` and `09-client-profile.jpg` show US-format phone
-numbers** while the booking page correctly shows a Camberwell address and an
-(03) landline. I use the modal anyway — it's the strongest frame you have, and
-doctoring a product screenshot would be worse than the blemish.
+- Inside each weekday pair, **the Reel should out-reach the still.**
+- **The light single cards should out-save their Reels** — they're the only
+  things built to be screenshotted rather than watched.
+- **The flat-market carousel should be the most-saved item of the week**, because
+  it's the only one carrying a fact worth forwarding. If it isn't, this account
+  isn't a reference account and the educational format shouldn't be repeated.
+- **At least one DM with DIARY** across fourteen live posts.
 
 ---
 
@@ -315,9 +341,10 @@ doctoring a product screenshot would be worse than the blemish.
 
 1. **The Instagram handle.**
 2. **The read credential.**
-3. **A 2× re-export of the screenshots.**
+3. **A 2× re-export of `public/screenshots/`** (2480×1550). The current 1240×775
+   frames are the hard ceiling on sharpness — this week's crops run 0.97×–1.30×,
+   which is as good as it gets until the source improves.
 
-Twelve posts will be live after this week. Three consecutive predictions are now
-unscored. I can keep producing — the work is getting better, not worse — but
-"produced and never measured" is starting to be the main story, and that's a
-prioritisation call rather than a data problem.
+Fourteen posts will be live after this week. Three predictions unscored. Every
+experiment in this pack — the format pairs, the transparency test — is designed
+to be measured, and none of them can be.

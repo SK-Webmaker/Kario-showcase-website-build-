@@ -207,6 +207,20 @@ const LIGHT = `:root{--ground:#F7F8FB;--raised:#EDF0F5;--sunk:#E3E7EE;--ink:22 3
 
 ### 5.3 Rendering reels
 
+**9:16 safe area.** Instagram's own chrome covers the top ~110px (the Reels
+label), the bottom ~380px (caption, handle, audio) and a ~180px action rail down
+the right. `REEL_CSS` puts the mark at 118px, the progress bar at 196px, and
+`.scene` padding at `268px 64px 560px`, which lands content between roughly 14%
+and 57% of frame height. Body copy is capped at 26ch so nothing slides under the
+action rail. Do not fill the bottom of the frame; it will be covered.
+
+**The cinematic layers**, all driven from `setFrame` so they stay deterministic:
+film grain (a noise tile re-offset each frame from a fixed pseudo-random
+sequence), a soft-light colour grade, a blue light leak that blooms across every
+cut, a vignette, and letterbox bars that open at the head and close at the tail.
+Grain and grade are what stop a rendered frame looking rendered.
+
+
 A reel spec exports `{ id, fps, duration, html }`. `html` is a complete document
 defining `window.setFrame(t)`, t in seconds. The renderer steps that function
 frame by frame and screenshots each one.
@@ -461,6 +475,27 @@ Keep this list. It is the most useful section for whoever runs next.
    Nothing arrived. An intention is not a capability — the same error as
    reporting an API's success response as a delivered email. Every figure stays
    `unmeasured` until a token has actually returned one.
+
+---
+
+## 9b. Market statistics — the one you will be asked for and cannot have
+
+You will eventually be asked for "what salons lose to bad booking systems".
+**There is no citable figure.** Every salon no-show number online comes from a
+booking-software vendor, they disagree (5-15%, 14%, 15%, 23%), none is
+city-specific, none traces to a primary source. Kairo is a booking vendor too —
+quoting a rival vendor's self-serving stat is the fastest way to lose a reader
+who checks.
+
+Verified and usable, read off the page: IBISWorld puts Australian Hairdressing &
+Beauty Services at **$12.5bn in 2026**, **down 0.9%**, **1.8% CAGR since 2021**.
+<https://www.ibisworld.com/australia/market-size/hairdressing-and-beauty-services/677/>
+National, not Melbourne.
+
+**Replace the missing statistic with arithmetic the reader finishes**, and say
+out loud why you are not quoting one. Declare any third-party figure in the
+post's `verified_figures` with a source — the Critic requires it for both
+percentages and dollar amounts.
 
 ---
 

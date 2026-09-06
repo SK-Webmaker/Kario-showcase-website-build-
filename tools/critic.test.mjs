@@ -82,6 +82,16 @@ shouldFlag("'That is' is written, not spoken", `That is three hours of my Sunday
 shouldFlag("'do not' is caught", `I do not miss the paper diary.\n${TAGS}`, "NO-CONTRACTION");
 shouldNotFlag("'cannot' is deliberately exempt",
   `The diary cannot be double-booked. That's the whole point.\n${TAGS}`, "NO-CONTRACTION");
+// A contraction is only available in auxiliary position. Added 2026-09-06
+// after "A number only you have." was flagged in otherwise clean copy.
+shouldNotFlag("sentence-final 'you have' cannot be contracted",
+  `Not a number I can tell you. A number only you have.\n${TAGS}`, "NO-CONTRACTION");
+shouldNotFlag("sentence-final 'it is' cannot be contracted",
+  `Is the diary really that simple? Of course it is.\n${TAGS}`, "NO-CONTRACTION");
+shouldFlag("auxiliary 'you have' is still caught",
+  `You have got three hours of your Sunday back.\n${TAGS}`, "NO-CONTRACTION");
+shouldFlag("auxiliary 'it is' is still caught",
+  `Honestly, it is three hours of your Sunday.\n${TAGS}`, "NO-CONTRACTION");
 shouldNotFlag("contracted copy passes",
   `That's three hours of my Sunday back, and I didn't do anything clever.\n${TAGS}`, "NO-CONTRACTION");
 shouldFlag("exclamation mark", `Booked out!\n${TAGS}`, "EXCLAMATION");
@@ -105,6 +115,16 @@ shouldNotFlag("a fixed price stated plainly does not demand 'from'",
   else { fail++; console.log(`  FAIL a 'from' price saying 'from' — got [${withFrom.join(", ")}]`); }
 }
 shouldFlag("unverified percentage", `Cuts no-shows by 30%.\n${TAGS}`, "UNVERIFIED-FIGURE");
+// A third-party money figure is allowed on exactly the same terms as a
+// percentage: declared, with a source. Added 2026-09-06 for industry facts.
+shouldNotFlag("a sourced third-party dollar figure passes",
+  `The industry was worth $12.5bn last year.\n${TAGS}`, "PRICE-UNKNOWN",
+  { verified_figures: [{ value: "$12.5", source: "https://www.ibisworld.com/…" }] });
+shouldFlag("an undeclared dollar figure still fails",
+  `The industry was worth $12.5bn last year.\n${TAGS}`, "PRICE-UNKNOWN");
+shouldFlag("a declared figure with no source still fails",
+  `The industry was worth $12.5bn last year.\n${TAGS}`, "PRICE-UNKNOWN",
+  { verified_figures: [{ value: "$12.5" }] });
 shouldNotFlag("a declared, sourced figure passes",
   `Reminders cut our no-shows by 30% last quarter.\n${TAGS}`, "UNVERIFIED-FIGURE",
   { verified_figures: [{ value: "30%", source: "operator, 2026-08-25" }] });

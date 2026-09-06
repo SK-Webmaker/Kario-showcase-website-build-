@@ -51,6 +51,41 @@ this system has got wrong and fixed.
 
 ---
 
+## 2026-09-06 — Follow-up: reels, safe area, and the statistic that does not exist
+
+**Asked for facts on what Melbourne salons lose to poor booking systems. That
+number does not exist in citable form and I did not invent one.** Every salon
+no-show figure online comes from a booking-software vendor — Etisia, Boulevard,
+Bookeo, Bella Booking, Lutily — they disagree with each other (5-15%, 14%, 15%,
+23%), none is Melbourne-specific, and none traces to a primary source. Kairo
+sells booking software, so quoting a rival vendor's self-serving stat is the
+fastest way to lose a reader who checks.
+
+**What I did instead.** One verified figure, read off the page rather than a
+search summary: IBISWorld, Australian Hairdressing & Beauty Services **$12.5bn
+in 2026, down 0.9%, 1.8% CAGR since 2021**. Cited on the slide. Then arithmetic
+the reader finishes with their own numbers, and a caption that says plainly why
+no percentage is quoted — naming Kairo's own conflict of interest. That is a
+stronger post than a borrowed statistic and it is the only thing in three weeks
+that tests transparency as the persuasive move.
+
+**Reels: 9:16 safe area corrected.** Instagram covers the top ~110px, the bottom
+~380px and a ~180px right rail. Content now sits between 14% and 57% of frame
+height with body copy capped at 26ch.
+
+**Reels: cinematic layers added** — film grain, a soft-light colour grade, a blue
+light leak blooming across every cut, longer more languid arrivals. All driven
+from `setFrame` so the render stays deterministic.
+
+**Two more Critic decisions, both narrowings, both tested.** A third-party dollar
+figure now passes only when declared in `verified_figures` with a source, same
+terms as a percentage — which is how the IBISWorld figure got through without
+weakening "never quote a price from memory". And the contraction rule no longer
+fires sentence-finally, because "A number only you have." cannot become
+"you've". 48 tests.
+
+---
+
 ## 2026-09-01 — Second /start run
 
 Operator asked for 3-4 posts built for **urgency and hype**, in whichever format

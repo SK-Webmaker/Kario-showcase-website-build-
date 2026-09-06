@@ -1,6 +1,6 @@
 {
   "week_of": "2026-09-14",
-  "_note": "Paired design: two subjects, each run as a Reel AND as a still. Breadth = Reel B vs Carousel c1. The notify moment = Reel A vs Single s2. That isolates format from message, which last week's mix could not.",
+  "_note": "Seven days. Paired format design on the weekdays: two subjects, each run as a Reel AND as a still (breadth = Reel B vs the carousel; the notify moment = Reel A vs the single card), so a difference is attributable to format rather than message. The weekend two are educational.",
   "_schedule_note": "The 2026-09-07 pack occupies 7-11 September. If those went out early, this pack can start on the 7th instead — nothing in these captions is tied to a date.",
   "posts": [
     {
@@ -8,7 +8,9 @@
       "planned_date": "2026-09-14",
       "format": "reel",
       "asset_provenance": "product_screenshot",
-      "assets": ["video/reel-b-thursday.mp4"],
+      "assets": [
+        "video/reel-b-thursday.mp4"
+      ],
       "duration_s": 23.2,
       "is_offer": false,
       "testing": "Breadth as a Reel. Paired with the Tuesday carousel, which carries the same message as stills — the difference between them is format and nothing else.",
@@ -21,7 +23,15 @@
       "format": "carousel",
       "slides": 7,
       "asset_provenance": "product_screenshot",
-      "assets": ["images/c1-01-cover.png", "images/c1-02-the-morning.png", "images/c1-03-the-diary.png", "images/c1-04-the-client-book.png", "images/c1-05-getting-paid.png", "images/c1-06-the-messages.png", "images/c1-07-cta.png"],
+      "assets": [
+        "images/c1-01-cover.png",
+        "images/c1-02-the-morning.png",
+        "images/c1-03-the-diary.png",
+        "images/c1-04-the-client-book.png",
+        "images/c1-05-getting-paid.png",
+        "images/c1-06-the-messages.png",
+        "images/c1-07-cta.png"
+      ],
       "is_offer": false,
       "testing": "The still arm of the breadth pair. Same six screens as Monday's Reel, same claims, no motion.",
       "verified_figures": [],
@@ -32,7 +42,9 @@
       "planned_date": "2026-09-16",
       "format": "reel",
       "asset_provenance": "product_screenshot",
-      "assets": ["video/reel-a-notify.mp4"],
+      "assets": [
+        "video/reel-a-notify.mp4"
+      ],
       "duration_s": 19.4,
       "is_offer": false,
       "testing": "Depth on one feature as a Reel, with the problem on screen inside one second and no build-up. Paired with Thursday's single card, which makes the same point as a screenshot.",
@@ -44,7 +56,9 @@
       "planned_date": "2026-09-17",
       "format": "image",
       "asset_provenance": "product_screenshot",
-      "assets": ["images/s2-moves-it.png"],
+      "assets": [
+        "images/s2-moves-it.png"
+      ],
       "is_offer": false,
       "testing": "The still arm of the notify pair, and the only light-theme post of the week. Built to be screenshotted and forwarded rather than watched.",
       "verified_figures": [],
@@ -55,12 +69,61 @@
       "planned_date": "2026-09-18",
       "format": "reel",
       "asset_provenance": "product_screenshot",
-      "assets": ["video/reel-c-why.mp4"],
+      "assets": [
+        "video/reel-c-why.mp4"
+      ],
       "duration_s": 18.6,
       "is_offer": false,
       "testing": "The closer. A direct-question hook and four objections answered at speed, to see whether an objection reel produces DMs where a feature reel produces views.",
       "verified_figures": [],
       "caption": "So why haven't you got it yet?\n\nFour reasons people give me, and what I say back.\n\nToo expensive. It's $400, once, GST included. No subscription, no per-booking fee, no cut of what you charge on a good week.\n\nToo much hassle. Ten minutes on the phone, then your hours, your team, your menu and your client list get moved across on my side. You open it on the floor when you're ready.\n\nNever heard of it. Fair. A Melbourne salon has run its bookings, payments and customer emails on it since day one, and every screen in these posts is that same system.\n\nAlready got something. Then you already know what it costs you every month. This one costs nothing every month, because there isn't a monthly one.\n\nNo trial that expires. No catch. DM me the word DIARY and ask me the awkward version of the question.\n\n#salonowner #salonsoftware #melbournesalon #melbournehair #hairstylist #barbershop #salonbusiness #bookingsystem #salonmanagement"
+    },
+    {
+      "id": "e1-flat-market",
+      "planned_date": "2026-09-19",
+      "format": "carousel",
+      "slides": 5,
+      "asset_provenance": "typographic_card",
+      "assets": [
+        "images/e1-01-cover.png",
+        "images/e1-02-numbers.png",
+        "images/e1-03-means.png",
+        "images/e1-04-leaks.png",
+        "images/e1-05-cta.png"
+      ],
+      "is_offer": false,
+      "testing": "Whether an industry-fact post earns saves that a product post does not. It is the only post in three weeks carrying a third-party figure, and the only one citing a source on the slide itself.",
+      "verified_figures": [
+        {
+          "value": "$12.5",
+          "source": "https://www.ibisworld.com/australia/market-size/hairdressing-and-beauty-services/677/",
+          "note": "Read off the page 2026-09-06: 'The market size of the Hairdressing & Beauty Services in Australia is $12.5bn in 2026.'"
+        },
+        {
+          "value": "0.9%",
+          "source": "https://www.ibisworld.com/australia/market-size/hairdressing-and-beauty-services/677/",
+          "note": "'decreased -0.9% in 2026'"
+        },
+        {
+          "value": "1.8%",
+          "source": "https://www.ibisworld.com/australia/market-size/hairdressing-and-beauty-services/677/",
+          "note": "'grown at a 1.8% CAGR between 2021 and 2026'"
+        }
+      ],
+      "caption": "The Australian hairdressing and beauty industry is worth $12.5bn this year. It shrank 0.9% to get there.\n\nThat's the whole reason I'd think about a booking system differently.\n\nIn a market that's growing you can afford to leak clients out the back, because new ones keep arriving. In one that isn't, the salon that wins is the one that stops losing the people it already has.\n\nAnd a chair that sits empty on a Thursday is money that cannot be sold again later. That isn't a statistic, it's just how time works.\n\nFour ways they leak out. She books and forgets, and nothing reminds her. You move her appointment and don't say, so she turns up at the old time. She tries to book at 9pm, the phone rings out, and she books somewhere that was open. Or she just stops coming, and nothing anywhere tells you it happened.\n\nAll four are booking problems, and all four have the same fix.\n\n$400 once, GST included. Then nothing, every month.\n\nDM me the word DIARY.\n\nSource: IBISWorld, Hairdressing & Beauty Services in Australia, 2026.\n\n#salonowner #salonsoftware #melbournesalon #hairstylist #melbournehair #barbershop #salonbusiness #bookingsystem"
+    },
+    {
+      "id": "e2-your-number",
+      "planned_date": "2026-09-20",
+      "format": "image",
+      "asset_provenance": "typographic_card",
+      "assets": [
+        "images/e2-your-number.png"
+      ],
+      "is_offer": false,
+      "testing": "Refusing to quote a statistic, out loud, as the persuasive move. Tests whether transparency about the absence of a number converts better than a number would have.",
+      "verified_figures": [],
+      "caption": "What did the empty chairs cost you last week?\n\nNot a number I can tell you. A number only you have.\n\nChairs that sat empty last week — no-shows, late cancels, gaps nobody filled. Times your average ticket. Times fifty weeks, because it happens every week rather than once.\n\nThat's the figure. Work it out on the back of a docket and it'll be more use to you than anything I could write.\n\nI'm not going to quote you a no-show percentage, and here's why. Every one I can find comes from a company selling booking software, they don't agree with each other, and not one of them is about Melbourne. Kairo is booking software too, so treat any number I quote you with exactly that much suspicion.\n\nYour own number is the only one worth having. If it came out bigger than you expected, that's the conversation.\n\n$400 once, GST included. Then nothing, every month.\n\nDM me the word DIARY.\n\n#salonowner #salonsoftware #melbournesalon #hairstylist #barbershop #melbournehair #salonbusiness #bookingsystem"
     }
   ]
 }

@@ -53,7 +53,7 @@ const SCENES = [...document.querySelectorAll(".scene")];
 
 function applyScene(el, t) {
   const t0 = +el.dataset.t0, t1 = +el.dataset.t1;
-  const dIn = +(el.dataset.din || 0.52), dOut = +(el.dataset.dout || 0.34);
+  const dIn = +(el.dataset.din || 0.62), dOut = +(el.dataset.dout || 0.38);
   if (t < t0 - 0.02 || t >= t1) { el.style.opacity = "0"; el.style.visibility = "hidden"; return; }
   el.style.visibility = "visible";
 
@@ -122,12 +122,34 @@ function applyFurniture(t, D) {
   const lb = document.querySelectorAll(".letterbox");
   lb.forEach((b) => { b.style.height = h.toFixed(1) + "px"; });
 
+  // Grain jitters to a fixed pseudo-random sequence, so it is alive but the
+  // render stays reproducible frame for frame.
+  const gr = document.getElementById("grain");
+  if (gr) {
+    const f = Math.round(t * 30);
+    const gx = ((f * 73) % 211) - 105, gy = ((f * 149) % 197) - 98;
+    gr.style.transform = "translate(" + gx + "px," + gy + "px)";
+  }
+
+  // A light leak blooms across every cut. SC is set by the spec.
+  const lk = document.getElementById("leak");
+  if (lk && window.__CUTS) {
+    let best = 0;
+    for (const c of window.__CUTS) {
+      const d = Math.abs(t - c);
+      if (d < 0.42) best = Math.max(best, 1 - d / 0.42);
+    }
+    lk.style.opacity = (Math.pow(best, 2) * 0.5).toFixed(3);
+  }
+
   // Background grid drifts slower than the content: parallax depth.
   const g = document.querySelector(".grid-bg");
   if (g) g.style.transform = \`translateY(\${(-t * 7).toFixed(1)}px) scale(1.05)\`;
   const gl = document.getElementById("glow");
   if (gl) gl.style.transform = \`translate(\${Math.sin(t * 0.5) * 40}px, \${Math.cos(t * 0.4) * 30}px)\`;
 }
+
+window.__CUTS = SCENES.map((el) => +el.dataset.t0).filter((v) => v > 0.1);
 
 window.setFrame = (t) => {
   applyFurniture(t, window.__D);
@@ -146,18 +168,35 @@ html,body{width:1080px;height:1920px}
 /* A vignette is the cheapest thing that reads as "filmed" rather than "exported". */
 #vignette{position:absolute;inset:0;pointer-events:none;z-index:6;
   background:radial-gradient(ellipse at 50% 42%,transparent 42%,rgba(0,0,0,.42) 100%)}
+/* Film grain. A static noise tile, re-offset every frame from a deterministic
+   sequence — the cheapest thing that stops a rendered frame looking rendered. */
+#grain{position:absolute;top:-50%;left:-50%;width:200%;height:200%;z-index:6;
+  pointer-events:none;opacity:.06;mix-blend-mode:overlay;background-size:300px 300px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+  will-change:transform}
+/* A grade: cool lift in the highlights, weight in the shadows. */
+#grade{position:absolute;inset:0;z-index:6;pointer-events:none;mix-blend-mode:soft-light;
+  background:linear-gradient(158deg,rgba(94,163,240,.30),transparent 46%,rgba(0,0,0,.34))}
+/* A blue flare that blooms across a cut and is gone before it registers. */
+#leak{position:absolute;inset:0;z-index:6;pointer-events:none;opacity:0;
+  mix-blend-mode:screen;
+  background:radial-gradient(ellipse at 78% 22%,rgba(94,163,240,.5),transparent 58%)}
 .letterbox{position:absolute;left:0;right:0;background:#000;z-index:7}
 .letterbox.top{top:0}.letterbox.bot{bottom:0}
-header{position:absolute;top:70px;left:64px;right:64px;display:flex;align-items:center;
+/* Instagram's own chrome sits over the top ~110px (the Reels label), the
+   bottom ~380px (caption, handle, audio) and a ~180px action rail down the
+   right. Everything here is pushed inside that: the mark starts at 118px and
+   content lives between roughly 14% and 57% of frame height. */
+header{position:absolute;top:118px;left:64px;right:64px;display:flex;align-items:center;
   justify-content:space-between;z-index:5}
 .mark .wm{font-size:34px}.mark svg{width:42px;height:42px}
-#bar{position:absolute;top:156px;left:64px;right:64px;height:3px;
+#bar{position:absolute;top:196px;left:64px;right:64px;height:3px;
   background:rgb(var(--ink)/.16);z-index:5}
 #barfill{height:100%;background:var(--brand);width:0}
-/* Content lives between 12% and 66% of the frame. Instagram lays its caption,
-   username and action rail over the bottom fifth and the right edge. */
-.scene{position:absolute;inset:0;padding:236px 64px 470px;display:flex;flex-direction:column;
+.scene{position:absolute;inset:0;padding:268px 64px 560px;display:flex;flex-direction:column;
   justify-content:center;opacity:0;will-change:transform,opacity,filter}
+/* Nothing wide enough to slide under the action rail. */
+.scene .bline,.scene .lede{max-width:26ch}
 .chrome,.chrome-b{font-size:24px}
 .vis{will-change:transform;position:relative;overflow:hidden}
 .sweep{position:absolute;top:-40%;left:0;width:34%;height:180%;pointer-events:none;
@@ -178,6 +217,9 @@ export const reelChrome = (markSvg) => `
     <span class="chrome" style="font-size:22px">Melbourne</span>
   </header>
   <div id="bar"><div id="barfill"></div></div>
+  <div id="grade"></div>
+  <div id="leak"></div>
+  <div id="grain"></div>
   <div id="vignette"></div>
   <div class="letterbox top"></div>
   <div class="letterbox bot"></div>`;

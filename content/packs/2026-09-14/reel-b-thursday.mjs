@@ -88,7 +88,7 @@ const S = [
 
 export const html = `<!doctype html><html><head><meta charset="utf-8"><style>
 ${fontFace()}${CSS}${REEL_CSS}
-.scene{padding:224px 64px 430px}
+.scene{padding:256px 64px 548px}
 .ink3{color:rgb(var(--ink)/.34)}
 </style></head><body>
 <div id="stage">${reelChrome(markSvg(42))}${S.map(scene).join("")}</div>
