@@ -1,0 +1,1354 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Design system definition.
+ *
+ * The @theme inline block maps CSS custom properties to Tailwind utility
+ * classes (e.g. --color-primary -> bg-primary, text-primary).
+ *
+ * The :root and .dark blocks define the actual color values using oklch.
+ * All colors MUST use oklch format.
+ *
+ * To add a new semantic color:
+ * 1. Add the variable to :root (light value) and .dark (dark value)
+ * 2. Register it in @theme inline as --color-<name>: var(--<name>)
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.129 0.042 264.695);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.129 0.042 264.695);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.129 0.042 264.695);
+  --primary: oklch(0.208 0.042 265.755);
+  --primary-foreground: oklch(0.984 0.003 247.858);
+  --secondary: oklch(0.968 0.007 247.896);
+  --secondary-foreground: oklch(0.208 0.042 265.755);
+  --muted: oklch(0.968 0.007 247.896);
+  --muted-foreground: oklch(0.554 0.046 257.417);
+  --accent: oklch(0.968 0.007 247.896);
+  --accent-foreground: oklch(0.208 0.042 265.755);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --border: oklch(0.929 0.013 255.508);
+  --input: oklch(0.929 0.013 255.508);
+  --ring: oklch(0.704 0.04 256.788);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.984 0.003 247.858);
+  --sidebar-foreground: oklch(0.129 0.042 264.695);
+  --sidebar-primary: oklch(0.208 0.042 265.755);
+  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-accent: oklch(0.968 0.007 247.896);
+  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
+  --sidebar-border: oklch(0.929 0.013 255.508);
+  --sidebar-ring: oklch(0.704 0.04 256.788);
+}
+
+.dark {
+  --background: oklch(0.129 0.042 264.695);
+  --foreground: oklch(0.984 0.003 247.858);
+  --card: oklch(0.208 0.042 265.755);
+  --card-foreground: oklch(0.984 0.003 247.858);
+  --popover: oklch(0.208 0.042 265.755);
+  --popover-foreground: oklch(0.984 0.003 247.858);
+  --primary: oklch(0.929 0.013 255.508);
+  --primary-foreground: oklch(0.208 0.042 265.755);
+  --secondary: oklch(0.279 0.041 260.031);
+  --secondary-foreground: oklch(0.984 0.003 247.858);
+  --muted: oklch(0.279 0.041 260.031);
+  --muted-foreground: oklch(0.704 0.04 256.788);
+  --accent: oklch(0.279 0.041 260.031);
+  --accent-foreground: oklch(0.984 0.003 247.858);
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.551 0.027 264.364);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.208 0.042 265.755);
+  --sidebar-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-accent: oklch(0.279 0.041 260.031);
+  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.551 0.027 264.364);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+  }
+}
+
+/* ==================================================================== */
+/* Kairo showcase                                                        */
+/*                                                                       */
+/* Ported from a Tailwind v3 JS config into v4's CSS-first @theme. The    */
+/* shadcn tokens above are left untouched — these are additive, so both   */
+/* systems coexist and Lovable's own components keep working.            */
+/* ==================================================================== */
+
+@theme {
+  /* Surfaces and ink resolve from the raw triplets in :root below, so a
+     theme swap is four values rather than a repaint of every component. */
+  --color-ground: rgb(var(--ground));
+  --color-raised: rgb(var(--raised));
+  --color-sunk: rgb(var(--sunk));
+
+  /* One ink at four opacities, not four greys. */
+  --color-ink: rgb(var(--ink));
+  --color-ink-2: rgb(var(--ink) / 0.62);
+  --color-ink-3: rgb(var(--ink) / 0.34);
+  --color-ink-4: rgb(var(--ink) / 0.16);
+  --color-line: rgb(var(--ink) / 0.14);
+  --color-line-2: rgb(var(--ink) / 0.26);
+
+  /* Kairo's own blue, sampled from the product UI. */
+  --color-brand: #3b82f6;
+  --color-brand-lift: #5ea3f0;
+  --color-brand-deep: #2f6fd8;
+  --color-money: #0f9d63;
+  --color-alert: #b9760d;
+
+  --font-sans: "Inter Tight", Inter, system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --ease-66: cubic-bezier(0.66, 0, 0.01, 1);
+  --container-shell: 1560px;
+
+  --animate-marquee: marquee 42s linear infinite;
+  --animate-rise-in: rise-in 900ms cubic-bezier(0.66, 0, 0.01, 1) both;
+  --animate-blink: blink 1.6s step-end infinite;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(110%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes blink {
+  0%,
+  55% {
+    opacity: 1;
+  }
+  56%,
+  100% {
+    opacity: 0.15;
+  }
+}
+
+@layer base {
+  :root {
+    /* The product's own surfaces. Dark-only: there is no theme choice,
+       so these are the only values the site ever uses. */
+    --ground: 10 14 23;
+    --raised: 14 20 32;
+    --sunk: 7 10 17;
+    --ink: 233 237 244;
+    --selection: #3b82f6;
+    color-scheme: dark;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    overflow-x: clip;
+  }
+
+  /* Anchor jumps ("Why not the usual setup", menu links) glide instead
+     of snapping. Opted out automatically for reduced-motion users. */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    background-color: var(--color-ground);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+    scroll-behavior: auto;
+  }
+
+  ::selection {
+    background: var(--selection);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--selection);
+    outline-offset: 3px;
+  }
+
+  section[id],
+  [id="top"] {
+    scroll-margin-top: 88px;
+  }
+
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+}
+
+@layer components {
+  .shell {
+    margin-inline: auto;
+    width: 100%;
+    max-width: var(--container-shell);
+    padding-inline: 1.25rem;
+  }
+  @media (min-width: 640px) {
+    .shell {
+      padding-inline: 2rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .shell {
+      padding-inline: 3rem;
+    }
+  }
+
+  /* Every piece of interface furniture is monospace — it's what makes
+     the page read as an instrument rather than a brochure. */
+  .chrome {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--color-ink-3);
+  }
+  .chrome-2 {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-ink-2);
+  }
+
+  .display {
+    font-family: var(--font-sans);
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 0.88;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+  .display-xl {
+    font-size: clamp(32px, 4.8vw, 68px);
+  }
+  .display-lg {
+    font-size: clamp(27px, 4vw, 58px);
+  }
+  .display-md {
+    font-size: clamp(23px, 2.8vw, 40px);
+  }
+  .display-xl,
+  .display-lg,
+  .display-md {
+    font-family: var(--font-sans);
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 0.88;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+
+  .lede {
+    max-width: 62ch;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--color-ink-2);
+  }
+  @media (min-width: 640px) {
+    .lede {
+      font-size: 17px;
+    }
+  }
+
+  .btn,
+  .btn-brand,
+  .btn-line {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-width: 1px;
+    border-style: solid;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    padding: 0.875rem 1.25rem;
+    transition: all 660ms var(--ease-66);
+  }
+  .btn-brand {
+    border-color: transparent;
+    background: var(--color-brand);
+    color: #fff;
+  }
+  .btn-brand:hover {
+    background: var(--color-brand-deep);
+  }
+  .btn-line {
+    border-color: var(--color-line-2);
+    background: transparent;
+    color: var(--color-ink);
+  }
+  .btn-line:hover {
+    border-color: var(--color-ink);
+    background: var(--color-ink);
+    color: var(--color-ground);
+  }
+
+  .panel {
+    border: 1px solid var(--color-line);
+    background: var(--color-raised);
+  }
+  .hr {
+    height: 1px;
+    width: 100%;
+    background: var(--color-line);
+  }
+}
+
+@layer utilities {
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .mask-fade-x {
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
+  }
+
+  .clip-line {
+    overflow: hidden;
+    display: block;
+  }
+  .blend-diff {
+    mix-blend-mode: difference;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Step transitions for the get-in-touch flow. Runtime-applied via inline
+   `animation`, so this must live outside @layer. */
+@keyframes giftIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  @keyframes giftIn {
+    from {
+      opacity: 1;
+      transform: none;
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+@font-face {
+  font-family: "Anton";
+  src: url("/fonts/anton-latin.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Archivo";
+  src: url("/fonts/archivo-latin.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ==================================================================
+   V2 — the Patch-structure layer, in Kairo's palette.
+
+   Everything here is scoped under .v2 so the existing site is
+   untouched while this is built alongside it.
+
+   The one idea worth importing wholesale from the reference is its
+   type scale: it is pure viewport width with no clamp, so a headline
+   is the same fraction of the screen at 390px as at 1920px. It does
+   that by setting html{font-size} to a vw value, which would drag
+   every existing route with it — so the same effect is achieved here
+   with a scoped unit token instead.
+   ================================================================== */
+.v2 {
+  --u: 0.99vw; /* desktop: 1rem ≈ 1vw, matching the reference */
+  --v2-ground: #05070c; /* Kairo's own near-black, not the reference's */
+  --v2-ink: #f4f5f7;
+  --v2-a: #3b82f6; /* Kairo blue — the only accent */
+  --v2-a-deep: #1f5fd0;
+  /* The one full-bleed colour block on the page. Flat, not a wash:
+     it reads as an act break rather than decoration. */
+  --v2-panel: #12327a;
+  --pad: calc(3.6 * var(--u)); /* page gutter */
+
+  background: var(--v2-ground);
+  color: var(--v2-ink);
+  font-family:
+    "Archivo",
+    system-ui,
+    -apple-system,
+    sans-serif;
+  font-size: calc(1 * var(--u));
+}
+
+@media (max-width: 768px) {
+  /* The reference swaps both the unit AND the display multipliers below
+     768: its h1 goes from 10.58vw to 16vw, not to 10.667 x 4vw, which
+     would be 42vw and unreadable. Body text keeps its multiplier. */
+  .v2 {
+    --u: 4vw;
+  }
+}
+
+/* The dashed grid the whole page sits on. */
+.v2-grid {
+  background-image:
+    linear-gradient(to right, rgb(244 245 247 / 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(244 245 247 / 0.045) 1px, transparent 1px);
+  background-size: calc(14 * var(--u)) calc(14 * var(--u));
+}
+
+/* Display type. Anton stands in for the reference's PP Right Grotesk
+   Compact Dark, which is a paid face — same compact ultra-bold
+   uppercase job, free, and it sits happily next to Archivo. */
+.v2-display {
+  font-family: "Anton", "Archivo", system-ui, sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.005em;
+}
+.v2-h1 {
+  font-size: calc(10.667 * var(--u));
+  line-height: 0.92;
+}
+.v2-h2 {
+  font-size: calc(8 * var(--u));
+  line-height: 0.9;
+}
+.v2-h3 {
+  font-size: calc(3 * var(--u));
+  line-height: 0.9;
+}
+.v2-num {
+  font-size: calc(8 * var(--u));
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+
+.v2-body {
+  font-size: calc(1.333 * var(--u));
+  line-height: 1.45;
+}
+.v2-eyebrow {
+  font-size: calc(0.867 * var(--u));
+  line-height: 1.92;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+/* The atmosphere: radial glow orbs, the reference's single most
+   defining visual device — it runs 58 of them. */
+.v2-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(calc(2 * var(--u)));
+}
+.v2-orb--a {
+  background: radial-gradient(closest-side, rgb(59 130 246 / 0.3), rgb(59 130 246 / 0));
+}
+.v2-orb--b {
+  background: radial-gradient(closest-side, rgb(94 163 240 / 0.14), rgb(94 163 240 / 0));
+}
+
+/* Accent type. Flat colour, not a clipped gradient: a two-tone wash
+   over display type is the most generic move a page can make, and it also
+   dragged background-clip:text along with it, which broke every time a
+   word inside carried a transform. */
+.v2-accent {
+  color: var(--v2-a);
+}
+.v2-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--v2-a);
+  color: #05070c;
+  border-radius: calc(0.333 * var(--u));
+  padding: calc(1.1 * var(--u)) calc(2.333 * var(--u));
+  font-size: calc(1 * var(--u));
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  transition:
+    filter 320ms ease,
+    transform 320ms ease;
+}
+.v2-btn {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+/* The fill wipes up from the foot rather than the whole button changing
+   colour at once — one small piece of choreography on the only thing a
+   visitor is meant to press. */
+.v2-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--v2-a-deep);
+  transform: translateY(101%);
+  transition: transform 420ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.v2-btn:hover::before,
+.v2-btn:focus-visible::before {
+  transform: translateY(0);
+}
+.v2-btn:hover,
+.v2-btn:focus-visible {
+  color: var(--v2-ink);
+  transform: translateY(-1px);
+}
+
+/* Word-split heading reveal, the reference's h-word/h-line mechanism. */
+@keyframes v2-word-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.7em) rotate(2deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(0);
+  }
+}
+.v2-word {
+  display: inline-block;
+  animation: v2-word-in 760ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .v2-word {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* The chromatic bloom behind the reference's display type — the thing
+   that stops huge white letters on near-black looking like a wireframe.
+   Two offset shadows in the two brand stops, no blur radius trickery. */
+.v2-bloom {
+  text-shadow:
+    0 0 calc(1.4 * var(--u)) rgb(59 130 246 / 0.42),
+    0 0 calc(4 * var(--u)) rgb(59 130 246 / 0.18);
+}
+
+@media (max-width: 768px) {
+  /* Placed after the desktop display rules on purpose: same specificity,
+     so the later declaration is the one that wins. */
+  .v2-h1 {
+    font-size: calc(4 * var(--u));
+  } /* 16vw, matching the reference */
+  .v2-h2 {
+    font-size: calc(3 * var(--u));
+  } /* 12vw */
+  .v2-h3 {
+    font-size: calc(1.7 * var(--u));
+  }
+  .v2-num {
+    font-size: calc(3 * var(--u));
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Cinematic layer                                                     */
+/*                                                                     */
+/* Four devices, each doing one job: type that arrives from behind a    */
+/* mask rather than fading in, a camera that settles on load, a lens    */
+/* falloff at the edges of the frame, and grain over the whole thing.   */
+/* All of it is CSS, so it survives with JavaScript off, and all of it  */
+/* collapses to the destination state under prefers-reduced-motion.     */
+/* ------------------------------------------------------------------ */
+
+/* A clipping wrapper for one line of display type. The child starts
+   below its own baseline and travels up into the frame — nothing
+   dissolves, it arrives. This is the single biggest difference between
+   type that reads as filmic and type that reads as a web page. */
+.v2-mask {
+  display: block;
+  overflow: hidden;
+  /* Anton's descenders sit below the line box; without this the mask
+     shaves the tails off g, y and p. */
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+.v2-mask > * {
+  display: block;
+  transform: translateY(108%);
+}
+.v2-mask--in > * {
+  animation: v2-rise 1150ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: var(--v2-delay, 0ms);
+}
+@keyframes v2-rise {
+  from {
+    transform: translateY(108%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* The quieter reveal, for body copy, chrome and cards. */
+.v2-lift {
+  opacity: 0;
+  transform: translateY(calc(1.2 * var(--u)));
+}
+.v2-lift--in {
+  animation: v2-lift-in 940ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: var(--v2-delay, 0ms);
+}
+/* Settles at --v2-o rather than at 1, because most of what this wraps is
+   muted body copy: animating to full opacity would quietly undo every
+   opacity utility on the element it is applied to. */
+@keyframes v2-lift-in {
+  from {
+    opacity: 0;
+    transform: translateY(calc(1.2 * var(--u)));
+  }
+  to {
+    opacity: var(--v2-o, 1);
+    transform: translateY(0);
+  }
+}
+
+/* Screenshots open from a horizontal slit and settle out of an
+   overscale — a lens pulling focus rather than an image appearing. */
+.v2-plate {
+  clip-path: inset(46% 0 46% 0);
+  transition:
+    clip-path 1100ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1400ms cubic-bezier(0.16, 1, 0.3, 1);
+  transform: scale(1.08);
+}
+.v2-plate--in {
+  clip-path: inset(0 0 0 0);
+  transform: scale(1);
+}
+
+/* The opening. A title card holds for a beat, then the whole frame
+   wipes upward off the hero. Kept under a second and a quarter: long
+   enough to read as a deliberate open, short enough that a returning
+   visitor does not sit through it. */
+.v2-open {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: grid;
+  place-items: center;
+  background: var(--v2-ground);
+  pointer-events: none;
+  animation: v2-open-lift 1180ms cubic-bezier(0.76, 0, 0.24, 1) both;
+}
+@keyframes v2-open-lift {
+  0%,
+  34% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-101%);
+  }
+}
+/* The wordmark inside it draws itself, then leaves with the card. */
+.v2-open__mark {
+  animation: v2-open-mark 1180ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes v2-open-mark {
+  0% {
+    opacity: 0;
+    transform: translateY(0.4em);
+    letter-spacing: 0.22em;
+  }
+  30% {
+    opacity: 1;
+    transform: translateY(0);
+    letter-spacing: 0.005em;
+  }
+  70%,
+  100% {
+    opacity: 1;
+    letter-spacing: 0.005em;
+  }
+}
+/* A hairline under it that draws left to right during the hold. */
+.v2-open__rule {
+  transform-origin: left;
+  animation: v2-open-rule 1180ms cubic-bezier(0.76, 0, 0.24, 1) both;
+}
+@keyframes v2-open-rule {
+  0% {
+    transform: scaleX(0);
+  }
+  34%,
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+/* The camera settling after the card leaves. */
+.v2-settle {
+  animation: v2-settle-in 2400ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes v2-settle-in {
+  from {
+    transform: scale(1.055);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+/* Lens falloff. Not a decorative wash — it is the frame's edge, and it
+   is what stops a full-bleed dark page reading as a flat rectangle. */
+.v2-vignette {
+  position: fixed;
+  inset: 0;
+  z-index: 900;
+  pointer-events: none;
+  background: radial-gradient(125% 95% at 50% 42%, transparent 46%, rgb(0 0 0 / 0.62) 100%);
+}
+
+/* Grain. One tiled SVG turbulence at 3.5%, fixed to the viewport so it
+   sits on the lens rather than on the page. */
+.v2-grain {
+  position: fixed;
+  inset: 0;
+  z-index: 901;
+  pointer-events: none;
+  opacity: 0.038;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .v2-mask > *,
+  .v2-mask--in > * {
+    animation: none;
+    transform: none;
+  }
+  .v2-lift,
+  .v2-lift--in {
+    animation: none;
+    opacity: var(--v2-o, 1);
+    transform: none;
+  }
+  .v2-plate,
+  .v2-plate--in {
+    clip-path: none;
+    transform: none;
+    transition: none;
+  }
+  .v2-open {
+    display: none;
+  }
+  .v2-settle {
+    animation: none;
+  }
+  .v2-btn::before {
+    transition: none;
+  }
+}
+
+/* The nav sits over everything and never changes on scroll, so what
+   passes beneath it has to stop competing on its own. A blur masked to
+   fade out at the bar's foot dissolves the copy under the wordmark
+   without introducing a hard-edged bar. */
+.v2-navscrim {
+  -webkit-backdrop-filter: blur(calc(0.55 * var(--u)));
+  backdrop-filter: blur(calc(0.55 * var(--u)));
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 52%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 52%, transparent 100%);
+}
+
+/* ------------------------------------------------------------------ */
+/* Inner-page type scale                                               */
+/*                                                                     */
+/* The home page's display sizes swap their multipliers at the phone   */
+/* breakpoint as well as their unit, because --u goes from ~1vw to 4vw */
+/* there and a multiplier that is right at one is four times too big   */
+/* at the other. Anything sized inline with calc(N * var(--u)) misses  */
+/* that swap and comes out LARGER on a phone than on a desktop, so     */
+/* every inner-page heading size lives here instead.                   */
+/* ------------------------------------------------------------------ */
+.v2-t1 {
+  font-size: calc(4.4 * var(--u));
+  line-height: 0.94;
+}
+.v2-t2 {
+  font-size: calc(2.6 * var(--u));
+  line-height: 1;
+}
+.v2-t3 {
+  font-size: calc(1.7 * var(--u));
+  line-height: 1.1;
+}
+.v2-t4 {
+  font-size: calc(1.4 * var(--u));
+  line-height: 1.14;
+}
+
+@media (max-width: 768px) {
+  .v2-t1 {
+    font-size: calc(2.3 * var(--u));
+  } /* 9.2vw */
+  .v2-t2 {
+    font-size: calc(1.75 * var(--u));
+  } /* 7vw */
+  .v2-t3 {
+    font-size: calc(1.3 * var(--u));
+  } /* 5.2vw */
+  .v2-t4 {
+    font-size: calc(1.15 * var(--u));
+  } /* 4.6vw */
+  .v2-body {
+    font-size: calc(1.05 * var(--u));
+  } /* 4.2vw — 1.333 was sized for the desktop unit */
+  .v2-eyebrow {
+    font-size: calc(0.72 * var(--u));
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Moving between pages                                                */
+/*                                                                     */
+/* Opacity only, deliberately: transform, filter and perspective all   */
+/* make an element a containing block for its position:fixed           */
+/* descendants, and this wrapper contains the nav, the lens and the    */
+/* title card. Animating transform here would drop the nav out of the  */
+/* viewport for the length of the transition. Opacity creates a        */
+/* stacking context but not a containing block, so it is safe.         */
+/* ------------------------------------------------------------------ */
+.v2-route {
+  animation: v2-route-in 460ms ease both;
+}
+@keyframes v2-route-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* A hairline that sweeps the top of the frame as the new page arrives —
+   the visual equivalent of a cut, so navigation reads as a shot change
+   rather than a jump. */
+.v2-swipe {
+  position: fixed;
+  inset-inline: 0;
+  top: 0;
+  height: 2px;
+  z-index: 1200;
+  pointer-events: none;
+  background: var(--v2-a);
+  transform-origin: left;
+  animation: v2-swipe-across 760ms cubic-bezier(0.76, 0, 0.24, 1) both;
+}
+@keyframes v2-swipe-across {
+  0% {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  48% {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  49% {
+    transform: scaleX(1);
+    transform-origin: right;
+  }
+  100% {
+    transform: scaleX(0);
+    transform-origin: right;
+  }
+}
+
+/* Reading progress under the nav. One transform per frame, written
+   straight to the node — see useProgressBar. */
+.v2-read {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 1px;
+  transform-origin: left;
+  background: var(--v2-a);
+  opacity: 0.55;
+}
+
+/* A pointer-tracked light in the hero. Desktop only: there is no cursor
+   to track on a phone, and the layer would just be a static blob. */
+.v2-torch {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 700ms ease;
+  background: radial-gradient(
+    calc(26 * var(--u)) circle at var(--tx, 50%) var(--ty, 50%),
+    rgb(59 130 246 / 0.16),
+    rgb(59 130 246 / 0) 70%
+  );
+}
+.v2-torch--on {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .v2-route,
+  .v2-swipe {
+    animation: none;
+  }
+  .v2-swipe {
+    display: none;
+  }
+  .v2-torch {
+    display: none;
+  }
+}
+
+/* The chapter marker. Fixed bottom-left, like a scene slate — it names
+   the part of the argument you are currently in, which on a page this
+   long is orientation rather than decoration. */
+.v2-chapter {
+  position: fixed;
+  left: var(--pad);
+  bottom: calc(2 * var(--u));
+  z-index: 950;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  gap: calc(0.7 * var(--u));
+  opacity: 0;
+  transform: translateY(calc(0.6 * var(--u)));
+  transition:
+    opacity 600ms ease,
+    transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.v2-chapter--on {
+  opacity: 1;
+  transform: translateY(0);
+}
+.v2-chapter__dot {
+  width: calc(0.4 * var(--u));
+  height: calc(0.4 * var(--u));
+  border-radius: 50%;
+  background: var(--v2-a);
+  flex: none;
+}
+.v2-chapter__slot {
+  display: block;
+  overflow: hidden;
+}
+.v2-chapter__label {
+  display: block;
+  animation: v2-rise 620ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@media (max-width: 768px) {
+  /* No room for it beside the content on a phone, and the thumb sits
+     right where it would be. */
+  .v2-chapter {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .v2-chapter {
+    transition: none;
+  }
+  .v2-chapter__label {
+    animation: none;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Touch targets                                                       */
+/*                                                                     */
+/* Small inline links — breadcrumbs, a policy link inside a sentence,  */
+/* the way back from the enquiry page — are the right size visually    */
+/* and far too small for a thumb. Padding plus an equal negative       */
+/* margin grows the hit area without moving anything on the page.      */
+/* Either signal is enough: a coarse pointer means a thumb, and a narrow */
+/* viewport almost always is a phone. Desktop layout is untouched       */
+/* because the padding is cancelled by an equal negative margin.        */
+/* ------------------------------------------------------------------ */
+/* A gentler variant for links inside a sentence: vertical only, so a
+   dense paragraph does not end up with overlapping horizontal targets. */
+@media (pointer: coarse), (max-width: 900px) {
+  .v2-tap-y {
+    display: inline-block;
+    padding-block: 0.5em;
+    margin-block: -0.5em;
+    position: relative;
+    z-index: 1;
+  }
+}
+
+@media (pointer: coarse), (max-width: 900px) {
+  .v2-tap {
+    display: inline-block;
+    padding: 0.9em 0.6em;
+    margin: -0.9em -0.6em;
+    /* Sits above its neighbours so the enlarged area wins the hit test
+       rather than being covered by the line box beside it. */
+    position: relative;
+    z-index: 1;
+  }
+}
+
+/* Range inputs. The visible track stays a hairline; the control itself
+   becomes tall enough to drag, with the track painted into the middle of
+   it. Without this the whole slider is a 4px-tall target. */
+.v2-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 44px;
+  background: transparent;
+  cursor: pointer;
+}
+.v2-range::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 999px;
+  background: rgb(233 237 244 / 0.26);
+}
+.v2-range::-moz-range-track {
+  height: 4px;
+  border-radius: 999px;
+  background: rgb(233 237 244 / 0.26);
+}
+.v2-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--color-brand, #3b82f6);
+  border: none;
+  /* Centres the thumb on a 4px track inside a 44px control. */
+  margin-top: -7px;
+  transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.v2-range:hover::-webkit-slider-thumb,
+.v2-range:focus-visible::-webkit-slider-thumb {
+  transform: scale(1.18);
+}
+.v2-range::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: none;
+  background: var(--color-brand, #3b82f6);
+  transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.v2-range:hover::-moz-range-thumb,
+.v2-range:focus-visible::-moz-range-thumb {
+  transform: scale(1.18);
+}
+@media (prefers-reduced-motion: reduce) {
+  .v2-range::-webkit-slider-thumb,
+  .v2-range::-moz-range-thumb {
+    transition: none;
+  }
+}
+
+/* Section rules that draw rather than appear. Every inner page is a
+   stack of hairline-separated sections; a rule that wipes in from the
+   left as its section arrives is what ties the scroll together without
+   adding anything that competes with the content. */
+.v2-rule {
+  display: block;
+  height: 1px;
+  background: rgb(255 255 255 / 0.12);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.v2-rule--in {
+  transform: scaleX(1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .v2-rule {
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* The monogram                                                        */
+/* ------------------------------------------------------------------ */
+
+/* The mark drawing itself. pathLength is set to 100 on both paths, so
+   one dash length works for the stem and the arms regardless of their
+   real geometry — the arms are nearly twice the stem's length, and
+   without it the two would draw at visibly different speeds. */
+.v2-mark--draw .v2-mark__stem,
+.v2-mark--draw .v2-mark__arms {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: v2-mark-draw 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: var(--v2-delay, 0ms);
+}
+/* The arms follow the stem rather than racing it. */
+.v2-mark--draw .v2-mark__arms {
+  animation-delay: calc(var(--v2-delay, 0ms) + 240ms);
+}
+@keyframes v2-mark-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .v2-mark--draw .v2-mark__stem,
+  .v2-mark--draw .v2-mark__arms {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}
+
+/* The glyph on the title card holds a beat after it draws, then leaves
+   with the card. */
+.v2-open__glyph {
+  animation: v2-open-glyph 1180ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes v2-open-glyph {
+  0% {
+    opacity: 0;
+    transform: scale(0.86);
+  }
+  26%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .v2-open__glyph {
+    animation: none;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* The living ground                                                   */
+/*                                                                     */
+/* The orbs already move with scroll. This gives them motion of their  */
+/* own, so the page is never completely still even when the visitor    */
+/* is — which is the difference between atmosphere and wallpaper.      */
+/* Each orb gets a different duration and a negative delay, so they    */
+/* are permanently out of phase and the field never visibly loops.     */
+/* transform is on a wrapper, not the orb, because the orb already     */
+/* uses transform to centre itself on its own coordinates.             */
+/* ------------------------------------------------------------------ */
+.v2-orb-float {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+  animation: v2-orb-drift 34s ease-in-out infinite alternate;
+}
+.v2-orb-float:nth-child(2n) {
+  animation-duration: 46s;
+  animation-delay: -11s;
+}
+.v2-orb-float:nth-child(3n) {
+  animation-duration: 28s;
+  animation-delay: -19s;
+}
+@keyframes v2-orb-drift {
+  from {
+    transform: translate3d(-2.2%, -1.4%, 0) scale(0.94);
+  }
+  to {
+    transform: translate3d(2.6%, 1.8%, 0) scale(1.08);
+  }
+}
+
+/* The grid drifts too, a hair slower than anything else on the page.
+   Two full cells over four minutes: not consciously visible, but the
+   ground stops reading as a printed backdrop. */
+.v2-grid {
+  animation: v2-grid-pan 240s linear infinite;
+}
+@keyframes v2-grid-pan {
+  from {
+    background-position:
+      0 0,
+      0 0;
+  }
+  to {
+    background-position:
+      calc(28 * var(--u)) calc(28 * var(--u)),
+      calc(28 * var(--u)) calc(28 * var(--u));
+  }
+}
+
+/* A single enormous monogram behind the whole page, at the edge of
+   visible. It is the brand as texture rather than as a logo. */
+.v2-watermark {
+  position: fixed;
+  right: calc(-8 * var(--u));
+  bottom: calc(-10 * var(--u));
+  z-index: 0;
+  pointer-events: none;
+  color: rgb(59 130 246 / 0.05);
+  animation: v2-watermark-breathe 52s ease-in-out infinite alternate;
+}
+@keyframes v2-watermark-breathe {
+  from {
+    transform: rotate(-5deg) scale(1);
+    opacity: 0.75;
+  }
+  to {
+    transform: rotate(3deg) scale(1.07);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Off on a phone: it would sit under the copy rather than beside it. */
+  .v2-watermark {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .v2-orb-float,
+  .v2-grid,
+  .v2-watermark {
+    animation: none;
+  }
+}
+
+/* A screen revealed by a wipe across, rather than up. Used once, on the
+   one-sentence section, so that page has a horizontal move of its own. */
+.v2-wipe {
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 1150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.v2-wipe--in {
+  clip-path: inset(0 0 0 0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .v2-wipe,
+  .v2-wipe--in {
+    clip-path: none;
+    transition: none;
+  }
+}

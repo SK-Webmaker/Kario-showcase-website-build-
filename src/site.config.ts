@@ -4,24 +4,34 @@
  * whole site follows.
  */
 
+/** The public origin, with no trailing slash. Canonicals, the sitemap
+ *  and every absolute URL in the schema graph are built from this. */
+export const ORIGIN = "https://kairobookings.com";
+
+/** The home page's title and description. Used by the <title> tag, the meta
+ *  description, the Open Graph tags and the WebPage node in the schema
+ *  graph — a machine that finds them disagreeing trusts all of them less. */
+export const TITLE = "Kairo | Booking, Payments & Client Management Software";
+export const DESCRIPTION =
+  "Kairo runs bookings, payments, client records, stock and every customer message from one login — so the hours normally lost to admin go back into the day. $400 once, then nothing per month.";
+
 export const site = {
   name: "Kairo",
 
   // ---------------------------------------------------------------------
-  // TODO — REPLACE BEFORE LAUNCH
-  // Every "Talk to us" / "Book a demo" button on the site opens a pre-filled
-  // email to this address. Change it here once and every button updates.
+  // Contact email used by every "Talk to us" / "Book a demo" button.
+  // Change it here once and every button updates.
   // ---------------------------------------------------------------------
-  contactEmail: "hello@kairo.app",
+  contactEmail: "yewankiri@gmail.com",
 
   emailSubject: "Kairo — I'd like to see it running",
   emailBody: [
     "Hi,",
     "",
-    "I run a salon and I'd like to see Kairo working.",
+    "I run an appointment business and I'd like to see Kairo working.",
     "",
     "Business name:",
-    "What we do (hair / barber / nails / lashes / clinic):",
+    "What we do:",
     "Team size:",
     "Best number to reach me on:",
     "",

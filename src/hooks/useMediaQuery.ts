@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 
 /** Reactive `matchMedia`, for the few places layout alone can't decide. */
 export function useMediaQuery(query: string): boolean {
-  const [matches, setMatches] = useState(() => {
-    if (typeof window === "undefined") return false;
-    return window.matchMedia(query).matches;
-  });
+  // Always start false: this page is server-rendered, and seeding from
+  // window.matchMedia here makes the first client render disagree with
+  // the server HTML on phones, which React reports as a hydration
+  // mismatch and repairs by throwing the tree away. The effect below
+  // sets the real value immediately after mount.
+  const [matches, setMatches] = useState(false);
 
   useEffect(() => {
     const mq = window.matchMedia(query);
