@@ -13,7 +13,7 @@ import { V2Faq } from "@/components/v2/V2Faq";
 import { V2Footer } from "@/components/v2/V2Footer";
 import { Chapters, Lens, Opening } from "@/components/v2/motion";
 import { Watermark } from "@/components/v2/KairoMark";
-import { PixelWipe } from "@/components/v2/PixelWipe";
+import { Seam } from "@/components/v2/Seam";
 import { Ambience, Stage } from "@/components/v2/cinematic";
 import { NoMotionFallback } from "@/components/v2/NoMotionFallback";
 import { useLenis } from "@/hooks/useLenis";
@@ -85,13 +85,12 @@ function Index() {
 
       <V2Nav />
       <main>
-        {/* The hero does not simply end. A field of pixels forms out of
-            the middle of the screen across the boundary and dissolves
-            again as the next section takes over. It sits behind the page,
-            not over it — see PixelWipe for why that is the whole trick. */}
+        {/* The hero does not simply end. It sinks into the ground behind
+            a soft veil while one hairline draws outward across the seam
+            and leaves with it — a cut, not a curtain. See Seam.tsx. */}
         <div className="relative">
           <V2Hero />
-          <PixelWipe className="z-0 -bottom-[130vh] h-[150vh]" />
+          <Seam className="z-20 -bottom-[35vh] h-[70vh]" />
         </div>
         <V2Pain />
         <V2Statements />
@@ -115,7 +114,7 @@ function Index() {
             create a containing block for the sticky column inside. */}
         <div className="relative">
           <V2Records />
-          <PixelWipe className="z-0 -bottom-[85vh] h-[115vh]" />
+          <Seam className="z-20 -bottom-[30vh] h-[60vh]" />
         </div>
         <Stage className="overflow-hidden">
           <V2Growth />

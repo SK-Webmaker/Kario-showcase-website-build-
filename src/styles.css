@@ -1438,6 +1438,74 @@
 }
 
 /* ------------------------------------------------------------------ */
+/* The act break                                                       */
+/* ------------------------------------------------------------------ */
+
+/* A boundary that dissolves instead of ending. The band is positioned by
+   the caller and never receives pointer events; everything inside is
+   driven from Seam.tsx by opacity and scaleX only. */
+.v2-seam {
+  position: absolute;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.v2-seam__veil {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background: linear-gradient(
+    to bottom,
+    rgb(5 7 12 / 0) 0%,
+    rgb(5 7 12 / 0.72) 38%,
+    rgb(5 7 12 / 0.9) 50%,
+    rgb(5 7 12 / 0.6) 66%,
+    rgb(5 7 12 / 0) 100%
+  );
+  will-change: opacity;
+}
+.v2-seam__bloom {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 120%;
+  height: 42%;
+  translate: -50% -50%;
+  opacity: 0;
+  background: radial-gradient(
+    60% 50% at 50% 50%,
+    rgb(59 130 246 / 0.16) 0%,
+    rgb(59 130 246 / 0) 70%
+  );
+  will-change: opacity;
+}
+.v2-seam__line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  opacity: 0;
+  transform: scaleX(0.12);
+  transform-origin: 50% 50%;
+  background: linear-gradient(
+    to right,
+    rgb(244 245 247 / 0) 0%,
+    rgb(244 245 247 / 0.34) 50%,
+    rgb(244 245 247 / 0) 100%
+  );
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Nothing to resolve to: the boundary is simply a boundary. */
+  .v2-seam {
+    display: none;
+  }
+}
+
+/* ------------------------------------------------------------------ */
 /* The constant ground                                                 */
 /*                                                                     */
 /* Everything else on this page moves because you moved. This does not: */
