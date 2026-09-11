@@ -12,7 +12,7 @@
 const CSS = `
 .v2-lift { opacity: var(--v2-o, 1) !important; transform: none !important; }
 .v2-mask > * { transform: none !important; }
-.v2-plate { clip-path: none !important; transform: none !important; }
+.v2-plate { opacity: 1 !important; transform: none !important; }
 .v2-open { display: none !important; }
 .v2-settle { animation: none !important; }
 `;
