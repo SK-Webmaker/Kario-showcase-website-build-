@@ -7,7 +7,7 @@ import { Reveal } from "./ui/Reveal";
  */
 const STATS = [
   { v: "0", u: "%", k: "Commission", n: "Every booking you take is yours in full" },
-  { v: "0", u: "", k: "Per month", n: "A one-off $400 to set up, then nothing" },
+  { v: "0", u: "", k: "Per month", n: "A one-off $410 to set up, then nothing" },
   { v: "750", u: "", k: "Automated checks", n: "Across 28 suites, on every release" },
   { v: "1", u: "", k: "Click to export", n: "Your whole client list, no permission asked" },
 ];

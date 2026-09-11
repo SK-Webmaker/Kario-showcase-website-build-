@@ -44,7 +44,7 @@ const INCLUDED: readonly [string, string][] = [
 
 const VERSUS: readonly [string, string, string][] = [
   ["Monthly cost", "$29–$79 per month, forever", "$0 per month, forever"],
-  ["Setup", "Usually your own weekend", "$400 once, done with you"],
+  ["Setup", "Usually your own weekend", "$410 once, done with you"],
   ["Per-booking fee", "Common on marketplace plans", "None"],
   ["Commission on services or retail", "Sometimes, on first visits", "None"],
   ["Client list", "Held on the platform", "Your own database, exportable"],
@@ -54,9 +54,9 @@ const VERSUS: readonly [string, string, string][] = [
 
 const FAQS: readonly Faq[] = [
   {
-    question: "Is $400 really the only payment?",
+    question: "Is $410 really the only payment?",
     answer:
-      "Yes. It is a one-off setup fee of $400 AUD including GST. There is no monthly subscription, no per-booking fee and no commission. Card processing is billed by your payment provider at their rate, as it would be with any system.",
+      "Yes. It is a one-off setup fee of $410 AUD including GST. There is no monthly subscription, no per-booking fee and no commission. Card processing is billed by your payment provider at their rate, as it would be with any system.",
   },
   {
     question: "What is the catch on a no-monthly-fee model?",
@@ -64,7 +64,7 @@ const FAQS: readonly Faq[] = [
       "Kairo is a newer name than the large subscription platforms, and there is money to pay up front rather than spread across the year. In exchange the running cost is zero and there is no percentage of your takings leaving the business.",
   },
   {
-    question: "How quickly does $400 pay for itself?",
+    question: "How quickly does $410 pay for itself?",
     answer:
       "Against a $49 per month subscription it is about nine months, and the subscription keeps charging afterwards. Against a 20% new-client commission on an $85 ticket, roughly 24 first visits. Use the calculator on this page with your own numbers.",
   },
@@ -82,7 +82,7 @@ const FAQS: readonly Faq[] = [
 
 const TITLE = "No-Monthly-Fee Salon Software AU | Kairo";
 const DESCRIPTION =
-  "Salon software with no monthly subscription and no per-booking fee. One $400 setup, then $0/month, forever. Built and run for a Melbourne salon.";
+  "Salon software with no monthly subscription and no per-booking fee. One $410 setup, then $0/month, forever. Built and run for a Melbourne salon.";
 
 export const Route = createFileRoute("/no-monthly-fee-salon-software")({
   head: () =>
@@ -95,7 +95,7 @@ export const Route = createFileRoute("/no-monthly-fee-salon-software")({
         softwareSchema({
           path: PATH,
           description:
-            "Salon booking, payments and client management software with no monthly subscription. One-off $400 AUD setup, then $0 per month.",
+            "Salon booking, payments and client management software with no monthly subscription. One-off $410 AUD setup, then $0 per month.",
         }),
         faqSchema(FAQS),
         breadcrumbSchema([
@@ -117,7 +117,7 @@ function Page() {
     >
       <PageHero
         kicker="No monthly fee"
-        headline="Salon software with no monthly fee — $400 once, then nothing"
+        headline="Salon software with no monthly fee — $410 once, then nothing"
         subhead={
           <>
             A subscription is a bill that arrives whether the week was busy or quiet. Kairo is paid
@@ -133,13 +133,13 @@ function Page() {
       <Section kicker="01" title="What a subscription actually costs over time">
         <P>
           Salon platforms commonly sit between $29 and $79 a month for a single-site salon with a
-          small team. At $29 a month a $400 one-off is passed in about fourteen months. At $79 it
-          takes five. After that the subscription simply keeps going, and the total keeps climbing
+          small team. At $29 a month a $410 one-off is passed in about fifteen months. At $79 it
+          takes six. After that the subscription simply keeps going, and the total keeps climbing
           for the rest of the time you are in business.
         </P>
         <P>
           Put a three-year frame around it and the shape is clear: $49 a month is $1,764 before a
-          single percentage of commission. The same three years of Kairo is $400.
+          single percentage of commission. The same three years of Kairo is $410.
         </P>
       </Section>
 
@@ -149,16 +149,16 @@ function Page() {
         <P>
           Here is the version you can do in your head. On an average ticket of $85, five visits is
           $425 — so if a platform is costing you the equivalent of roughly one client a month, the
-          entire $400 is covered by five appointments. Everything after that is money the business
+          entire $410 is covered by five appointments. Everything after that is money the business
           keeps.
         </P>
         <P>
-          The same maths applied to commission: 20% of an $85 first visit is $17. Twenty-four new
+          The same maths applied to commission: 20% of an $85 first visit is $17. Twenty-five new
           clients and you have handed over more than Kairo costs in total, once, forever.
         </P>
       </Section>
 
-      <Section kicker="03" title="What the $400 includes">
+      <Section kicker="03" title="What the $410 includes">
         <dl className="grid gap-px bg-line sm:grid-cols-2">
           {INCLUDED.map(([k, v]) => (
             <div key={k} className="bg-ground p-5">

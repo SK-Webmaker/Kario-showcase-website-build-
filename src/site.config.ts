@@ -13,16 +13,18 @@ export const ORIGIN = "https://kairobookings.com";
  *  graph — a machine that finds them disagreeing trusts all of them less. */
 export const TITLE = "Kairo | Booking, Payments & Client Management Software";
 export const DESCRIPTION =
-  "Kairo runs bookings, payments, client records, stock and every customer message from one login — so the hours normally lost to admin go back into the day. $400 once, then nothing per month.";
+  "Kairo runs bookings, payments, client records, stock and every customer message from one login — so the hours normally lost to admin go back into the day. $410 once, then nothing per month.";
 
 export const site = {
   name: "Kairo",
 
   // ---------------------------------------------------------------------
   // Contact email used by every "Talk to us" / "Book a demo" button.
-  // Change it here once and every button updates.
+  // Change it here once and every button updates. It is deliberately the
+  // same address the contact form already sends from, so a reply to a
+  // form submission and a reply to a mailto: land in the same inbox.
   // ---------------------------------------------------------------------
-  contactEmail: "yewankiri@gmail.com",
+  contactEmail: "enquiries@kairobookings.com",
 
   emailSubject: "Kairo — I'd like to see it running",
   emailBody: [

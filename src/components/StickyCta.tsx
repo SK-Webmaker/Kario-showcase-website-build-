@@ -52,7 +52,7 @@ export function StickyCta() {
     >
       <div className="flex items-center gap-3">
         <p className="min-w-0 flex-1 text-[12.5px] leading-snug text-ink-2">
-          $400 once. No commission, ever.
+          $410 once. No commission, ever.
         </p>
         <a
           href="/get-in-touch"

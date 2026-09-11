@@ -72,7 +72,7 @@ export function V2Hero() {
           opacity={0.8}
           className="v2-body order-1 max-w-[42ch] text-center sm:order-2"
         >
-          Bookings, payments, client records and every message — one system, one login. $400 once,
+          Bookings, payments, client records and every message — one system, one login. $410 once,
           then nothing per month.
         </Reveal>
         <Reveal

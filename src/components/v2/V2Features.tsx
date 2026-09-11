@@ -3,7 +3,8 @@ import type { CSSProperties } from "react";
 import { GALLERY } from "@/data/gallery";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
 import { Eyebrow } from "./primitives";
-import { Plate, Reveal } from "./motion";
+import { Reveal } from "./motion";
+import { Plate } from "./cinematic";
 
 /**
  * Five product screens on a pinned stage.
@@ -275,8 +276,8 @@ export function V2Features() {
                   src={c.src}
                   alt={c.alt}
                   eager={i === 0}
-                  className="border border-white/10"
-                  style={{ borderRadius: "calc(0.6 * var(--u))" }}
+                  depth={10}
+                  radius="calc(0.6 * var(--u))"
                 />
               </div>
               <ul style={{ marginTop: "calc(1.2 * var(--u))" }}>

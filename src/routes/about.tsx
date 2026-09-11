@@ -9,7 +9,7 @@ import { breadcrumbSchema, organizationSchema, seo } from "@/lib/seo";
 const PATH = "/about";
 const TITLE = "About Kairo Bookings | Built in a Melbourne Salon";
 const DESCRIPTION =
-  "Kairo Bookings is Australian salon software built and run in production for a Melbourne salon. One-off $400 setup, no monthly fee, data stored in Australia.";
+  "Kairo Bookings is Australian salon software built and run in production for a Melbourne salon. One-off $410 setup, no monthly fee, data stored in Australia.";
 
 export const Route = createFileRoute("/about")({
   head: () =>
@@ -51,7 +51,7 @@ function Page() {
         </P>
         <P>
           The pricing follows the same instinct. A salon should not pay a percentage of its own
-          takings for the privilege of writing bookings down. One-off $400 setup, then nothing.
+          takings for the privilege of writing bookings down. One-off $410 setup, then nothing.
         </P>
       </Section>
 

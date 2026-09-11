@@ -6,7 +6,7 @@ import { breadcrumbSchema, organizationSchema, seo, softwareSchema } from "@/lib
 const PATH = "/barber-software-australia";
 const TITLE = "Barber Software Australia | Kairo";
 const DESCRIPTION =
-  "Barbershop software for walk-ins, short back-to-back appointments and a chair per barber. $400 once, $0/month, no commission.";
+  "Barbershop software for walk-ins, short back-to-back appointments and a chair per barber. $410 once, $0/month, no commission.";
 
 export const Route = createFileRoute("/barber-software-australia")({
   head: () =>

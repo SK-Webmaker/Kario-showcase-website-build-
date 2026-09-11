@@ -80,7 +80,7 @@ const FITTED: readonly { t: string; b: string }[] = [
 
 const TITLE = "Hair Salon Software Australia | Kairo";
 const DESCRIPTION =
-  "Hair salon software built for real appointment work — colour, from pricing, multi-stylist columns, per-stylist hours, formulas and allergies. $400 once, $0/month.";
+  "Hair salon software built for real appointment work — colour, from pricing, multi-stylist columns, per-stylist hours, formulas and allergies. $410 once, $0/month.";
 
 export const Route = createFileRoute("/hair-salon-software-australia")({
   head: () =>

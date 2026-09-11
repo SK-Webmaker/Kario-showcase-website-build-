@@ -13,7 +13,7 @@ import { CountUp } from "@/components/v2/motion";
  * Nothing here claims a saving on another company's behalf.
  */
 
-const SETUP = 400;
+const SETUP = 410;
 const WEEKS_PER_MONTH = 52 / 12;
 
 // Validated as a categorical pair against both surfaces

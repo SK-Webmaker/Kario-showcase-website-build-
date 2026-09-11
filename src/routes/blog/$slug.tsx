@@ -3,7 +3,8 @@ import { createFileRoute, notFound } from "@tanstack/react-router";
 import { AuthorBio } from "@/components/seo/AuthorBio";
 import { CtaBanner } from "@/components/seo/CtaBanner";
 import { PageShell } from "@/components/seo/PageShell";
-import { MaskLines, Plate, Reveal } from "@/components/v2/motion";
+import { MaskLines, Reveal } from "@/components/v2/motion";
+import { Plate } from "@/components/v2/cinematic";
 import { fetchPost, parseMarkdown } from "@/lib/blog";
 import { articleSchema, breadcrumbSchema, organizationSchema, seo } from "@/lib/seo";
 
@@ -121,12 +122,13 @@ function Page() {
         ) : null}
 
         {post.cover_image_url ? (
-          <figure
-            className="overflow-hidden border border-white/10"
-            style={{ marginTop: "calc(3 * var(--u))", borderRadius: "calc(1.2 * var(--u))" }}
-          >
-            <Plate src={post.cover_image_url} alt={post.title} eager />
-          </figure>
+          <Plate
+            src={post.cover_image_url}
+            alt={post.title}
+            eager
+            depth={14}
+            style={{ marginTop: "calc(3 * var(--u))" }}
+          />
         ) : null}
 
         {/* The body reveals block by block: a long article that arrives

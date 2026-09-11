@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { Orbs } from "@/components/v2/primitives";
-import { MaskLines, Plate, Reveal, Torch } from "@/components/v2/motion";
+import { Reveal, Torch } from "@/components/v2/motion";
+import { Plate, WordLines } from "@/components/v2/cinematic";
 
 const ORBS = [
   { x: "10%", y: "24%", size: "40vw", tone: "a" as const },
@@ -60,7 +61,13 @@ export function PageHero({
             maxWidth: "calc(74 * var(--u))",
           }}
         >
-          <MaskLines play="now" delay={120} step={110} lines={breakHeadline(headline)} />
+          <WordLines
+            play="now"
+            delay={140}
+            step={46}
+            lineStep={100}
+            lines={breakHeadline(headline)}
+          />
         </h1>
 
         <Reveal
@@ -98,12 +105,13 @@ export function PageHero({
         </Reveal>
 
         {screenshot ? (
-          <figure
-            className="overflow-hidden border border-white/10"
-            style={{ marginTop: "calc(3.4 * var(--u))", borderRadius: "calc(1.2 * var(--u))" }}
-          >
-            <Plate src={screenshot.src} alt={screenshot.alt} eager />
-          </figure>
+          <Plate
+            src={screenshot.src}
+            alt={screenshot.alt}
+            eager
+            depth={14}
+            style={{ marginTop: "calc(3.4 * var(--u))" }}
+          />
         ) : null}
       </div>
     </section>

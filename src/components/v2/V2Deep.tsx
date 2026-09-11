@@ -1,17 +1,19 @@
-import { useInView } from "@/hooks/useInView";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
 import { Eyebrow, Orbs } from "./primitives";
 import { CountUp, Reveal, Torch } from "./motion";
-import { Window, WordLines } from "./cinematic";
+import { Plate, WordLines } from "./cinematic";
 
 /**
- * Three sections that go a level deeper than the feature showcase.
+ * Four sections that go a level deeper than the feature showcase.
  *
- * Each one moves differently on purpose. The showcase above is a pinned
- * stage of cross-fading cards; if these repeated it the page would read
- * as one mechanic applied five more times. So: a transcript that fills in
- * line by line, a screen revealed by a horizontal wipe, and two records
- * stacked in depth. Vertical, horizontal, and z — three axes.
+ * Each one is built around a different idea so the page does not read as
+ * one mechanic applied five more times: a transcript that fills in line
+ * by line, a single sentence becoming a booking, two records stacked in
+ * depth, and a ledger that counts itself in.
+ *
+ * The pictures, though, all arrive the same way — see Plate. Varying the
+ * argument is what keeps a page interesting; varying how a photograph
+ * turns up is what makes it look unsure of itself.
  */
 
 const SHOT = "/screenshots";
@@ -106,18 +108,13 @@ export function V2Kai() {
             ))}
           </ul>
 
-          <Reveal delay={200} style={{ marginTop: "calc(1.6 * var(--u))" }}>
-            <figure
-              className="overflow-hidden border border-white/10"
-              style={{ borderRadius: "calc(1.2 * var(--u))" }}
-            >
-              <Window
-                src={`${SHOT}/01-kai-agent.jpg`}
-                alt="Kai answering two instructions inside Kairo: one books an appointment and fills the form in, the other closes the salon on Mondays and offers to undo it."
-                depth={38}
-              />
-            </figure>
-          </Reveal>
+          <Plate
+            src={`${SHOT}/01-kai-agent.jpg`}
+            alt="Kai answering two instructions inside Kairo: one books an appointment and fills the form in, the other closes the salon on Mondays and offers to undo it."
+            depth={16}
+            delay={120}
+            style={{ marginTop: "calc(1.6 * var(--u))" }}
+          />
         </div>
       </div>
     </section>
@@ -129,12 +126,6 @@ export function V2Kai() {
 /* ------------------------------------------------------------------ */
 
 export function V2Sentence() {
-  // Tied to the screen's own entrance rather than to the section's scroll
-  // travel: driven by the section, the image is still fully clipped while
-  // it is on screen, and the reader gets a large empty panel where the
-  // picture should be.
-  const { ref: shot, inView } = useInView<HTMLDivElement>({ threshold: 0.12 });
-
   return (
     <section
       id="one-sentence"
@@ -170,29 +161,17 @@ export function V2Sentence() {
             client, service, stylist, time, duration, price. One press and it is in the book.
           </Reveal>
 
-          {/* The screen is revealed by a clip that opens left to right as
-              you scroll — the only horizontal move on the page, which is
-              what keeps this section from feeling like the last one. */}
-          {/* The observer has to sit on a wrapper, not on the clipped
-              element: a clip-path of inset(0 100% 0 0) gives the element
-              zero visible area, IntersectionObserver reports it as not
-              intersecting, and it never un-clips itself. */}
-          <div ref={shot} style={{ marginTop: "calc(3 * var(--u))" }}>
-            <div
-              className={`v2-wipe overflow-hidden border border-white/15 ${inView ? "v2-wipe--in" : ""}`}
-              style={{ borderRadius: "calc(1.2 * var(--u))" }}
-            >
-              <img
-                src={`${SHOT}/03-kai-booking-prefilled.jpg`}
-                alt="Kairo showing a new appointment already filled in from a typed sentence: Amara Osei, Balayage, 9am tomorrow, with the calendar open behind it."
-                width={2048}
-                height={1280}
-                loading="lazy"
-                decoding="async"
-                className="block h-auto w-full"
-              />
-            </div>
-          </div>
+          {/* The screen arrives the same way every other picture on the
+              site does. It used to open on a left-to-right clip, which
+              looked like a trick rather than a transition and — being
+              gated on a fraction of a tall element — could leave an empty
+              bordered panel on screen and then snap in late. */}
+          <Plate
+            src={`${SHOT}/03-kai-booking-prefilled.jpg`}
+            alt="Kairo showing a new appointment already filled in from a typed sentence: Amara Osei, Balayage, 9am tomorrow, with the calendar open behind it."
+            depth={18}
+            style={{ marginTop: "calc(3 * var(--u))" }}
+          />
 
           <div
             className="grid gap-x-16 gap-y-6 lg:grid-cols-2"
@@ -422,18 +401,13 @@ export function V2Growth() {
           ))}
         </ul>
 
-        <Reveal delay={160} style={{ marginTop: "calc(2.4 * var(--u))" }}>
-          <figure
-            className="overflow-hidden border border-white/10"
-            style={{ borderRadius: "calc(1.2 * var(--u))" }}
-          >
-            <Window
-              src={`${SHOT}/04-growth-referrals.jpg`}
-              alt="Kairo's Growth screen: how many visits came from a client's referral link, what they were worth, how many found the salon themselves, the reward set for each side, and which clients have sent people in."
-              depth={-26}
-            />
-          </figure>
-        </Reveal>
+        <Plate
+          src={`${SHOT}/04-growth-referrals.jpg`}
+          alt="Kairo's Growth screen: how many visits came from a client's referral link, what they were worth, how many found the salon themselves, the reward set for each side, and which clients have sent people in."
+          depth={14}
+          delay={140}
+          style={{ marginTop: "calc(2.4 * var(--u))" }}
+        />
 
         <Reveal
           delay={200}

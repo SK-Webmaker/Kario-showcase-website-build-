@@ -34,7 +34,7 @@ const FAQS: readonly Faq[] = [
   {
     question: "What does it cost?",
     answer:
-      "A one-off $400 AUD setup fee, then $0 per month, no per-booking fee and no commission on services, retail or card payments.",
+      "A one-off $410 AUD setup fee, then $0 per month, no per-booking fee and no commission on services, retail or card payments.",
   },
   {
     question: "Can you move our existing clients across?",
@@ -88,7 +88,7 @@ const BLOCKS: readonly { n: string; t: string; b: string }[] = [
 
 const TITLE = "Salon Booking Software Australia | Kairo";
 const DESCRIPTION =
-  "Bookings, payments, client records, stock and customer messages from one login — for Australian salons, barbers and beauty businesses. $400 once, $0/month.";
+  "Bookings, payments, client records, stock and customer messages from one login — for Australian salons, barbers and beauty businesses. $410 once, $0/month.";
 
 export const Route = createFileRoute("/salon-booking-software-australia")({
   head: () =>
@@ -123,7 +123,7 @@ function Page() {
         subhead={
           <>
             Bookings, payments, client records, stock and every customer message from one login —
-            with the data stored in Australia. $400 once, then $0 per month.
+            with the data stored in Australia. $410 once, then $0 per month.
           </>
         }
         secondary={{ label: "What it costs", href: "/no-monthly-fee-salon-software" }}

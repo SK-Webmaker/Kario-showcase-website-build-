@@ -3,7 +3,7 @@ import { MaskLines, Reveal } from "@/components/v2/motion";
 /** The close on every inner page, in the same language as the home page's. */
 export function CtaBanner({
   heading = "Tell us about your business — we set your Kairo up",
-  body = "One conversation, then we build the diary, the services, the team and the booking link for you. $400 once, $0 per month, no commission on anything you charge.",
+  body = "One conversation, then we build the diary, the services, the team and the booking link for you. $410 once, $0 per month, no commission on anything you charge.",
   ctaLabel = "Contact us",
   ctaHref = "/get-in-touch",
 }: {

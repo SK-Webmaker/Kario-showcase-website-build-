@@ -81,7 +81,7 @@ function organization(): Node {
     },
     image: { "@id": `${ORIGIN}/#logo` },
     description:
-      "Kairo makes booking, payments and client-messaging software for businesses that sell appointments. One system instead of a diary, a card machine and a messaging app, so less of the day goes on admin. One-off $400 setup, no monthly fee and no commission.",
+      "Kairo makes booking, payments and client-messaging software for businesses that sell appointments. One system instead of a diary, a card machine and a messaging app, so less of the day goes on admin. One-off $410 setup, no monthly fee and no commission.",
     slogan: "The software a salon runs its whole day on.",
     email: site.contactEmail,
     areaServed: { "@type": "Country", name: "Australia" },
@@ -146,8 +146,8 @@ function software(): Node {
       "@id": `${ORIGIN}/#offer`,
       name: "Kairo setup",
       description:
-        "A one-off setup fee of AUD $400 including GST, paid once. No monthly subscription, no per-booking fee and no commission on anything the salon charges. Full refund within 30 days of going live.",
-      price: "400",
+        "A one-off setup fee of AUD $410 including GST, paid once. No monthly subscription, no per-booking fee and no commission on anything the salon charges. Full refund within 30 days of going live.",
+      price: "410",
       priceCurrency: "AUD",
       availability: "https://schema.org/InStock",
       eligibleRegion: { "@type": "Country", name: "Australia" },
@@ -155,7 +155,7 @@ function software(): Node {
       priceSpecification: {
         "@type": "UnitPriceSpecification",
         name: "One-off setup fee",
-        price: "400",
+        price: "410",
         priceCurrency: "AUD",
         valueAddedTaxIncluded: true,
       },

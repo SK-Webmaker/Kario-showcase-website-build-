@@ -1,9 +1,11 @@
 import type { ReactNode } from "react";
 
 import { NoMotionFallback } from "@/components/v2/NoMotionFallback";
+import { Ambience } from "@/components/v2/cinematic";
 import { V2Footer } from "@/components/v2/V2Footer";
 import { V2Nav } from "@/components/v2/V2Nav";
-import { Lens, MaskLines, Reveal, Rule } from "@/components/v2/motion";
+import { Lens, Reveal, Rule } from "@/components/v2/motion";
+import { Stage, WordLines } from "@/components/v2/cinematic";
 import { Watermark } from "@/components/v2/KairoMark";
 
 import { Breadcrumbs, type Crumb } from "./Breadcrumbs";
@@ -21,6 +23,10 @@ export function PageShell({ crumbs, children }: { crumbs: readonly Crumb[]; chil
   return (
     <div className="v2 v2-grid min-h-screen">
       <NoMotionFallback />
+      {/* The constant ground — fixed, always drifting, beneath
+          everything. Every page gets it, so the atmosphere does not
+          stop at the edge of the home page. */}
+      <Ambience />
       <Lens />
       <Watermark />
       <V2Nav variant="inner" />
@@ -41,9 +47,16 @@ export function PageShell({ crumbs, children }: { crumbs: readonly Crumb[]; chil
 }
 
 /**
- * A content section. The title rises out of a mask and the body lifts
- * behind it, so scrolling one of these pages has the same cadence as
- * scrolling the home page.
+ * A content section.
+ *
+ * The title arrives word by word and the body lifts behind it, which is
+ * the home page's cadence rather than a quieter one borrowed for the
+ * inner pages — the whole site should read as one journey.
+ *
+ * Stage is safe here and only here: it transforms its wrapper, which
+ * would become the containing block for any position:sticky inside. No
+ * Section has one. The two pages that do pin a column — get-in-touch and
+ * a legal document — are deliberately left unwrapped.
  */
 export function Section({
   id,
@@ -57,34 +70,36 @@ export function Section({
   children: ReactNode;
 }) {
   return (
-    <section
-      id={id}
-      className="mx-auto"
-      style={{ maxWidth: "calc(100 * var(--u))", paddingInline: "var(--pad)" }}
-    >
-      <Rule />
-      <div style={{ paddingBlock: "calc(4.5 * var(--u))" }}>
-        {kicker ? (
-          <Reveal>
-            <p className="v2-eyebrow v2-accent font-semibold">{kicker}</p>
+    <Stage strength={0.45}>
+      <section
+        id={id}
+        className="mx-auto"
+        style={{ maxWidth: "calc(100 * var(--u))", paddingInline: "var(--pad)" }}
+      >
+        <Rule />
+        <div style={{ paddingBlock: "calc(4.5 * var(--u))" }}>
+          {kicker ? (
+            <Reveal>
+              <p className="v2-eyebrow v2-accent font-semibold">{kicker}</p>
+            </Reveal>
+          ) : null}
+          {title ? (
+            <h2
+              className="v2-display v2-t2"
+              style={{
+                marginTop: kicker ? "calc(0.8 * var(--u))" : 0,
+                maxWidth: "calc(58 * var(--u))",
+              }}
+            >
+              <WordLines lines={[title]} step={40} />
+            </h2>
+          ) : null}
+          <Reveal delay={200} style={{ marginTop: "calc(1.6 * var(--u))" }}>
+            <div className="space-y-4">{children}</div>
           </Reveal>
-        ) : null}
-        {title ? (
-          <h2
-            className="v2-display v2-t2"
-            style={{
-              marginTop: kicker ? "calc(0.8 * var(--u))" : 0,
-              maxWidth: "calc(58 * var(--u))",
-            }}
-          >
-            <MaskLines lines={[title]} />
-          </h2>
-        ) : null}
-        <Reveal delay={160} style={{ marginTop: "calc(1.6 * var(--u))" }}>
-          <div className="space-y-4">{children}</div>
-        </Reveal>
-      </div>
-    </section>
+        </div>
+      </section>
+    </Stage>
   );
 }
 

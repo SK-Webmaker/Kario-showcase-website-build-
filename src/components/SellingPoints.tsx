@@ -10,7 +10,7 @@ const POINTS = [
   {
     n: "01",
     head: "You keep everything you earn",
-    body: "No commission. No per-booking fee. No cut of card payments. $400 once, then nothing every month.",
+    body: "No commission. No per-booking fee. No cut of card payments. $410 once, then nothing every month.",
   },
   {
     n: "02",

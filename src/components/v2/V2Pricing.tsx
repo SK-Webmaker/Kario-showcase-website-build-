@@ -49,7 +49,7 @@ export function V2Pricing() {
           {/* Explicit lines: at this size a reflow moves the whole
               composition, so the break is a decision, not a consequence. */}
           <h2 className="v2-display v2-h2" style={{ marginTop: "calc(0.8 * var(--u))" }}>
-            <MaskLines lines={["$400 once."]} />
+            <MaskLines lines={["$410 once."]} />
             <MaskLines lines={["Then nothing."]} lineClassName="v2-accent" delay={160} />
           </h2>
         </div>

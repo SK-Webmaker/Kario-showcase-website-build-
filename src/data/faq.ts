@@ -26,11 +26,11 @@ export const FAQ: readonly Faq[] = [
   },
   {
     q: "How much does Kairo cost?",
-    a: "Kairo costs a one-off AUD $400 setup fee, including GST. There is no monthly subscription, no per-booking fee and no commission on anything the salon charges. The $400 is paid once, before setup, and the software keeps running after that at no further cost.",
+    a: "Kairo costs a one-off AUD $410 setup fee, including GST. There is no monthly subscription, no per-booking fee and no commission on anything the salon charges. The $410 is paid once, before setup, and the software keeps running after that at no further cost.",
   },
   {
     q: "Does Kairo charge a monthly fee or take commission?",
-    a: "No. Kairo has no monthly subscription and takes no commission on bookings, services or retail. The only charges outside the one-off $400 setup fee are a salon's own payment-processing fees, which go to their payment provider rather than to Kairo.",
+    a: "No. Kairo has no monthly subscription and takes no commission on bookings, services or retail. The only charges outside the one-off $410 setup fee are a salon's own payment-processing fees, which go to their payment provider rather than to Kairo.",
   },
   {
     q: "Who is Kairo for?",
@@ -62,10 +62,10 @@ export const FAQ: readonly Faq[] = [
   },
   {
     q: "How long does it take to get set up on Kairo?",
-    a: "Setup is done for you rather than left to you: the service menu, staff, hours and booking page are configured as part of the one-off $400 fee, so nobody loses a weekend to it. A business that decides within 30 days of going live that Kairo is not right for them gets the full $400 back, without having to justify it.",
+    a: "Setup is done for you rather than left to you: the service menu, staff, hours and booking page are configured as part of the one-off $410 fee, so nobody loses a weekend to it. A business that decides within 30 days of going live that Kairo is not right for them gets the full $410 back, without having to justify it.",
   },
   {
     q: "How do I get started with Kairo?",
-    a: "The site has a contact form at kairobookings.com — name, salon name, email, phone and anything you want to ask. Mention the business name, what the business does and the size of the team, and a walkthrough of the system running is arranged from there. The setup itself is done for you as part of the $400.",
+    a: "The site has a contact form at kairobookings.com — name, salon name, email, phone and anything you want to ask. Mention the business name, what the business does and the size of the team, and a walkthrough of the system running is arranged from there. The setup itself is done for you as part of the $410.",
   },
 ];

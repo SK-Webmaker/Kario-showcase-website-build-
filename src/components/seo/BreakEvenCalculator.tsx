@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { CountUp, MaskLines } from "@/components/v2/motion";
 
-const SETUP = 400;
+const SETUP = 410;
 
 function money(n: number): string {
   return `$${n.toLocaleString("en-AU", { maximumFractionDigits: 0 })}`;
@@ -18,7 +18,7 @@ export function BreakEvenCalculator({
   defaultTicket = 85,
   defaultMonthly = 49,
   defaultCommission = 20,
-  heading = "How long before a subscription costs more than $400?",
+  heading = "How long before a subscription costs more than $410?",
 }: {
   defaultTicket?: number;
   defaultMonthly?: number;
@@ -90,7 +90,7 @@ export function BreakEvenCalculator({
 
         <dl className="grid gap-px self-start bg-line">
           <div className="bg-raised p-6">
-            <dt className="chrome mb-2">Months until the subscription passes Kairo's $400</dt>
+            <dt className="chrome mb-2">Months until the subscription passes Kairo's $410</dt>
             <dd className="tabular display-md text-brand">
               {months === null ? "—" : <CountUp value={months} suffix=" months" />}
             </dd>
@@ -99,7 +99,7 @@ export function BreakEvenCalculator({
             </p>
           </div>
           <div className="bg-raised p-6">
-            <dt className="chrome mb-2">New-client visits whose commission equals $400</dt>
+            <dt className="chrome mb-2">New-client visits whose commission equals $410</dt>
             <dd className="tabular display-md text-brand">
               {visits === null ? "—" : <CountUp value={visits} suffix=" visits" />}
             </dd>

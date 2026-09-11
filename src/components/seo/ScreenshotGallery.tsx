@@ -1,4 +1,5 @@
-import { MaskLines, Plate, Reveal, Rule } from "@/components/v2/motion";
+import { MaskLines, Rule } from "@/components/v2/motion";
+import { Plate } from "@/components/v2/cinematic";
 
 export type Shot = { src: string; alt: string; caption?: string };
 
@@ -6,8 +7,9 @@ export type Shot = { src: string; alt: string; caption?: string };
  * Screenshots with mandatory descriptive alt text. Anything not yet
  * supplied is rendered as a visible TODO rather than a stand-in image.
  *
- * Each plate opens from a slit as it enters, so a page of screens reads
- * as a sequence rather than a contact sheet.
+ * Each one arrives the same way every other picture on the site does,
+ * staggered a beat across the two columns so a grid of screens reads as
+ * a sequence rather than as a contact sheet landing all at once.
  */
 export function ScreenshotGallery({
   shots,
@@ -37,25 +39,20 @@ export function ScreenshotGallery({
         {shots && shots.length > 0 ? (
           <div className="grid gap-5 sm:grid-cols-2">
             {shots.map((s, i) => (
-              <Reveal
-                as="div"
-                key={s.src}
-                delay={(i % 2) * 120}
-                className="overflow-hidden border border-white/10"
-                style={{ borderRadius: "calc(1 * var(--u))" }}
-              >
-                <figure>
-                  <Plate src={s.src} alt={s.alt} />
-                  {s.caption ? (
-                    <figcaption
-                      className="v2-body border-t border-white/10 opacity-60"
-                      style={{ padding: "calc(1 * var(--u)) calc(1.2 * var(--u))" }}
-                    >
-                      {s.caption}
-                    </figcaption>
-                  ) : null}
-                </figure>
-              </Reveal>
+              <div key={s.src}>
+                <Plate
+                  src={s.src}
+                  alt={s.alt}
+                  depth={10}
+                  delay={(i % 2) * 120}
+                  radius="calc(1 * var(--u))"
+                />
+                {s.caption ? (
+                  <p className="v2-body opacity-60" style={{ marginTop: "calc(0.8 * var(--u))" }}>
+                    {s.caption}
+                  </p>
+                ) : null}
+              </div>
             ))}
           </div>
         ) : (

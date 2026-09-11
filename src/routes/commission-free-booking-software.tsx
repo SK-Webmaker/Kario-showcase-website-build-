@@ -15,7 +15,7 @@ const FAQS: readonly Faq[] = [
   {
     question: "What does commission-free actually mean?",
     answer:
-      "Kairo takes no percentage of anything you charge. No fee per booking, no cut of a service, no cut of retail, and no cut of a card payment. The only money Kairo receives is the one-off $400 AUD setup fee. Card processing is charged separately by your payment provider, the same as it would be with any other system.",
+      "Kairo takes no percentage of anything you charge. No fee per booking, no cut of a service, no cut of retail, and no cut of a card payment. The only money Kairo receives is the one-off $410 AUD setup fee. Card processing is charged separately by your payment provider, the same as it would be with any other system.",
   },
   {
     question: "Do marketplace platforms really charge for new clients?",
@@ -33,7 +33,7 @@ const FAQS: readonly Faq[] = [
       "No. Your booking page lives on your own branded link. There is no directory, no browse view and no other business anywhere on it.",
   },
   {
-    question: "What happens after the $400?",
+    question: "What happens after the $410?",
     answer:
       "Nothing further is charged. There is no monthly subscription, no per-booking fee and no commission. Updates and support are included.",
   },
@@ -41,7 +41,7 @@ const FAQS: readonly Faq[] = [
 
 const TITLE = "Commission-Free Booking Software AU | Kairo";
 const DESCRIPTION =
-  "Stop paying commission on every booking. Kairo is commission-free booking software for Australian salons. $400 once, $0/month, no per-booking fee.";
+  "Stop paying commission on every booking. Kairo is commission-free booking software for Australian salons. $410 once, $0/month, no per-booking fee.";
 
 export const Route = createFileRoute("/commission-free-booking-software")({
   head: () =>
@@ -80,7 +80,7 @@ function Page() {
         subhead={
           <>
             Every percentage a platform takes comes out of work your team already did. Kairo takes
-            none of it — one $400 setup, then nothing per month, per booking or per client.
+            none of it — one $410 setup, then nothing per month, per booking or per client.
           </>
         }
         secondary={{
@@ -118,7 +118,7 @@ function Page() {
           card fees go to your payment provider, at their rate, and Kairo adds nothing on top.
         </P>
         <P>
-          The one-off $400 covers setup: your services and prices, your team and their hours, your
+          The one-off $410 covers setup: your services and prices, your team and their hours, your
           diary rules and your branded booking link, built for you rather than left as homework.
           After that the running cost of the software is zero.
         </P>

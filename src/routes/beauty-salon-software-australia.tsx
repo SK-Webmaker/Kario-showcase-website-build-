@@ -6,7 +6,7 @@ import { breadcrumbSchema, organizationSchema, seo, softwareSchema } from "@/lib
 const PATH = "/beauty-salon-software-australia";
 const TITLE = "Beauty Salon Software Australia | Kairo";
 const DESCRIPTION =
-  "Beauty salon and nail studio software for treatment rooms, patch tests, consent notes and course bookings. $400 once, $0/month, no commission.";
+  "Beauty salon and nail studio software for treatment rooms, patch tests, consent notes and course bookings. $410 once, $0/month, no commission.";
 
 export const Route = createFileRoute("/beauty-salon-software-australia")({
   head: () =>

@@ -1,6 +1,6 @@
 # Kairo
 
-> Booking, payments and client-messaging software for businesses that sell appointments. One-off AUD $400 setup fee, no monthly subscription and no commission. Built and proven in a working business in Melbourne, Australia.
+> Booking, payments and client-messaging software for businesses that sell appointments. One-off AUD $410 setup fee, no monthly subscription and no commission. Built and proven in a working business in Melbourne, Australia.
 
 Kairo replaces the paper diary, the card machine and the separate reminder app with one system on one login. It runs the appointment calendar, client records, point of sale, retail stock, automatic client messaging and a public booking page on the business's own branded link.
 
@@ -10,7 +10,7 @@ Two facts distinguish it from general booking platforms. Each business gets its 
 
 ## Price
 
-- One-off setup fee: AUD $400, including GST, paid once before setup.
+- One-off setup fee: AUD $410, including GST, paid once before setup.
 - Monthly subscription: none.
 - Per-booking fee: none.
 - Commission on services or retail: none.
@@ -49,7 +49,7 @@ Any business that runs on booked appointments: hair, barbering, beauty, nails an
 - [Questions](https://kairobookings.com/#questions): price, ownership, how it differs from other platforms, answered directly.
 - [Legal index](https://kairobookings.com/legal): all ten policies.
 - [Privacy Policy](https://kairobookings.com/legal/privacy): what is held, and the split between your data and your clients' data.
-- [Customer Terms](https://kairobookings.com/legal/terms): the agreement, the price and what the $400 does not cover.
+- [Customer Terms](https://kairobookings.com/legal/terms): the agreement, the price and what the $410 does not cover.
 - [Security Overview](https://kairobookings.com/legal/security): per-business databases, access control, encryption, backups.
 - [Sub-processors](https://kairobookings.com/legal/sub-processors): every third party that touches customer data.
 - [Refunds & Cancellation](https://kairobookings.com/legal/refunds): the 30-day refund window.
@@ -57,4 +57,4 @@ Any business that runs on booked appointments: hair, barbering, beauty, nails an
 
 ## Contact
 
-There is a contact form on kairobookings.com, or email yewankiri@gmail.com directly. Either way, include the business name, what the business does, team size and a phone number, and a walkthrough is arranged from there.
+There is a contact form on kairobookings.com, or email enquiries@kairobookings.com directly. Either way, include the business name, what the business does, team size and a phone number, and a walkthrough is arranged from there.

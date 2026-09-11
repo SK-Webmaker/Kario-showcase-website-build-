@@ -99,18 +99,18 @@ export function softwareSchema(opts?: { name?: string; description?: string; pat
     publisher: { "@id": ORG_ID },
     description:
       opts?.description ??
-      "Booking, payments and client management software for Australian salons, barbers and beauty businesses. One-off $400 AUD setup, $0 per month, no commission.",
+      "Booking, payments and client management software for Australian salons, barbers and beauty businesses. One-off $410 AUD setup, $0 per month, no commission.",
     offers: {
       "@type": "Offer",
       name: "Kairo setup",
-      price: "400",
+      price: "410",
       priceCurrency: "AUD",
       availability: "https://schema.org/InStock",
       eligibleRegion: { "@type": "Country", name: "Australia" },
       priceSpecification: {
         "@type": "UnitPriceSpecification",
         name: "One-off setup fee",
-        price: "400",
+        price: "410",
         priceCurrency: "AUD",
         valueAddedTaxIncluded: true,
       },

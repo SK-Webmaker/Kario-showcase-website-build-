@@ -366,7 +366,7 @@ export function Hero() {
               </h1>
               <p className="hero-lede mx-auto mt-6 max-w-[54ch] text-center text-[14.5px] leading-[1.55] text-ink-2 sm:text-[16px]">
                 Bookings, payments and clients for one business — yours. Your own booking link, your
-                own client list, no marketplace and no commission. $400 once, then nothing every
+                own client list, no marketplace and no commission. $410 once, then nothing every
                 month.
               </p>
               <div className="mt-8 flex flex-wrap items-center justify-center gap-3">

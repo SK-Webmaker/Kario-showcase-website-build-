@@ -105,56 +105,6 @@ export function Reveal({
 }
 
 /**
- * A screenshot opening from a horizontal slit. The image is always in the
- * HTML at full size; only the clip and the overscale move, so this costs
- * nothing at load and never changes layout.
- */
-export function Plate({
-  src,
-  alt,
-  eager = false,
-  width = 1600,
-  height = 1000,
-  className = "",
-  style,
-}: {
-  src: string;
-  alt: string;
-  eager?: boolean;
-  /**
-   * Intrinsic size. Present so the browser reserves the right box before
-   * the file arrives — without it a page of lazy screenshots grows by
-   * thousands of pixels as you scroll, which is both a layout shift for
-   * the reader and a page that never stops moving under them.
-   */
-  width?: number;
-  height?: number;
-  className?: string;
-  style?: CSSProperties;
-}) {
-  const { ref, inView } = useInView<HTMLDivElement>({ threshold: 0.2 });
-  const radius = style?.borderRadius;
-  return (
-    <div
-      ref={ref}
-      className="overflow-hidden"
-      style={radius === undefined ? undefined : { borderRadius: radius }}
-    >
-      <img
-        src={src}
-        alt={alt}
-        width={width}
-        height={height}
-        loading={eager ? "eager" : "lazy"}
-        decoding="async"
-        className={`v2-plate ${inView ? "v2-plate--in" : ""} block h-auto w-full ${className}`}
-        style={style}
-      />
-    </div>
-  );
-}
-
-/**
  * The title card. Pure CSS from the moment it parses, so it plays before
  * hydration rather than after it, and takes itself out of the paint once
  * the animation is spent — a full-viewport fixed layer left over the page

@@ -36,14 +36,14 @@ export function TalkToUs() {
           <div>
             <RiseLines
               as="h2"
-              lines={["$400 once.", "Then nothing,", "every month."]}
+              lines={["$410 once.", "Then nothing,", "every month."]}
               className="display-lg"
             />
 
             <Reveal delay={180}>
               <p className="lede mt-7">
                 Kairo is sold white-label — one instance per business, set up for how you actually
-                work. A one-off {"$"}400 to get you running, and then no subscription, no
+                work. A one-off {"$"}410 to get you running, and then no subscription, no
                 per-booking fee and no commission. The cost doesn't move when you have a good month,
                 and it doesn't come back next month either.
               </p>

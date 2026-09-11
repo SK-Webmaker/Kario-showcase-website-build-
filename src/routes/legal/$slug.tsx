@@ -1,6 +1,7 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 
 import { NoMotionFallback } from "@/components/v2/NoMotionFallback";
+import { Ambience } from "@/components/v2/cinematic";
 import { V2Footer } from "@/components/v2/V2Footer";
 import { V2Nav } from "@/components/v2/V2Nav";
 import { Lens, MaskLines, Reveal } from "@/components/v2/motion";
@@ -55,6 +56,10 @@ function LegalDocPage() {
   return (
     <div className="v2 v2-grid min-h-screen">
       <NoMotionFallback />
+      {/* The constant ground — fixed, always drifting, beneath
+          everything. Every page gets it, so the atmosphere does not
+          stop at the edge of the home page. */}
+      <Ambience />
       <Lens />
       <V2Nav variant="inner" />
 

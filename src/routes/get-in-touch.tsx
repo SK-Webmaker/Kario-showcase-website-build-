@@ -5,13 +5,14 @@ import { V2Nav } from "@/components/v2/V2Nav";
 import { V2Footer } from "@/components/v2/V2Footer";
 import { Lens, MaskLines, Reveal } from "@/components/v2/motion";
 import { NoMotionFallback } from "@/components/v2/NoMotionFallback";
+import { Ambience } from "@/components/v2/cinematic";
 import { Eyebrow, Orbs } from "@/components/v2/primitives";
 import { jsonLdScript, pageGraph } from "@/data/schema";
 import { ORIGIN } from "@/site.config";
 
 const TITLE = "Contact us — Kairo | Booking, payments & client management software";
 const DESCRIPTION =
-  "Tell us how your business books today and we'll reply within one business day. $400 once, no commission and no monthly fee.";
+  "Tell us how your business books today and we'll reply within one business day. $410 once, no commission and no monthly fee.";
 
 export const Route = createFileRoute("/get-in-touch")({
   head: () => ({
@@ -49,7 +50,7 @@ export const Route = createFileRoute("/get-in-touch")({
  */
 const ASSURANCE: readonly (readonly [string, string])[] = [
   ["A reply within one business day", "From a person who has read it, not an autoresponder."],
-  ["$400 once, then nothing", "No subscription, no per-booking fee, no commission."],
+  ["$410 once, then nothing", "No subscription, no per-booking fee, no commission."],
   ["Nothing is charged here", "This is a conversation, not a checkout."],
 ];
 
@@ -62,6 +63,10 @@ function GetInTouchPage() {
   return (
     <div className="v2 v2-grid min-h-screen">
       <NoMotionFallback />
+      {/* The constant ground — fixed, always drifting, beneath
+          everything. Every page gets it, so the atmosphere does not
+          stop at the edge of the home page. */}
+      <Ambience />
       <Lens />
       <V2Nav variant="inquiry" />
 

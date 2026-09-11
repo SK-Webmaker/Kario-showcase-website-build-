@@ -4,12 +4,13 @@
  * Text only — no markup beyond a tiny inline syntax the renderer
  * understands: **bold**, *italic*, and [label](/href). Keeping it here
  * rather than in ten route files means a policy change is one edit in one
- * place, and each [[TOKEN]] below is a single find-and-replace.
+ * place.
  *
- * Seven business facts still to fill in: [[BUSINESS NAME]], [[ABN]],
- * [[ADDRESS]], [[CONTACT EMAIL]], [[HOSTING PROVIDER]], [[EMAIL PROVIDER]]
- * and [[SMS PROVIDER]]. Everything else — dates, notice periods, response
- * windows, retention — is settled.
+ * Two facts are still deliberately absent rather than guessed: the ABN,
+ * which is a registered identifier nobody should invent, and the name of
+ * the SMS gateway. Both are named the moment they are known; everything
+ * else — parties, contact address, sub-processors, dates, notice periods,
+ * response windows, retention — is settled.
  */
 
 export type Block =
@@ -44,7 +45,7 @@ export const LEGAL: readonly LegalDoc[] = [
       },
       {
         kind: "p",
-        text: "Kairo is run by **[[BUSINESS NAME]]** (ABN [[ABN]]) of [[ADDRESS]]. In this policy that's “we” and “us”. You can reach us at [[CONTACT EMAIL]].",
+        text: "Kairo is run by **Kairo Bookings**, based in Melbourne, Australia. In this policy that's “we” and “us”. You can reach us at enquiries@kairobookings.com, which is the fastest way to get a person.",
       },
       {
         kind: "p",
@@ -137,7 +138,7 @@ export const LEGAL: readonly LegalDoc[] = [
       { kind: "h", text: "Access, correction and complaints" },
       {
         kind: "p",
-        text: "To see or correct what we hold about your business, email [[CONTACT EMAIL]]. We'll respond within 30 days. If you're unhappy with how we've handled your information, tell us first and we'll try to sort it out. If you're still unhappy you can complain to the OAIC at [oaic.gov.au](https://www.oaic.gov.au).",
+        text: "To see or correct what we hold about your business, email enquiries@kairobookings.com. We'll respond within 30 days. If you're unhappy with how we've handled your information, tell us first and we'll try to sort it out. If you're still unhappy you can complain to the OAIC at [oaic.gov.au](https://www.oaic.gov.au).",
       },
       { kind: "h", text: "Changes" },
       {
@@ -157,7 +158,7 @@ export const LEGAL: readonly LegalDoc[] = [
       { kind: "h", text: "1. The agreement" },
       {
         kind: "p",
-        text: "These terms are between **[[BUSINESS NAME]]** (“Kairo”, “we”) and the business named on the order (“you”). Paying the setup fee or using the service means you accept them.",
+        text: "These terms are between **Kairo Bookings** (“Kairo”, “we”) and the business named on the order (“you”). Paying the setup fee or using the service means you accept them.",
       },
       { kind: "h", text: "2. What you get" },
       {
@@ -168,11 +169,11 @@ export const LEGAL: readonly LegalDoc[] = [
       {
         kind: "ul",
         items: [
-          "A one-off setup fee of **AUD $400 including GST**, payable before we set you up.",
+          "A one-off setup fee of **AUD $410 including GST**, payable before we set you up.",
           "**No monthly subscription**, no per-booking fee, and no commission on anything you charge.",
         ],
       },
-      { kind: "h", text: "4. What the $400 doesn't cover" },
+      { kind: "h", text: "4. What the $410 doesn't cover" },
       {
         kind: "ul",
         items: [
@@ -205,7 +206,7 @@ export const LEGAL: readonly LegalDoc[] = [
       },
       {
         kind: "p",
-        text: "Support is by email at [[CONTACT EMAIL]], Monday to Friday, 9am to 5pm Melbourne time, excluding public holidays. We aim to reply first within **2 business days**. In practice most things are answered faster, and urgent problems get looked at when they land.",
+        text: "Support is by email at enquiries@kairobookings.com, Monday to Friday, 9am to 5pm Melbourne time, excluding public holidays. We aim to reply first within **2 business days**. In practice most things are answered faster, and urgent problems get looked at when they land.",
       },
       { kind: "h", text: "8. Our software stays ours" },
       {
@@ -500,7 +501,7 @@ export const LEGAL: readonly LegalDoc[] = [
       { kind: "h", text: "Reporting a problem" },
       {
         kind: "p",
-        text: "Email [[CONTACT EMAIL]]. We'll acknowledge within 5 business days. Please give us reasonable time to fix an issue before making it public. We won't pursue anyone who reports a genuine problem in good faith and doesn't access or change data that isn't theirs.",
+        text: "Email enquiries@kairobookings.com. We'll acknowledge within 5 business days. Please give us reasonable time to fix an issue before making it public. We won't pursue anyone who reports a genuine problem in good faith and doesn't access or change data that isn't theirs.",
       },
     ],
   },
@@ -517,7 +518,7 @@ export const LEGAL: readonly LegalDoc[] = [
         head: ["Provider", "What it does", "What it sees", "Where"],
         rows: [
           [
-            "[[HOSTING PROVIDER]]",
+            "Supabase",
             "Runs the servers and stores the database",
             "Everything in your instance",
             "Australia",
@@ -529,13 +530,13 @@ export const LEGAL: readonly LegalDoc[] = [
             "Australia / United States",
           ],
           [
-            "[[EMAIL PROVIDER]]",
+            "Resend",
             "Sends confirmations, reminders and receipts",
             "Recipient name, email address and the message contents",
             "Australia / United States",
           ],
           [
-            "[[SMS PROVIDER]]",
+            "SMS gateway (named on request)",
             "Sends text messages",
             "Recipient mobile number and the message contents",
             "Australia / United States",
@@ -579,7 +580,7 @@ export const LEGAL: readonly LegalDoc[] = [
       { kind: "h", text: "How to ask" },
       {
         kind: "p",
-        text: "Email [[CONTACT EMAIL]] with your business name and what went wrong. We aim to come back to you within 5 business days, and approved refunds go back to the original payment method within 10 business days.",
+        text: "Email enquiries@kairobookings.com with your business name and what went wrong. We aim to come back to you within 5 business days, and approved refunds go back to the original payment method within 10 business days.",
       },
     ],
   },
@@ -609,7 +610,7 @@ export const LEGAL: readonly LegalDoc[] = [
       { kind: "h", text: "The payback calculator" },
       {
         kind: "p",
-        text: "The calculator works from figures **you enter** and does simple arithmetic on them. It doesn't predict your results and it isn't financial advice. The only figures we assert are Kairo's own: a one-off $400 setup fee and no monthly charge.",
+        text: "The calculator works from figures **you enter** and does simple arithmetic on them. It doesn't predict your results and it isn't financial advice. The only figures we assert are Kairo's own: a one-off $410 setup fee and no monthly charge.",
       },
       { kind: "h", text: "Claims we make about Kairo" },
       {

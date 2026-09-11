@@ -14,7 +14,7 @@ import { V2Footer } from "@/components/v2/V2Footer";
 import { Chapters, Lens, Opening } from "@/components/v2/motion";
 import { Watermark } from "@/components/v2/KairoMark";
 import { PixelWipe } from "@/components/v2/PixelWipe";
-import { Stage } from "@/components/v2/cinematic";
+import { Ambience, Stage } from "@/components/v2/cinematic";
 import { NoMotionFallback } from "@/components/v2/NoMotionFallback";
 import { useLenis } from "@/hooks/useLenis";
 import { homeGraph, jsonLdScript } from "@/data/schema";
@@ -65,6 +65,11 @@ function Index() {
   return (
     <div className="v2 v2-grid min-h-screen">
       <NoMotionFallback />
+      {/* Fixed to the viewport and always drifting, so the ground is
+          alive even when the reader has stopped. It sits beneath every
+          section; the sections that paint their own background simply
+          cover it, which is correct. */}
+      <Ambience />
       <Opening name={site.name} />
       <Lens />
       <Watermark />

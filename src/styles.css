@@ -729,19 +729,12 @@
   }
 }
 
-/* Screenshots open from a horizontal slit and settle out of an
-   overscale — a lens pulling focus rather than an image appearing. */
-.v2-plate {
-  clip-path: inset(46% 0 46% 0);
-  transition:
-    clip-path 1100ms cubic-bezier(0.16, 1, 0.3, 1),
-    transform 1400ms cubic-bezier(0.16, 1, 0.3, 1);
-  transform: scale(1.08);
-}
-.v2-plate--in {
-  clip-path: inset(0 0 0 0);
-  transform: scale(1);
-}
+/* (The slit-and-overscale reveal that used to be .v2-plate is gone. It
+   opened a screenshot from a 46% horizontal slit while settling out of a
+   1.08 scale — so the picture was cropped on the way in, and being gated
+   on a fraction of a tall element it could arrive late and all at once.
+   The single .v2-plate further down is now the only way a picture
+   arrives anywhere on the site.) */
 
 /* The opening. A title card holds for a beat, then the whole frame
    wipes upward off the hero. Kept under a second and a quarter: long
@@ -849,12 +842,6 @@
     animation: none;
     opacity: var(--v2-o, 1);
     transform: none;
-  }
-  .v2-plate,
-  .v2-plate--in {
-    clip-path: none;
-    transform: none;
-    transition: none;
   }
   .v2-open {
     display: none;
@@ -1336,20 +1323,48 @@
   }
 }
 
-/* A screen revealed by a wipe across, rather than up. Used once, on the
-   one-sentence section, so that page has a horizontal move of its own. */
-.v2-wipe {
-  clip-path: inset(0 100% 0 0);
-  transition: clip-path 1150ms cubic-bezier(0.16, 1, 0.3, 1);
+/* The one way a picture arrives.
+   A clip that opens across was the old move here. It read as a trick
+   rather than as a transition, and being gated on a fraction of a tall
+   element meant the picture could sit as an empty bordered panel and then
+   snap in late. This is a rise, a fade and a settle — the same on every
+   figure on the site, so the page has one vocabulary instead of three. */
+.v2-plate {
+  opacity: 0;
+  transform: translate3d(0, calc(1.6 * var(--u)), 0) scale(0.988);
+  transition:
+    opacity 820ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1040ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
 }
-.v2-wipe--in {
-  clip-path: inset(0 0 0 0);
+.v2-plate--in {
+  opacity: 1;
+  transform: none;
+}
+/* The frame carries the scroll glide. It is a separate node from the
+   wrapper above on purpose: both movements are transforms, and one node
+   cannot hold two. The whole plate travels — border, radius and picture
+   together — so there is no crop and no edge to expose. */
+.v2-plate__frame {
+  display: block;
+  overflow: hidden;
+  border: 1px solid rgb(255 255 255 / 0.1);
+  border-radius: calc(1.2 * var(--u));
+  will-change: transform;
+}
+.v2-plate__img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 @media (prefers-reduced-motion: reduce) {
-  .v2-wipe,
-  .v2-wipe--in {
-    clip-path: none;
+  .v2-plate {
+    opacity: 1;
+    transform: none;
     transition: none;
+  }
+  .v2-plate__frame {
+    transform: none !important;
   }
 }
 
@@ -1361,26 +1376,13 @@
 /* class. All of it collapses to its destination under reduced motion. */
 /* ------------------------------------------------------------------ */
 
-/* A screenshot seen through an opening. The frame holds the aspect and
-   clips; the image inside is deliberately taller than the frame so the
-   counter-scroll can never travel far enough to expose an edge. */
-.v2-window {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-}
-.v2-window__img {
-  position: absolute;
-  inset-inline: 0;
-  /* 128% tall with the overflow split evenly: at ±34px of travel there
-     is spare image at both ends on every viewport this site supports. */
-  height: 128%;
-  top: -14%;
-  width: 100%;
-  object-fit: cover;
-  object-position: 50% 0;
-  will-change: transform;
-}
+/* (The cropped "window" that used to live here has been removed. It put
+   a 16/10 frame over a 16/10 screenshot at 128% height and cover, which
+   cut 14% off the top and the bottom: the app's own chrome was sliced and
+   the border no longer lined up with the interface inside it. On a
+   photograph that reads as depth. On a product screenshot it reads as
+   something pasted in badly. Screenshots use .v2-plate above and are
+   shown whole.) */
 
 /* Word-level arrival.
 
@@ -1425,18 +1427,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  /* The window becomes an ordinary image in an ordinary box: no crop,
-     no travel, nothing to re-rasterise. */
-  .v2-window {
-    aspect-ratio: auto !important;
-  }
-  .v2-window__img {
-    position: relative;
-    height: auto;
-    top: 0;
-    object-fit: fill;
-    transform: none !important;
-  }
   .v2-word-rise,
   .v2-word-rise--in {
     animation: none;
@@ -1444,5 +1434,119 @@
   }
   .v2-magnetic {
     transform: none !important;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* The constant ground                                                 */
+/*                                                                     */
+/* Everything else on this page moves because you moved. This does not: */
+/* it is fixed to the viewport and always drifting, so the room still   */
+/* has air in it when the reader has stopped scrolling. Meant to be     */
+/* felt rather than seen — if you can point at it while reading a       */
+/* paragraph, it is turned up too far.                                  */
+/* ------------------------------------------------------------------ */
+.v2-ambience {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Two pools of the single accent, drifting on clocks chosen not to
+   share a factor — 74s against 96s comes back into phase once an hour,
+   which is long enough that the field never visibly repeats. */
+.v2-ambience__pool {
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  filter: blur(calc(5 * var(--u)));
+  will-change: transform;
+}
+.v2-ambience__pool--a {
+  left: -16vw;
+  top: -20vw;
+  width: 64vw;
+  height: 64vw;
+  background: radial-gradient(closest-side, rgb(59 130 246 / 0.1), rgb(59 130 246 / 0));
+  animation: v2-ambience-a 74s ease-in-out infinite alternate;
+}
+.v2-ambience__pool--b {
+  right: -18vw;
+  bottom: -22vw;
+  width: 56vw;
+  height: 56vw;
+  background: radial-gradient(closest-side, rgb(94 163 240 / 0.075), rgb(94 163 240 / 0));
+  animation: v2-ambience-b 96s ease-in-out infinite alternate;
+}
+@keyframes v2-ambience-a {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(7vw, 5vh, 0) scale(1.16);
+  }
+}
+@keyframes v2-ambience-b {
+  from {
+    transform: translate3d(0, 0, 0) scale(1.1);
+  }
+  to {
+    transform: translate3d(-6vw, -7vh, 0) scale(0.94);
+  }
+}
+
+/* Film grain. Stepped rather than eased, because real grain jumps
+   frame to frame — a smoothly sliding noise field reads as a texture
+   that is moving, which is exactly the thing to avoid. Inset by more
+   than it ever travels so no edge can appear. */
+.v2-ambience__grain {
+  position: absolute;
+  inset: calc(-2 * var(--u));
+  display: block;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  will-change: transform;
+  animation: v2-grain-shift 5.4s steps(1, end) infinite;
+}
+@keyframes v2-grain-shift {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  20% {
+    transform: translate3d(-1.1%, 0.7%, 0);
+  }
+  40% {
+    transform: translate3d(0.9%, -1.2%, 0);
+  }
+  60% {
+    transform: translate3d(-0.7%, -0.6%, 0);
+  }
+  80% {
+    transform: translate3d(1.2%, 0.9%, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@media (max-width: 768px) {
+  /* The grain is the first thing to go on a phone: it is the layer with
+     the least to say and the most to pay for on a weaker GPU. */
+  .v2-ambience__grain {
+    display: none;
+  }
+  .v2-ambience__pool {
+    filter: blur(calc(3 * var(--u)));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* The layer stays — it is atmosphere, not animation — but it holds
+     still. */
+  .v2-ambience__pool,
+  .v2-ambience__grain {
+    animation: none;
   }
 }

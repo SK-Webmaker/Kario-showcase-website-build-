@@ -16,15 +16,15 @@ import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 
  * business going through a component.
  */
 
-type Kind = "stage" | "window";
+type Kind = "stage" | "float";
 
 type Entry = {
   kind: Kind;
-  /** Measured for position. For a window this is the mask, not the image. */
+  /** Measured for position. */
   el: HTMLElement;
-  /** Written to. Same node as `el` for a stage; the image for a window. */
+  /** Written to. Same node as `el` for a stage; the frame for a float. */
   target: HTMLElement;
-  /** stage: 0–1 strength. window: pixels of counter-travel. */
+  /** stage: 0–1 strength. float: pixels of counter-travel. */
   amount: number;
   dirty: boolean;
   lastRadius: number;
@@ -88,10 +88,12 @@ function run() {
         e.lastRadius = next;
       }
     } else {
-      // A window: the image is taller than the frame clipping it and
-      // travels against the scroll, so you are looking *through* an
-      // opening rather than at a picture sliding past. This is the one
-      // effect here that reads as real depth rather than decoration.
+      // A float: the whole framed plate glides a few pixels against the
+      // scroll. It moves as one object — frame, border and picture
+      // together — so nothing is ever cropped and no edge can be
+      // exposed. A screenshot is a document: the moment you scale and
+      // crop one to manufacture parallax it stops looking photographed
+      // and starts looking pasted in.
       // -1 well below the fold, +1 well above it.
       const t = 1 - (2 * (top + h / 2)) / (vh + h);
       e.target.style.transform = `translate3d(0, ${(t * e.amount).toFixed(1)}px, 0)`;
@@ -177,57 +179,106 @@ export function Stage({
   );
 }
 
+/** Fires once, the first time the element crosses into the lower fold. */
+function useArrived(ref: { current: HTMLElement | null }): boolean {
+  const [on, setOn] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    // No observer, or motion turned down: it is simply already there.
+    if (typeof IntersectionObserver === "undefined") {
+      setOn(true);
+      return;
+    }
+    // threshold 0 with a negative bottom margin, NOT a fractional
+    // threshold. A fraction of a tall element can need most of the
+    // screen before it is ever satisfied, which is how a picture ends up
+    // sitting as an empty panel and then arriving late and all at once.
+    // This fires the moment the top edge crosses 88% of the viewport,
+    // whatever the element's height.
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) {
+          setOn(true);
+          io.disconnect();
+        }
+      },
+      { threshold: 0, rootMargin: "0px 0px -12% 0px" },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [ref]);
+
+  return on;
+}
+
 /**
- * A screenshot seen through an opening.
+ * A screenshot, shown whole.
  *
- * The frame keeps a fixed aspect and clips; the image inside is taller
- * than it and counter-scrolls. Unlike moving the whole figure, this gives
- * the page an actual sense of depth — and because the image always
- * overflows its frame, no amount of travel can expose an edge.
+ * Every picture on the site arrives the same way — it rises a little,
+ * fades up, and settles — and then glides a few pixels against the
+ * scroll for as long as it is on screen. One movement, one vocabulary.
+ *
+ * The arrival is on the outer wrapper and the glide is on the frame
+ * inside it, because both are transforms and a single node cannot carry
+ * two. Nothing here clips or scales the image: a product screenshot that
+ * has been cropped to fake depth reads as a mistake, not as a photograph.
  */
-export function Window({
+export function Plate({
   src,
   alt,
-  ratio = 16 / 10,
-  depth = 34,
+  depth = 16,
+  delay = 0,
+  radius,
   eager = false,
   width = 2048,
   height = 1280,
   className = "",
+  frameClassName = "",
   style,
 }: {
   src: string;
   alt: string;
-  /** Frame aspect. The image overflows it vertically by design. */
-  ratio?: number;
-  /** Pixels of counter-travel across a whole viewport crossing. */
+  /** Pixels of counter-travel across a whole viewport crossing. Small. */
   depth?: number;
+  /** ms held back, for staggering a picture behind the words above it. */
+  delay?: number;
+  /** Overrides the frame's corner. Cards want a tighter one than a hero. */
+  radius?: string;
   eager?: boolean;
   width?: number;
   height?: number;
   className?: string;
+  frameClassName?: string;
   style?: CSSProperties;
 }) {
-  const mask = useRef<HTMLDivElement | null>(null);
-  const img = useRef<HTMLImageElement | null>(null);
-  useEngine("window", depth, mask, img);
+  const wrap = useRef<HTMLDivElement | null>(null);
+  const frame = useRef<HTMLElement | null>(null);
+  const arrived = useArrived(wrap);
+  useEngine("float", depth, wrap, frame);
 
   return (
     <div
-      ref={mask}
-      className={`v2-window ${className}`}
-      style={{ ...style, aspectRatio: String(ratio) }}
+      ref={wrap}
+      className={`v2-plate ${arrived ? "v2-plate--in" : ""} ${className}`}
+      style={{ ...style, transitionDelay: delay ? `${delay}ms` : undefined }}
     >
-      <img
-        ref={img}
-        src={src}
-        alt={alt}
-        width={width}
-        height={height}
-        loading={eager ? "eager" : "lazy"}
-        decoding="async"
-        className="v2-window__img"
-      />
+      <figure
+        ref={frame}
+        className={`v2-plate__frame ${frameClassName}`}
+        style={radius === undefined ? undefined : { borderRadius: radius }}
+      >
+        <img
+          src={src}
+          alt={alt}
+          width={width}
+          height={height}
+          loading={eager ? "eager" : "lazy"}
+          decoding="async"
+          className="v2-plate__img"
+        />
+      </figure>
     </div>
   );
 }
@@ -255,7 +306,7 @@ function useWordsInView(ref: { current: HTMLElement | null }, immediate: boolean
           io.disconnect();
         }
       },
-      { threshold: 0.2, rootMargin: "0px 0px -8% 0px" },
+      { threshold: 0, rootMargin: "0px 0px -10% 0px" },
     );
     io.observe(el);
     return () => io.disconnect();
@@ -416,5 +467,27 @@ export function Magnetic({
     <span ref={ref} className={`v2-magnetic ${className}`}>
       {children}
     </span>
+  );
+}
+
+/**
+ * The room's air.
+ *
+ * Fixed to the viewport rather than to the page, so it is still moving
+ * when the reader has stopped scrolling — which is the whole point. Three
+ * layers, all of them beneath everything and none of them interactive:
+ * two very large pools of the one accent drifting on clocks that never
+ * line up, and a film grain over the top of them.
+ *
+ * It is meant to be felt rather than noticed. If you can point at it
+ * while reading a paragraph it is turned up too far.
+ */
+export function Ambience() {
+  return (
+    <div className="v2-ambience" aria-hidden="true">
+      <span className="v2-ambience__pool v2-ambience__pool--a" />
+      <span className="v2-ambience__pool v2-ambience__pool--b" />
+      <span className="v2-ambience__grain" />
+    </div>
   );
 }

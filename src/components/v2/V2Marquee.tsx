@@ -5,7 +5,7 @@
  * belt. Pure CSS transform — no scroll listener, no cost.
  */
 const STRIPS: readonly { items: readonly string[]; reverse: boolean }[] = [
-  { items: ["No commission", "No monthly fee", "$400 once", "Your own link"], reverse: false },
+  { items: ["No commission", "No monthly fee", "$410 once", "Your own link"], reverse: false },
   { items: ["Your client list stays yours", "Its own database", "No marketplace"], reverse: true },
   {
     items: ["Reminders that send themselves", "Paid in one tap", "Nothing sends silently"],
