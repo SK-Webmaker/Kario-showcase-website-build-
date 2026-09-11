@@ -449,19 +449,24 @@
   }
 }
 
+/* Both faces are preloaded in the document head (see __root.tsx), so
+   they are in flight before the CSS is even parsed. `block` rather than
+   `swap` on the display face: a heading that flashes in a fallback and
+   then re-sets in Anton is far more visible than one that arrives a beat
+   late, and the block period is short because of the preload. */
 @font-face {
   font-family: "Anton";
   src: url("/fonts/anton-latin.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
 @font-face {
   font-family: "Archivo";
   src: url("/fonts/archivo-latin.woff2") format("woff2");
   font-weight: 100 900;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
 
 /* ==================================================================
