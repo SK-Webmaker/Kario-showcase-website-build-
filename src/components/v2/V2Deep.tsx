@@ -1,7 +1,8 @@
 import { useInView } from "@/hooks/useInView";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
 import { Eyebrow, Orbs } from "./primitives";
-import { CountUp, MaskLines, Plate, Reveal, Torch, useDrift } from "./motion";
+import { CountUp, Reveal, Torch } from "./motion";
+import { Window, WordLines } from "./cinematic";
 
 /**
  * Three sections that go a level deeper than the feature showcase.
@@ -28,8 +29,6 @@ const SAID: readonly string[] = [
 ];
 
 export function V2Kai() {
-  const kaiShot = useDrift<HTMLElement>(30);
-
   return (
     <section
       id="assistant"
@@ -54,8 +53,8 @@ export function V2Kai() {
             <Eyebrow>The assistant</Eyebrow>
           </Reveal>
           <h2 className="v2-display v2-t1" style={{ marginTop: "calc(1.2 * var(--u))" }}>
-            <MaskLines lines={["Talk to your", "software."]} />
-            <MaskLines lines={["It does the", "clicking."]} lineClassName="v2-accent" delay={280} />
+            <WordLines lines={["Talk to your", "software."]} />
+            <WordLines lines={["It does the", "clicking."]} lineClassName="v2-accent" delay={280} />
           </h2>
 
           <Reveal
@@ -109,18 +108,13 @@ export function V2Kai() {
 
           <Reveal delay={200} style={{ marginTop: "calc(1.6 * var(--u))" }}>
             <figure
-              ref={kaiShot}
-              className="overflow-hidden border border-white/10 will-change-transform"
+              className="overflow-hidden border border-white/10"
               style={{ borderRadius: "calc(1.2 * var(--u))" }}
             >
-              <img
+              <Window
                 src={`${SHOT}/01-kai-agent.jpg`}
                 alt="Kai answering two instructions inside Kairo: one books an appointment and fills the form in, the other closes the salon on Mondays and offers to undo it."
-                width={2048}
-                height={1280}
-                loading="lazy"
-                decoding="async"
-                className="block h-auto w-full"
+                depth={38}
               />
             </figure>
           </Reveal>
@@ -162,7 +156,7 @@ export function V2Sentence() {
             className="v2-display v2-t1"
             style={{ marginTop: "calc(1.2 * var(--u))", maxWidth: "calc(64 * var(--u))" }}
           >
-            <MaskLines lines={["“Book Amara in with Sha", "for a Balayage", "on Friday at 9.”"]} />
+            <WordLines lines={["“Book Amara in with Sha", "for a Balayage", "on Friday at 9.”"]} />
           </h2>
 
           <Reveal
@@ -252,7 +246,7 @@ export function V2Records() {
             <Eyebrow>The paperwork</Eyebrow>
           </Reveal>
           <h2 className="v2-display v2-t1" style={{ marginTop: "calc(1.2 * var(--u))" }}>
-            <MaskLines lines={["Patch tests,", "consents and", "before-afters."]} />
+            <WordLines lines={["Patch tests,", "consents and", "before-afters."]} />
           </h2>
 
           <Reveal
@@ -362,8 +356,6 @@ const LEDGER: readonly { value: number; prefix?: string; label: string; note: st
 ];
 
 export function V2Growth() {
-  const growthShot = useDrift<HTMLElement>(-22);
-
   return (
     <section
       id="growth"
@@ -386,7 +378,7 @@ export function V2Growth() {
           <Eyebrow>Where they came from</Eyebrow>
         </Reveal>
         <h2 className="v2-display v2-t1" style={{ marginTop: "calc(1.2 * var(--u))" }}>
-          <MaskLines lines={["Every client gets", "a link of their own."]} />
+          <WordLines lines={["Every client gets", "a link of their own."]} />
         </h2>
 
         <Reveal
@@ -432,15 +424,13 @@ export function V2Growth() {
 
         <Reveal delay={160} style={{ marginTop: "calc(2.4 * var(--u))" }}>
           <figure
-            ref={growthShot}
-            className="overflow-hidden border border-white/10 will-change-transform"
+            className="overflow-hidden border border-white/10"
             style={{ borderRadius: "calc(1.2 * var(--u))" }}
           >
-            <Plate
+            <Window
               src={`${SHOT}/04-growth-referrals.jpg`}
               alt="Kairo's Growth screen: how many visits came from a client's referral link, what they were worth, how many found the salon themselves, the reward set for each side, and which clients have sent people in."
-              width={2048}
-              height={1280}
+              depth={-26}
             />
           </figure>
         </Reveal>

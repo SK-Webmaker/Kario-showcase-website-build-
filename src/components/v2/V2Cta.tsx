@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 
 import { Orbs } from "./primitives";
 import { MaskLines, Reveal, Torch } from "./motion";
+import { Magnetic } from "./cinematic";
 
 const ORBS = [
   { x: "50%", y: "58%", size: "56vw", tone: "a" as const },
@@ -37,9 +38,11 @@ export function V2Cta() {
           appointments is an hour nobody paid you for.
         </Reveal>
         <Reveal delay={460} style={{ marginTop: "calc(3 * var(--u))" }}>
-          <Link to="/get-in-touch" className="v2-btn">
-            Contact us
-          </Link>
+          <Magnetic>
+            <Link to="/get-in-touch" className="v2-btn">
+              Contact us
+            </Link>
+          </Magnetic>
         </Reveal>
       </div>
     </section>

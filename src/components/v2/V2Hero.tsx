@@ -1,5 +1,6 @@
 import { Orbs } from "./primitives";
-import { MaskLines, Reveal, Torch } from "./motion";
+import { Reveal, Torch } from "./motion";
+import { WordLines } from "./cinematic";
 
 const ORBS = [
   { x: "8%", y: "72%", size: "46vw", tone: "a" as const },
@@ -35,13 +36,25 @@ export function V2Hero() {
         style={{ padding: "calc(10 * var(--u)) var(--pad) 0" }}
       >
         <h1 className="v2-display v2-h1" style={{ maxWidth: "calc(86 * var(--u))" }}>
-          <MaskLines
+          {/* Word by word rather than line by line. At this size the
+              difference is the whole opening: the sentence arrives as
+              something being said, not as three slabs sliding up. The
+              delays still sit against the title card, which holds until
+              400ms and is clear of the hero by roughly 900ms. */}
+          <WordLines
             play="now"
             delay={620}
-            step={120}
+            step={48}
+            lineStep={110}
             lines={["The software a", "business runs its"]}
           />
-          <MaskLines play="now" delay={860} lineClassName="v2-bloom" lines={["whole day on"]} />
+          <WordLines
+            play="now"
+            delay={1020}
+            step={54}
+            lineClassName="v2-bloom"
+            lines={["whole day on"]}
+          />
         </h1>
       </div>
 

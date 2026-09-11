@@ -14,6 +14,7 @@ import { V2Footer } from "@/components/v2/V2Footer";
 import { Chapters, Lens, Opening } from "@/components/v2/motion";
 import { Watermark } from "@/components/v2/KairoMark";
 import { PixelWipe } from "@/components/v2/PixelWipe";
+import { Stage } from "@/components/v2/cinematic";
 import { NoMotionFallback } from "@/components/v2/NoMotionFallback";
 import { useLenis } from "@/hooks/useLenis";
 import { homeGraph, jsonLdScript } from "@/data/schema";
@@ -90,15 +91,37 @@ function Index() {
         <V2Pain />
         <V2Statements />
         <V2Features />
-        {/* Three sections that go a level deeper than the showcase, each
+        {/* Four sections that go a level deeper than the showcase, each
             moving on a different axis so the page does not repeat itself. */}
         <V2Kai />
-        <V2Sentence />
-        <V2Records />
-        <V2Growth />
-        <V2Marquee />
+        {/* Stage gives a section a focus pull as it takes the screen. It
+            works by transforming the wrapper, which makes that wrapper the
+            containing block for any position:sticky inside — so it goes
+            only on the sections that have none. Everything pinned (Pain,
+            Statements, Features, Kai, Records, Pricing, Faq) is left
+            alone: the pin already is its transition. */}
+        <Stage className="overflow-hidden">
+          <V2Sentence />
+        </Stage>
+        {/* The second act break. The film gets two of these and no more —
+            one coming out of the opening, one before the closing
+            argument — so the device still means something when it lands.
+            `relative` rather than a transform: position:relative does not
+            create a containing block for the sticky column inside. */}
+        <div className="relative">
+          <V2Records />
+          <PixelWipe className="z-0 -bottom-[85vh] h-[115vh]" />
+        </div>
+        <Stage className="overflow-hidden">
+          <V2Growth />
+        </Stage>
+        <Stage strength={0.55} className="overflow-hidden">
+          <V2Marquee />
+        </Stage>
         <V2Pricing />
-        <V2Cta />
+        <Stage className="overflow-hidden">
+          <V2Cta />
+        </Stage>
         <V2Faq />
       </main>
       <V2Footer />
