@@ -315,6 +315,30 @@ function useWordsInView(ref: { current: HTMLElement | null }, immediate: boolean
   return on;
 }
 
+/** Must match the v2-word-arrive duration in styles.css. */
+const ARRIVE_MS = 1060;
+
+/**
+ * True once `ms` has passed since the arrival began.
+ *
+ * The mask that hides a word before it rises also clips anything drawn
+ * outside the line box — which includes the glow on .v2-bloom, whose
+ * shadow reaches several times further than the mask's descender
+ * padding. So the mask stops clipping the moment it has nothing left to
+ * hide, and the glow is whole.
+ */
+function useSettled(started: boolean, ms: number): boolean {
+  const [done, setDone] = useState(false);
+
+  useEffect(() => {
+    if (!started) return;
+    const t = window.setTimeout(() => setDone(true), ms);
+    return () => window.clearTimeout(t);
+  }, [started, ms]);
+
+  return done;
+}
+
 /**
  * Display type that arrives word by word out of a mask.
  *
@@ -351,6 +375,13 @@ export function WordLines({
   const ref = useRef<HTMLSpanElement | null>(null);
   const on = useWordsInView(ref, play === "now");
 
+  // Total words, so we know when the last one has finished travelling.
+  const wordCount = lines.reduce((n, line) => n + line.split(" ").length, 0);
+  const settled = useSettled(
+    on,
+    delay + (lines.length - 1) * lineStep + Math.max(0, wordCount - 1) * step + ARRIVE_MS + 80,
+  );
+
   // Runs across the whole block, so the cascade never restarts at a line
   // break — the sentence arrives as one movement, not as three.
   let index = 0;
@@ -360,7 +391,10 @@ export function WordLines({
       {lines.map((line, li) => {
         const words = line.split(" ");
         return (
-          <span key={`${line}-${li}`} className="v2-wordmask">
+          <span
+            key={`${line}-${li}`}
+            className={`v2-wordmask ${settled ? "v2-wordmask--settled" : ""}`}
+          >
             <span className={`v2-wordline ${lineClassName}`}>
               {words.map((word, wi) => {
                 const d = delay + li * lineStep + index * step;

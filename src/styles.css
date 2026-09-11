@@ -1398,6 +1398,16 @@
   padding-bottom: 0.08em;
   margin-bottom: -0.08em;
 }
+/* Once every word has arrived the mask has nothing left to hide, and
+   clipping actively hurts: .v2-bloom's glow reaches calc(4 * var(--u))
+   past the glyphs — far beyond the descender padding above — so while
+   the mask is still clipping, the halo on a display line is cut off at a
+   hard horizontal edge. Released on a timer rather than animationend
+   because the words finish at staggered times and only the last one
+   matters. */
+.v2-wordmask--settled {
+  overflow: visible;
+}
 .v2-wordline {
   display: block;
 }
