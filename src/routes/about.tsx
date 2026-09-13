@@ -3,7 +3,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { CtaBanner } from "@/components/seo/CtaBanner";
 import { PageHero } from "@/components/seo/Hero";
 import { InternalLinks } from "@/components/seo/InternalLinks";
-import { P, PageShell, Section, Todo } from "@/components/seo/PageShell";
+import { P, PageShell, Section } from "@/components/seo/PageShell";
+import { site } from "@/site.config";
 import { breadcrumbSchema, organizationSchema, seo } from "@/lib/seo";
 
 const PATH = "/about";
@@ -64,10 +65,21 @@ function Page() {
       </Section>
 
       <Section kicker="03" title="Who is behind it">
-        <Todo>
-          confirm the founding story, the trading entity name and ABN, and whether the Melbourne
-          salon has given permission to be named. Nothing is published here until you confirm it.
-        </Todo>
+        <P>
+          Kairo Bookings, based in Melbourne. Kairo was not designed in the abstract and then sold
+          to salons — it was built for a working appointment business and it still runs one every
+          day. The diary, the counter, the client records and the booking link are that
+          business&apos;s actual system, which is why the awkward parts are built at all: patch
+          tests that have to be evidence, a deposit that has to reconcile, a reminder that must
+          never send twice.
+        </P>
+        <P>
+          The quickest way to judge any of that is to watch it running. Email{" "}
+          <a className="v2-link" href={`mailto:${site.contactEmail}`}>
+            {site.contactEmail}
+          </a>{" "}
+          and we will walk you through the real thing rather than a slide.
+        </P>
       </Section>
 
       <CtaBanner />

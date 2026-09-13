@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import { CtaBanner } from "@/components/seo/CtaBanner";
 import { PageHero } from "@/components/seo/Hero";
-import { PageShell, Todo } from "@/components/seo/PageShell";
+import { PageShell } from "@/components/seo/PageShell";
 import { Reveal } from "@/components/v2/motion";
 import { formatVerified } from "@/components/seo/PricingVerificationNotice";
 import { fetchPublishedPosts } from "@/lib/blog";
@@ -52,7 +52,11 @@ function Page() {
         style={{ padding: "calc(4 * var(--u)) var(--pad)", maxWidth: "calc(100 * var(--u))" }}
       >
         {posts.length === 0 ? (
-          <Todo>no posts published yet. Write and publish the first article.</Todo>
+          <p className="v2-body max-w-[56ch] opacity-60">
+            Nothing here yet. What goes here will be the working notes — how a deposit rule stops a
+            no-show, what a patch-test record has to contain to count as evidence — rather than
+            search filler.
+          </p>
         ) : (
           <ul
             className="grid sm:grid-cols-2"

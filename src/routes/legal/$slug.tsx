@@ -2,6 +2,7 @@ import { createFileRoute, notFound } from "@tanstack/react-router";
 
 import { NoMotionFallback } from "@/components/v2/NoMotionFallback";
 import { Ambience } from "@/components/v2/cinematic";
+import { useLenis } from "@/hooks/useLenis";
 import { V2Footer } from "@/components/v2/V2Footer";
 import { V2Nav } from "@/components/v2/V2Nav";
 import { Lens, MaskLines, Reveal } from "@/components/v2/motion";
@@ -53,6 +54,9 @@ function LegalDocPage() {
   const index = LEGAL.findIndex((d) => d.slug === doc.slug);
   const next = LEGAL[(index + 1) % LEGAL.length];
 
+  // Same weighted scroll as every other page.
+  useLenis();
+
   return (
     <div className="v2 v2-grid min-h-screen">
       <NoMotionFallback />
@@ -63,7 +67,7 @@ function LegalDocPage() {
       <Lens />
       <V2Nav variant="inner" />
 
-      <main className="relative" style={{ paddingTop: "calc(9 * var(--u))" }}>
+      <main className="relative" style={{ paddingTop: "calc(9 * var(--u) + var(--v2-ticker-h))" }}>
         <div
           className="mx-auto border-b border-white/10"
           style={{
@@ -112,7 +116,7 @@ function LegalDocPage() {
           {headings.length > 1 ? (
             <nav
               aria-label="On this page"
-              className="lg:sticky lg:top-[calc(8*var(--u))] lg:self-start"
+              className="lg:sticky lg:top-[calc(8*var(--u)+var(--v2-ticker-h))] lg:self-start"
             >
               <p className="v2-eyebrow v2-accent border-b border-white/10 pb-2 font-semibold">
                 On this page

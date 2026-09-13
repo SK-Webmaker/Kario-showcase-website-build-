@@ -4,7 +4,7 @@ import { CtaBanner } from "@/components/seo/CtaBanner";
 import { FaqBlock, type Faq } from "@/components/seo/FaqBlock";
 import { PageHero } from "@/components/seo/Hero";
 import { InternalLinks } from "@/components/seo/InternalLinks";
-import { P, PageShell, Section, Todo } from "@/components/seo/PageShell";
+import { P, PageShell, Section } from "@/components/seo/PageShell";
 import { ScreenshotGallery } from "@/components/seo/ScreenshotGallery";
 import { breadcrumbSchema, faqSchema, organizationSchema, seo, softwareSchema } from "@/lib/seo";
 
@@ -176,16 +176,14 @@ function Page() {
         ]}
       />
 
-      <Section kicker="03" title="Case study: Luxe Hair Studio, Melbourne">
+      <Section kicker="03" title="Built in a working salon">
         <P>
           Kairo was built and is run in production for a Melbourne hair salon — the diary, the
           counter, the client records and the booking link are its day-to-day system, not a demo.
+          That salon is not named here, and no before-and-after figures are quoted, because neither
+          has been put in writing yet. A number you cannot check is worth nothing, and a client you
+          name without asking is worth less than that.
         </P>
-        <Todo>
-          verified before-and-after numbers for Luxe Hair Studio (admin hours saved, no-show rate,
-          rebooking rate) plus written permission to publish them and the salon's name. No figures
-          are shown here until those exist.
-        </Todo>
       </Section>
 
       <FaqBlock items={FAQS} heading="Questions from salon owners" />

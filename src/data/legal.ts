@@ -6,11 +6,13 @@
  * rather than in ten route files means a policy change is one edit in one
  * place.
  *
- * Two facts are still deliberately absent rather than guessed: the ABN,
- * which is a registered identifier nobody should invent, and the name of
- * the SMS gateway. Both are named the moment they are known; everything
- * else — parties, contact address, sub-processors, dates, notice periods,
- * response windows, retention — is settled.
+ * These documents carry no ABN and no phone number, by decision rather
+ * than by omission: email is the support channel the terms actually
+ * promise, and a number nobody answers is worse than no number at all.
+ * The one remaining placeholder is the SMS gateway, which is named on
+ * request until it is settled. Everything else — parties, contact
+ * address, sub-processors, dates, notice periods, response windows,
+ * retention — is final.
  */
 
 export type Block =

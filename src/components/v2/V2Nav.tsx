@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 
 import { useProgressBar } from "@/hooks/useScrollProgress";
 import { KairoMark } from "./KairoMark";
+import { Ticker } from "./Ticker";
 
 import { site } from "@/site.config";
 
@@ -22,51 +23,61 @@ export function V2Nav({ variant = "home" }: { variant?: "home" | "inner" | "inqu
   const read = useProgressBar<HTMLDivElement>();
 
   return (
-    <header className="pointer-events-none fixed inset-x-0 top-0 z-[1000]">
-      {/* A scrim, because the nav passes over the features section — a
-          full-bleed colour block — where white type on its own washed out.
-          Fades to nothing so it never reads as a bar. */}
-      <div
-        aria-hidden="true"
-        className="v2-navscrim absolute inset-x-0 top-0"
-        style={{
-          height: "calc(11 * var(--u))",
-          background:
-            "linear-gradient(to bottom, rgb(5 7 12 / 0.97) 0%, rgb(5 7 12 / 0.92) 48%, rgb(5 7 12 / 0.55) 74%, rgb(5 7 12 / 0) 100%)",
-        }}
-      />
-      {/* Reading progress. One hairline, at the foot of the bar. */}
-      <div ref={read} aria-hidden="true" className="v2-read" style={{ transform: "scaleX(0)" }} />
-      <div
-        className="pointer-events-auto relative mx-auto flex items-center justify-between"
-        style={{ padding: "calc(2.2 * var(--u)) var(--pad)" }}
+    <>
+      {/* The offer sits above the nav rather than inside the page, so it
+          is still there when somebody reaches the price. Rendered here so
+          every route that has a nav has the ribbon, and the two can never
+          drift apart. */}
+      <Ticker />
+      <header
+        className="pointer-events-none fixed inset-x-0 z-[1000]"
+        style={{ top: "var(--v2-ticker-h)" }}
       >
-        <Link
-          to="/"
-          aria-label={`${site.name} — home`}
-          className="v2-display group/mark inline-flex items-center"
-          style={{ fontSize: "calc(2.2 * var(--u))" }}
+        {/* A scrim, because the nav passes over the features section — a
+            full-bleed colour block — where white type on its own washed out.
+            Fades to nothing so it never reads as a bar. */}
+        <div
+          aria-hidden="true"
+          className="v2-navscrim absolute inset-x-0 top-0"
+          style={{
+            height: "calc(11 * var(--u))",
+            background:
+              "linear-gradient(to bottom, rgb(5 7 12 / 0.97) 0%, rgb(5 7 12 / 0.92) 48%, rgb(5 7 12 / 0.55) 74%, rgb(5 7 12 / 0) 100%)",
+          }}
+        />
+        {/* Reading progress. One hairline, at the foot of the bar. */}
+        <div ref={read} aria-hidden="true" className="v2-read" style={{ transform: "scaleX(0)" }} />
+        <div
+          className="pointer-events-auto relative mx-auto flex items-center justify-between"
+          style={{ padding: "calc(2.2 * var(--u)) var(--pad)" }}
         >
-          <KairoMark
-            size="0.86em"
-            className="transition-transform duration-500 group-hover/mark:rotate-[-8deg]"
-            style={{ marginRight: "0.26em" }}
-          />
-          {site.name}
-        </Link>
-        {home ? (
-          <Link to="/get-in-touch" className="v2-btn ring-1 ring-black/25">
-            Contact us
-          </Link>
-        ) : (
           <Link
             to="/"
-            className="v2-eyebrow v2-tap font-semibold opacity-70 transition-opacity hover:opacity-100"
+            aria-label={`${site.name} — home`}
+            className="v2-display group/mark inline-flex items-center"
+            style={{ fontSize: "calc(2.2 * var(--u))" }}
           >
-            ← Back to the site
+            <KairoMark
+              size="0.86em"
+              className="transition-transform duration-500 group-hover/mark:rotate-[-8deg]"
+              style={{ marginRight: "0.26em" }}
+            />
+            {site.name}
           </Link>
-        )}
-      </div>
-    </header>
+          {home ? (
+            <Link to="/get-in-touch" className="v2-btn ring-1 ring-black/25">
+              Contact us
+            </Link>
+          ) : (
+            <Link
+              to="/"
+              className="v2-eyebrow v2-tap font-semibold opacity-70 transition-opacity hover:opacity-100"
+            >
+              ← Back to the site
+            </Link>
+          )}
+        </div>
+      </header>
+    </>
   );
 }

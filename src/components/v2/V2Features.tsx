@@ -4,7 +4,7 @@ import { GALLERY } from "@/data/gallery";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
 import { Eyebrow } from "./primitives";
 import { Reveal } from "./motion";
-import { Plate } from "./cinematic";
+import { Plate, Spotlight } from "./cinematic";
 
 /**
  * Five product screens on a pinned stage.
@@ -188,8 +188,13 @@ export function V2Features() {
                       </ul>
                     </div>
                     <div className="relative overflow-hidden">
-                      {/* The screen opens from a slit and settles out of
-                          an overscale as its card takes the stage. */}
+                      {/* The last picture on the site that was still
+                          cropping itself on the way in: a 12% slit and a
+                          1.07 overscale cut the app's own chrome off
+                          while the card took the stage. It now rises and
+                          fades like every other screenshot here — the
+                          card arriving is already the transition, and the
+                          screen inside it does not need a second one. */}
                       <img
                         src={c.src}
                         alt={c.alt}
@@ -200,10 +205,10 @@ export function V2Features() {
                         className="block h-auto w-full border border-white/10"
                         style={{
                           borderRadius: "calc(0.9 * var(--u))",
-                          clipPath: on ? "inset(0 0 0 0)" : "inset(12% 0 12% 0)",
-                          transform: on ? "scale(1)" : "scale(1.07)",
+                          opacity: on ? 1 : 0,
+                          transform: on ? "translate3d(0,0,0)" : "translate3d(0, 2.2%, 0)",
                           transition:
-                            "clip-path 1000ms cubic-bezier(0.16,1,0.3,1) 120ms, transform 1300ms cubic-bezier(0.16,1,0.3,1) 120ms",
+                            "opacity 760ms cubic-bezier(0.22,1,0.36,1) 120ms, transform 1040ms cubic-bezier(0.22,1,0.36,1) 120ms",
                         }}
                       />
                     </div>
@@ -244,11 +249,12 @@ export function V2Features() {
           padding: "calc(2 * var(--u)) calc(1.5 * var(--u))",
         }}
       >
-        <ul className="flex flex-col" style={{ gap: "calc(1.5 * var(--u))" }}>
+        <Spotlight as="ul" className="flex flex-col" style={{ gap: "calc(1.5 * var(--u))" }}>
           {CARDS.map((c, i) => (
             <Reveal
               as="li"
               key={c.n}
+              lit
               className="overflow-hidden"
               style={{
                 background: "var(--v2-ground)",
@@ -298,7 +304,7 @@ export function V2Features() {
               </ul>
             </Reveal>
           ))}
-        </ul>
+        </Spotlight>
       </div>
     </section>
   );

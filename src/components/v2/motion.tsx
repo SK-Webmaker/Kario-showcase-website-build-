@@ -69,6 +69,7 @@ export function Reveal({
   play = "view",
   as: Tag = "div",
   className = "",
+  lit = false,
   style,
 }: {
   children: ReactNode;
@@ -89,13 +90,27 @@ export function Reveal({
   opacity?: number;
   as?: "div" | "p" | "li" | "ul" | "section" | "span";
   className?: string;
+  /**
+   * Opts this element into the pointer light inside a Spotlight. It is an
+   * explicit prop rather than a spread rest: this component does not
+   * forward unknown props, so a bare data-lit written at a call site
+   * would be silently dropped and the light would simply never appear.
+   */
+  lit?: boolean;
   style?: CSSProperties;
 }) {
-  const { ref, inView } = useInView<HTMLDivElement>({ threshold: 0.1 });
+  // threshold 0 with a negative bottom margin rather than a fraction of
+  // the element — a fraction of a tall block can need most of the screen
+  // before it is satisfied, which is how a reveal ends up firing late.
+  const { ref, inView } = useInView<HTMLDivElement>({
+    threshold: 0,
+    rootMargin: "0px 0px -10% 0px",
+  });
   const on = play === "now" || inView;
   return (
     <Tag
       ref={ref as never}
+      data-lit={lit ? "" : undefined}
       className={`v2-lift ${on ? "v2-lift--in" : ""} ${className}`}
       style={{ ...style, "--v2-delay": `${delay}ms`, "--v2-o": opacity } as CSSProperties}
     >

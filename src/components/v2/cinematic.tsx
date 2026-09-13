@@ -31,15 +31,63 @@ type Entry = {
 };
 
 const entries = new Set<Entry>();
+/** Everything that needs the loop running — transformed elements AND
+ *  anything that only wants the published scroll state. */
+let consumers = 0;
 let frame: number | null = null;
 let reduced = false;
+/** Set while Lenis is driving; stops us scheduling a second loop. */
+let driven = false;
+
+/* ---- the page's own scroll state, published once a frame ---- */
+let lastY = 0;
+let vel = 0; // smoothed, signed, roughly -1..1
+let lastProgress = -1;
+let lastVelOut = -1;
 
 const clamp01 = (n: number) => (n < 0 ? 0 : n > 1 ? 1 : n);
 const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 
+/**
+ * Writes how far down the page you are, and how hard you are moving, to
+ * the root element as custom properties.
+ *
+ * Publishing it as CSS rather than as React state is the whole point: a
+ * value that changes sixty times a second has no business going through
+ * a component, and this way any rule anywhere on the site can read it
+ * without subscribing to anything.
+ */
+function publishScrollState() {
+  const doc = document.documentElement;
+  const y = window.scrollY;
+  const max = Math.max(1, doc.scrollHeight - window.innerHeight);
+
+  // Velocity, normalised against a brisk flick and then eased, so it
+  // rises and falls rather than snapping between frames.
+  const raw = (y - lastY) / Math.max(1, window.innerHeight * 0.45);
+  lastY = y;
+  vel = lerp(vel, Math.max(-1, Math.min(1, raw)), 0.16);
+  if (Math.abs(vel) < 0.001) vel = 0;
+
+  // Quantised before writing: a custom property change invalidates style
+  // on everything that reads it, so we only pay for it when it matters.
+  const progress = Math.round(clamp01(y / max) * 1000) / 1000;
+  const velOut = Math.round(vel * 100) / 100;
+  if (progress !== lastProgress) {
+    doc.style.setProperty("--v2-progress", String(progress));
+    lastProgress = progress;
+  }
+  if (velOut !== lastVelOut) {
+    doc.style.setProperty("--v2-vel", String(velOut));
+    doc.style.setProperty("--v2-speed", String(Math.abs(velOut)));
+    lastVelOut = velOut;
+  }
+}
+
 function run() {
   frame = null;
   const vh = window.innerHeight;
+  publishScrollState();
 
   /* ---- read pass: measure everything, touch no style ---- */
   const reads: { e: Entry; top: number; h: number }[] = [];
@@ -70,9 +118,9 @@ function run() {
       // panel moving over a fixed ground rather than as a fade.
       const tIn = clamp01((vh - top) / (vh * 0.45));
       const tOut = clamp01(-top / (vh * 0.55));
-      const scale = lerp(0.978, 1, tIn) * lerp(1, 0.968, tOut);
-      const y = lerp(14, 0, tIn) + lerp(0, -10, tOut);
-      const radius = lerp(20, 0, tIn) + lerp(0, 20, tOut);
+      const scale = lerp(0.965, 1, tIn) * lerp(1, 0.955, tOut);
+      const y = lerp(22, 0, tIn) + lerp(0, -16, tOut);
+      const radius = lerp(30, 0, tIn) + lerp(0, 30, tOut);
       const s = e.amount;
 
       // No opacity, on purpose: a full-height non-opaque layer has to be
@@ -96,7 +144,12 @@ function run() {
       // and starts looking pasted in.
       // -1 well below the fold, +1 well above it.
       const t = 1 - (2 * (top + h / 2)) / (vh + h);
-      e.target.style.transform = `translate3d(0, ${(t * e.amount).toFixed(1)}px, 0)`;
+      // A little extra travel in the direction you are actually moving,
+      // which is what makes a fast scroll feel weighted rather than
+      // merely fast. Capped hard: past a few pixels it stops reading as
+      // depth and starts reading as the page failing to keep up.
+      const lead = vel * 14;
+      e.target.style.transform = `translate3d(0, ${(t * e.amount + lead).toFixed(1)}px, 0)`;
     }
 
     e.dirty = true;
@@ -104,9 +157,34 @@ function run() {
 }
 
 function schedule() {
-  if (frame !== null || reduced) return;
+  if (frame !== null || reduced || driven) return;
   frame = requestAnimationFrame(run);
 }
+
+/**
+ * Runs one pass immediately, from somebody else's animation frame.
+ *
+ * This is what fixes the judder. Lenis owns its own rAF and writes the
+ * scroll position inside it; a listener on the window's scroll event
+ * necessarily runs after that write, so every scroll-linked transform
+ * on the page resolved one frame behind where the page actually was.
+ * Reading and writing inside Lenis's own frame puts them back in step.
+ */
+export function pulse() {
+  if (reduced) return;
+  driven = true;
+  if (frame !== null) {
+    cancelAnimationFrame(frame);
+    frame = null;
+  }
+  run();
+}
+
+/** Hands the loop back to scroll events, for pages without Lenis. */
+export function releasePulse() {
+  driven = false;
+}
+
 function listen() {
   window.addEventListener("scroll", schedule, { passive: true });
   window.addEventListener("resize", schedule, { passive: true });
@@ -134,18 +212,41 @@ function useEngine(
     if (reduced) return;
 
     const entry: Entry = { kind, el, target, amount, dirty: false, lastRadius: -1 };
-    const first = entries.size === 0;
     entries.add(entry);
-    if (first) listen();
+    if (consumers === 0) listen();
+    consumers += 1;
     schedule();
 
     return () => {
       entries.delete(entry);
       target.style.transform = "";
       if (kind === "stage") target.style.borderRadius = "";
-      if (entries.size === 0) unlisten();
+      consumers -= 1;
+      if (consumers === 0) unlisten();
     };
   }, [kind, amount, elRef, targetRef]);
+}
+
+/**
+ * Keeps the loop running for a page that wants the published scroll
+ * state but has nothing for the engine to transform.
+ *
+ * Without this, --v2-progress and --v2-vel would only exist on pages
+ * that happen to contain a Stage or a Plate, and every effect keyed to
+ * them would silently do nothing everywhere else.
+ */
+export function useScrollState() {
+  useEffect(() => {
+    reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced) return;
+    if (consumers === 0) listen();
+    consumers += 1;
+    schedule();
+    return () => {
+      consumers -= 1;
+      if (consumers === 0) unlisten();
+    };
+  }, []);
 }
 
 /**
@@ -419,6 +520,87 @@ export function WordLines({
 }
 
 /**
+ * A surface that lights where the pointer is.
+ *
+ * One delegated pointer listener for the whole group rather than one per
+ * card, and the position is written as two custom properties the CSS
+ * turns into a soft accent bloom. Nothing re-renders and nothing
+ * animates on a timer: the light exists only while somebody is actually
+ * moving across the surface.
+ *
+ * Pointer only. On a touch screen there is no cursor to follow, and a
+ * glow that appears wherever you last tapped reads as a bug.
+ */
+export function Spotlight({
+  children,
+  className = "",
+  style,
+  as: Tag = "div",
+}: {
+  children: ReactNode;
+  className?: string;
+  style?: CSSProperties;
+  as?: "div" | "section" | "ul";
+}) {
+  const ref = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    const host = ref.current;
+    if (!host) return;
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    let raf: number | null = null;
+    let x = 0;
+    let y = 0;
+    let target: HTMLElement | null = null;
+
+    const write = () => {
+      raf = null;
+      if (!target) return;
+      target.style.setProperty("--v2-mx", `${x.toFixed(1)}px`);
+      target.style.setProperty("--v2-my", `${y.toFixed(1)}px`);
+    };
+
+    const onMove = (e: PointerEvent) => {
+      // The lit element is the nearest opted-in surface under the
+      // pointer, so a grid of cards lights one card, not the whole grid.
+      const el = (e.target as HTMLElement)?.closest?.("[data-lit]") as HTMLElement | null;
+      if (el !== target) {
+        target?.style.removeProperty("--v2-lit");
+        target = el;
+        target?.style.setProperty("--v2-lit", "1");
+      }
+      if (!target) return;
+      const r = target.getBoundingClientRect();
+      x = e.clientX - r.left;
+      y = e.clientY - r.top;
+      if (raf === null) raf = requestAnimationFrame(write);
+    };
+
+    const onLeave = () => {
+      target?.style.removeProperty("--v2-lit");
+      target = null;
+    };
+
+    host.addEventListener("pointermove", onMove as EventListener, { passive: true });
+    host.addEventListener("pointerleave", onLeave);
+    return () => {
+      host.removeEventListener("pointermove", onMove as EventListener);
+      host.removeEventListener("pointerleave", onLeave);
+      if (raf !== null) cancelAnimationFrame(raf);
+      target?.style.removeProperty("--v2-lit");
+    };
+  }, []);
+
+  return (
+    <Tag ref={ref as never} className={`v2-spot ${className}`} style={style}>
+      {children}
+    </Tag>
+  );
+}
+
+/**
  * A control that leans towards the pointer.
  *
  * Two or three pixels, only while the cursor is genuinely near it, and
@@ -517,6 +699,7 @@ export function Magnetic({
  * while reading a paragraph it is turned up too far.
  */
 export function Ambience() {
+  useScrollState();
   return (
     <div className="v2-ambience" aria-hidden="true">
       <span className="v2-ambience__pool v2-ambience__pool--a" />

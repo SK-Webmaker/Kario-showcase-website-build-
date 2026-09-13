@@ -6,6 +6,7 @@ import { V2Footer } from "@/components/v2/V2Footer";
 import { Lens, MaskLines, Reveal } from "@/components/v2/motion";
 import { NoMotionFallback } from "@/components/v2/NoMotionFallback";
 import { Ambience } from "@/components/v2/cinematic";
+import { useLenis } from "@/hooks/useLenis";
 import { Eyebrow, Orbs } from "@/components/v2/primitives";
 import { jsonLdScript, pageGraph } from "@/data/schema";
 import { ORIGIN } from "@/site.config";
@@ -60,6 +61,9 @@ const ORBS = [
 ];
 
 function GetInTouchPage() {
+  // Same weighted scroll as every other page.
+  useLenis();
+
   return (
     <div className="v2 v2-grid min-h-screen">
       <NoMotionFallback />
@@ -96,7 +100,7 @@ function GetInTouchPage() {
             style={{ marginTop: "calc(4 * var(--u))", rowGap: "calc(4 * var(--u))" }}
           >
             {/* The case for filling it in, kept short. */}
-            <div className="lg:sticky lg:top-[calc(9*var(--u))] lg:self-start">
+            <div className="lg:sticky lg:top-[calc(9*var(--u)+var(--v2-ticker-h))] lg:self-start">
               <Reveal as="p" delay={200} opacity={0.7} className="v2-body max-w-[42ch]">
                 Four short steps — most people finish in under a minute. The more we know about how
                 the business actually runs, the more useful our reply is, and the faster your Kairo

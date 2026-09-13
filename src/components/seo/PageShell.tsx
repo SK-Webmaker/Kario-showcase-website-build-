@@ -8,6 +8,8 @@ import { Lens, Reveal, Rule } from "@/components/v2/motion";
 import { Stage, WordLines } from "@/components/v2/cinematic";
 import { Watermark } from "@/components/v2/KairoMark";
 
+import { useLenis } from "@/hooks/useLenis";
+
 import { Breadcrumbs, type Crumb } from "./Breadcrumbs";
 
 /**
@@ -20,6 +22,9 @@ import { Breadcrumbs, type Crumb } from "./Breadcrumbs";
  * a set of articles.
  */
 export function PageShell({ crumbs, children }: { crumbs: readonly Crumb[]; children: ReactNode }) {
+  // The inner pages scroll exactly like the home page does.
+  useLenis();
+
   return (
     <div className="v2 v2-grid min-h-screen">
       <NoMotionFallback />
@@ -31,7 +36,7 @@ export function PageShell({ crumbs, children }: { crumbs: readonly Crumb[]; chil
       <Watermark />
       <V2Nav variant="inner" />
 
-      <main className="relative" style={{ paddingTop: "calc(9 * var(--u))" }}>
+      <main className="relative" style={{ paddingTop: "calc(9 * var(--u) + var(--v2-ticker-h))" }}>
         <div
           className="mx-auto"
           style={{ padding: "0 var(--pad)", maxWidth: "calc(100 * var(--u))" }}

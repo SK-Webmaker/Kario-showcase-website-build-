@@ -1,7 +1,7 @@
 import { useScrollProgress } from "@/hooks/useScrollProgress";
 import { Eyebrow, Orbs } from "./primitives";
 import { CountUp, Reveal, Torch } from "./motion";
-import { Plate, WordLines } from "./cinematic";
+import { Plate, Spotlight, WordLines } from "./cinematic";
 
 /**
  * Four sections that go a level deeper than the feature showcase.
@@ -374,7 +374,8 @@ export function V2Growth() {
 
         {/* The ledger counts in as it arrives — the one place on the page
             where a number moving is the point rather than decoration. */}
-        <ul
+        <Spotlight
+          as="ul"
           className="grid gap-px sm:grid-cols-3"
           style={{ marginTop: "calc(3 * var(--u))", background: "rgb(255 255 255 / 0.1)" }}
         >
@@ -383,6 +384,7 @@ export function V2Growth() {
               as="li"
               key={row.label}
               delay={i * 130}
+              lit
               style={{ background: "var(--v2-ground)", padding: "calc(2 * var(--u))" }}
             >
               <p
@@ -399,7 +401,7 @@ export function V2Growth() {
               </p>
             </Reveal>
           ))}
-        </ul>
+        </Spotlight>
 
         <Plate
           src={`${SHOT}/04-growth-referrals.jpg`}
