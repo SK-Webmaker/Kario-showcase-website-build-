@@ -1,0 +1,83 @@
+{
+  "week_of": "2026-09-21",
+  "captured_at": "2026-09-16",
+  "source": "none",
+  "_status": "One standalone explainer Reel, requested directly rather than through a weekly run. Account numbers still unmeasured — no handle, no credential, nothing has read the account.",
+  "account": {
+    "handle": null,
+    "account_type": "creator",
+    "followers": null,
+    "follower_change_7d": null,
+    "reach_7d": null,
+    "profile_visits_7d": null,
+    "link_clicks_7d": null,
+    "avg_engagement_rate": null
+  },
+  "format_split": {
+    "_comment": "Still unmeasured for Kairo after fourteen handed-over posts.",
+    "video": {
+      "avg_engagement_rate": null,
+      "posts": null
+    },
+    "image": {
+      "avg_engagement_rate": null,
+      "posts": null
+    },
+    "carousel": {
+      "avg_engagement_rate": null,
+      "posts": null
+    }
+  },
+  "authored_this_week": [
+    {
+      "post_id": "r-explainer",
+      "planned_date": "2026-09-21",
+      "format": "reel",
+      "duration_s": 27.0,
+      "status": "handed_over"
+    }
+  ],
+  "prediction_scored": {
+    "predicted": "Reels to out-reach stills within each pair; the light cards to out-save their reels; the flat-market carousel most-saved; at least one DM containing DIARY.",
+    "held": "unmeasured",
+    "why": "Fourth consecutive week a prediction cannot be scored. Same cause every time: no read access."
+  },
+  "operator_said": [
+    "Wanted one video explaining exactly what Kairo does for a business, in the easiest way possible.",
+    "Wanted the colour theme changed.",
+    "Wanted it engaging and aimed at going viral, while staying very understandable."
+  ],
+  "decisions": [
+    {
+      "decision": "Theme departure — warm cream ground (#FFF7ED), near-black ink, deeper blue (#2563EB), one orange (#EA580C) used only on the mess state.",
+      "why": "Asked for directly. Kairo's blue stays the only accent doing work, one step deeper because the product's #3b82f6 lacks weight on cream, so it reads as the same company in a different mood rather than a different company. Cream also stands out against a feed that is mostly dark video or footage. Recorded in CLAUDE.md as a decision, not drift: this is one asset, not a new house style.",
+      "side_effect": "The dark-theme grade and vignette crush a bright frame — the first render came out stained brown in the lower right. Grade disabled, vignette cut to a whisper, grain reduced. Any future bright asset needs the same overrides."
+    },
+    {
+      "decision": "Structure — six jobs, six tools, one app, as a single continuous transformation rather than cuts.",
+      "why": "The collapse of six scattered tiles into one card IS the explanation. Everything else is labelling. A visual that does the arguing is more understandable than a sentence that does."
+    }
+  ],
+  "defects_caught_before_shipping": [
+    "Scattered tiles ran clear off both edges of the frame — 440px tiles thrown ±210px in a 952px field. Disorder now comes from rotation and overlap instead, which reads as a pile rather than a bug.",
+    "The multiply grade over cream plus a warm vignette stained the lower right brown. Both removed or softened.",
+    "The payoff card was the smallest element on screen. Enlarged and given a line.",
+    "14.8MB for 27s — grain over large flat areas is bitrate-hungry. CRF is now settable per spec; this one runs at 20."
+  ],
+  "experiment": {
+    "testing": "The simplest possible explanation, on a bright theme.",
+    "confound_stated_plainly": "TWO variables moved at once — message simplicity and colour. A result will not attribute cleanly to either. That is the cost of the request and it is written into the pack's testing field and the handover rather than being quietly claimed later as a win for the colour.",
+    "clean_comparison_if_wanted": "The same script on the dark palette. Same words, same timing, old colours.",
+    "result": "unmeasured until the account can be read"
+  },
+  "next_prediction": {
+    "_honesty": "Still targets, not forecasts. No baseline exists.",
+    "targets": {
+      "reach": "This should be the widest-reaching post made so far, because it is the only one that explains the product to someone with no context.",
+      "saves": "Lower than the reference cards. An explainer is watched, not filed.",
+      "dms": "At least one DM containing DIARY."
+    },
+    "one_thing_to_change": "Nothing in the creative. Fourth week running, the change that matters is the handle and the credential.",
+    "sets_up": "If this reaches further than the dark reels, the honest next step is the dark-palette version of the same script, to separate colour from message before either gets adopted as a rule."
+  }
+}

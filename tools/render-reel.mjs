@@ -77,7 +77,9 @@ async function main() {
     // A light unsharp only recovers the edge h264 takes off; it invents
     // nothing. Kept mild because product UI shows ringing before photos do.
     "-vf", "unsharp=5:5:0.5:5:5:0.0",
-    "-c:v", "libx264", "-preset", "slow", "-crf", "17",
+    // CRF is read from the spec when it sets one: film grain over large flat
+    // areas costs a lot of bitrate, and a bright theme is mostly flat.
+    "-c:v", "libx264", "-preset", "slow", "-crf", String(spec.crf ?? 17),
     "-pix_fmt", "yuv420p",
     // Instagram re-encodes; an even-dimension, faststart file survives it best.
     "-movflags", "+faststart",

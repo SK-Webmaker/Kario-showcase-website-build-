@@ -23,15 +23,17 @@ import { SW, crop, win, audit } from "../../../tools/media.mjs";
 export const id = "reel-explainer";
 export const fps = 30;
 export const duration = 27.0;
+/** Flat cream plus grain is bitrate-hungry; 20 halves the file and looks the same. */
+export const crf = 20;
 
 /** job label, the thing most salons use instead, scatter offset + rotation */
 const TILES = [
-  ["Take bookings",      "A paper diary",        -210,  -64, -9 ],
-  ["Remember clients",   "A spreadsheet",         200,  -96,  7 ],
-  ["Take the money",     "A card machine",       -178,   40, -6 ],
-  ["Send reminders",     "Texting by hand",       226,   58, 10 ],
-  ["Fill the gaps",      "Hoping",               -150,  150, -12],
-  ["Never double-book",  "Memory",                190,  178,  8 ],
+  ["Take bookings",      "A paper diary",     44, -30, -7 ],
+  ["Remember clients",   "A spreadsheet",    -46,  20,  6 ],
+  ["Take the money",     "A card machine",    -8,  34, -5 ],
+  ["Send reminders",     "Texting by hand",   34, -26,  9 ],
+  ["Fill the gaps",      "Hoping",            50,  18, -11],
+  ["Never double-book",  "Memory",           -32, -20,  7 ],
 ];
 
 const tileEls = TILES.map(([job, tool], i) => `
@@ -54,7 +56,8 @@ const S = [
         <h2 class="display mid h h3">Kairo is <span class="blue">one</span>.</h2>
       </div>
       <div class="field">${tileEls}
-        <div class="one"><div class="onemark">${markSvg(56)}</div><span>Kairo</span></div>
+        <div class="one"><div class="onemark">${markSvg(64)}</div><span>Kairo</span>
+      <em>all six jobs, one login</em></div>
       </div>` },
 
   { t0: 18.6, t1: 22.8, kind: "scale", body: `
@@ -93,14 +96,14 @@ ${fontFace()}${CSS}${REEL_CSS}
   linear-gradient(90deg,rgb(var(--ink)/.05) 1px,transparent 1px)}
 #glow{background:radial-gradient(circle,rgba(37,99,235,.13),transparent 62%)}
 /* The dark-theme grade and vignette both crush a bright frame. Soften. */
-#vignette{background:radial-gradient(ellipse at 50% 44%,transparent 52%,rgba(120,80,40,.16) 100%)}
-#grade{mix-blend-mode:multiply;
-  background:linear-gradient(158deg,rgba(255,237,213,.5),transparent 44%,rgba(37,99,235,.09))}
-#grain{opacity:.035;mix-blend-mode:multiply}
+#vignette{background:radial-gradient(ellipse at 50% 46%,transparent 68%,rgba(120,80,40,.07) 100%)}
+#grade{display:none}
+#grain{opacity:.022;mix-blend-mode:multiply}
 #leak{background:radial-gradient(ellipse at 78% 22%,rgba(37,99,235,.28),transparent 58%)}
 .mark .wm{color:rgb(var(--ink))}
 #bar{background:rgb(var(--ink)/.14)}
 
+.scene{padding:300px 64px 440px}
 .big{font-size:118px}
 .mid{font-size:74px}
 .sub{font-size:36px;line-height:1.35;color:rgb(var(--ink)/.6);margin-top:32px;max-width:22ch}
@@ -121,12 +124,14 @@ ${fontFace()}${CSS}${REEL_CSS}
   color:var(--brand)}
 .tlab{font-size:31px;font-weight:800;letter-spacing:-.01em;line-height:1.1}
 .tlab.tool{position:absolute;left:28px;right:28px;bottom:26px;opacity:0;color:var(--warm)}
-.one{position:absolute;left:50%;top:50%;width:520px;height:230px;margin:-115px 0 0 -260px;
+.one{position:absolute;left:50%;top:50%;width:660px;height:300px;margin:-150px 0 0 -330px;
   border:4px solid var(--brand);background:var(--brand);border-radius:10px;
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;
   color:#fff;opacity:0;box-shadow:0 30px 60px -28px rgba(37,99,235,.7);will-change:transform,opacity}
-.one span{font-size:54px;font-weight:800;letter-spacing:-.02em}
-.onemark svg{width:56px;height:56px}
+.one span{font-size:62px;font-weight:800;letter-spacing:-.02em}
+.one em{font-style:normal;font-family:'JetBrains Mono',monospace;font-size:21px;
+  text-transform:uppercase;letter-spacing:.14em;color:rgba(255,255,255,.72)}
+.onemark svg{width:64px;height:64px}
 </style></head><body>
 <div id="stage">${reelChrome(markSvg(42))}${S.map(scene).join("")}</div>
 <script>
