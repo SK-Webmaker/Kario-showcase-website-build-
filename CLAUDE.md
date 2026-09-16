@@ -107,6 +107,31 @@ the whole thing. Revisit if the operator gets a straight answer from Meta.
 
 ---
 
+## Theme — a deliberate departure, 2026-09-16
+
+Everything up to this point uses the dark blueprint theme, sampled from the
+product so the cards match the software. **The operator asked for a colour
+change on the standalone explainer Reel**, so `content/packs/2026-09-21/`
+runs on a **warm cream ground (`#FFF7ED`) with near-black ink and a deeper blue
+(`#2563EB`)**, plus a single warm orange (`#EA580C`) used only on the "mess"
+state and never on the product.
+
+Two things kept it from becoming drift rather than a decision:
+
+- **Kairo's blue is still the only accent doing work**, one step deeper because
+  the product's `#3b82f6` does not hold enough weight on cream. So it reads as
+  the same company in a different mood, not a different company.
+- **The reel's own grade, vignette and grain are overridden.** The dark-theme
+  versions crush a bright frame — the vignette in particular. Any future bright
+  asset needs the same overrides; they are in the spec.
+
+This is one asset, not a new house style. If it outperforms the dark ones, that
+is worth knowing — but the comparison is dirty, because the explainer also
+changed the message to the simplest possible version at the same time. Two
+variables moved. Recorded in the pack's `testing` field.
+
+---
+
 ## Voice
 
 Speech, not copy. Contractions, first person, one reader. Plain nouns — "the

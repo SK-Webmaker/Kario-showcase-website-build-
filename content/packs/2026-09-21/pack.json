@@ -1,0 +1,18 @@
+{
+  "week_of": "2026-09-21",
+  "_note": "One standalone explainer Reel, requested directly. Deliberate theme departure — warm cream ground instead of the dark blueprint, with Kairo's blue as the only working accent. Recorded in CLAUDE.md as a decision, not a drift.",
+  "posts": [
+    {
+      "id": "r-explainer",
+      "planned_date": "2026-09-21",
+      "format": "reel",
+      "asset_provenance": "product_screenshot",
+      "assets": ["video/reel-explainer.mp4"],
+      "duration_s": 27.0,
+      "is_offer": false,
+      "testing": "The simplest possible explanation, on a bright theme, for someone who has never heard of Kairo. Two variables move at once here — message simplicity and colour — so a result will not cleanly attribute to either. That is the cost of the request and it is worth stating.",
+      "verified_figures": [],
+      "caption": "A salon does six jobs every day.\n\nTake bookings. Remember clients. Take the money. Send reminders. Fill the gaps. And never double-book anyone.\n\nMost salons do those six jobs in six different places. A paper diary. A spreadsheet of client numbers. A card machine that knows nothing about the diary. Reminder texts sent by hand when there's a spare minute. And memory, for whatever's left over.\n\nKairo is all six, in one app, on your own booking link.\n\nThat's the whole thing. Your diary, your clients, your payments and every message that goes out to them — one login, one place, and it cannot double-book you.\n\nIt's real software, and it has run a Melbourne salon's bookings, payments and customer emails since day one. Every screen in the video is that same system.\n\n$400 once, GST included. Then nothing, every month. No subscription, no per-booking fee, no commission.\n\nIf you run a salon and you want a proper look, DM me the word DIARY.\n\n#salonowner #salonsoftware #melbournesalon #hairstylist #melbournehair #bookingsystem #salonbusiness #barbershop #nailtech"
+    }
+  ]
+}
