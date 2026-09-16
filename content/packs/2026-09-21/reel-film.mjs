@@ -56,12 +56,12 @@ export const duration = +(TL.duration + 0.5).toFixed(2);
 
 /** job, tool, world x, y, z */
 const CARDS = [
-  ["Take the bookings",  "A paper diary",   -272, -620, -2200],
-  ["Remember clients",   "A spreadsheet",    272, -620, -2320],
+  ["Take the bookings",  "A paper diary",   -272, -700, -2200],
+  ["Remember clients",   "A spreadsheet",    272, -700, -2320],
   ["Take the money",     "A card machine",  -272,    0, -2450],
   ["Send the reminders", "Texting by hand",  272,    0, -2570],
-  ["Fill the gaps",      "Hoping",          -272,  620, -2700],
-  ["Never double-book",  "Memory",           272,  620, -2820],
+  ["Fill the gaps",      "Hoping",          -272,  700, -2700],
+  ["Never double-book",  "Memory",           272,  700, -2820],
 ];
 const JOB_IDS = ["j1", "j2", "j3", "j4", "j5", "j6"];
 
@@ -73,7 +73,8 @@ const cardEls = CARDS.map(([job, tool], i) => `
   <div class="obj card" data-i="${i}">
     <div class="ctop"><span class="cnum">0${i + 1}</span>${tickSvg}</div>
     <span class="clab job">${job}</span>
-    <div class="skel"><i style="width:86%"></i><i style="width:64%"></i><i style="width:74%"></i></div>
+    <div class="skel"><i style="width:86%"></i><i style="width:64%"></i><i style="width:74%"></i>
+      <i style="width:58%"></i><i style="width:80%"></i></div>
     <span class="clab tool">${tool}</span>
     <div class="sweep"></div>
   </div>`).join("");
@@ -108,9 +109,10 @@ const words = (s) => s.split(" ").map((w, i) =>
  * Getting this backwards renders everything at roughly half size, which is
  * exactly what the first cut of this film did.
  *
- * CARD_ZA is deliberately large: at +430 a 520x560 card renders 729x785, which
- * is most of a 1080-wide frame. The earlier +120 left it floating in cream. */
-const CARD_ZA = 430;
+ * CARD_ZA is deliberately large: at +480 a 520x720 card renders 765x1059, which
+ * is most of a 1080-wide frame and more than half its height. The first cut
+ * used +120, which renders near life size and reads small in 9:16. */
+const CARD_ZA = 480;
 const shot = (c, za = CARD_ZA, bias = 0.9) =>
   ({ cx: CARDS[c][2] * bias, cy: CARDS[c][3] * bias, cz: CARDS[c][4] - za });
 
@@ -177,7 +179,7 @@ html,body{width:1080px;height:1920px;margin:0}
 .dot{border-radius:50%;background:rgb(var(--ink)/.22);margin:-4px 0 0 -4px}
 
 /* --- the six cards ---------------------------------------------------- */
-.card{width:520px;margin:-280px 0 0 -260px;height:560px;box-sizing:border-box;
+.card{width:520px;margin:-360px 0 0 -260px;height:720px;box-sizing:border-box;
   border:3px solid rgb(var(--ink)/.14);background:#fff;border-radius:10px;
   padding:34px 36px;display:flex;flex-direction:column;
   box-shadow:0 46px 80px -34px rgba(70,45,20,.55);opacity:0;overflow:hidden;position:absolute}
@@ -191,7 +193,7 @@ html,body{width:1080px;height:1920px;margin:0}
 .skel i{height:16px;border-radius:3px;background:rgb(var(--ink)/.1);display:block}
 .clab.tool{opacity:0;color:var(--warm);font-size:40px;margin-top:auto}
 .sweep{position:absolute;inset:0;pointer-events:none;opacity:0;
-  background:linear-gradient(105deg,transparent 38%,rgba(37,99,235,.30) 50%,transparent 62%)}
+  background:linear-gradient(105deg,transparent 30%,rgba(37,99,235,.20) 50%,transparent 70%)}
 
 /* --- the card that replaces them -------------------------------------- */
 #one{width:800px;height:880px;margin:-440px 0 0 -400px;border-radius:18px;
@@ -245,7 +247,7 @@ html,body{width:1080px;height:1920px;margin:0}
 #t-price .rows b{color:var(--brand);font-weight:400}
 
 /* --- the real product frame ------------------------------------------- */
-#shotwrap{width:1040px;margin-left:-520px;margin-top:-700px;opacity:0}
+#shotwrap{width:1040px;margin-left:-520px;margin-top:-650px;opacity:0}
 #hero{position:relative;height:1000px;transform-style:preserve-3d}
 #hero > div{position:absolute}
 #hero .a{top:0;left:20px;width:1000px}
@@ -558,8 +560,8 @@ window.setFrame = (t) => {
   };
   set($("t-title"), vis(t, 0.1, 0.9, L.everyday.end + 0.35, 0.7), 0, 0, ${TITLE_Z});
   typeIn("#t-title .l1 i", t, 0.15, 0.10, 0.45);
-  typeIn("#t-title .l2 i", t, L.six.end - 0.35, 0.05, 0.4);
-  stagger(chips, t, L.six.end - 0.1, 0.075, 0.4);
+  typeIn("#t-title .l2 i", t, 0.85, 0.05, 0.4);
+  stagger(chips, t, 1.05, 0.075, 0.4);
 
   set($("t-most"), vis(t, L.most.start - 0.1, 0.55, L.kairo.start - 0.5, 0.45), 0, 0, ${MOST_Z});
   typeIn("#t-most .l1 i", t, L.most.start, 0.09, 0.42);

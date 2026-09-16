@@ -47,10 +47,16 @@ const filter = [
   // Voice: to stereo, gently compressed so the read sits steady.
   `[2:a]aformat=sample_fmts=fltp:sample_rates=48000:channel_layouts=stereo,` +
     `acompressor=threshold=0.09:ratio=3:attack=12:release=180,volume=1.25[vox]`,
-  // A copy of the voice drives the ducking.
-  `[vox]asplit=2[vox1][key]`,
+  // A copy of the voice drives the ducking. It has to be padded out to the
+  // full picture length first: sidechaincompress ends when the SHORTER of its
+  // two inputs ends, so a read that stops before the last shot silently
+  // truncated the whole mix — and -shortest then cut the picture to match.
+  // That cost the last 0.6s of the film, which is where the CTA holds.
+  `[vox]asplit=2[vox1][key0]`,
+  `[key0]apad,atrim=0:${dur.toFixed(3)},asetpts=N/SR/TB[key]`,
   `[bed][key]sidechaincompress=threshold=0.09:ratio=3:attack=14:release=340:makeup=1[duck]`,
   `[duck][vox1]amix=inputs=2:duration=first:normalize=0,` +
+    `apad,atrim=0:${dur.toFixed(3)},asetpts=N/SR/TB,` +
     `alimiter=limit=0.94,loudnorm=I=-14:TP=-1.0:LRA=11[aout]`,
 ].join(";");
 
@@ -60,7 +66,7 @@ execFileSync(FF, [
   "-filter_complex", filter,
   "-map", "0:v", "-map", "[aout]",
   "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-ac", "2",
-  "-shortest", "-movflags", "+faststart",
+  "-t", dur.toFixed(3), "-movflags", "+faststart",
   out,
 ], { stdio: "inherit" });
 
