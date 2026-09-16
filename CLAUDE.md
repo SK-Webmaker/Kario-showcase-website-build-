@@ -132,6 +132,30 @@ variables moved. Recorded in the pack's `testing` field.
 
 ---
 
+## AI voice and music — first used 2026-09-16
+
+The narrated film (`content/packs/2026-09-21/reel-film-sound.mp4`) uses a
+**generated voiceover and a generated music bed.** Both were asked for directly.
+
+- **The voice is AI.** That is not covered by invariant 2, which bans AI
+  *photographs of the product* — an AI read does not misrepresent the software.
+  But it is worth saying out loud: Meta labels AI-generated media where it
+  detects it, and on a warm-network account the operator's own voice would land
+  harder than any synthetic one. The script is written to be re-recorded by a
+  human in one take if they ever want to.
+- **Neither could be auditioned.** This system cannot hear audio. What it *can*
+  do is measure, and did: the bed sits 16 dB under the voice during speech and
+  9 dB under in the gaps, peaking at -3.4 dB. The levels are broadcast-typical
+  by measurement, not by ear. **Somebody has to actually listen before this
+  goes out.**
+- **How the picture was cut to the voice:** `tools/cut-vo.mjs` runs
+  silencedetect over the raw read, re-cuts every gap to a length chosen per
+  line, and writes `audio/timeline.json` with where each line actually lands.
+  The film spec imports that file, so the camera moves on the voice rather than
+  on a guess. Regenerating the VO means re-reading the spans in that tool.
+
+---
+
 ## Voice
 
 Speech, not copy. Contractions, first person, one reader. Plain nouns — "the

@@ -1,18 +1,45 @@
 {
   "week_of": "2026-09-21",
-  "_note": "One standalone explainer Reel, requested directly. Deliberate theme departure — warm cream ground instead of the dark blueprint, with Kairo's blue as the only working accent. Recorded in CLAUDE.md as a decision, not a drift.",
+  "_note": "Two versions of the same explainer. reel-explainer is silent, cut as a sequence of scenes. reel-film is the narrated version: one continuous camera move through a 3D space, cut to a generated voiceover, with a ducked music bed. Theme departure (warm cream) recorded in CLAUDE.md.",
   "posts": [
     {
       "id": "r-explainer",
       "planned_date": "2026-09-21",
       "format": "reel",
       "asset_provenance": "product_screenshot",
-      "assets": ["video/reel-explainer.mp4"],
+      "assets": [
+        "video/reel-explainer.mp4"
+      ],
       "duration_s": 27.0,
       "is_offer": false,
       "testing": "The simplest possible explanation, on a bright theme, for someone who has never heard of Kairo. Two variables move at once here — message simplicity and colour — so a result will not cleanly attribute to either. That is the cost of the request and it is worth stating.",
       "verified_figures": [],
       "caption": "A salon does six jobs every day.\n\nTake bookings. Remember clients. Take the money. Send reminders. Fill the gaps. And never double-book anyone.\n\nMost salons do those six jobs in six different places. A paper diary. A spreadsheet of client numbers. A card machine that knows nothing about the diary. Reminder texts sent by hand when there's a spare minute. And memory, for whatever's left over.\n\nKairo is all six, in one app, on your own booking link.\n\nThat's the whole thing. Your diary, your clients, your payments and every message that goes out to them — one login, one place, and it cannot double-book you.\n\nIt's real software, and it has run a Melbourne salon's bookings, payments and customer emails since day one. Every screen in the video is that same system.\n\n$400 once, GST included. Then nothing, every month. No subscription, no per-booking fee, no commission.\n\nIf you run a salon and you want a proper look, DM me the word DIARY.\n\n#salonowner #salonsoftware #melbournesalon #hairstylist #melbournehair #bookingsystem #salonbusiness #barbershop #nailtech"
+    },
+    {
+      "id": "r-film",
+      "planned_date": "2026-09-22",
+      "format": "reel",
+      "asset_provenance": "product_screenshot",
+      "assets": [
+        "video/reel-film-sound.mp4",
+        "video/reel-film.mp4 (silent master)",
+        "audio/vo.wav",
+        "audio/music-raw.mp3",
+        "audio/timeline.json"
+      ],
+      "duration_s": 35.1,
+      "has_audio": true,
+      "is_offer": false,
+      "testing": "A narrated product film rather than a captioned sequence: one continuous camera move, cut to the voice using real audio timings. Tests whether sound-on narration holds attention better than silent on-screen text on this account. NOTE the voice is AI-generated — see handover.",
+      "verified_figures": [],
+      "caption": "A salon does six jobs every day. Watch what happens when they all live in one place.\n\nTake the bookings. Remember the clients. Take the money. Send the reminders. Fill the gaps. And never double-book anyone.\n\nMost salons do those six in six different places. A paper diary. A spreadsheet of numbers. A card machine that knows nothing about the diary. Reminder texts sent by hand. And memory, for whatever's left.\n\nKairo is all six, in one app, on your own booking link.\n\nIt's real software, and it has run a Melbourne salon's bookings, payments and customer emails since day one. Every screen in this is that same system.\n\n$400 once, GST included. Then nothing, every month. No subscription, no per-booking fee, no commission.\n\nSound on for this one. And if you run a salon and want a proper look, DM me the word DIARY.\n\n#salonowner #salonsoftware #melbournesalon #salonmanagement #hairstylist #smallbusinessaustralia #barbershop #bookingsystem",
+      "audio": {
+        "voice": "AI-generated (ElevenLabs v3). Not auditioned by Gloss — this system cannot hear.",
+        "music": "AI-generated instrumental bed.",
+        "measured": "Voice -16.5 dB mean. Bed 16 dB under voice during speech, 9 dB under in gaps. Peak -3.4 dB. Final mix -12.8 LUFS integrated.",
+        "must_do_before_posting": "Someone has to listen to it."
+      }
     }
   ]
 }
