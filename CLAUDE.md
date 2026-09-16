@@ -107,6 +107,34 @@ the whole thing. Revisit if the operator gets a straight answer from Meta.
 
 ---
 
+## Generated media has a credit budget — 2026-09-16
+
+The Picsart MCP account is a **metered resource** and it ran out mid-task. The
+operator asked for an Australian voice; the balance was **1 credit**, resetting
+**2026-09-23**, and a TTS generation costs more than that.
+
+Two rules came out of it:
+
+- **Check `picsart_credits` before planning work that depends on generation.**
+  A 402 halfway through a four-part revision is an expensive way to find out.
+- **Say the part you could not do, in the handover, in the same voice as the
+  parts you did.** The temptation was to ship the re-render — which genuinely
+  improved three of the four notes — and let the operator assume the accent had
+  changed too. That is the same failure shape as reporting an API's success
+  response as a delivered email.
+
+What *was* possible without credits: re-cutting the read's rhythm. **Six
+identical 200ms gaps in a six-item list is the most mechanical thing in a TTS
+performance**, and gap length is an edit decision, not a voice decision. Every
+gap in `tools/cut-vo.mjs` is now a different length chosen per line.
+
+`tools/vo-spans.mjs` is new and exists because the speech spans in `cut-vo.mjs`
+were hand-measured and go stale the instant the voice is regenerated. It prints
+them in the exact shape the table wants. It is verified against the current
+read.
+
+---
+
 ## Theme — a deliberate departure, 2026-09-16
 
 Everything up to this point uses the dark blueprint theme, sampled from the
@@ -153,6 +181,35 @@ The narrated film (`content/packs/2026-09-21/reel-film-sound.mp4`) uses a
   line, and writes `audio/timeline.json` with where each line actually lands.
   The film spec imports that file, so the camera moves on the voice rather than
   on a guess. Regenerating the VO means re-reading the spans in that tool.
+
+---
+
+## Filling a 9:16 frame — corrected 2026-09-16
+
+The operator's note on the narrated film: *"fill up the screen to make it look
+better"*. They were right, and the previous handover had argued the opposite —
+that the quiet bottom third was deliberate because Instagram puts its caption
+there. **That defence was wrong.** The caption band is a reason not to put
+*meaning* down there. It is not a reason to put *nothing* down there.
+
+What actually filled it, in rough order of how much each one bought:
+
+1. **Screen-space furniture on all four edges** — corner viewfinder marks,
+   vertical mono rails down both sides, a ticker along the bottom. Permanent,
+   cheap, and it turns blank margin into a designed frame.
+2. **Portrait geometry.** A 9:16 frame is 1920px high. Landscape cards on a
+   short vertical pitch filled about a third of it. Cards went 520×560 on a
+   620px pitch and the same pile now runs edge to edge.
+3. **Deep parallax layers** — a ruled floor and a ghost word far back in z.
+   They cost one element each and give the empty areas depth instead of gap.
+4. **Closer close-ups.** Framing a card at `za = +120` renders it near life
+   size, which is small in a 1080-wide frame. `za = +430` renders it at 1.4×.
+
+**Something must always be moving.** A held shot with a still frame reads as a
+paused video, which is a swipe. The ticker exists for that reason alone.
+
+**And: the progress bar is gone.** A reel that displays how much of itself is
+left is inviting the swipe. Do not put one back.
 
 ---
 
@@ -348,6 +405,8 @@ conversation, not by email).
 | `content/memory/*.json` | one dated snapshot per week |
 | `content/packs/<date>/` | the finished week — captions, images, handover |
 | `tools/media.mjs` | product-frame crops + the magnification auditor |
+| `tools/vo-spans.mjs` | reads a new VO's speech spans for `cut-vo.mjs` |
+| `tools/probe-reel.mjs` | screenshots a reel spec at named times, before the full render |
 | `tools/render-cards.mjs` | HTML → 1080x1350 PNG slides |
 | `tools/render-reel.mjs` | HTML → 1080x1920 h264 MP4 |
 | `tools/reel-lib.mjs` | easing, cinematic transitions, reel chrome |

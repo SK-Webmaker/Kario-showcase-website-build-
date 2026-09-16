@@ -101,7 +101,6 @@ ${fontFace()}${CSS}${REEL_CSS}
 #grain{opacity:.022;mix-blend-mode:multiply}
 #leak{background:radial-gradient(ellipse at 78% 22%,rgba(37,99,235,.28),transparent 58%)}
 .mark .wm{color:rgb(var(--ink))}
-#bar{background:rgb(var(--ink)/.14)}
 
 .scene{padding:300px 64px 440px}
 .big{font-size:118px}

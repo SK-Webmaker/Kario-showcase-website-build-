@@ -212,7 +212,8 @@ label), the bottom ~380px (caption, handle, audio) and a ~180px action rail down
 the right. `REEL_CSS` puts the mark at 118px, the progress bar at 196px, and
 `.scene` padding at `268px 64px 560px`, which lands content between roughly 14%
 and 57% of frame height. Body copy is capped at 26ch so nothing slides under the
-action rail. Do not fill the bottom of the frame; it will be covered.
+action rail. Keep *meaning* out of the bottom band — but do not leave it blank;
+see 5.3a, which corrects an earlier reading of this rule.
 
 **The cinematic layers**, all driven from `setFrame` so they stay deterministic:
 film grain (a noise tile re-offset each frame from a fixed pseudo-random
@@ -244,11 +245,72 @@ a `.vis` for a specular sweep.
 
 **Reels safe area.** `.scene` padding is `236px 64px 470px` because Instagram
 lays its caption, username and action rail over the bottom fifth and the right
-edge. Content lives roughly between 12% and 66% of frame height. Do not fill the
-bottom.
+edge. Content lives roughly between 12% and 66% of frame height. Nothing that
+must be *read* goes below that — but the band still needs designing; see 5.3a.
 
 Encoding: 1080×1920, h264 High, `yuv420p`, CRF 17, `+faststart`, plus a light
 `unsharp=5:5:0.5:5:5:0.0` that only recovers the edge h264 takes off.
+
+### 5.3a Filling 9:16, and the perspective trap
+
+**Corrected 2026-09-16, on the operator's note "fill up the screen".** The
+earlier reading of the safe-area rule — leave the bottom third alone because
+Instagram covers it — quietly became "leave it empty", and a film shipped with
+its story in a band across the middle of a 1920px frame.
+
+The distinction that matters: the caption band is a reason not to put anything
+that must be **read** down there. It is not a reason to put **nothing** down
+there. Blank cream at the bottom of a still is blank cream in the feed too.
+
+What actually fixed it, in order of how much each bought:
+
+1. **Screen-space furniture on all four edges.** Corner viewfinder marks,
+   vertical mono rails down both sides, a ticker along the bottom. Permanent,
+   one element each, and it converts margin into a designed frame.
+2. **Portrait geometry.** The frame is 1920px high. Landscape cards on a short
+   vertical pitch fill about a third of it. Go portrait and widen the pitch.
+3. **Deep parallax layers.** A ruled floor and a ghosted word far back in z
+   give the empty regions depth rather than absence. Exclude both from depth of
+   field — an 8px blur on a 3400px element costs more per frame than it earns.
+4. **Frame closer.** See the trap below.
+
+**Something must always be moving.** A held shot with a static frame reads as a
+paused video, and a paused video is a swipe. The bottom ticker exists for that
+reason alone.
+
+**No progress bar.** A reel that displays how much of itself is left invites the
+swipe. Removed from `reel-film.mjs` on the same note; do not put one back.
+
+#### The perspective trap, which cost an hour
+
+Two ways to render a 3D reel at exactly the wrong size, both of which have
+happened here:
+
+- **`cz = objZ + distance`.** Wrong. With CSS `perspective: P`, an element's
+  final z is `za = objZ - cz` and it renders at `P / (P - za)`. To frame
+  something you solve `cz = objZ - za`, with `za` **positive** for a close shot.
+  Getting the sign backwards renders everything at roughly half size.
+- **`za = +120` is not a close-up.** It renders a card near life size, which in
+  a 1080-wide frame is small. `za = +430` renders it at 1.4×.
+
+And the one that is invisible until you measure it:
+
+- **Any element between the `perspective` holder and the 3D content must carry
+  `transform-style: preserve-3d`.** CSS perspective only reaches its own
+  children. Wrapping `#world` in a plain `<div>` — to hang a camera shake on,
+  say — flattens the entire scene, and every object renders at exactly 1.0×
+  with no parallax, no scale, no occlusion. It does not error and it does not
+  look obviously broken; it looks like the camera stopped working.
+
+**So measure, do not eyeball.** `getBoundingClientRect()` on the key objects at
+a few times is the check. A 520px card that should be 730px is unmistakable in
+a number and easy to argue yourself out of in a screenshot.
+
+#### Probe before you render
+
+`node tools/probe-reel.mjs <spec.mjs> <out-dir> <t> [t ...]` screenshots named
+times without rendering the whole film. A 36s reel is ~1080 frames and about
+fifteen minutes; nearly every framing mistake is visible in one frame.
 
 ### 5.4 The magnification rule — read this before designing any frame
 
@@ -477,6 +539,27 @@ Keep this list. It is the most useful section for whoever runs next.
    `unmeasured` until a token has actually returned one.
 
 ---
+
+### 9a. Generated media is metered
+
+The Picsart MCP account ran out of credits mid-task on 2026-09-16, with the
+operator's request for an Australian voice unfulfilled. Balance was 1 credit;
+the allowance resets weekly.
+
+- **Check `picsart_credits` before planning work that depends on generation.**
+- **When you cannot do a part, say so in the handover in the same voice as the
+  parts you did.** Shipping a re-render that genuinely improved three of four
+  notes, and letting the operator assume the fourth changed too, is the same
+  failure shape as reporting an API's success response as a delivered email.
+
+What was possible without credits: the read's *rhythm*. Gap length is an edit
+decision, not a voice decision, and **six identical 200ms gaps in a six-item
+list is the most mechanical thing in a TTS performance.** Every gap in
+`tools/cut-vo.mjs` is now chosen per line.
+
+`tools/vo-spans.mjs` exists because the speech spans in `cut-vo.mjs` are
+hand-measured and go stale the instant the voice is regenerated. Run it on the
+new read and paste its first two columns over the table.
 
 ## 9b. Market statistics — the one you will be asked for and cannot have
 

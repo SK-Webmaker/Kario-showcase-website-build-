@@ -1,5 +1,5 @@
 {
-  "duration": 35.172,
+  "duration": 35.532,
   "lines": [
     {
       "id": "six",
@@ -10,14 +10,14 @@
     {
       "id": "everyday",
       "words": "Every single day.",
-      "start": 2.03,
-      "end": 3.205
+      "start": 1.99,
+      "end": 3.165
     },
     {
       "id": "j1",
       "words": "Take the bookings.",
-      "start": 3.725,
-      "end": 4.706
+      "start": 3.785,
+      "end": 4.766
     },
     {
       "id": "j2",
@@ -28,92 +28,92 @@
     {
       "id": "j3",
       "words": "Take the money.",
-      "start": 6.24,
-      "end": 7.035
+      "start": 6.28,
+      "end": 7.075
     },
     {
       "id": "j4",
       "words": "Send the reminders.",
-      "start": 7.235,
-      "end": 8.394
+      "start": 7.205,
+      "end": 8.364
     },
     {
       "id": "j5",
       "words": "Fill the gaps.",
-      "start": 8.594,
-      "end": 9.526
+      "start": 8.584,
+      "end": 9.516
     },
     {
       "id": "j6",
       "words": "And never, ever double-book.",
-      "start": 9.766,
-      "end": 11.595
+      "start": 9.856,
+      "end": 11.685
     },
     {
       "id": "most",
       "words": "Most salons do those six jobs in six different places.",
-      "start": 12.275,
-      "end": 15.581
+      "start": 12.485,
+      "end": 15.791
     },
     {
       "id": "t1",
       "words": "A paper diary.",
-      "start": 16.001,
-      "end": 17.001
+      "start": 16.151,
+      "end": 17.151
     },
     {
       "id": "t2",
       "words": "A spreadsheet.",
-      "start": 17.181,
-      "end": 17.995
+      "start": 17.281,
+      "end": 18.095
     },
     {
       "id": "t3",
       "words": "A card machine that knows nothing about the diary.",
-      "start": 18.195,
-      "end": 20.693
+      "start": 18.335,
+      "end": 20.833
     },
     {
       "id": "kairo",
       "words": "Kairo is all six.",
-      "start": 21.593,
-      "end": 23.057
+      "start": 21.833,
+      "end": 23.297
     },
     {
       "id": "onelogin",
       "words": "One login, on your own booking link.",
-      "start": 23.337,
-      "end": 25.529
+      "start": 23.517,
+      "end": 25.709
     },
     {
       "id": "real",
       "words": "It's real software.",
-      "start": 26.049,
-      "end": 27.203
+      "start": 26.309,
+      "end": 27.463
     },
     {
       "id": "melb",
       "words": "It's been running a Melbourne salon since day one.",
-      "start": 27.483,
-      "end": 30.114
+      "start": 27.683,
+      "end": 30.314
     },
     {
       "id": "price",
       "words": "Four hundred dollars.",
-      "start": 30.694,
-      "end": 31.784
+      "start": 30.974,
+      "end": 32.064
     },
     {
       "id": "once",
       "words": "Once.",
-      "start": 32.044,
-      "end": 32.548
+      "start": 32.264,
+      "end": 32.768
     },
     {
       "id": "nothing",
       "words": "Then nothing.",
-      "start": 32.868,
-      "end": 33.572
+      "start": 33.228,
+      "end": 33.932
     }
   ]
 }

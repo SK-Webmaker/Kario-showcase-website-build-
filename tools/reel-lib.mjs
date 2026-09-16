@@ -112,9 +112,6 @@ function applyScene(el, t) {
 
 // --- global furniture ----------------------------------------------------
 function applyFurniture(t, D) {
-  const fill = document.getElementById("barfill");
-  if (fill) fill.style.width = (cl(t / D) * 100) + "%";
-
   // Letterbox bars breathe open at the top of the film and close at the end.
   const open = EASE(cl(t / 0.9));
   const close = EASE(cl((t - (D - 0.8)) / 0.8));
@@ -190,9 +187,8 @@ html,body{width:1080px;height:1920px}
 header{position:absolute;top:118px;left:64px;right:64px;display:flex;align-items:center;
   justify-content:space-between;z-index:5}
 .mark .wm{font-size:34px}.mark svg{width:42px;height:42px}
-#bar{position:absolute;top:196px;left:64px;right:64px;height:3px;
-  background:rgb(var(--ink)/.16);z-index:5}
-#barfill{height:100%;background:var(--brand);width:0}
+/* There is deliberately no progress bar. Removed 2026-09-16 on the operator's
+   note: a reel that displays how much of itself is left invites the swipe. */
 .scene{position:absolute;inset:0;padding:268px 64px 560px;display:flex;flex-direction:column;
   justify-content:center;opacity:0;will-change:transform,opacity,filter}
 /* Nothing wide enough to slide under the action rail. */
@@ -216,7 +212,6 @@ export const reelChrome = (markSvg) => `
     <div class="mark">${markSvg}<span class="wm">Kairo</span></div>
     <span class="chrome" style="font-size:22px">Melbourne</span>
   </header>
-  <div id="bar"><div id="barfill"></div></div>
   <div id="grade"></div>
   <div id="leak"></div>
   <div id="grain"></div>

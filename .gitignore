@@ -11,3 +11,7 @@ npm-debug.log*
 yarn-error.log*
 .vite
 *.tsbuildinfo
+
+# Reel render scratch — deleted by tools/render-reel.mjs on success,
+# left behind if a render is interrupted.
+content/packs/*/video/.frames-*/
