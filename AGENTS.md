@@ -291,7 +291,8 @@ happened here:
   something you solve `cz = objZ - za`, with `za` **positive** for a close shot.
   Getting the sign backwards renders everything at roughly half size.
 - **`za = +120` is not a close-up.** It renders a card near life size, which in
-  a 1080-wide frame is small. `za = +430` renders it at 1.4×.
+  a 1080-wide frame is small. `za = +480` renders it at 1.47×, so a 520×720
+  card lands at 766×1049 — 71% of the width and 55% of the height.
 
 And the one that is invisible until you measure it:
 

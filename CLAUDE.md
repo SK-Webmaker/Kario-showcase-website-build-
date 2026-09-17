@@ -198,12 +198,17 @@ What actually filled it, in rough order of how much each one bought:
    vertical mono rails down both sides, a ticker along the bottom. Permanent,
    cheap, and it turns blank margin into a designed frame.
 2. **Portrait geometry.** A 9:16 frame is 1920px high. Landscape cards on a
-   short vertical pitch filled about a third of it. Cards went 520×560 on a
-   620px pitch and the same pile now runs edge to edge.
+   short vertical pitch filled about a third of it. Cards went 520×720 on a
+   700px pitch and the same pile now runs edge to edge.
 3. **Deep parallax layers** — a ruled floor and a ghost word far back in z.
    They cost one element each and give the empty areas depth instead of gap.
 4. **Closer close-ups.** Framing a card at `za = +120` renders it near life
-   size, which is small in a 1080-wide frame. `za = +430` renders it at 1.4×.
+   size, which is small in a 1080-wide frame. `za = +480` renders it at 1.47×
+   — a 520×720 card lands at 766×1049, which is 55% of frame height.
+
+**Measure, do not eyeball.** `getBoundingClientRect()` on the key objects is
+the check. Judging a 1920-high frame from a screenshot in conversation was
+wrong three times running here, and each time the DOM settled it.
 
 **Something must always be moving.** A held shot with a still frame reads as a
 paused video, which is a swipe. The ticker exists for that reason alone.

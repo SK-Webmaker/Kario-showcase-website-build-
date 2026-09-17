@@ -22,11 +22,12 @@ because it *was* empty, and that is the note you gave me.
 
 What changed:
 
-- **The six cards are portraits now**, 520×560 on a 620px vertical pitch instead
+- **The six cards are portraits now**, 520×720 on a 700px vertical pitch instead
   of squat landscape cards on a 320px pitch. The pile they fall into fills the
   frame top to bottom instead of sitting in a band across the middle.
-- **The close-ups are actually close.** A card now renders at about 730×785 in a
-  1080-wide frame; before it was 520 wide, floating in cream.
+- **The close-ups are actually close.** A card now renders at 766×1049 in a
+  1080×1920 frame — 71% of the width, 55% of the height. Before it was 520
+  wide and 520 tall, floating in cream.
 - **The payoff card lists all six jobs, ticked** — it used to be a name and a
   strapline on a mostly empty blue rectangle.
 - **The product shot is three real frames in depth**: the dashboard, the diary,
